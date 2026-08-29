@@ -1,6 +1,6 @@
 # Sammiee — web design portfolio
 
-Static build of the Figma file [Sourcebound → *Portfolio Pages*](https://www.figma.com/design/bCgnzWULywZQ4du88Ob3pB/Sourcebound?node-id=91-674).
+Static build o Figma file 
 Two pages, one shared design system, motion built with GSAP.
 
 This is the local reference build. It is deliberately plain HTML + CSS + JS so the
