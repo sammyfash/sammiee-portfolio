@@ -1,6 +1,6 @@
 # Sammiee — web design portfolio
 
-Static build o Figma file 
+Static build on Figma file 
 Two pages, one shared design system, motion built with GSAP.
 
 This is the local reference build. It is deliberately plain HTML + CSS + JS so the
