@@ -1,0 +1,269 @@
+/* ---------------------------------------------------------------------------
+   Case-study page. The Figma comp is built on full-bleed hairline rules that
+   act as a table: title / summary / meta row / cover.
+   --------------------------------------------------------------------------- */
+.rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--c-rule);
+  transform-origin: 0 50%;
+}
+.js .rule { transform: scaleX(0); }
+
+.case {
+  position: relative;
+  z-index: 1;
+}
+.case__row {
+  width: var(--shell);
+  margin-inline: auto;
+  padding-block: clamp(28px, 3.3vw, 64px);
+}
+.case__row--tight { padding-block: 0; }
+
+.case__title {
+  font-size: var(--fs-display);
+  line-height: 1.26;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.case__summary {
+  font-size: var(--fs-md);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  max-width: 100%;
+}
+
+.case__gallery {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: var(--card-gap);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap);
+}
+
+/* --- next project ---------------------------------------------------------- */
+.case__next {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: clamp(80px, 9.14vw, 180px);
+  display: block;
+  border-top: 1px solid var(--c-rule);
+  padding-top: clamp(28px, 2.9vw, 56px);
+}
+.case__next-label {
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+}
+.case__next-title {
+  margin-top: 0.2em;
+  font-size: var(--fs-statement);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+.case__next-arrow {
+  display: inline-block;
+  transition: transform var(--dur-mid) var(--ease-out-expo);
+}
+.case__next:hover .case__next-arrow { transform: translateX(0.35em); }
+
+@media (max-width: 900px) {
+  .case__gallery { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------------------
+   Case-study sections. Each page sets --accent from its project colour, which
+   drives the labels and the outcome rule.
+   --------------------------------------------------------------------------- */
+.case { --accent: var(--c-blue-hi); }
+
+.case__label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.case__label b {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* --- the meta table under the title --------------------------------------- */
+.case__facts {
+  width: var(--shell);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: clamp(20px, 2.3vw, 44px);
+  padding-block: clamp(24px, 2.3vw, 44px);
+}
+.case__fact dt {
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.case__fact dd {
+  margin: 0.35em 0 0;
+  font-size: var(--fs-md);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.case__fact ul li + li { margin-top: 0.15em; }
+
+/* --- full-bleed showcase --------------------------------------------------- */
+.case__showcase {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: clamp(48px, 5.79vw, 112px);
+}
+.case__showcase--bare img { border-radius: clamp(8px, 0.81vw, 16px); }
+
+.case__pair {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: var(--card-gap);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap);
+}
+
+/* --- approach ------------------------------------------------------------- */
+.case__approach {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: clamp(80px, 9.14vw, 180px);
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: clamp(28px, 4.6vw, 90px);
+  align-items: start;
+}
+.case__approach p {
+  font-size: var(--fs-md);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+.case__approach p + p { margin-top: 1em; }
+
+/* --- the phone rail -------------------------------------------------------- */
+.case__phones {
+  margin-top: clamp(70px, 8.1vw, 150px);
+  overflow: hidden;
+}
+.case__phones-track {
+  display: flex;
+  gap: clamp(16px, 1.85vw, 36px);
+  width: max-content;
+  padding-inline: clamp(24px, 6.08vw, 105px);
+  will-change: transform;
+}
+.case__phones .mock--phone { width: clamp(190px, 15.6vw, 300px); flex: 0 0 auto; }
+
+/* --- highlights ------------------------------------------------------------ */
+.case__highlights {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: clamp(80px, 9.14vw, 180px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 2.66vw, 52px);
+}
+.case__highlight {
+  padding-top: clamp(16px, 1.4vw, 28px);
+  border-top: 1px solid var(--c-rule);
+}
+.case__highlight h3 {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.case__highlight p {
+  margin-top: 0.5em;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+/* --- outcome --------------------------------------------------------------- */
+.case__outcome {
+  width: var(--shell);
+  margin-inline: auto;
+  margin-top: clamp(80px, 9.14vw, 180px);
+  padding-top: clamp(24px, 2.3vw, 44px);
+  border-top: 1px solid var(--accent);
+}
+.case__outcome-body {
+  margin-top: clamp(20px, 2.08vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: clamp(28px, 4.6vw, 90px);
+  align-items: start;
+}
+/* Half of --fs-statement. At full display size an outcome paragraph ran to a
+   dozen enormous lines and read as a headline rather than as a result; this is
+   a statement you read, not one you shout. `pretty` rather than `balance`,
+   since balancing is for short headings and this is prose. */
+.case__outcome-body p {
+  font-size: clamp(1.125rem, 2.6vw, 3.25rem);
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+  text-wrap: pretty;
+}
+.case__outcome .pill { margin-top: clamp(24px, 2.55vw, 48px); }
+
+/* --- offline note ---------------------------------------------------------- */
+.case__offline {
+  margin-top: clamp(20px, 2.08vw, 40px);
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+}
+
+@media (max-width: 900px) {
+  .case__facts { grid-template-columns: 1fr; }
+  .case__approach,
+  .case__outcome-body { grid-template-columns: 1fr; }
+  .case__highlights { grid-template-columns: 1fr; }
+  .case__pair { grid-template-columns: 1fr; }
+}
+
+/* --- the numbers that carry the case ---------------------------------------
+   Set above the approach, because a hiring manager scanning a case study reads
+   the outcome before they read the process. */
+.case__metrics {
+  width: var(--shell);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: clamp(20px, 2.6vw, 48px);
+  padding-block: clamp(30px, 3.4vw, 62px);
+}
+.case__metric dt {
+  font-size: clamp(2.1rem, 4.4vw, 4.15rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.case__metric dd {
+  margin-top: 0.7em;
+  max-width: 30ch;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+/* the video reel sits at the same width as a still showcase */
+.case__showcase .mock--video { width: 100%; }

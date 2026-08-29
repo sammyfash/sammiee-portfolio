@@ -1,0 +1,29 @@
+/* --- the framed statement block ------------------------------------------- */
+.about {
+  position: relative;
+  margin-top: clamp(80px, 9.14vw, 180px);
+  z-index: 1;
+}
+.about__box {
+  position: relative;
+  width: var(--shell);
+  margin-inline: auto;
+  padding: clamp(40px, 4.63vw, 90px) clamp(24px, 6.06vw, 118px);
+  min-height: 37.7vw;                 /* 652 / 1728 */
+  display: flex;
+  align-items: center;
+}
+.about__statement {
+  font-size: var(--fs-statement);
+  line-height: var(--lh-statement);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 92%;                     /* 1318 / 1428 inner */
+}
+/* Each word starts dimmed and lights up as the block scrubs through. */
+.about__statement .word { color: color-mix(in srgb, var(--c-ink) 16%, transparent); }
+
+@media (max-width: 900px) {
+  .about__box { min-height: 0; }
+  .about__statement { max-width: 100%; }
+}

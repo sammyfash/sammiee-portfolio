@@ -1,0 +1,59 @@
+/* ---------------------------------------------------------------------------
+   First-paint curtain. The wordmark is filled left-to-right as loading runs:
+   a linear-gradient painted *into the glyphs* via background-clip: text, whose
+   hard stop `--fill` is driven from 0% to 100% by the same tween as the
+   counter, so the two can never disagree.
+   --------------------------------------------------------------------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--c-bg);
+  display: grid;
+  place-items: center;
+}
+
+.preloader__inner {
+  display: inline-grid;
+  justify-items: end;      /* the percentage sits under the wordmark's right edge */
+  gap: 0.1em;
+}
+
+.preloader__mark {
+  --fill: 0%;
+  font-size: var(--fs-wordmark);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.26;
+  white-space: nowrap;
+  background-image: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff var(--fill),
+    rgba(255, 255, 255, 0.14) calc(var(--fill) + 6%),
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.preloader__count {
+  font-size: clamp(0.75rem, 0.81vw, 0.9375rem);   /* 14px @1728 */
+  font-weight: 600;
+  color: var(--c-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.preloader[hidden] { display: none; }
+
+/* --- page-transition curtain ---------------------------------------------- */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  background: var(--c-bg);
+  transform: translateY(100%);
+  pointer-events: none;
+}

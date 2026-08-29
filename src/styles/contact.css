@@ -1,0 +1,177 @@
+/* ---------------------------------------------------------------------------
+   Contact dialog. Opened by anything carrying [data-contact-open].
+   Three fields only — name, email, message.
+   --------------------------------------------------------------------------- */
+.contact {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 48px);
+  visibility: hidden;
+}
+.contact[data-open='true'] { visibility: visible; }
+
+.contact__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.86);
+  opacity: 0;
+}
+
+.contact__panel {
+  position: relative;
+  width: min(100%, 940px);
+  max-height: calc(100 * var(--vh, 1vh) - clamp(32px, 6vw, 96px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(28px, 3.5vw, 64px);
+  background: var(--c-bg);
+  opacity: 0;
+}
+
+.contact__close {
+  position: absolute;
+  top: clamp(18px, 1.8vw, 30px);
+  right: clamp(18px, 1.8vw, 30px);
+  width: clamp(26px, 2.1vw, 36px);
+  height: clamp(26px, 2.1vw, 36px);
+  z-index: 2;
+}
+.contact__close span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-ink);
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.contact__close span:nth-child(1) { transform: rotate(45deg); }
+.contact__close span:nth-child(2) { transform: rotate(-45deg); }
+.contact__close:hover span:nth-child(1) { transform: rotate(135deg); }
+.contact__close:hover span:nth-child(2) { transform: rotate(45deg); }
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(28px, 4vw, 72px);
+  align-items: start;
+}
+
+.contact__title {
+  font-size: clamp(1.75rem, 3.1vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.contact__blurb {
+  margin-top: clamp(12px, 1.2vw, 20px);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+.contact__direct {
+  margin-top: clamp(20px, 2vw, 34px);
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+}
+.contact__direct a { color: var(--c-ink); }
+
+/* --- fields ---------------------------------------------------------------- */
+.contact__field + .contact__field { margin-top: clamp(18px, 1.9vw, 30px); }
+
+.contact__field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-dim);
+}
+
+.contact__field input,
+.contact__field textarea {
+  width: 100%;
+  margin-top: 0.5em;
+  padding: 0.55em 0;
+  border: 0;
+  border-bottom: 1px solid var(--c-rule-strong);
+  border-radius: 0;
+  background: none;
+  color: var(--c-ink);
+  font: inherit;
+  font-size: var(--fs-body);
+  cursor: text;
+  transition: border-color var(--dur-fast) var(--ease-out-expo);
+}
+.contact__field textarea { resize: vertical; min-height: 4.5em; }
+.contact__field input::placeholder,
+.contact__field textarea::placeholder { color: color-mix(in srgb, var(--c-ink) 26%, transparent); }
+.contact__field input:focus,
+.contact__field textarea:focus { outline: none; border-bottom-color: var(--c-ink); }
+
+.contact__field[data-invalid='true'] input,
+.contact__field[data-invalid='true'] textarea { border-bottom-color: #ff6b6b; }
+
+.contact__error {
+  display: block;
+  margin-top: 0.45em;
+  min-height: 1.2em;
+  font-size: 0.8125rem;
+  color: #ff6b6b;
+}
+
+.contact__submit {
+  margin-top: clamp(24px, 2.4vw, 40px);
+  display: flex;
+  align-items: center;
+  gap: 1.2em;
+  flex-wrap: wrap;
+}
+.contact__status {
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+}
+.contact__status[data-state='error'] { color: #ff6b6b; }
+
+.contact form[data-sending='true'] { opacity: 0.55; pointer-events: none; }
+
+/* --- sent ------------------------------------------------------------------ */
+.contact__sent {
+  display: none;
+  font-size: var(--fs-md);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.contact__sent p + p { margin-top: 0.8em; color: var(--c-ink-dim); font-size: var(--fs-body); }
+.contact[data-sent='true'] .contact__sent { display: block; }
+.contact[data-sent='true'] form { display: none; }
+
+/* A form needs real cursor affordances, so the custom pointer stands down. */
+body[data-contact-open='true'] { overflow: hidden; }
+body[data-contact-open='true'] .cursor { display: none; }
+html.cursor-custom body[data-contact-open='true'],
+html.cursor-custom body[data-contact-open='true'] a,
+html.cursor-custom body[data-contact-open='true'] button { cursor: auto; }
+html.cursor-custom body[data-contact-open='true'] a,
+html.cursor-custom body[data-contact-open='true'] button { cursor: pointer; }
+
+@media (max-width: 760px) {
+  .contact__grid { grid-template-columns: 1fr; }
+}
+
+/* Spam trap. Off-screen rather than display:none — some bots skip anything
+   with display:none, and this needs to look real to them. aria-hidden and
+   tabindex="-1" keep it away from screen readers and the tab order. */
+.contact__gotcha {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

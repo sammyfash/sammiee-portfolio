@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Source videos for the case-study frames — large, and re-fetched on demand
+# by `npm run shots` from the videoUrl recorded in content/projects.mjs.
+assets-src/video/
+
+# Agent scaffolding — mine, not the project's
+.claude/
+.interface-design/
+
+# local secrets / per-environment config
+.env
+.env.local

@@ -1,0 +1,148 @@
+/* ---------------------------------------------------------------------------
+   Pointer follower. One element, three looks, chosen per pointer move:
+
+     look="arrow"  a Figma-style pointer — the default
+     look="hand"   the pointing hand, over anything clickable
+     look="cross"  two hairlines crossing, inside [data-cursor-zone="cross"]
+
+   Anything carrying data-cursor-tag also shows a coloured chip beside it,
+   the way Figma labels a collaborator's cursor.
+
+   Desktop / fine pointers only. The native cursor is hidden by the
+   `cursor-custom` class, which JS only adds once this has initialised — so a
+   JS failure never leaves the page with no cursor at all.
+   --------------------------------------------------------------------------- */
+.cursor {
+  --tag-bg: var(--c-gold-hi);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+  pointer-events: none;
+  display: none;
+  opacity: 0;              /* JS fades it in on the first pointer move */
+}
+
+.cursor-custom,
+.cursor-custom a,
+.cursor-custom button,
+.cursor-custom [data-cursor-tag] { cursor: none; }
+
+/* --- the two pointer icons ------------------------------------------------ */
+.cursor__icon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+/* Each icon's margin pulls its own hotspot onto the pointer position. */
+.cursor__arrow {
+  width: 56px;
+  height: 56px;
+  margin: -8px 0 0 -14px;     /* tip at 7,4 of a 28-unit viewBox, drawn at 2x */
+}
+.cursor__hand {
+  width: 44px;
+  height: 50px;
+  margin: -4px 0 0 -16px;     /* fingertip at 11.5,3 of a 32x36 viewBox */
+}
+
+/* GSAP owns `transform` on each icon (the x/y follow), so press/hover states
+   scale the <g> inside instead — an SVG child transform is independent of it. */
+.cursor__icon g {
+  transform-origin: center;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.cursor__arrow path {
+  fill: var(--c-bg);
+  stroke: var(--c-ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.cursor__hand .hand-shape {
+  fill: var(--c-ink);
+  stroke: var(--c-bg);
+  stroke-width: 2.4;
+  stroke-linejoin: round;
+}
+.cursor__hand .hand-creases {
+  fill: none;
+  stroke: var(--c-bg);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* --- crosshair ------------------------------------------------------------ */
+.cursor__line {
+  position: fixed;
+  background: var(--c-ink);
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+/* Sized past the viewport so the lines never end mid-screen mid-tween. */
+.cursor__line--x { left: -10vw; top: 0; width: 120vw; height: 1px; }
+.cursor__line--y { top: -10vh; left: 0; height: 120vh; width: 1px; }
+
+.cursor__knot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  opacity: 0;
+  mix-blend-mode: difference;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+.cursor__knot i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--c-ink);
+}
+
+/* --- which look is showing ------------------------------------------------ */
+.cursor[data-look='arrow'] .cursor__arrow { opacity: 1; }
+.cursor[data-look='hand'] .cursor__hand { opacity: 1; }
+.cursor[data-look='cross'] .cursor__line { opacity: 0.28; }
+.cursor[data-look='cross'] .cursor__knot { opacity: 1; }
+
+/* --- the label chip ------------------------------------------------------- */
+.cursor__tag {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 26px 0 0 22px;
+  padding: 0.4em 0.7em;
+  border-radius: 9px;
+  background: var(--tag-bg);
+  color: #000;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out-expo),
+              background-color var(--dur-fast) var(--ease-out-expo);
+}
+.cursor__tag span {
+  display: block;
+  transform: translateY(4px);
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.cursor[data-tag='true'] .cursor__tag { opacity: 1; }
+.cursor[data-tag='true'] .cursor__tag span { transform: translateY(0); }
+
+/* a small press-in when the pointer is over something clickable */
+.cursor[data-look='hand'] .cursor__hand g { transform: scale(0.94); }
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor { display: none !important; }
+  .cursor-custom, .cursor-custom a, .cursor-custom button { cursor: auto; }
+}

@@ -1,0 +1,98 @@
+/* --- closing CTA + contact ------------------------------------------------ */
+/* The glow is painted as a background rather than an absolutely positioned
+   child: an abs-positioned box adds to the document's scrollable area, and at
+   81vw tall this one was inventing ~530px of empty scroll under the page. A
+   background is clipped to the box and costs nothing. The vertical radius is
+   50% from a 50% centre, so it fades out exactly at the section's edges and
+   leaves no seam. */
+.site-footer {
+  position: relative;
+  background-image: radial-gradient(
+    62% 50% at 14% 50%,
+    color-mix(in srgb, var(--c-glow) 85%, transparent) 0%,
+    transparent 100%
+  );
+  margin-top: clamp(90px, 8.1vw, 160px);
+  padding-bottom: clamp(28px, 2.32vw, 44px);
+  z-index: 1;
+}
+.site-footer__box {
+  position: relative;
+  width: var(--shell);
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(32px, 10.47vw, 200px);
+  padding: clamp(40px, 4.05vw, 78px) clamp(24px, 4.97vw, 96px);
+  min-height: 24vw;
+  /* The flash grid sits behind this box, so the box lets the pointer through
+     and only its links take it back. */
+  pointer-events: none;
+}
+.site-footer__box a { pointer-events: auto; }
+.site-footer__cta {
+  max-width: 63.5%;          /* 876 / 1380 */
+}
+.site-footer__heading {
+  font-size: var(--fs-statement);
+  line-height: var(--lh-statement);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.site-footer__button { margin-top: clamp(28px, 3.13vw, 60px); }
+
+.site-footer__contact {
+  text-align: right;
+  font-size: var(--fs-contact);
+  line-height: 1.4;
+}
+.site-footer__email {
+  display: inline-block;
+  white-space: nowrap;
+}
+/* One block with the email — no gap, per the latest pass. */
+.site-footer__social {
+  display: grid;
+  justify-items: end;
+  gap: 0.05em;
+}
+
+/* underline that wipes in from the left */
+.link-wipe {
+  position: relative;
+  display: inline-block;
+}
+.link-wipe::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.04em;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.link-wipe:hover::after,
+.link-wipe:focus-visible::after { transform: scaleX(1); transform-origin: left center; }
+
+.site-footer__fineprint {
+  margin-top: clamp(18px, 1.62vw, 30px);
+  text-align: center;
+  pointer-events: none;   /* let the flash grid see the pointer here too */
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+}
+
+@media (max-width: 900px) {
+  .site-footer__box {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .site-footer__cta { max-width: 100%; }
+  .site-footer__contact { text-align: left; margin-top: 48px; }
+  .site-footer__social { justify-items: start; }
+}

@@ -1,0 +1,55 @@
+/* --- site header (shared by every page) ----------------------------------- */
+.site-header {
+  position: relative;
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  width: var(--shell);
+  margin-inline: auto;
+  padding-top: clamp(28px, 4.11vw, 72px);
+}
+
+/* "Sammieeeee" — extra-bold italic with the radial silver gradient. */
+.wordmark {
+  font-size: var(--fs-wordmark);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.26;
+  letter-spacing: -0.01em;
+  background-image: radial-gradient(ellipse 100% 100% at 50% 50%,
+                    #ffffff 0%, #cccccc 50%, #999999 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+}
+
+/* --- hamburger ------------------------------------------------------------ */
+.menu-toggle {
+  --bar: 2px;
+  position: relative;
+  width: clamp(30px, 2.508vw, 44px);
+  height: clamp(30px, 2.508vw, 44px);
+  display: grid;
+  align-content: space-between;
+  z-index: 60;
+}
+.menu-toggle span {
+  display: block;
+  height: var(--bar);
+  border-radius: 2px;
+  background: var(--c-ink);
+  transform-origin: right center;
+  transition: transform var(--dur-fast) var(--ease-out-expo),
+              opacity var(--dur-fast) var(--ease-out-expo);
+}
+/* Figma alternates full-width and inset bars — 100/71/100/71/100. */
+.menu-toggle span:nth-child(2),
+.menu-toggle span:nth-child(4) { width: 71%; justify-self: end; }
+.menu-toggle:hover span:nth-child(2),
+.menu-toggle:hover span:nth-child(4) { transform: scaleX(1.408); }
+.menu-toggle:hover span:nth-child(1),
+.menu-toggle:hover span:nth-child(3),
+.menu-toggle:hover span:nth-child(5) { transform: scaleX(0.71); }

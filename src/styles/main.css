@@ -1,0 +1,16 @@
+@import '@fontsource-variable/plus-jakarta-sans/index.css';
+@import '@fontsource-variable/plus-jakarta-sans/wght-italic.css';
+
+@import './tokens.css';
+@import './base.css';
+@import './header.css';
+@import './preloader.css';
+@import './cursor.css';
+@import './menu.css';
+@import './hero.css';
+@import './about.css';
+@import './work.css';
+@import './project.css';
+@import './mockup.css';
+@import './footer.css';
+@import './contact.css';

@@ -1,0 +1,165 @@
+/* ---------------------------------------------------------------------------
+   Hero. Laid out as an absolutely-positioned stage so it matches the Figma
+   artboard exactly at any width — every offset below is a percentage of the
+   1517.34px content column. Falls back to normal flow under 900px.
+   --------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero__glow {
+  width: 81.3vw;          /* 1405 / 1728 */
+  height: 81.3vw;
+  left: -18.2vw;          /* -418 + 104 canvas offset */
+  top: -16.5vw;
+}
+
+.hero__stage {
+  position: relative;
+  width: var(--shell);
+  margin-inline: auto;
+  aspect-ratio: 1517.34 / 884;
+  margin-top: clamp(36px, 5.32vw, 92px);
+  z-index: 1;
+  /* The stage covers the flash grid, so it lets the pointer fall through to it.
+     The portrait opts back in below, because it has its own hover. */
+  pointer-events: none;
+}
+
+/* The horizontal lines trace the portrait's top and bottom edges and run out to
+   the viewport edges, so the container breaks out of the content column. The box
+   still measures exactly the stage, which is what the offsets key off. */
+.hero__grid {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  height: 100%;
+}
+
+/* The vertical lines run further than the stage — from the very top of the page
+   down to the top of the next section's box, exactly as in the comp. That span
+   is not expressible in CSS, so syncRails() in js/hero.js sets top and height. */
+.hero__rails {
+  position: absolute;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  z-index: 0;
+}
+
+/* The greeting is an <h1> and the statement a <p>, so without this they render
+   at 700 and 400. Everything else on the site is a heading at 700 — match it. */
+.hero__display {
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: 1.26;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.hero__greeting {
+  position: absolute;
+  left: 52.66%;
+  top: 17.19%;      /* 152 / 884 */
+  width: 47.32%;
+}
+.hero__greeting .hero__line--hello { padding-left: 57.42%; }
+.hero__greeting .hero__line--name  { text-align: right; margin-top: -0.508em; }
+
+.hero__statement {
+  position: absolute;
+  left: 0;
+  top: 65.27%;      /* 577 / 884 */
+  width: 47.32%;
+}
+.hero__statement .hero__line--builds { margin-top: -0.508em; }
+
+.hero__lede {
+  margin-top: clamp(14px, 1.45vw, 28px);
+  width: 85.2%;              /* 612 / 718 */
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+/* --- the portrait and its two fanned accent plates ------------------------ */
+.hero__portrait {
+  position: absolute;
+  /* Offset rather than translated, because GSAP owns this element's transform
+     for the pointer parallax and would overwrite a centring translate. */
+  left: 41.917%;    /* 636 / 1517.34 */
+  top: 41.29%;      /* 365 / 884 */
+  width: 16.21%;    /* 246 / 1517.34 */
+  aspect-ratio: 1;
+  pointer-events: auto;   /* the portrait has its own hover, so it opts back in */
+  will-change: transform;
+}
+.hero__plate {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+.hero__plate--blue {
+  background: linear-gradient(180deg, var(--c-blue-hi), var(--c-blue-lo));
+  transform: rotate(18.28deg);
+}
+.hero__plate--gold {
+  background: linear-gradient(180deg, var(--c-gold-hi), var(--c-gold-lo));
+  transform: rotate(9.02deg);
+}
+.hero__portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #d9d9d9;
+}
+
+/* On desktop the hero owns the whole first screen and the stage is centred in
+   it. The header is lifted out of flow and sits in the stage's empty top band,
+   which is exactly where the comp puts it — the Figma hero frame *contains*
+   its header, so leaving it in flow above pushed everything down by a header's
+   worth of space. */
+@media (min-width: 901px) {
+  .site-header[data-header='overlay'] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: 100svh;
+  }
+  .hero__stage { margin-top: 0; }
+}
+
+/* --- mobile --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero__stage {
+    aspect-ratio: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 48px;
+  }
+  .hero__greeting,
+  .hero__statement,
+  .hero__portrait {
+    position: static;
+    left: auto; top: auto;
+    width: 100%;
+    transform: none;
+  }
+  .hero__greeting .hero__line--hello { padding-left: 0; }
+  .hero__greeting .hero__line--name  { text-align: left; }
+  .hero__portrait { width: 62%; align-self: center; }
+  .hero__lede { width: 100%; }
+  .hero__grid { display: none; }
+  .hero__display { white-space: normal; }
+}

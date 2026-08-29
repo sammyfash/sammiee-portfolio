@@ -1,0 +1,25 @@
+{
+  "name": "sammiee-portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Sammiee — web design portfolio. Static build, WordPress-portable markup.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "images": "node scripts/optimize-images.mjs",
+    "shots": "node scripts/capture-shots.mjs",
+    "pages": "node scripts/build-pages.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.8.0",
+    "sharp": "^0.35.3",
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/plus-jakarta-sans": "^5.1.1",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.4"
+  }
+}

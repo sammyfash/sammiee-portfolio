@@ -1,0 +1,82 @@
+/* --- "My recent works" grid ----------------------------------------------- */
+.work {
+  position: relative;
+  margin-top: clamp(90px, 12.44vw, 240px);
+  z-index: 1;
+}
+.work__title {
+  font-size: var(--fs-h3);
+  line-height: 1.26;
+  text-align: center;
+}
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap);
+  margin-top: clamp(48px, 7.93vw, 154px);
+}
+
+.work__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 747 / 534;
+  overflow: hidden;
+  background: #0a0a0a;
+  isolation: isolate;
+}
+.work__media {
+  position: absolute;
+  inset: -6% 0;              /* headroom so the parallax never shows an edge */
+  height: 112%;
+}
+.work__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: transform var(--dur-slow) var(--ease-out-expo),
+              filter var(--dur-mid) var(--ease-out-expo);
+}
+.work__card:hover .work__media img,
+.work__card:focus-visible .work__media img {
+  transform: scale(1.045);
+  filter: saturate(1.12) brightness(1.04);
+}
+
+/* caption bar that slides up out of the bottom edge on hover */
+.work__meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(16px, 1.62vw, 32px) clamp(18px, 1.85vw, 36px);
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0));
+  transform: translateY(101%);
+  opacity: 0;
+  transition: transform var(--dur-mid) var(--ease-out-expo),
+              opacity var(--dur-fast) linear;
+}
+.work__card:hover .work__meta,
+.work__card:focus-visible .work__meta { transform: translateY(0); opacity: 1; }
+
+.work__name {
+  font-size: var(--fs-md);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.work__tag {
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+  white-space: nowrap;
+}
+
+@media (hover: none) {
+  /* No hover on touch — keep the caption permanently visible instead. */
+  .work__meta { transform: none; opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .work__grid { grid-template-columns: 1fr; }
+}

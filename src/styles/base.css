@@ -1,0 +1,222 @@
+/* --- reset ---------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, picture, svg, video { display: block; max-width: 100%; }
+/* <picture> is inline by default, which leaves baseline slack under any img
+   that is sized as a percentage of it. Every art-directed image here fills. */
+picture { width: 100%; height: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection { background: var(--c-ink); color: var(--c-bg); }
+
+:focus-visible {
+  outline: 2px solid var(--c-ink);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* --- layout primitives ---------------------------------------------------- */
+.shell {
+  width: var(--shell);
+  margin-inline: auto;
+}
+
+/* A hairline box with four white tick-marks pinning its corners.
+   Each edge is its own element so the box can be *drawn* rather than faded:
+   top + right run out from the top-right corner, then left + bottom converge
+   on the bottom-left. See initFrame() in js/frame.js. */
+.frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.frame__edge {
+  position: absolute;
+  background: var(--c-rule-strong);
+}
+.frame__edge--t { top: 0;    left: 0;  width: 100%; height: 1px; transform-origin: 100% 50%; }
+.frame__edge--b { bottom: 0; left: 0;  width: 100%; height: 1px; transform-origin: 100% 50%; }
+.frame__edge--r { top: 0;    right: 0; width: 1px; height: 100%; transform-origin: 50% 0%; }
+.frame__edge--l { top: 0;    left: 0;  width: 1px; height: 100%; transform-origin: 50% 0%; }
+
+/* Collapsed only when JS is there to draw them back open. */
+.js .frame__edge--t,
+.js .frame__edge--b { transform: scaleX(0); }
+.js .frame__edge--r,
+.js .frame__edge--l { transform: scaleY(0); }
+.js .frame i { opacity: 0; }
+
+.frame i {
+  position: absolute;
+  width: 12px;
+  height: 10px;
+  background: var(--c-ink);
+}
+.frame i:nth-of-type(1) { top: -5px;    left: -1px;  }
+.frame i:nth-of-type(2) { top: -5px;    right: -1px; }
+.frame i:nth-of-type(3) { bottom: -5px; left: -1px;  }
+.frame i:nth-of-type(4) { bottom: -5px; right: -1px; }
+
+/* --- the drawn grid lines ------------------------------------------------- */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.grid-lines span {
+  position: absolute;
+  background: var(--c-rule);
+}
+/* --pos is set per-line in the markup. */
+.grid-lines span[data-axis='x'] {
+  left: 0; width: 100%; height: 1px; top: var(--pos, 50%);
+  transform-origin: 50% 50%;
+}
+.grid-lines span[data-axis='y'] {
+  top: 0; height: 100%; width: 1px; left: var(--pos, 50%);
+  transform-origin: 50% 0;
+}
+/* Collapsed only when JS is there to draw them back open. */
+.js .grid-lines span[data-axis='x'] { transform: scaleX(0); }
+.js .grid-lines span[data-axis='y'] { transform: scaleY(0); }
+
+/* --- hover flash grid -----------------------------------------------------
+   A layer of 64px cells that light under the pointer (js/flash-grid.js). It
+   sits behind its section's content, which must be pointer-events: none for
+   the cells to receive anything. --cell-flash is a lit cell's peak opacity —
+   turn it up for a louder effect. */
+.flash-cells {
+  --cell-flash: 0.22;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  overflow: hidden;
+  pointer-events: auto;
+}
+.flash-col { flex: 0 0 auto; }
+.flash-cell {
+  width: 64px;
+  height: 64px;
+  background: var(--c-ink);
+  opacity: 0;
+  will-change: opacity;
+}
+@media (max-width: 900px) {
+  .flash-cells { display: none; }
+}
+
+/* --- the soft radial lift behind hero + footer ---------------------------- */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side,
+              color-mix(in srgb, var(--c-glow) 80%, transparent) 0%,
+              transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- shared pill button --------------------------------------------------- */
+.pill {
+  --pill-bg: var(--c-ink);
+  --pill-fg: var(--c-bg);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.7rem, 0.81vw, 1rem) clamp(1.25rem, 1.85vw, 2.25rem);
+  border-radius: var(--radius-pill);
+  background: var(--pill-bg);
+  color: var(--pill-fg);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+  line-height: 1.25;
+  overflow: hidden;
+  isolation: isolate;
+  will-change: transform;
+}
+/* the wipe that fills from the pointer on hover */
+.pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--c-bg);
+  transform: translateY(101%);
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.pill__label {
+  display: block;
+  transition: color var(--dur-fast) var(--ease-out-expo);
+}
+.pill:hover::before,
+.pill:focus-visible::before { transform: translateY(0); }
+.pill:hover,
+.pill:focus-visible { box-shadow: inset 0 0 0 1px var(--c-ink); }
+.pill:hover .pill__label,
+.pill:focus-visible .pill__label { color: var(--c-ink); }
+
+/* --- split-text scaffolding -----------------------------------------------
+   The mask is only needed while a line is sliding up into place. Leaving it on
+   afterwards clips descenders against a tight line-height (the g and y in
+   "together, yunno?"), so each reveal drops `is-open` on when it finishes. */
+.line { display: block; }
+.js .line { overflow: hidden; }
+.js .line.is-open { overflow: visible; }
+.line__inner { display: block; will-change: transform; }
+.word { display: inline-block; white-space: pre; }
+.char { display: inline-block; will-change: transform; }
+
+/* Anything JS animates in starts hidden, but only once JS has confirmed it
+   is running — so the page is still readable with JS off or broken. */
+.js [data-reveal] { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { visibility: visible !important; }
+  .js .line { overflow: visible; }
+  .js .grid-lines span,
+  .js .frame__edge,
+  .js .rule { transform: none !important; }
+  .js .frame i { opacity: 1 !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

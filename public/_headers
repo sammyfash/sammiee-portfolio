@@ -1,0 +1,25 @@
+# Cloudflare Pages / Netlify security + caching headers.
+#
+# The CSP is strict because the site needs almost nothing: no inline <script>,
+# no third-party origins, self-hosted fonts. `style-src` keeps 'unsafe-inline'
+# because GSAP animates via element.style, which CSP counts as inline style.
+#
+# Adding a form backend (Formspree, Web3Forms) means adding its origin to
+# connect-src — nothing else here needs to change.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), interest-cohort=()
+  X-Frame-Options: DENY
+
+# Fingerprinted build output is safe to cache forever.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/img/*
+  Cache-Control: public, max-age=2592000
+
+/video/*
+  Cache-Control: public, max-age=2592000

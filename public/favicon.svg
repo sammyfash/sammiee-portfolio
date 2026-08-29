@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The hero motif: two tilted plates behind a square photo plate. -->
+  <rect width="64" height="64" fill="#000"/>
+  <g transform="translate(32 32)">
+    <rect x="-17" y="-17" width="34" height="34" transform="rotate(18.28)" fill="#0895fa"/>
+    <rect x="-17" y="-17" width="34" height="34" transform="rotate(9.02)" fill="#edaa0b"/>
+    <rect x="-17" y="-17" width="34" height="34" fill="#fff"/>
+  </g>
+</svg>

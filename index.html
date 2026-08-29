@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sammiee — The designer who builds</title>
+  <meta name="description" content="Sammiee designs websites and builds them — web design and WordPress development for teams in Web3, events and fintech.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://sammiee.dev/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sammiee — The designer who builds">
+  <meta property="og:description" content="Web design and WordPress development for teams in Web3, events and fintech.">
+  <meta property="og:site_name" content="Sammiee">
+  <meta property="og:url" content="https://sammiee.dev/">
+  <meta property="og:image" content="https://sammiee.dev/img/work/abf.jpg">
+  <meta property="og:image:alt" content="Sammiee — web design and WordPress development">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sammiee.dev/img/work/abf.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sammiee",
+  "url": "https://sammiee.dev/",
+  "email": "mailto:me@sammiee.dev",
+  "jobTitle": "Web & Product Designer",
+  "description": "Web design and WordPress development for teams in Web3, events and fintech.",
+  "knowsAbout": [
+    "Web Design",
+    "Product Design",
+    "WordPress Development",
+    "Webflow Development",
+    "UI/UX Design"
+  ],
+  "sameAs": [
+    "https://instagram.com/",
+    "https://linkedin.com/",
+    "https://x.com/"
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- first-paint curtain -->
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__mark">Sammieeeee</span>
+      <span class="preloader__count">0%</span>
+    </div>
+  </div>
+
+  <!-- page-transition curtain -->
+  <div class="curtain" aria-hidden="true"></div>
+
+  <!-- pointer follower -->
+  <div class="cursor" aria-hidden="true">
+    <!-- default look: a Figma-style pointer. Its tip sits at 7,4 in the viewBox. -->
+    <svg class="cursor__icon cursor__arrow" viewBox="0 0 28 28">
+      <g><path d="M7 4 L24 13.9 L15.7 15.6 L11.6 23.2 Z" /></g>
+    </svg>
+    <!-- clickable things get the pointing hand; fingertip sits at 11.5,3 -->
+    <svg class="cursor__icon cursor__hand" viewBox="0 0 32 36">
+      <g>
+        <path class="hand-shape" d="M9 5.5 A2.5 2.5 0 0 1 14 5.5 L14 15 A2.25 2.25 0 0 1 18.5 15 L18.5 16.5 A2.25 2.25 0 0 1 23 16.5 L23 18 A2.25 2.25 0 0 1 27.5 18 L27.5 25 C27.5 30.5 24 34 19 34 L16 34 C12.5 34 10.2 32.3 8.6 29.6 L3.4 21.2 A2.6 2.6 0 0 1 7.8 18.4 L9 20.3 Z" />
+        <path class="hand-creases" d="M14 15.5 L14 19.5 M18.5 17 L18.5 20 M23 18.5 L23 21" />
+      </g>
+    </svg>
+    <!-- crosshair look, used inside [data-cursor-zone="cross"] -->
+    <span class="cursor__line cursor__line--x"></span>
+    <span class="cursor__line cursor__line--y"></span>
+    <span class="cursor__knot"><i></i></span>
+    <!-- the label chip, shown for anything carrying data-cursor-tag -->
+    <span class="cursor__tag"><span>View project</span></span>
+  </div>
+
+  <!-- full-screen navigation -->
+  <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
+    <div class="nav-overlay__header">
+      <a class="wordmark" href="/">Sammieeeee</a>
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      <li><a class="nav-link" href="#top">
+        <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
+        <span class="nav-link__index">01</span>
+      </a></li>
+      <li><a class="nav-link" href="#about">
+        <span class="nav-link__roll"><span>About me</span><span aria-hidden="true">About me</span></span>
+        <span class="nav-link__index">02</span>
+      </a></li>
+      <li><a class="nav-link" href="#work">
+        <span class="nav-link__roll"><span>My Works</span><span aria-hidden="true">My Works</span></span>
+        <span class="nav-link__index">03</span>
+      </a></li>
+      <li><a class="nav-link" href="#contact" data-contact-open>
+        <span class="nav-link__roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-overlay__foot">
+      <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+      <span>
+        <a class="link-wipe" href="https://instagram.com/" rel="noopener">Instagram</a> &nbsp;
+        <a class="link-wipe" href="https://linkedin.com/" rel="noopener">Linkedin</a> &nbsp;
+        <a class="link-wipe" href="https://x.com/" rel="noopener">X</a>
+      </span>
+    </div>
+  </nav>
+
+  <header class="site-header" id="top" data-header="overlay">
+    <a class="wordmark" href="/">Sammieeeee</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" data-cursor-zone="cross">
+      <span class="glow hero__glow" aria-hidden="true"></span>
+      <!-- cells are generated by js/flash-grid.js and light under the pointer -->
+      <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+      <!-- the two vertical rails; js/hero.js sizes them page-top → next section -->
+      <div class="grid-lines hero__rails" aria-hidden="true">
+        <span data-axis="y" style="--pos: 42.84%"></span>
+        <span data-axis="y" style="--pos: 57.11%"></span>
+      </div>
+
+      <div class="hero__stage">
+        <div class="grid-lines hero__grid" aria-hidden="true">
+          <span data-axis="x" style="--pos: 41.29%"></span>
+          <span data-axis="x" style="--pos: 69.12%"></span>
+        </div>
+
+        <h1 class="hero__greeting hero__display" data-reveal>
+          <span class="line hero__line--hello"><span class="line__inner">Hello</span></span>
+          <span class="line hero__line--name"><span class="line__inner">I&rsquo;m Sammiee</span></span>
+        </h1>
+
+        <div class="hero__portrait" data-reveal>
+          <span class="hero__plate hero__plate--blue" data-angle="18.28" aria-hidden="true"></span>
+          <span class="hero__plate hero__plate--gold" data-angle="9.02" aria-hidden="true"></span>
+          <img src="/img/portrait.webp" alt="Sammiee, smiling, in a black polo shirt" width="640" height="640" fetchpriority="high" decoding="async">
+        </div>
+
+        <div class="hero__statement">
+          <p class="hero__display" data-reveal>
+            <span class="line"><span class="line__inner">The designer</span></span>
+            <span class="line hero__line--builds"><span class="line__inner">who builds</span></span>
+          </p>
+          <p class="hero__lede" data-reveal>
+            I design websites and then build them myself — so the thing you sign off in Figma is
+            the thing that ships, down to the last easing curve. Mostly for teams working in
+            Web3, live events and fintech.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about"
+             data-cursor-tag="About me" data-cursor-color="#edaa0b">
+      <div class="about__box">
+        <span class="frame" aria-hidden="true">
+          <span class="frame__edge frame__edge--t"></span>
+          <span class="frame__edge frame__edge--r"></span>
+          <span class="frame__edge frame__edge--b"></span>
+          <span class="frame__edge frame__edge--l"></span>
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <h2 class="about__statement" data-reveal>
+          I don&rsquo;t hand designs over a wall. I draw the thing, then I build it — so nothing
+          gets lost between the file and the browser.
+        </h2>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="work" id="work">
+      <div class="shell">
+        <h2 class="work__title" data-reveal>
+          <span class="line"><span class="line__inner">My recent works</span></span>
+        </h2>
+
+        <div class="work__grid">
+
+          <a class="work__card" href="/africa-blockchain-festival"
+             data-cursor-tag="View project" data-cursor-color="#0895fa">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/abf@800.webp 800w, /img/work/abf.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/abf.jpg" alt="The Africa Blockchain Festival 2025 website on a desktop monitor" width="1400" height="777" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">Africa Blockchain Festival</span>
+              <span class="work__tag">Web design &middot; WordPress</span>
+            </span>
+          </a>
+
+          <a class="work__card" href="/bmoni"
+             data-cursor-tag="View project" data-cursor-color="#e879f9">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/bmoni@800.webp 800w, /img/work/bmoni.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/bmoni.jpg" alt="The BMONI fintech website on a laptop" width="1400" height="939" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">BMONI</span>
+              <span class="work__tag">Product &middot; Web design</span>
+            </span>
+          </a>
+
+          <a class="work__card" href="/icp-hub-kenya"
+             data-cursor-tag="View project" data-cursor-color="#a855f7">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/icp-kenya@800.webp 800w, /img/work/icp-kenya.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/icp-kenya.jpg" alt="The ICP Hub Kenya website on a tablet" width="1400" height="852" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">ICP Hub Kenya</span>
+              <span class="work__tag">Web design &middot; Development</span>
+            </span>
+          </a>
+
+          <a class="work__card" href="/ethsafari"
+             data-cursor-tag="View project" data-cursor-color="#22c55e">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/ethsafari@800.webp 800w, /img/work/ethsafari.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/ethsafari.jpg" alt="The ETHSafari website on a desktop monitor" width="1400" height="819" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">ETHSafari</span>
+              <span class="work__tag">Event &middot; Web design</span>
+            </span>
+          </a>
+
+          <a class="work__card" href="/smartdev-studios"
+             data-cursor-tag="View project" data-cursor-color="#fb923c">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/blockchain-solutions@800.webp 800w, /img/work/blockchain-solutions.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/blockchain-solutions.jpg" alt="The SmartDev Studios website on a laptop" width="1400" height="797" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">SmartDev Studios</span>
+              <span class="work__tag">Web design &middot; WordPress</span>
+            </span>
+          </a>
+
+          <a class="work__card" href="/dynasty-labs"
+             data-cursor-tag="View project" data-cursor-color="#22d3ee">
+            <span class="work__media">
+              <picture>
+                <source type="image/webp" srcset="/img/work/dynasty-labs@800.webp 800w, /img/work/dynasty-labs.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                <img src="/img/work/dynasty-labs.jpg" alt="The Dynasty Labs website on a MacBook" width="1400" height="809" loading="lazy" decoding="async">
+              </picture>
+            </span>
+            <span class="work__meta">
+              <span class="work__name">Dynasty Labs</span>
+              <span class="work__tag">Web design &middot; Development</span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer" id="contact" data-cursor-zone="cross">
+    <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+
+    <div class="site-footer__box">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <div class="site-footer__cta">
+        <h2 class="site-footer__heading" data-reveal>We can work together, yunno?</h2>
+        <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Let%E2%80%99s%20create%20magic"
+           data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
+          <span class="pill__label">Let&rsquo;s create Magic!</span>
+        </a>
+      </div>
+
+      <div class="site-footer__contact">
+        <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+        <div class="site-footer__social">
+          <a class="link-wipe" href="https://instagram.com/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://linkedin.com/" rel="noopener">Linkedin</a>
+          <a class="link-wipe" href="https://x.com/" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__fineprint">
+      &copy; 2026 Sammiee. Designed and built by me, one page at a time.
+    </p>
+  </footer>
+
+  <!-- contact dialog, opened by anything with [data-contact-open] -->
+  <div class="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <div class="contact__scrim"></div>
+
+    <div class="contact__panel">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <button class="contact__close" type="button" aria-label="Close contact form">
+        <span></span><span></span>
+      </button>
+
+      <div class="contact__grid">
+        <div>
+          <h2 class="contact__title" id="contact-title">Let&rsquo;s create magic</h2>
+          <p class="contact__blurb">
+            Tell me what you&rsquo;re building and roughly when you need it live.
+            I read everything and reply within a day or two.
+          </p>
+          <p class="contact__direct">
+            Rather just email?<br>
+            <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+          </p>
+        </div>
+
+        <div>
+          <form novalidate>
+            <div class="contact__field" data-label="Name">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Sammiee" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Email">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Message">
+              <label for="contact-message">Project</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="A new site for a Web3 event, live by October." required></textarea>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <!-- Spam trap. Bots fill every field they find; people never see
+                 this one. Formspree discards a submission where it is set.
+                 Deliberately not .contact__field, so validation ignores it. -->
+            <p class="contact__gotcha" aria-hidden="true">
+              <label>Leave this empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </label>
+            </p>
+
+            <div class="contact__submit">
+              <button class="pill" type="submit" data-magnetic="0.2">
+                <span class="pill__label">Send it</span>
+              </button>
+              <span class="contact__status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="contact__sent" role="status">
+            <p>Thanks &mdash; that&rsquo;s on its way.</p>
+            <p>I&rsquo;ll come back to you at the address you gave me, usually within a day or two.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
