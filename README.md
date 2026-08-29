@@ -172,8 +172,17 @@ matters here because each case page ships ~1.5 MB of video.
 npm run pages && npm run images && npm run build   # dist/ is the artefact
 ```
 
-Cloudflare Pages settings: build command `npm run pages && npm run build`, output directory
-`dist`. Set `SITE_URL` if the domain is ever not `https://sammiee.dev` — every canonical, OG
+Cloudflare Pages settings:
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run pages && npm run build` |
+| Output directory | `dist` |
+| Node version | pinned to 22 by `.node-version` |
+| Environment variable | `VITE_FORM_ENDPOINT` — **required**, or the contact form silently falls back to the visitor's mail client |
+
+Repository: <https://github.com/sammyfash/sammiee-portfolio>. Every push to `main` deploys;
+branches get their own preview URL. Set `SITE_URL` if the domain is ever not `https://sammiee.dev` — every canonical, OG
 tag and sitemap entry resolves through [`content/site.mjs`](content/site.mjs), so that one env
 var moves the whole site.
 
