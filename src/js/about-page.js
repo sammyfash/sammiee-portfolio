@@ -27,7 +27,7 @@ function initAboutPage() {
     y: 26, opacity: 0, duration: 1, stagger: 0.08, ease: 'expo.out', delay: 0.15,
   })
 
-  for (const item of qsa('.about-page__stat, .cap, .about-page__work-list li, .about-page__history li', page)) {
+  for (const item of qsa('.about-page__stat, .cap, .about-page__work-list li', page)) {
     gsap.from(item, {
       y: 22, opacity: 0, duration: 0.9, ease: 'expo.out',
       scrollTrigger: { trigger: item, start: 'top 90%' },

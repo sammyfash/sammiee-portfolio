@@ -12,7 +12,7 @@ import { mkdir, readdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { PROJECTS, nextOf } from '../content/projects.mjs'
 import { SITE, abs, metaTrim, jsonLd } from '../content/site.mjs'
-import { PROFILE, PROOF, CAPABILITIES, EXPERIENCE, EDUCATION } from '../content/about.mjs'
+import { PROFILE, PROOF, CAPABILITIES } from '../content/about.mjs'
 
 const ROOT = process.cwd()
 const SHOTS = resolve(ROOT, 'public/img/shots')
@@ -469,14 +469,6 @@ ${jsonLd({
     address: { '@type': 'PostalAddress', addressLocality: PROFILE.location },
     knowsAbout: CAPABILITIES.flatMap((c) => c.items),
     sameAs: SITE.social,
-    ...(EXPERIENCE.length ? {
-      hasOccupation: EXPERIENCE.map((e) => ({
-        '@type': 'Occupation', name: e.role, hiringOrganization: { '@type': 'Organization', name: e.org },
-      })),
-    } : {}),
-    ...(EDUCATION.length ? {
-      alumniOf: EDUCATION.map((e) => ({ '@type': 'EducationalOrganization', name: e.org })),
-    } : {}),
   },
 })}
   </script>
@@ -519,31 +511,6 @@ ${CAPABILITIES.map((c) => `        <div class="cap" data-reveal>
         </div>`).join('\n')}
       </div>
     </section>
-${EXPERIENCE.length ? `
-    <span class="rule" aria-hidden="true"></span>
-
-    <section class="about-page__history">
-      <h2 class="about-page__h2" data-reveal>Experience</h2>
-      <ol>
-${EXPERIENCE.map((e) => `        <li data-reveal>
-          <span class="about-page__when">${esc(e.from)} &ndash; ${esc(e.to)}</span>
-          <span class="about-page__what"><strong>${esc(e.role)}</strong>, ${esc(e.org)}
-            <span>${esc(e.summary)}</span></span>
-        </li>`).join('\n')}
-      </ol>
-    </section>` : ''}
-${EDUCATION.length ? `
-    <span class="rule" aria-hidden="true"></span>
-
-    <section class="about-page__history">
-      <h2 class="about-page__h2" data-reveal>Education</h2>
-      <ol>
-${EDUCATION.map((e) => `        <li data-reveal>
-          <span class="about-page__when">${esc(e.year)}</span>
-          <span class="about-page__what"><strong>${esc(e.qualification)}</strong>, ${esc(e.org)}</span>
-        </li>`).join('\n')}
-      </ol>
-    </section>` : ''}
 
     <span class="rule" aria-hidden="true"></span>
 

@@ -159,17 +159,6 @@
   margin-bottom: clamp(24px, 2.6vw, 44px);
 }
 
-.about-page__history ol { list-style: none; }
-.about-page__history li {
-  display: grid;
-  grid-template-columns: 12rem 1fr;
-  gap: clamp(16px, 2vw, 40px);
-  padding-block: clamp(16px, 1.8vw, 30px);
-  border-top: 1px solid var(--c-rule);
-}
-.about-page__when { font-size: 0.875rem; color: var(--c-ink-dim); }
-.about-page__what { font-size: var(--fs-body); line-height: 1.5; }
-.about-page__what span { display: block; margin-top: 0.4em; color: var(--c-ink-dim); }
 
 .about-page__work-list { list-style: none; }
 .about-page__work-list a {
@@ -193,7 +182,6 @@
   .about-page__proof dl,
   .hire__caps,
   .about-page__caps-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-page__history li,
   .about-page__work-list a { grid-template-columns: 1fr; gap: 0.3em; }
   .about-page__work-year { text-align: left; }
 }

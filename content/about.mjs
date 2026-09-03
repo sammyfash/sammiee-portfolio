@@ -83,13 +83,3 @@ export const CAPABILITIES = [
   },
 ]
 
-/**
- * Roles held. EMPTY ON PURPOSE: employment history is not something to guess at
- * on a page recruiters will read. Fill this in and the section renders itself.
- *
- *   { role, org, from, to, summary }
- */
-export const EXPERIENCE = []
-
-/** Same rule as EXPERIENCE. { qualification, org, year } */
-export const EDUCATION = []
