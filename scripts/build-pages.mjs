@@ -169,9 +169,8 @@ ${jsonLd({
     <div class="nav-overlay__foot">
       <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
       <span>
-        <a class="link-wipe" href="https://instagram.com/" rel="noopener">Instagram</a> &nbsp;
-        <a class="link-wipe" href="https://linkedin.com/" rel="noopener">Linkedin</a> &nbsp;
-        <a class="link-wipe" href="https://x.com/" rel="noopener">X</a>
+        <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a> &nbsp;
+                <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
       </span>
     </div>
   </nav>
@@ -286,9 +285,8 @@ ${jsonLd({
       <div class="site-footer__contact">
         <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
         <div class="site-footer__social">
-          <a class="link-wipe" href="https://instagram.com/" rel="noopener">Instagram</a>
-          <a class="link-wipe" href="https://linkedin.com/" rel="noopener">Linkedin</a>
-          <a class="link-wipe" href="https://x.com/" rel="noopener">X</a>
+          <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
         </div>
       </div>
     </div>

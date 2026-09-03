@@ -12,10 +12,12 @@ export const SITE = {
   description:
     'Design engineer with ten years in product design and front-end. WordPress, Webflow, '
     + 'Framer, and hand-written HTML, CSS and JavaScript.',
+  // Only real profiles belong here: sameAs is how search engines tie this site
+  // to an identity, and a link to a network's homepage is worse than no link.
+  // LinkedIn is missing because the URL has not been supplied yet.
   social: [
-    'https://instagram.com/',
-    'https://linkedin.com/',
-    'https://x.com/',
+    'https://www.instagram.com/iamsammyfash/',
+    'https://x.com/sammyyfash',
   ],
 }
 
