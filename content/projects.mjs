@@ -13,6 +13,8 @@
 export const PROJECTS = [
   {
     slug: 'africa-blockchain-festival',
+    seoTitle: 'Event website design & WordPress build | Sammiee',
+    seoDescription: 'How a blockchain festival site was designed in Figma and built in WordPress, with separate sponsor and ticket funnels, three languages, and a client-owned content model.',
     name: 'Africa Blockchain Festival',
     title: 'Africa Blockchain Festival 2026',
     colour: '#0895fa',
@@ -61,6 +63,8 @@ export const PROJECTS = [
 
   {
     slug: 'bmoni',
+    seoTitle: 'Fintech website design & WordPress build | Sammiee',
+    seoDescription: 'Designing and building the front door for a cross-border neobank: product-led layout, a market switch for two continents, and a reusable block library in WordPress.',
     name: 'BMONI',
     title: 'BMONI — like your bank, but smarter',
     colour: '#e879f9',
@@ -113,6 +117,8 @@ export const PROJECTS = [
 
   {
     slug: 'icp-hub-kenya',
+    seoTitle: 'Web3 education site design & Webflow build | Sammiee',
+    seoDescription: 'Designing a blockchain education hub for three audiences at once, then building it in Webflow so the team could run it without a developer.',
     name: 'ICP Hub Kenya',
     title: 'ICP Hub Kenya',
     colour: '#a855f7',
@@ -160,6 +166,8 @@ export const PROJECTS = [
 
   {
     slug: 'ethsafari',
+    seoTitle: 'Conference website design & WordPress build | Sammiee',
+    seoDescription: 'Designing and building a conference site for one of Africa’s largest Ethereum events, structured around programme, travel and ticketing.',
     name: 'ETHSafari',
     title: 'ETHSafari — the watering hole for web3',
     colour: '#22c55e',
@@ -208,6 +216,8 @@ export const PROJECTS = [
 
   {
     slug: 'smartdev-studios',
+    seoTitle: 'Agency website design & Webflow build | Sammiee',
+    seoDescription: 'Designing a blockchain development studio’s site around what a founder needs to decide, then building it in Webflow.',
     name: 'SmartDev Studios',
     title: 'SmartDev Studios',
     colour: '#fb923c',
@@ -255,6 +265,8 @@ export const PROJECTS = [
 
   {
     slug: 'dynasty-labs',
+    seoTitle: 'Web3 venture site design & Webflow build | Sammiee',
+    seoDescription: 'Designing and building a Web3 accelerator’s site: positioning, service structure, and a Webflow build the team owns.',
     name: 'Dynasty Labs',
     title: 'Dynasty Labs',
     colour: '#22d3ee',

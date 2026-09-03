@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sammiee — The designer who builds</title>
-  <meta name="description" content="Sammiee is a design engineer with ten years in product design and front-end. WordPress, Webflow, Framer, and hand-written HTML, CSS and JavaScript.">
+  <title>Design Engineer &amp; Web Designer in Nairobi | Sammiee</title>
+  <meta name="description" content="Design engineer and web designer, ten years in. I design in Figma and build in WordPress, Webflow, Framer and hand-written code. Nairobi, working anywhere.">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://sammiee.dev/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sammiee — The designer who builds">
+  <meta property="og:title" content="Design Engineer &amp; Web Designer in Nairobi | Sammiee">
   <meta property="og:description" content="Design engineer, ten years in. Product design through to production front-end.">
   <meta property="og:site_name" content="Sammiee">
   <meta property="og:url" content="https://sammiee.dev/">
@@ -22,22 +22,88 @@
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Sammiee",
-  "url": "https://sammiee.dev/",
-  "email": "mailto:me@sammiee.dev",
-  "jobTitle": "Web & Product Designer",
-  "description": "Web design and WordPress development for teams in Web3, events and fintech.",
-  "knowsAbout": [
-    "Web Design",
-    "Product Design",
-    "WordPress Development",
-    "Webflow Development",
-    "UI/UX Design"
-  ],
-  "sameAs": [
-    "https://www.instagram.com/iamsammyfash/",
-    "https://x.com/sammyyfash"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://sammiee.dev/#person",
+      "name": "Sammiee",
+      "url": "https://sammiee.dev/",
+      "email": "mailto:me@sammiee.dev",
+      "jobTitle": "Design Engineer",
+      "description": "Design engineer and web designer with ten years' experience across product design and front-end development.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      },
+      "knowsAbout": [
+        "Web Design",
+        "Product Design",
+        "UI/UX Design",
+        "Design Systems",
+        "WordPress Development",
+        "Webflow Development",
+        "Framer",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "GSAP",
+        "Technical SEO",
+        "Core Web Vitals"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Design Engineer",
+        "occupationalCategory": "15-1255.00",
+        "skills": "Product design, UI/UX design, WordPress, Webflow, Framer, HTML, CSS, JavaScript"
+      },
+      "sameAs": [
+        "https://www.instagram.com/iamsammyfash/",
+        "https://x.com/sammyyfash"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://sammiee.dev/#service",
+      "name": "Sammiee \u2014 design engineering and web design",
+      "url": "https://sammiee.dev/",
+      "provider": {
+        "@id": "https://sammiee.dev/#person"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Kenya"
+        },
+        {
+          "@type": "Place",
+          "name": "Worldwide"
+        }
+      ],
+      "serviceType": [
+        "Web design",
+        "Product design",
+        "UI/UX design",
+        "Design engineering",
+        "WordPress development",
+        "Webflow development",
+        "Framer development",
+        "Front-end development",
+        "Landing page design",
+        "Website redesign"
+      ],
+      "description": "Design and front-end build for teams that need a site to look considered and load fast. WordPress, Webflow, Framer and hand-written code."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sammiee.dev/#website",
+      "url": "https://sammiee.dev/",
+      "name": "Sammiee",
+      "publisher": {
+        "@id": "https://sammiee.dev/#person"
+      },
+      "inLanguage": "en"
+    }
   ]
 }
   </script>
@@ -139,10 +205,10 @@
           <span data-axis="x" style="--pos: 69.12%"></span>
         </div>
 
-        <h1 class="hero__greeting hero__display" data-reveal>
+        <p class="hero__greeting hero__display" data-reveal>
           <span class="line hero__line--hello"><span class="line__inner">Hello</span></span>
           <span class="line hero__line--name"><span class="line__inner">I&rsquo;m Sammiee</span></span>
-        </h1>
+        </p>
 
         <div class="hero__portrait" data-reveal>
           <span class="hero__plate hero__plate--blue" data-angle="18.28" aria-hidden="true"></span>
@@ -151,10 +217,10 @@
         </div>
 
         <div class="hero__statement">
-          <p class="hero__display" data-reveal>
+          <h1 class="hero__display" data-reveal>
             <span class="line"><span class="line__inner">The designer</span></span>
             <span class="line hero__line--builds"><span class="line__inner">who builds</span></span>
-          </p>
+          </h1>
           <p class="hero__lede" data-reveal>
           Design engineer, ten years in. I cover product design and the front-end that ships
           it, so what gets signed off in Figma is what reaches production. I build in

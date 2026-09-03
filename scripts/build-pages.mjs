@@ -80,8 +80,8 @@ const phoneMock = (base, alt) => `
 const chrome = {
   head: (p) => `  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(p.title)} — ${SITE.name}</title>
-  <meta name="description" content="${esc(metaTrim(p.intro))}">
+  <title>${esc(p.seoTitle || `${p.title} — ${SITE.name}`)}</title>
+  <meta name="description" content="${esc(metaTrim(p.seoDescription || p.intro))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="${abs(`/${p.slug}`)}">
@@ -89,8 +89,8 @@ const chrome = {
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="${SITE.name}">
   <meta property="og:url" content="${abs(`/${p.slug}`)}">
-  <meta property="og:title" content="${esc(p.title)} — ${SITE.name}">
-  <meta property="og:description" content="${esc(metaTrim(p.intro))}">
+  <meta property="og:title" content="${esc(p.seoTitle || `${p.title} — ${SITE.name}`)}">
+  <meta property="og:description" content="${esc(metaTrim(p.seoDescription || p.intro))}">
   <meta property="og:image" content="${abs(`/img/work/${p.card}.jpg`)}">
   <meta property="og:image:alt" content="${esc(p.name)} — ${esc(p.services[0])} by ${SITE.name}">
   <meta name="twitter:card" content="summary_large_image">
@@ -441,7 +441,7 @@ const renderAbout = () => `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About ${SITE.name} — ${PROFILE.role}</title>
+  <title>About ${SITE.name} — ${PROFILE.role} in Nairobi</title>
   <meta name="description" content="${esc(metaTrim(PROFILE.intro[0]))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -555,7 +555,7 @@ const today = new Date().toISOString().slice(0, 10)
 const urls = [
   { loc: abs('/'), priority: '1.0', changefreq: 'monthly' },
   { loc: abs('/about'), priority: '0.9', changefreq: 'monthly' },
-  ...PROJECTS.map((p) => ({ loc: abs(`/${p.slug}`), priority: '0.8', changefreq: 'yearly' })),
+  ...PROJECTS.map((p) => ({ loc: abs(`/${p.slug}`), priority: '0.5', changefreq: 'yearly' })),
 ]
 
 await writeFile(resolve(PUBLIC, 'sitemap.xml'),
