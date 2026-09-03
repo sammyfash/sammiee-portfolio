@@ -12,6 +12,7 @@ import { mkdir, readdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { PROJECTS, nextOf } from '../content/projects.mjs'
 import { SITE, abs, metaTrim, jsonLd } from '../content/site.mjs'
+import { PROFILE, PROOF, CAPABILITIES, EXPERIENCE, EDUCATION } from '../content/about.mjs'
 
 const ROOT = process.cwd()
 const SHOTS = resolve(ROOT, 'public/img/shots')
@@ -250,7 +251,7 @@ ${jsonLd({
           </form>
 
           <div class="contact__sent" role="status">
-            <p>Thanks &mdash; that&rsquo;s on its way.</p>
+            <p>Thanks, that&rsquo;s on its way.</p>
             <p>I&rsquo;ll come back to you at the address you gave me, usually within a day or two.</p>
           </div>
         </div>
@@ -432,6 +433,142 @@ ${chrome.contact}
 }
 
 await mkdir(ROOT, { recursive: true })
+/** The About page. Same chrome as a case study, different body. */
+const renderAbout = () => `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About ${SITE.name} — ${PROFILE.role}</title>
+  <meta name="description" content="${esc(metaTrim(PROFILE.intro[0]))}">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="${abs('/about')}">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="${SITE.name}">
+  <meta property="og:url" content="${abs('/about')}">
+  <meta property="og:title" content="About ${SITE.name} — ${PROFILE.role}">
+  <meta property="og:description" content="${esc(metaTrim(PROFILE.intro[0]))}">
+  <meta property="og:image" content="${abs('/img/work/abf.jpg')}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+${jsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: SITE.name,
+    url: SITE.url,
+    email: `mailto:${SITE.email}`,
+    jobTitle: PROFILE.role,
+    description: metaTrim(PROFILE.intro[0], 300),
+    address: { '@type': 'PostalAddress', addressLocality: PROFILE.location },
+    knowsAbout: CAPABILITIES.flatMap((c) => c.items),
+    sameAs: SITE.social,
+    ...(EXPERIENCE.length ? {
+      hasOccupation: EXPERIENCE.map((e) => ({
+        '@type': 'Occupation', name: e.role, hiringOrganization: { '@type': 'Organization', name: e.org },
+      })),
+    } : {}),
+    ...(EDUCATION.length ? {
+      alumniOf: EDUCATION.map((e) => ({ '@type': 'EducationalOrganization', name: e.org })),
+    } : {}),
+  },
+})}
+  </script>
+
+  <script type="module" src="/src/js/about-page.js"></script>
+</head>
+<body>
+${chrome.preface}
+
+  <main class="about-page">
+    <section class="about-page__intro">
+      <p class="about-page__eyebrow" data-reveal>${esc(PROFILE.role)}</p>
+      <h1 class="about-page__title" data-reveal>${esc(PROFILE.name)}</h1>
+      <div class="about-page__lead" data-reveal>
+${PROFILE.intro.map((t) => `        <p>${esc(t)}</p>`).join('\n')}
+      </div>
+    </section>
+
+    <span class="rule" aria-hidden="true"></span>
+
+    <section class="about-page__proof">
+      <h2 class="sr-only">By the numbers</h2>
+      <dl>
+${PROOF.map((m) => `        <div class="about-page__stat" data-reveal>
+          <dt>${esc(m.value)}</dt>
+          <dd>${esc(m.label)}</dd>
+        </div>`).join('\n')}
+      </dl>
+    </section>
+
+    <span class="rule" aria-hidden="true"></span>
+
+    <section class="about-page__caps">
+      <h2 class="about-page__h2" data-reveal>What I do</h2>
+      <div class="about-page__caps-grid">
+${CAPABILITIES.map((c) => `        <div class="cap" data-reveal>
+          <h3>${esc(c.title)}</h3>
+          <ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
+          <p>${esc(c.note)}</p>
+        </div>`).join('\n')}
+      </div>
+    </section>
+${EXPERIENCE.length ? `
+    <span class="rule" aria-hidden="true"></span>
+
+    <section class="about-page__history">
+      <h2 class="about-page__h2" data-reveal>Experience</h2>
+      <ol>
+${EXPERIENCE.map((e) => `        <li data-reveal>
+          <span class="about-page__when">${esc(e.from)} &ndash; ${esc(e.to)}</span>
+          <span class="about-page__what"><strong>${esc(e.role)}</strong>, ${esc(e.org)}
+            <span>${esc(e.summary)}</span></span>
+        </li>`).join('\n')}
+      </ol>
+    </section>` : ''}
+${EDUCATION.length ? `
+    <span class="rule" aria-hidden="true"></span>
+
+    <section class="about-page__history">
+      <h2 class="about-page__h2" data-reveal>Education</h2>
+      <ol>
+${EDUCATION.map((e) => `        <li data-reveal>
+          <span class="about-page__when">${esc(e.year)}</span>
+          <span class="about-page__what"><strong>${esc(e.qualification)}</strong>, ${esc(e.org)}</span>
+        </li>`).join('\n')}
+      </ol>
+    </section>` : ''}
+
+    <span class="rule" aria-hidden="true"></span>
+
+    <section class="about-page__work">
+      <h2 class="about-page__h2" data-reveal>Selected work</h2>
+      <ul class="about-page__work-list">
+${PROJECTS.map((p) => `        <li data-reveal>
+          <a href="/${p.slug}" data-cursor-tag="View project" data-cursor-color="${p.colour}">
+            <span class="about-page__work-name">${esc(p.name)}</span>
+            <span class="about-page__work-meta">${esc(p.stack.join(' &middot; '))}</span>
+            <span class="about-page__work-year">${esc(p.year)}</span>
+          </a>
+        </li>`).join('\n')}
+      </ul>
+    </section>
+  </main>
+
+${chrome.footer}
+
+${chrome.contact}
+</body>
+</html>
+`
+
+await writeFile(resolve(ROOT, 'about.html'), renderAbout())
+console.log('about.html')
+
 for (const p of PROJECTS) {
   await writeFile(resolve(ROOT, `${p.slug}.html`), render(p))
   const d = shotsOf(p.slug, 'desktop', p.shots?.desktop ?? 3).length
@@ -448,6 +585,7 @@ const today = new Date().toISOString().slice(0, 10)
 
 const urls = [
   { loc: abs('/'), priority: '1.0', changefreq: 'monthly' },
+  { loc: abs('/about'), priority: '0.9', changefreq: 'monthly' },
   ...PROJECTS.map((p) => ({ loc: abs(`/${p.slug}`), priority: '0.8', changefreq: 'yearly' })),
 ]
 

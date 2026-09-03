@@ -10,7 +10,8 @@ export const SITE = {
   email: 'me@sammiee.dev',
   tagline: 'The designer who builds',
   description:
-    'Web design and WordPress development for teams in Web3, events and fintech.',
+    'Design engineer with ten years in product design and front-end. WordPress, Webflow, '
+    + 'Framer, and hand-written HTML, CSS and JavaScript.',
   social: [
     'https://instagram.com/',
     'https://linkedin.com/',

@@ -8,7 +8,7 @@ import { PROJECTS } from './content/projects.mjs'
  * and every local click would have to use a different href than the real site.
  */
 function cleanUrls() {
-  const slugs = new Set(PROJECTS.map((p) => p.slug))
+  const slugs = new Set([...PROJECTS.map((p) => p.slug), 'about'])
   const rewrite = (req, _res, next) => {
     const [path, query] = req.url.split('?')
     const slug = path.replace(/^\/+|\/+$/g, '')
@@ -36,6 +36,7 @@ export default defineConfig({
       // One entry per generated case study, straight from the content file.
       input: Object.fromEntries([
         ['home', resolve(process.cwd(), 'index.html')],
+        ['about', resolve(process.cwd(), 'about.html')],
         ...PROJECTS.map((p) => [p.slug, resolve(process.cwd(), `${p.slug}.html`)]),
       ]),
     },

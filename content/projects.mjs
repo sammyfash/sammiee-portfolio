@@ -18,7 +18,7 @@ export const PROJECTS = [
     colour: '#0895fa',
     live: 'https://africablockchainfestival.com/',
     liveLabel: 'africablockchainfestival.com',
-    year: '2025 — 2026',
+    year: '2025–2026',
     client: 'Africa Blockchain Festival · World Token Summit',
     location: 'Nairobi, Kenya',
     services: ['Web Design', 'Product Design', 'WordPress Development'],

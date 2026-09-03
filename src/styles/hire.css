@@ -1,0 +1,205 @@
+/* ---------------------------------------------------------------------------
+   The conversion band under the work grid, and the About page. Both answer the
+   same question a recruiter arrives with: what is this person, and can they
+   prove it.
+   --------------------------------------------------------------------------- */
+.hire {
+  width: var(--shell);
+  margin: clamp(72px, 9vw, 160px) auto 0;
+}
+.hire .rule { margin-bottom: clamp(36px, 4vw, 72px); }
+
+.hire__head {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(24px, 4vw, 80px);
+  align-items: start;
+}
+.hire__title {
+  font-size: clamp(1.6rem, 3.1vw, 3.1rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.hire__lead {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+/* --- proof numbers --------------------------------------------------------- */
+.hire__proof,
+.about-page__proof dl {
+  margin-top: clamp(40px, 5vw, 88px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(20px, 2.4vw, 44px);
+}
+.hire__stat,
+.about-page__stat { border-top: 1px solid var(--c-rule-strong); padding-top: clamp(14px, 1.4vw, 24px); }
+.hire__stat dt,
+.about-page__stat dt {
+  font-size: clamp(1.5rem, 2.9vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hire__stat dd,
+.about-page__stat dd {
+  margin-top: 0.55em;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+/* --- capability groups ----------------------------------------------------- */
+.hire__caps,
+.about-page__caps-grid {
+  margin-top: clamp(40px, 5vw, 88px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(22px, 2.6vw, 48px);
+}
+.cap { border-top: 1px solid var(--c-rule); padding-top: clamp(14px, 1.4vw, 24px); }
+.cap__title,
+.cap h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.cap__list,
+.cap ul {
+  margin-top: 0.9em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  list-style: none;
+}
+.cap__list li,
+.cap ul li {
+  padding: 0.28em 0.62em;
+  border: 1px solid var(--c-rule-strong);
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  color: var(--c-ink-dim);
+  white-space: nowrap;
+}
+.cap__note,
+.cap > p {
+  margin-top: 1em;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}
+
+.hire__cta {
+  margin-top: clamp(40px, 5vw, 88px);
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 44px);
+  flex-wrap: wrap;
+}
+.hire__cta-alt { font-size: var(--fs-body); color: var(--c-ink-dim); }
+
+/* --- the "read more" link in the homepage about band ----------------------- */
+.about__more {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(24px, 2.6vw, 48px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: var(--fs-body);
+  font-weight: 500;
+}
+.about__more svg { transition: transform var(--dur-fast) var(--ease-out-expo); }
+.about__more:hover svg { transform: translateX(5px); }
+
+/* --- About page ------------------------------------------------------------ */
+.about-page {
+  width: var(--shell);
+  margin-inline: auto;
+  padding-top: clamp(60px, 8vw, 150px);
+}
+.about-page .rule { margin-block: clamp(44px, 5.5vw, 100px); }
+
+.about-page__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink-dim);
+}
+.about-page__title {
+  margin-top: 0.4em;
+  font-size: clamp(2.6rem, 7.4vw, 8rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.about-page__lead {
+  margin-top: clamp(28px, 3.4vw, 60px);
+  max-width: 62ch;
+  display: grid;
+  gap: 1.1em;
+}
+.about-page__lead p {
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.about-page__h2 {
+  font-size: clamp(1.3rem, 2.2vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(24px, 2.6vw, 44px);
+}
+
+.about-page__history ol { list-style: none; }
+.about-page__history li {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: clamp(16px, 2vw, 40px);
+  padding-block: clamp(16px, 1.8vw, 30px);
+  border-top: 1px solid var(--c-rule);
+}
+.about-page__when { font-size: 0.875rem; color: var(--c-ink-dim); }
+.about-page__what { font-size: var(--fs-body); line-height: 1.5; }
+.about-page__what span { display: block; margin-top: 0.4em; color: var(--c-ink-dim); }
+
+.about-page__work-list { list-style: none; }
+.about-page__work-list a {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr auto;
+  gap: clamp(16px, 2vw, 40px);
+  align-items: baseline;
+  padding-block: clamp(16px, 1.8vw, 30px);
+  border-top: 1px solid var(--c-rule);
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+.about-page__work-list a:hover { opacity: 0.6; }
+.about-page__work-name { font-size: var(--fs-md); letter-spacing: -0.02em; }
+.about-page__work-meta,
+.about-page__work-year { font-size: 0.875rem; color: var(--c-ink-dim); }
+.about-page__work-year { text-align: right; }
+
+@media (max-width: 900px) {
+  .hire__head { grid-template-columns: 1fr; }
+  .hire__proof,
+  .about-page__proof dl,
+  .hire__caps,
+  .about-page__caps-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-page__history li,
+  .about-page__work-list a { grid-template-columns: 1fr; gap: 0.3em; }
+  .about-page__work-year { text-align: left; }
+}
+@media (max-width: 560px) {
+  .hire__proof,
+  .about-page__proof dl,
+  .hire__caps,
+  .about-page__caps-grid { grid-template-columns: 1fr; }
+}
