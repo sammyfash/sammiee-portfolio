@@ -194,7 +194,7 @@ a {
 /* --- split-text scaffolding -----------------------------------------------
    The mask is only needed while a line is sliding up into place. Leaving it on
    afterwards clips descenders against a tight line-height (the g and y in
-   "together, yunno?"), so each reveal drops `is-open` on when it finishes. */
+   descenders in the footer heading), so each reveal drops `is-open` when it finishes. */
 .line { display: block; }
 .js .line { overflow: hidden; }
 .js .line.is-open { overflow: visible; }

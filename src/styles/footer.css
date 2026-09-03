@@ -96,3 +96,15 @@
   .site-footer__contact { text-align: left; margin-top: 48px; }
   .site-footer__social { justify-items: start; }
 }
+
+/* Availability sits under the closing line. Recruiters look for it, and it is
+   the one piece of copy on the page with a shelf life, so it lives here rather
+   than being scattered through the case studies. */
+.site-footer__availability {
+  margin-top: clamp(14px, 1.5vw, 26px);
+  max-width: 46ch;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
+}

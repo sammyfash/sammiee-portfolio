@@ -23,6 +23,7 @@ export function initAbout() {
 
   const statement = qs('.about__statement', section)
   const box = qs('.about__box', section)
+  const more = qs('.about__more', section)
 
   if (prefersReducedMotion()) {
     gsap.set(qsa('[data-reveal]', section), { visibility: 'visible' })
@@ -35,9 +36,16 @@ export function initAbout() {
 
   // The statement stays hidden until the box has finished drawing itself — it
   // arrives dim, and only then does the scroll scrub light it up.
-  drawFrame(qs('.frame', section), { trigger: box, start: FRAME_START })
+  const intro = drawFrame(qs('.frame', section), { trigger: box, start: FRAME_START })
     .set(statement, { visibility: 'visible' })
     .from(statement, { opacity: 0, y: 14, duration: 0.6, ease: 'power2.out' })
+
+  // The link out to the full About page lands last, once the statement has
+  // settled. It carries data-reveal, so without this it stays invisible.
+  if (more) {
+    intro.set(more, { visibility: 'visible' })
+        .from(more, { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, '-=0.15')
+  }
 
   gsap.to(words, {
     color: WORD_LIT,
