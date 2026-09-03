@@ -274,7 +274,7 @@ ${jsonLd({
         <h2 class="site-footer__heading" data-reveal>Let&rsquo;s talk about what you&rsquo;re building.</h2>
           <p class="site-footer__availability" data-reveal>
             Open to design engineering roles and selected project work.
-            Based in Nairobi, working with teams anywhere.
+            Remote, and comfortable across European and US working hours.
           </p>
         <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Enquiry%20from%20sammiee.dev"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
@@ -441,7 +441,7 @@ const renderAbout = () => `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About ${SITE.name} — ${PROFILE.role} in Nairobi</title>
+  <title>About ${SITE.name} — Design Engineer &amp; Web Designer</title>
   <meta name="description" content="${esc(metaTrim(PROFILE.intro[0]))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -466,7 +466,6 @@ ${jsonLd({
     email: `mailto:${SITE.email}`,
     jobTitle: PROFILE.role,
     description: metaTrim(PROFILE.intro[0], 300),
-    address: { '@type': 'PostalAddress', addressLocality: PROFILE.location },
     knowsAbout: CAPABILITIES.flatMap((c) => c.items),
     sameAs: SITE.social,
   },

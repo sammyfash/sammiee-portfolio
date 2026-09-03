@@ -14,7 +14,11 @@ export const PROFILE = {
   name: 'Sammiee',
   role: 'Design engineer',
   years: 10,
-  location: 'Nairobi, Kenya',
+  // No location. The target is remote roles with international teams, so a
+  // country line only invites filtering and buys nothing: local search would
+  // bring local clients, which is not the work being chased. Working hours are
+  // the fact a remote employer actually needs.
+  hours: 'European and US working hours',
   available: true,
 
   /** The homepage hero, under "The designer who builds". */
