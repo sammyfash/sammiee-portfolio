@@ -11,7 +11,10 @@
  */
 
 export const PROFILE = {
-  name: 'Sammiee',
+  // Legal name. The wordmark stays "Sammiee" (SITE.name), but everything a
+  // recruiter reads or a crawler indexes says Samuel Fasipe, so the CV, the
+  // LinkedIn profile and this site are provably the same person.
+  name: 'Samuel Fasipe',
   role: 'Design engineer',
   years: 10,
   // No location. The target is remote roles with international teams, so a
