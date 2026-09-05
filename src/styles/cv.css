@@ -1,0 +1,436 @@
+/* ---------------------------------------------------------------------------
+   CV page.
+
+   Two jobs from one document. On screen it belongs to the site: black ground,
+   hairline rules, the same shell and type scale as everything else. On paper
+   it has to survive an applicant tracking system, so the print block below
+   throws away the site entirely and rebuilds the page as plain black text on
+   white in a single column, in real selectable text with a sane heading order.
+
+   Both CV tracks ship in the markup and one is hidden with CSS, so switching
+   costs no request and the printed PDF is whichever track is on screen.
+   --------------------------------------------------------------------------- */
+
+.cv {
+  width: var(--shell);
+  margin: 0 auto;
+  padding: clamp(120px, 14vw, 220px) 0 clamp(80px, 9vw, 160px);
+}
+
+/* Track switching. Both tracks are in the DOM; CSS decides which is real. */
+.cv[data-track='de'] [data-t='wp'],
+.cv[data-track='wp'] [data-t='de'] { display: none; }
+
+/* --- masthead -------------------------------------------------------------- */
+
+.cv__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(24px, 3vw, 48px);
+  padding-bottom: clamp(24px, 2.6vw, 40px);
+  border-bottom: 1px solid var(--c-rule-strong);
+}
+
+.cv__name {
+  font-size: var(--fs-statement);
+  line-height: var(--lh-statement);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.cv__role {
+  margin-top: 0.55em;
+  font-size: var(--fs-md);
+  line-height: 1.3;
+  color: var(--c-ink);
+  font-weight: 500;
+}
+
+.cv__tagline {
+  margin-top: 0.4em;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  max-width: 46ch;
+}
+
+/* Contact block. A definition list, because that is what it is. */
+.cv__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  text-align: right;
+}
+
+.cv__contact a { color: var(--c-ink); }
+.cv__contact span { color: var(--c-ink-dim); }
+
+/* --- track switch ---------------------------------------------------------- */
+
+.cv__switch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: clamp(24px, 2.6vw, 40px);
+}
+
+.cv__switch-label {
+  font-size: var(--fs-btn);
+  color: var(--c-ink-dim);
+  margin-right: 4px;
+}
+
+.cv__track-btn {
+  font-size: var(--fs-btn);
+  line-height: 1;
+  padding: 0.85em 1.5em;
+  border: 1px solid var(--c-rule-strong);
+  border-radius: var(--radius-pill);
+  color: var(--c-ink-dim);
+  transition: color var(--dur-fast) var(--ease-out-expo),
+              border-color var(--dur-fast) var(--ease-out-expo),
+              background-color var(--dur-fast) var(--ease-out-expo);
+}
+
+.cv__track-btn:hover { color: var(--c-ink); border-color: var(--c-ink); }
+
+.cv__track-btn[aria-pressed='true'] {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: var(--c-bg);
+}
+
+.cv__download { margin-left: auto; }
+
+@media (max-width: 900px) {
+  .cv__head { grid-template-columns: 1fr; align-items: start; }
+  .cv__contact { text-align: left; }
+  .cv__download { margin-left: 0; }
+}
+
+/* --- sections -------------------------------------------------------------- */
+
+.cv__section { margin-top: clamp(56px, 6.5vw, 112px); }
+
+.cv__h2 {
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.cv__summary {
+  margin-top: clamp(20px, 2vw, 32px);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  max-width: 62ch;
+  color: var(--c-ink);
+}
+
+/* --- roles ----------------------------------------------------------------- */
+
+.cv__roles { margin-top: clamp(16px, 1.8vw, 28px); }
+
+.cv__role-item {
+  display: grid;
+  grid-template-columns: clamp(120px, 13vw, 210px) minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 44px);
+  padding: clamp(28px, 3vw, 46px) 0;
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.cv__role-item:last-child { border-bottom: 0; }
+
+.cv__dates {
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  color: var(--c-ink-dim);
+  /* Dates are data, and these line up in a column. */
+  font-variant-numeric: tabular-nums;
+}
+
+.cv__kind {
+  display: block;
+  margin-top: 0.35em;
+  color: var(--c-hairline);
+}
+
+.cv__role-title {
+  font-size: var(--fs-lg);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.cv__org {
+  margin-top: 0.3em;
+  font-size: var(--fs-md);
+  line-height: 1.3;
+  color: var(--c-ink-dim);
+}
+
+.cv__org a { color: var(--c-ink); }
+
+.cv__note {
+  margin-top: 0.5em;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-hairline);
+}
+
+.cv__bullets {
+  margin-top: clamp(14px, 1.4vw, 22px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  max-width: 72ch;
+}
+
+.cv__bullets li {
+  position: relative;
+  padding-left: 1.4em;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+}
+
+.cv__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.5em;
+  height: 1px;
+  background: var(--c-hairline);
+}
+
+.cv__case {
+  display: inline-block;
+  margin-top: 0.8em;
+  font-size: var(--fs-btn);
+  color: var(--c-ink);
+}
+
+@media (max-width: 900px) {
+  .cv__role-item { grid-template-columns: 1fr; gap: 10px; }
+  .cv__dates { order: -1; }
+  .cv__kind { display: inline; margin-top: 0; }
+  .cv__kind::before { content: ' \00b7  '; }
+}
+
+/* --- skills ---------------------------------------------------------------- */
+
+.cv__skills {
+  margin-top: clamp(20px, 2.4vw, 36px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(24px, 3vw, 52px);
+}
+
+.cv__skill-group h3 {
+  font-size: var(--fs-body);
+  font-weight: 500;
+  color: var(--c-ink);
+  padding-bottom: 0.6em;
+  margin-bottom: 0.8em;
+  border-bottom: 1px solid var(--c-rule);
+}
+
+.cv__skill-group ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em 0.8em;
+}
+
+.cv__skill-group li {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--c-ink-dim);
+}
+
+.cv__skill-group li:not(:last-child)::after {
+  content: ',';
+  color: var(--c-hairline);
+}
+
+/* --- selected work --------------------------------------------------------- */
+
+.cv__selected { margin-top: clamp(16px, 1.8vw, 28px); }
+
+.cv__selected li { border-bottom: 1px solid var(--c-rule); }
+.cv__selected li:last-child { border-bottom: 0; }
+
+.cv__selected a {
+  display: grid;
+  grid-template-columns: clamp(150px, 18vw, 300px) minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 40px);
+  align-items: baseline;
+  padding: clamp(18px, 2vw, 30px) 0;
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+
+.cv__selected a:hover { opacity: 0.62; }
+
+.cv__selected-name {
+  font-size: var(--fs-md);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.cv__selected-line {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+}
+
+@media (max-width: 700px) {
+  .cv__selected a { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* --- education ------------------------------------------------------------- */
+
+.cv__edu {
+  margin-top: clamp(16px, 1.8vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.cv__edu li {
+  font-size: var(--fs-md);
+  line-height: 1.4;
+}
+
+.cv__edu span { color: var(--c-ink-dim); }
+
+/* ===========================================================================
+   PRINT
+
+   Everything above is discarded. What a recruiter opens is a plain document:
+   black on white, one column, real text, headings in order, and no element
+   that depends on colour to carry meaning. Sized so the design-engineer track
+   lands on two pages.
+   =========================================================================== */
+
+@page {
+  size: A4;
+  margin: 12mm 13mm 13mm;
+}
+
+@media print {
+  /* The site's chrome has no business on paper. */
+  .preloader,
+  .curtain,
+  .cursor,
+  .nav-overlay,
+  .site-header,
+  .site-footer,
+  .contact,
+  .flash-cells,
+  .cv__switch,
+  .cv__case { display: none !important; }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    overflow: visible !important;
+    font-size: 9.7pt;
+  }
+
+  /* Lenis fixes the body height for its own scrolling; paper needs it back. */
+  html.lenis, html.lenis body { height: auto !important; }
+
+  body * { visibility: visible; }
+
+  a { color: #000 !important; text-decoration: none; }
+
+  .cv {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    /* Reveal animations set visibility; nothing may stay hidden on paper. */
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cv [data-reveal] { visibility: visible !important; opacity: 1 !important; transform: none !important; }
+
+  /* --- print type scale, fixed rather than fluid --- */
+  .cv__head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 12mm;
+    padding-bottom: 3mm;
+    border-bottom: 0.6pt solid #000;
+  }
+
+  .cv__name { font-size: 19pt; line-height: 1.1; letter-spacing: -0.02em; }
+  .cv__role { font-size: 10.8pt; margin-top: 1.5mm; }
+  .cv__tagline { font-size: 9.4pt; color: #333 !important; margin-top: 1mm; max-width: 78mm; }
+
+  .cv__contact { font-size: 9pt; line-height: 1.5; gap: 0; }
+  .cv__contact span { color: #333 !important; }
+
+  .cv__section { margin-top: 4.4mm; }
+
+  .cv__h2 {
+    font-size: 10.5pt;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-bottom: 1.4mm;
+    border-bottom: 0.6pt solid #000;
+    /* A heading alone at the foot of a page is the classic CV print bug. */
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv__summary { font-size: 9.1pt; line-height: 1.4; margin-top: 2.2mm; max-width: none; }
+
+  .cv__roles { margin-top: 1mm; }
+
+  .cv__role-item {
+    grid-template-columns: 32mm minmax(0, 1fr);
+    gap: 6mm;
+    padding: 2.7mm 0 2.3mm;
+    border-bottom: 0.4pt solid #bbb;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv__dates { font-size: 8.8pt; color: #333 !important; line-height: 1.4; }
+  .cv__kind { color: #666 !important; font-size: 8.4pt; }
+
+  .cv__role-title { font-size: 10.3pt; line-height: 1.2; }
+  .cv__org { font-size: 9.1pt; color: #333 !important; margin-top: 0.6mm; }
+  .cv__note { font-size: 8.8pt; color: #666 !important; margin-top: 1mm; }
+
+  .cv__bullets { margin-top: 1.5mm; gap: 0.7mm; max-width: none; }
+  .cv__bullets li { font-size: 8.85pt; line-height: 1.36; color: #000 !important; padding-left: 3.6mm; }
+  .cv__bullets li::before { background: #000; top: 0.58em; width: 2mm; }
+
+  .cv__skills { margin-top: 2.2mm; gap: 2.6mm 8mm; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cv__skill-group { break-inside: avoid; page-break-inside: avoid; }
+  .cv__skill-group h3 { font-size: 9.2pt; padding-bottom: 1mm; margin-bottom: 1.4mm; border-bottom: 0.4pt solid #bbb; }
+  .cv__skill-group li { font-size: 8.7pt; color: #000 !important; line-height: 1.45; }
+
+  .cv__selected { margin-top: 1mm; }
+  .cv__selected a { grid-template-columns: 42mm minmax(0, 1fr); gap: 6mm; padding: 1.9mm 0; }
+  .cv__selected li { border-bottom: 0.4pt solid #bbb; break-inside: avoid; page-break-inside: avoid; }
+  .cv__selected-name { font-size: 9.8pt; }
+  .cv__selected-line { font-size: 8.7pt; color: #333 !important; }
+
+  .cv__edu { margin-top: 1.8mm; }
+  .cv__edu li { font-size: 9.1pt; }
+  .cv__edu span { color: #333 !important; }
+}

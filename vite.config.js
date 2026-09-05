@@ -8,7 +8,7 @@ import { PROJECTS } from './content/projects.mjs'
  * and every local click would have to use a different href than the real site.
  */
 function cleanUrls() {
-  const slugs = new Set([...PROJECTS.map((p) => p.slug), 'about'])
+  const slugs = new Set([...PROJECTS.map((p) => p.slug), 'about', 'cv'])
   const rewrite = (req, _res, next) => {
     const [path, query] = req.url.split('?')
     const slug = path.replace(/^\/+|\/+$/g, '')
@@ -37,6 +37,7 @@ export default defineConfig({
       input: Object.fromEntries([
         ['home', resolve(process.cwd(), 'index.html')],
         ['about', resolve(process.cwd(), 'about.html')],
+        ['cv', resolve(process.cwd(), 'cv.html')],
         ...PROJECTS.map((p) => [p.slug, resolve(process.cwd(), `${p.slug}.html`)]),
       ]),
     },

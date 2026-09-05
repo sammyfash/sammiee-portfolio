@@ -13,6 +13,7 @@ import { resolve } from 'node:path'
 import { PROJECTS, nextOf } from '../content/projects.mjs'
 import { SITE, abs, metaTrim, jsonLd } from '../content/site.mjs'
 import { PROFILE, PROOF, CAPABILITIES } from '../content/about.mjs'
+import { IDENTITY, TRACKS, ROLES, SELECTED, EDUCATION, bulletsFor } from '../content/cv.mjs'
 
 const ROOT = process.cwd()
 const SHOTS = resolve(ROOT, 'public/img/shots')
@@ -160,9 +161,13 @@ ${jsonLd({
         <span class="nav-link__roll"><span>My Works</span><span aria-hidden="true">My Works</span></span>
         <span class="nav-link__index">03</span>
       </a></li>
+      <li><a class="nav-link" href="/cv">
+        <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
       <li><a class="nav-link" href="#contact" data-contact-open>
         <span class="nav-link__roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
-        <span class="nav-link__index">04</span>
+        <span class="nav-link__index">05</span>
       </a></li>
     </ul>
 
@@ -536,8 +541,188 @@ ${chrome.contact}
 </html>
 `
 
+/* ---------------------------------------------------------------------------
+   CV page.
+
+   Both tracks render into the same document and cv.css hides one, so the page
+   costs a single request, the switch is instant, and whichever track is on
+   screen is the one that prints. A recruiter can be sent /cv or /cv?wordpress
+   and gets the CV that matches the role.
+   --------------------------------------------------------------------------- */
+
+/** One role entry, with only the bullets that belong to `track`. */
+const cvRole = (role, track) => {
+  const bullets = bulletsFor(role, track)
+  if (!bullets.length) return ''
+  return `        <article class="cv__role-item" data-reveal>
+          <div class="cv__dates">
+            <span>${esc(role.from)} &ndash; ${esc(role.to)}</span>
+            ${role.kind ? `<span class="cv__kind">${esc(role.kind)}</span>` : ''}
+          </div>
+          <div>
+            <h3 class="cv__role-title">${esc(role.title)}</h3>
+            <p class="cv__org">${role.link
+              ? `<a class="link-wipe" href="https://${esc(role.link)}" rel="noopener">${esc(role.org)}</a>`
+              : esc(role.org)}</p>
+            ${role.note ? `<p class="cv__note">${esc(role.note)}</p>` : ''}
+            <ul class="cv__bullets">
+${bullets.map((b) => `              <li>${b.text}</li>`).join('\n')}
+            </ul>
+            ${role.caseStudy ? `<a class="cv__case link-wipe" href="/${esc(role.caseStudy)}">Read the case study</a>` : ''}
+          </div>
+        </article>`
+}
+
+/** Everything that differs between the two CVs, wrapped so CSS can swap it. */
+const cvTrack = (track) => {
+  const t = TRACKS[track]
+  return `      <div data-t="${track}">
+        <p class="cv__role">${t.title}</p>
+        <p class="cv__tagline">${esc(t.subtitle)}</p>
+      </div>`
+}
+
+const cvBody = (track) => {
+  const t = TRACKS[track]
+  return `      <div data-t="${track}">
+        <section class="cv__section">
+          <h2 class="cv__h2" data-reveal>Profile</h2>
+          <p class="cv__summary" data-reveal>${t.summary}</p>
+        </section>
+
+        <section class="cv__section">
+          <h2 class="cv__h2" data-reveal>Experience</h2>
+          <div class="cv__roles">
+${ROLES.map((r) => cvRole(r, track)).filter(Boolean).join('\n')}
+          </div>
+        </section>
+
+        <section class="cv__section">
+          <h2 class="cv__h2" data-reveal>Skills</h2>
+          <div class="cv__skills">
+${t.skills.map((g) => `            <div class="cv__skill-group" data-reveal>
+              <h3>${esc(g.group)}</h3>
+              <ul>
+${g.items.map((i) => `                <li>${esc(i)}</li>`).join('\n')}
+              </ul>
+            </div>`).join('\n')}
+          </div>
+        </section>
+      </div>`
+}
+
+const renderCv = () => `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV &mdash; ${esc(IDENTITY.name)}, Design Engineer</title>
+  <meta name="description" content="${esc(metaTrim(TRACKS.de.summary))}">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="${abs('/cv')}">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="${SITE.name}">
+  <meta property="og:url" content="${abs('/cv')}">
+  <meta property="og:title" content="CV &mdash; ${esc(IDENTITY.name)}, Design Engineer">
+  <meta property="og:description" content="${esc(metaTrim(TRACKS.de.summary))}">
+  <meta property="og:image" content="${abs('/img/work/bmoni.jpg')}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+${jsonLd({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  url: abs('/cv'),
+  mainEntity: {
+    '@type': 'Person',
+    name: IDENTITY.name,
+    alternateName: IDENTITY.known,
+    url: SITE.url,
+    email: `mailto:${IDENTITY.email}`,
+    jobTitle: TRACKS.de.title,
+    description: metaTrim(TRACKS.de.summary, 300),
+    sameAs: SITE.social,
+    alumniOf: EDUCATION.map((e) => ({ '@type': 'CollegeOrUniversity', name: e.org })),
+    knowsAbout: TRACKS.de.skills.flatMap((g) => g.items),
+    worksFor: { '@type': 'Organization', name: ROLES[0].org },
+  },
+})}
+  </script>
+
+  <script type="module" src="/src/js/cv-page.js"></script>
+</head>
+<body>
+${chrome.preface}
+
+  <main class="cv" data-track="de">
+
+    <header class="cv__head">
+      <div>
+        <h1 class="cv__name" data-reveal>${esc(IDENTITY.name)}</h1>
+${cvTrack('de')}
+${cvTrack('wp')}
+      </div>
+
+      <div class="cv__contact" data-reveal>
+        <a class="link-wipe" href="mailto:${esc(IDENTITY.email)}">${esc(IDENTITY.email)}</a>
+        <a class="link-wipe" href="${esc(IDENTITY.siteUrl)}">${esc(IDENTITY.site)}</a>
+        <a class="link-wipe" href="${esc(IDENTITY.linkedinUrl)}" rel="noopener">${esc(IDENTITY.linkedin)}</a>
+        <a class="link-wipe" href="${esc(IDENTITY.githubUrl)}" rel="noopener">${esc(IDENTITY.github)}</a>
+        <span>${IDENTITY.availability}</span>
+      </div>
+    </header>
+
+    <div class="cv__switch">
+      <span class="cv__switch-label">Showing the CV for</span>
+      <button class="cv__track-btn" type="button" data-track-btn="de" aria-pressed="true">${esc(TRACKS.de.label)}</button>
+      <button class="cv__track-btn" type="button" data-track-btn="wp" aria-pressed="false">${esc(TRACKS.wp.label)}</button>
+      <a class="pill cv__download" data-cv-download
+         href="/cv/${TRACKS.de.file}.pdf"
+         data-file-de="/cv/${TRACKS.de.file}.pdf"
+         data-file-wp="/cv/${TRACKS.wp.file}.pdf"
+         download="${TRACKS.de.file}.pdf" data-magnetic="0.2">
+        <span class="pill__label">Download PDF</span>
+      </a>
+    </div>
+
+${cvBody('de')}
+${cvBody('wp')}
+
+    <section class="cv__section">
+      <h2 class="cv__h2" data-reveal>Selected work</h2>
+      <ul class="cv__selected">
+${SELECTED.map((s) => `        <li data-reveal>
+          <a href="/${esc(s.slug)}" data-cursor-tag="View project">
+            <span class="cv__selected-name">${esc(s.name)}</span>
+            <span class="cv__selected-line">${esc(s.line)}</span>
+          </a>
+        </li>`).join('\n')}
+      </ul>
+    </section>
+
+    <section class="cv__section">
+      <h2 class="cv__h2" data-reveal>Education</h2>
+      <ul class="cv__edu">
+${EDUCATION.map((e) => `        <li data-reveal>${esc(e.title)}, <span>${esc(e.org)}, ${esc(e.year)}</span></li>`).join('\n')}
+      </ul>
+    </section>
+
+  </main>
+
+${chrome.footer}
+
+${chrome.contact}
+</body>
+</html>
+`
+
 await writeFile(resolve(ROOT, 'about.html'), renderAbout())
 console.log('about.html')
+
+await writeFile(resolve(ROOT, 'cv.html'), renderCv())
+console.log('cv.html')
 
 for (const p of PROJECTS) {
   await writeFile(resolve(ROOT, `${p.slug}.html`), render(p))
@@ -556,6 +741,7 @@ const today = new Date().toISOString().slice(0, 10)
 const urls = [
   { loc: abs('/'), priority: '1.0', changefreq: 'monthly' },
   { loc: abs('/about'), priority: '0.9', changefreq: 'monthly' },
+  { loc: abs('/cv'), priority: '0.8', changefreq: 'monthly' },
   ...PROJECTS.map((p) => ({ loc: abs(`/${p.slug}`), priority: '0.5', changefreq: 'yearly' })),
 ]
 
