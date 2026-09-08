@@ -309,8 +309,17 @@ function render(p) {
   const phones = shotsOf(p.slug, 'mobile', p.shots?.mobile ?? 2)
   const framed = Boolean(p.live)   // video frames already carry their own frame
   const next = nextOf(p.slug)
-  const media = (base, alt, crop) =>
-    framed ? browserMock(base, p.liveLabel, alt, crop) : bareShot(base, alt)
+  // A flow project's frames are four different screens, so labelling each
+  // browser mock with the same URL would flatten the thing the case is about.
+  // Use the real path of each step instead, which doubles as the flow itself.
+  const host = (p.liveLabel ?? '').split('/')[0]
+  const labelAt = (i) => {
+    const step = p.flow?.[i]
+    if (!step) return p.liveLabel
+    return `${host}${step.path.replace(/\/$/, '')}`
+  }
+  const media = (base, alt, crop, i = 0) =>
+    framed ? browserMock(base, labelAt(i), alt, crop) : bareShot(base, alt)
 
   const hero = desktop[0]
   const rest = desktop.slice(1)
@@ -377,7 +386,7 @@ ${p.video ? `
 ${videoMock(p.video, p.liveLabel, `${p.slug}-poster`, `${p.name} — a walkthrough of the finished build`)}
       </div>` : hero ? `
       <div class="case__showcase${framed ? '' : ' case__showcase--bare'}">
-${media(hero, `${p.name} — the landing screen`, false)}
+${media(hero, p.flow ? `${p.name} — ${p.flow[0].label}` : `${p.name} — the landing screen`, false, 0)}
       </div>` : ''}
 
       <div class="case__approach">
@@ -386,7 +395,7 @@ ${media(hero, `${p.name} — the landing screen`, false)}
         </div>
       </div>
 ${rest.length ? `
-      <div class="case__pair">${rest.map((b, i) => media(b, `${p.name} — section ${i + 2}`, true)).join('')}
+      <div class="case__pair">${rest.map((b, i) => media(b, p.flow ? `${p.name} — ${p.flow[i + 1]?.label ?? `screen ${i + 2}`}` : `${p.name} — section ${i + 2}`, true, i + 1)).join('')}
       </div>` : ''}
 ${phones.length ? `
       <div class="case__phones" data-phone-rail>

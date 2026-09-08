@@ -81,6 +81,38 @@ async function captureViewportSlices(page, slug, kind, count) {
   }
 }
 
+/**
+ * Some projects are a flow rather than a page: the case is the route a user
+ * takes across several screens, so scroll slices of one URL would miss it.
+ * A project with a `flow` array gets one frame per step instead.
+ *
+ *   flow: [{ path: '/get-ticket/', label: 'Ticket selection', at: 0.35 }, …]
+ *
+ * `at` is an optional scroll position as a fraction of the page, for steps
+ * where the part worth showing sits below the fold.
+ */
+async function captureFlowSteps(page, project, kind, viewport) {
+  await page.setViewport(viewport)
+
+  for (const [i, step] of project.flow.entries()) {
+    const url = new URL(step.path, project.live).href
+    await page.goto(url, { waitUntil: 'networkidle2' })
+    await dismissClutter(page)
+    await settle(page, kind === 'mobile' ? 2000 : 2600)
+
+    if (step.at) {
+      await page.evaluate((fraction) => {
+        const usable = Math.max(document.body.scrollHeight - window.innerHeight, 0)
+        window.scrollTo(0, Math.round(usable * fraction))
+      }, step.at)
+      await new Promise((r) => setTimeout(r, 700))
+    }
+
+    await shoot(page, `${project.slug}-${kind}-${i + 1}.png`)
+    console.log(`     ${step.label}`)
+  }
+}
+
 const browser = await puppeteer.launch({
   executablePath: CHROME,
   headless: true,
@@ -165,6 +197,11 @@ for (const project of wanted) {
   try {
     if (!project.live) {
       await captureVideoFrames(page, project)
+      continue
+    }
+    if (project.flow) {
+      await captureFlowSteps(page, project, 'desktop', DESKTOP)
+      await captureFlowSteps(page, project, 'mobile', MOBILE)
       continue
     }
     await page.setViewport(DESKTOP)
