@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticketing and registration flow, product design | Sammiee</title>
+  <meta name="description" content="Product design for a four-screen ticketing and registration flow: a seven-stage buying journey, pricing framed as access levels, and one CTA hierarchy…">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://sammiee.dev/abf-ticketing">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sammiee">
+  <meta property="og:url" content="https://sammiee.dev/abf-ticketing">
+  <meta property="og:title" content="Ticketing and registration flow, product design | Sammiee">
+  <meta property="og:description" content="Product design for a four-screen ticketing and registration flow: a seven-stage buying journey, pricing framed as access levels, and one CTA hierarchy…">
+  <meta property="og:image" content="https://sammiee.dev/img/work/abf-ticketing.jpg">
+  <meta property="og:image:alt" content="ABF Ticketing Flow — Product Design by Sammiee">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sammiee.dev/img/work/abf-ticketing.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Selling a $25,000 sponsorship and a $49 pass from the same page",
+  "headline": "ABF Ticketing Flow",
+  "description": "The 2026 edition needed more than a ticket button. Attendees, sponsors and fellowship applicants were all landing on the same page and being asked to make very different decisions, and the route from first interest to paid ran across four separate screens.",
+  "url": "https://sammiee.dev/abf-ticketing",
+  "image": "https://sammiee.dev/img/work/abf-ticketing.jpg",
+  "dateCreated": "2026",
+  "inLanguage": "en",
+  "keywords": "Product Design, UX Design, Information Architecture, Figma, WordPress",
+  "creator": {
+    "@type": "Person",
+    "name": "Samuel Fasipe",
+    "url": "https://sammiee.dev"
+  },
+  "about": {
+    "@type": "Organization",
+    "name": "Africa Blockchain Festival"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Nairobi, Kenya"
+  }
+}
+  </script>
+</head>
+<body>
+
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__mark">Sammieeeee</span>
+      <span class="preloader__count">0%</span>
+    </div>
+  </div>
+
+  <div class="curtain" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true">
+    <svg class="cursor__icon cursor__arrow" viewBox="0 0 28 28">
+      <g><path d="M7 4 L24 13.9 L15.7 15.6 L11.6 23.2 Z" /></g>
+    </svg>
+    <svg class="cursor__icon cursor__hand" viewBox="0 0 32 36">
+      <g>
+        <path class="hand-shape" d="M9 5.5 A2.5 2.5 0 0 1 14 5.5 L14 15 A2.25 2.25 0 0 1 18.5 15 L18.5 16.5 A2.25 2.25 0 0 1 23 16.5 L23 18 A2.25 2.25 0 0 1 27.5 18 L27.5 25 C27.5 30.5 24 34 19 34 L16 34 C12.5 34 10.2 32.3 8.6 29.6 L3.4 21.2 A2.6 2.6 0 0 1 7.8 18.4 L9 20.3 Z" />
+        <path class="hand-creases" d="M14 15.5 L14 19.5 M18.5 17 L18.5 20 M23 18.5 L23 21" />
+      </g>
+    </svg>
+    <span class="cursor__line cursor__line--x"></span>
+    <span class="cursor__line cursor__line--y"></span>
+    <span class="cursor__knot"><i></i></span>
+    <span class="cursor__tag"><span>View project</span></span>
+  </div>
+
+  <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
+    <div class="nav-overlay__header">
+      <a class="wordmark" href="/">Sammieeeee</a>
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      <li><a class="nav-link" href="/">
+        <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
+        <span class="nav-link__index">01</span>
+      </a></li>
+      <li><a class="nav-link" href="/#about">
+        <span class="nav-link__roll"><span>About me</span><span aria-hidden="true">About me</span></span>
+        <span class="nav-link__index">02</span>
+      </a></li>
+      <li><a class="nav-link" href="/#work">
+        <span class="nav-link__roll"><span>My Works</span><span aria-hidden="true">My Works</span></span>
+        <span class="nav-link__index">03</span>
+      </a></li>
+      <li><a class="nav-link" href="/cv">
+        <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
+      <li><a class="nav-link" href="#contact" data-contact-open>
+        <span class="nav-link__roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+        <span class="nav-link__index">05</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-overlay__foot">
+      <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+      <span>
+        <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
+        <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a> &nbsp;
+                <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+      </span>
+    </div>
+  </nav>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="/">Sammieeeee</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <article class="case" style="--accent: #f97316">
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <div class="case__row">
+        <h1 class="case__title" data-reveal>
+          <span class="line"><span class="line__inner">ABF Ticketing Flow</span></span>
+        </h1>
+      </div>
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <div class="case__row">
+        <p class="case__summary" data-reveal>The 2026 edition needed more than a ticket button. Attendees, sponsors and fellowship applicants were all landing on the same page and being asked to make very different decisions, and the route from first interest to paid ran across four separate screens.</p>
+      </div>
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <dl class="case__facts">
+        <div class="case__fact">
+          <dt>Services</dt>
+          <dd><ul><li>Product Design</li><li>UX Design</li><li>Information Architecture</li></ul></dd>
+        </div>
+        <div class="case__fact">
+          <dt>Client</dt>
+          <dd>Africa Blockchain Festival<br>Nairobi, Kenya</dd>
+        </div>
+        <div class="case__fact">
+          <dt>Built with</dt>
+          <dd><ul><li>Figma</li><li>WordPress</li></ul></dd>
+        </div>
+        <div class="case__fact">
+          <dt>Year</dt>
+          <dd>2026</dd>
+        </div>
+      </dl>
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <dl class="case__metrics">
+        <div class="case__metric">
+          <dt>4 screens</dt>
+          <dd>from ticket selection to confirmed payment, designed as one route</dd>
+        </div>
+        <div class="case__metric">
+          <dt>13 sections</dt>
+          <dd>on the ticket page, each mapped to a stage of the buying journey</dd>
+        </div>
+        <div class="case__metric">
+          <dt>3,000+</dt>
+          <dd>attendees the flow was built to carry</dd>
+        </div>
+      </dl>
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <div class="case__showcase">
+
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">africablockchainfestival.com/get-ticket</span>
+          </div>
+          <div class="mock__screen">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/abf-ticketing-desktop-1@900.webp 900w, /img/shots/abf-ticketing-desktop-1.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/abf-ticketing-desktop-1.webp" alt="ABF Ticketing Flow — Ticket selection" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </div>
+
+      <div class="case__approach">
+        <p class="case__label"><b>&bull;</b> Approach</p>
+        <div>
+          <p>I started with a written blueprint rather than a layout. It fixed the positioning first, at roughly seventy per cent premium global technology conference, twenty per cent future of African innovation and ten per cent Web3 summit, then mapped the journey a buyer actually moves through: attention, credibility, desire, belonging, selection, confidence, purchase. After that every section on the page had to earn its place by serving one of those stages, which is a much easier argument to have than one about taste.</p>
+          <p>The ticket page runs thirteen sections in a deliberate order, opening on the opportunity and reaching pricing only once the case is made. Tiers are presented as access levels rather than as products, because someone weighing a workshop pass against a full VIP package is deciding how much of the event to be part of, not comparing line items. A comparison matrix sits alongside them, and one package is featured, which is the lever that moves average order value without pressuring anyone.</p>
+          <p>Selection, registration, payment and travel are four screens, so the risk was four different interfaces. One CTA hierarchy holds across all of them: a single primary action, a secondary route for comparing tiers, and a tertiary sponsorship path that is always reachable and never competes with the ticket sale. That last part matters commercially, since the sponsor and the attendee are worth very different amounts and the page cannot afford to convert one at the cost of the other.</p>
+          <p>Checkout gets a real state rather than an error. Arrive at the payment screen without a pass selected and it asks which one you want, offers a route back to the tiers, and says plainly that nothing has been charged. Money makes people nervous, and a checkout that explains where you are is worth more than one that assumes nobody ever arrives the wrong way.</p>
+        </div>
+      </div>
+
+      <div class="case__pair">
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">africablockchainfestival.com/register</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/abf-ticketing-desktop-2@900.webp 900w, /img/shots/abf-ticketing-desktop-2.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/abf-ticketing-desktop-2.webp" alt="ABF Ticketing Flow — Registration" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">africablockchainfestival.com/pay</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/abf-ticketing-desktop-3@900.webp 900w, /img/shots/abf-ticketing-desktop-3.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/abf-ticketing-desktop-3.webp" alt="ABF Ticketing Flow — Payment" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">africablockchainfestival.com/travel</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/abf-ticketing-desktop-4@900.webp 900w, /img/shots/abf-ticketing-desktop-4.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/abf-ticketing-desktop-4.webp" alt="ABF Ticketing Flow — Travel packages" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </div>
+
+      <div class="case__phones" data-phone-rail>
+        <div class="case__phones-track">
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-1.webp" alt="ABF Ticketing Flow on mobile, view 1" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-2.webp" alt="ABF Ticketing Flow on mobile, view 2" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-3.webp" alt="ABF Ticketing Flow on mobile, view 3" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-4.webp" alt="ABF Ticketing Flow on mobile, view 4" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-1.webp" alt="ABF Ticketing Flow on mobile, view 1" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-2.webp" alt="ABF Ticketing Flow on mobile, view 2" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-3.webp" alt="ABF Ticketing Flow on mobile, view 3" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-4.webp" alt="ABF Ticketing Flow on mobile, view 4" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-1.webp" alt="ABF Ticketing Flow on mobile, view 1" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-2.webp" alt="ABF Ticketing Flow on mobile, view 2" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-3.webp" alt="ABF Ticketing Flow on mobile, view 3" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+          <figure class="mock mock--phone">
+            <div class="mock__screen">
+              <img src="/img/shots/abf-ticketing-mobile-4.webp" alt="ABF Ticketing Flow on mobile, view 4" width="560" height="1212" loading="lazy" decoding="async">
+            </div>
+          </figure>
+        </div>
+      </div>
+
+      <div class="case__highlights">
+        <div class="case__highlight">
+          <h3>Access, not products</h3>
+          <p>Tiers are framed as how much of the event you join, because that is the real decision.</p>
+        </div>
+        <div class="case__highlight">
+          <h3>One hierarchy, four screens</h3>
+          <p>A primary action, a compare route and a sponsor path, consistent the whole way through.</p>
+        </div>
+        <div class="case__highlight">
+          <h3>Written before drawn</h3>
+          <p>A blueprint set the journey and the section order before any layout existed.</p>
+        </div>
+      </div>
+
+      <div class="case__outcome">
+        <p class="case__label"><b>&bull;</b> Outcome</p>
+        <div class="case__outcome-body">
+          <div></div>
+          <div>
+            <p>The flow is live for the 2026 edition, carrying ticket sales, registration and travel packages for an event expecting over 3,000 attendees. The blueprint it came from is the part that outlasts me: each section states its UX goal and its commercial goal, so when the team wants to change something they can argue it against the journey instead of against opinion.</p>
+            <a class="pill" href="https://africablockchainfestival.com/get-ticket/" rel="noopener"
+               data-magnetic="0.28" data-cursor-tag="Open the live site" data-cursor-color="#f97316">
+              <span class="pill__label">Live Website</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="case__next" href="/africa-blockchain-festival"
+         data-cursor-tag="Next project" data-cursor-color="#0895fa">
+        <span class="case__next-label">Next project</span>
+        <span class="case__next-title">
+          Africa Blockchain Festival
+          <span class="case__next-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+      </a>
+
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact" data-cursor-zone="cross">
+    <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+
+    <div class="site-footer__box">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <div class="site-footer__cta">
+        <h2 class="site-footer__heading" data-reveal>Let&rsquo;s talk about what you&rsquo;re building.</h2>
+          <p class="site-footer__availability" data-reveal>
+            Open to design engineering roles and selected project work.
+            Remote, and comfortable across European and US working hours.
+          </p>
+        <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Enquiry%20from%20sammiee.dev"
+           data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
+          <span class="pill__label">Get in touch</span>
+        </a>
+      </div>
+
+      <div class="site-footer__contact">
+        <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+        <div class="site-footer__social">
+          <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__fineprint">
+      &copy; 2026 Sammiee. Designed and built by me.
+    </p>
+  </footer>
+
+  <!-- contact dialog, opened by anything with [data-contact-open] -->
+  <div class="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <div class="contact__scrim"></div>
+
+    <div class="contact__panel">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <button class="contact__close" type="button" aria-label="Close contact form">
+        <span></span><span></span>
+      </button>
+
+      <div class="contact__grid">
+        <div>
+          <h2 class="contact__title" id="contact-title">Let&rsquo;s create magic</h2>
+          <p class="contact__blurb">
+            Tell me what you&rsquo;re building and roughly when you need it live.
+            I read everything and reply within a day or two.
+          </p>
+          <p class="contact__direct">
+            Rather just email?<br>
+            <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+          </p>
+        </div>
+
+        <div>
+          <form novalidate>
+            <div class="contact__field" data-label="Name">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Sammiee" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Email">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Message">
+              <label for="contact-message">Project</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="A new site for a Web3 event, live by October." required></textarea>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <!-- Spam trap. Bots fill every field they find; people never see
+                 this one. Formspree discards a submission where it is set.
+                 Deliberately not .contact__field, so validation ignores it. -->
+            <p class="contact__gotcha" aria-hidden="true">
+              <label>Leave this empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </label>
+            </p>
+
+            <div class="contact__submit">
+              <button class="pill" type="submit" data-magnetic="0.2">
+                <span class="pill__label">Send it</span>
+              </button>
+              <span class="contact__status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="contact__sent" role="status">
+            <p>Thanks, that&rsquo;s on its way.</p>
+            <p>I&rsquo;ll come back to you at the address you gave me, usually within a day or two.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/project.js"></script>
+</body>
+</html>

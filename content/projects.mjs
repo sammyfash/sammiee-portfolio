@@ -12,6 +12,78 @@
 
 export const PROJECTS = [
   {
+    slug: 'abf-ticketing',
+    seoTitle: 'Ticketing and registration flow, product design | Sammiee',
+    seoDescription: 'Product design for a four-screen ticketing and registration flow: a seven-stage buying journey, pricing framed as access levels, and one CTA hierarchy held from selection through to payment.',
+    name: 'ABF Ticketing Flow',
+    title: 'Selling a $25,000 sponsorship and a $49 pass from the same page',
+    colour: '#f97316',
+    live: 'https://africablockchainfestival.com/get-ticket/',
+    liveLabel: 'africablockchainfestival.com/get-ticket',
+    year: '2026',
+    client: 'Africa Blockchain Festival',
+    location: 'Nairobi, Kenya',
+    services: ['Product Design', 'UX Design', 'Information Architecture'],
+    stack: ['Figma', 'WordPress'],
+    card: 'abf-ticketing',
+    // A flow, not a page: one frame per screen of the route. See captureFlowSteps
+    // in scripts/capture-shots.mjs.
+    flow: [
+      { path: '/get-ticket/', label: 'Ticket selection', at: 0.28 },
+      { path: '/register/', label: 'Registration' },
+      { path: '/pay/', label: 'Payment' },
+      { path: '/travel/', label: 'Travel packages' },
+    ],
+    shots: { desktop: 4, mobile: 4 },
+    metrics: [
+      { value: '4 screens', label: 'from ticket selection to confirmed payment, designed as one route' },
+      { value: '13 sections', label: 'on the ticket page, each mapped to a stage of the buying journey' },
+      { value: '3,000+', label: 'attendees the flow was built to carry' },
+    ],
+    intro:
+      'The 2026 edition needed more than a ticket button. Attendees, sponsors and fellowship '
+      + 'applicants were all landing on the same page and being asked to make very different '
+      + 'decisions, and the route from first interest to paid ran across four separate screens.',
+    approach: [
+      'I started with a written blueprint rather than a layout. It fixed the positioning first, at '
+      + 'roughly seventy per cent premium global technology conference, twenty per cent future of '
+      + 'African innovation and ten per cent Web3 summit, then mapped the journey a buyer actually '
+      + 'moves through: attention, credibility, desire, belonging, selection, confidence, purchase. '
+      + 'After that every section on the page had to earn its place by serving one of those stages, '
+      + 'which is a much easier argument to have than one about taste.',
+
+      'The ticket page runs thirteen sections in a deliberate order, opening on the opportunity and '
+      + 'reaching pricing only once the case is made. Tiers are presented as access levels rather '
+      + 'than as products, because someone weighing a workshop pass against a full VIP package is '
+      + 'deciding how much of the event to be part of, not comparing line items. A comparison matrix '
+      + 'sits alongside them, and one package is featured, which is the lever that moves average '
+      + 'order value without pressuring anyone.',
+
+      'Selection, registration, payment and travel are four screens, so the risk was four different '
+      + 'interfaces. One CTA hierarchy holds across all of them: a single primary action, a secondary '
+      + 'route for comparing tiers, and a tertiary sponsorship path that is always reachable and '
+      + 'never competes with the ticket sale. That last part matters commercially, since the sponsor '
+      + 'and the attendee are worth very different amounts and the page cannot afford to convert one '
+      + 'at the cost of the other.',
+
+      'Checkout gets a real state rather than an error. Arrive at the payment screen without a pass '
+      + 'selected and it asks which one you want, offers a route back to the tiers, and says plainly '
+      + 'that nothing has been charged. Money makes people nervous, and a checkout that explains '
+      + 'where you are is worth more than one that assumes nobody ever arrives the wrong way.',
+    ],
+    outcome:
+      'The flow is live for the 2026 edition, carrying ticket sales, registration and travel packages '
+      + 'for an event expecting over 3,000 attendees. The blueprint it came from is the part that '
+      + 'outlasts me: each section states its UX goal and its commercial goal, so when the team wants '
+      + 'to change something they can argue it against the journey instead of against opinion.',
+    highlights: [
+      { label: 'Access, not products', text: 'Tiers are framed as how much of the event you join, because that is the real decision.' },
+      { label: 'One hierarchy, four screens', text: 'A primary action, a compare route and a sponsor path, consistent the whole way through.' },
+      { label: 'Written before drawn', text: 'A blueprint set the journey and the section order before any layout existed.' },
+    ],
+  },
+
+  {
     slug: 'africa-blockchain-festival',
     seoTitle: 'Event website design & WordPress build | Sammiee',
     seoDescription: 'How a blockchain festival site was designed in Figma and built in WordPress, with separate sponsor and ticket funnels, three languages, and a client-owned content model.',
