@@ -11,8 +11,7 @@
     "images": "node scripts/optimize-images.mjs",
     "shots": "node scripts/capture-shots.mjs",
     "pages": "node scripts/build-pages.mjs",
-    "cv": "node scripts/build-cv-pdf.mjs",
-    "card": "node scripts/build-card.mjs"
+    "cv": "node scripts/build-cv-pdf.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^25.8.0",

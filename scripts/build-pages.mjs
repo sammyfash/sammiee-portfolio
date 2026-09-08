@@ -309,17 +309,15 @@ function render(p) {
   const phones = shotsOf(p.slug, 'mobile', p.shots?.mobile ?? 2)
   const framed = Boolean(p.live)   // video frames already carry their own frame
   const next = nextOf(p.slug)
-  // A flow project's frames are four different screens, so labelling each
-  // browser mock with the same URL would flatten the thing the case is about.
-  // Use the real path of each step instead, which doubles as the flow itself.
+  const media = (base, alt, crop) =>
+    framed ? browserMock(base, p.liveLabel, alt, crop) : bareShot(base, alt)
+
+  // A chapter is a second act inside the same case: a route across several
+  // screens. Its frames are `-flow-N`, and each browser mock is labelled with
+  // that step's real path, since the point is the route rather than the page.
   const host = (p.liveLabel ?? '').split('/')[0]
-  const labelAt = (i) => {
-    const step = p.flow?.[i]
-    if (!step) return p.liveLabel
-    return `${host}${step.path.replace(/\/$/, '')}`
-  }
-  const media = (base, alt, crop, i = 0) =>
-    framed ? browserMock(base, labelAt(i), alt, crop) : bareShot(base, alt)
+  const stepUrl = (step) => `${host}${step.path.replace(/\/$/, '')}`
+  const chapterShots = p.chapter ? shotsOf(p.slug, 'flow', p.chapter.steps.length) : []
 
   const hero = desktop[0]
   const rest = desktop.slice(1)
@@ -386,7 +384,7 @@ ${p.video ? `
 ${videoMock(p.video, p.liveLabel, `${p.slug}-poster`, `${p.name} — a walkthrough of the finished build`)}
       </div>` : hero ? `
       <div class="case__showcase${framed ? '' : ' case__showcase--bare'}">
-${media(hero, p.flow ? `${p.name} — ${p.flow[0].label}` : `${p.name} — the landing screen`, false, 0)}
+${media(hero, `${p.name} — the landing screen`, false)}
       </div>` : ''}
 
       <div class="case__approach">
@@ -395,12 +393,25 @@ ${media(hero, p.flow ? `${p.name} — ${p.flow[0].label}` : `${p.name} — the l
         </div>
       </div>
 ${rest.length ? `
-      <div class="case__pair">${rest.map((b, i) => media(b, p.flow ? `${p.name} — ${p.flow[i + 1]?.label ?? `screen ${i + 2}`}` : `${p.name} — section ${i + 2}`, true, i + 1)).join('')}
+      <div class="case__pair">${rest.map((b, i) => media(b, `${p.name} — section ${i + 2}`, true)).join('')}
       </div>` : ''}
 ${phones.length ? `
       <div class="case__phones" data-phone-rail>
         <div class="case__phones-track">${[...phones, ...phones, ...phones].map((b, i) => phoneMock(b, `${p.name} on mobile, view ${(i % phones.length) + 1}`)).join('')}
         </div>
+      </div>` : ''}
+
+${p.chapter && chapterShots.length ? `
+      <span class="rule" aria-hidden="true"></span>
+
+      <div class="case__approach">
+        <p class="case__label"><b>&bull;</b> ${esc(p.chapter.title)}</p>
+        <div>
+          <p>${esc(p.chapter.intro)}</p>${p.chapter.body.map((t) => `\n          <p>${esc(t)}</p>`).join('')}
+        </div>
+      </div>
+
+      <div class="case__pair">${chapterShots.map((b, i) => browserMock(b, stepUrl(p.chapter.steps[i]), `${p.name} — ${p.chapter.steps[i].label}`, true)).join('')}
       </div>` : ''}
 
       <div class="case__highlights">${p.highlights.map((h) => `

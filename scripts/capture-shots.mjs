@@ -82,23 +82,25 @@ async function captureViewportSlices(page, slug, kind, count) {
 }
 
 /**
- * Some projects are a flow rather than a page: the case is the route a user
- * takes across several screens, so scroll slices of one URL would miss it.
- * A project with a `flow` array gets one frame per step instead.
+ * A project can carry a `chapter`: a second act inside the same case study,
+ * covering a route across several screens rather than one more scroll of the
+ * same page. Its frames are named `<slug>-flow-N` so they never collide with
+ * the `-desktop-N` slices of the main page.
  *
- *   flow: [{ path: '/get-ticket/', label: 'Ticket selection', at: 0.35 }, …]
+ *   chapter: { live, steps: [{ path, label, at }] }
  *
  * `at` is an optional scroll position as a fraction of the page, for steps
  * where the part worth showing sits below the fold.
  */
-async function captureFlowSteps(page, project, kind, viewport) {
-  await page.setViewport(viewport)
+async function captureChapter(page, project) {
+  const { chapter } = project
+  await page.setViewport(DESKTOP)
 
-  for (const [i, step] of project.flow.entries()) {
-    const url = new URL(step.path, project.live).href
+  for (const [i, step] of chapter.steps.entries()) {
+    const url = new URL(step.path, chapter.live ?? project.live).href
     await page.goto(url, { waitUntil: 'networkidle2' })
     await dismissClutter(page)
-    await settle(page, kind === 'mobile' ? 2000 : 2600)
+    await settle(page)
 
     if (step.at) {
       await page.evaluate((fraction) => {
@@ -108,7 +110,7 @@ async function captureFlowSteps(page, project, kind, viewport) {
       await new Promise((r) => setTimeout(r, 700))
     }
 
-    await shoot(page, `${project.slug}-${kind}-${i + 1}.png`)
+    await shoot(page, `${project.slug}-flow-${i + 1}.png`)
     console.log(`     ${step.label}`)
   }
 }
@@ -199,11 +201,6 @@ for (const project of wanted) {
       await captureVideoFrames(page, project)
       continue
     }
-    if (project.flow) {
-      await captureFlowSteps(page, project, 'desktop', DESKTOP)
-      await captureFlowSteps(page, project, 'mobile', MOBILE)
-      continue
-    }
     await page.setViewport(DESKTOP)
     await page.goto(project.live, { waitUntil: 'networkidle2' })
     await dismissClutter(page)
@@ -215,6 +212,8 @@ for (const project of wanted) {
     await dismissClutter(page)
     await settle(page, 2000)
     await captureViewportSlices(page, project.slug, 'mobile', project.shots?.mobile ?? 2)
+
+    if (project.chapter) await captureChapter(page, project)
   } catch (error) {
     console.warn(`  ! skipped: ${error.message.split('\n')[0]}`)
   } finally {
