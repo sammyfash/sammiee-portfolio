@@ -30,7 +30,7 @@
   "image": "https://sammiee.dev/img/work/abf.jpg",
   "dateCreated": "2025",
   "inLanguage": "en",
-  "keywords": "Web Design, Product Design, WordPress Development, Figma, WordPress",
+  "keywords": "Web Design, Product Design, WordPress Development, Full-stack Development, Figma, WordPress, Next.js, TypeScript, Supabase",
   "creator": {
     "@type": "Person",
     "name": "Samuel Fasipe",
@@ -144,7 +144,7 @@
       <dl class="case__facts">
         <div class="case__fact">
           <dt>Services</dt>
-          <dd><ul><li>Web Design</li><li>Product Design</li><li>WordPress Development</li></ul></dd>
+          <dd><ul><li>Web Design</li><li>Product Design</li><li>WordPress Development</li><li>Full-stack Development</li></ul></dd>
         </div>
         <div class="case__fact">
           <dt>Client</dt>
@@ -152,7 +152,7 @@
         </div>
         <div class="case__fact">
           <dt>Built with</dt>
-          <dd><ul><li>Figma</li><li>WordPress</li></ul></dd>
+          <dd><ul><li>Figma</li><li>WordPress</li><li>Next.js</li><li>TypeScript</li><li>Supabase</li></ul></dd>
         </div>
         <div class="case__fact">
           <dt>Year</dt>
@@ -382,6 +382,70 @@
             <picture>
               <source type="image/webp" srcset="/img/shots/africa-blockchain-festival-flow-4@900.webp 900w, /img/shots/africa-blockchain-festival-flow-4.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
               <img src="/img/shots/africa-blockchain-festival-flow-4.webp" alt="Africa Blockchain Festival — Travel packages" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+      </div>
+      <span class="rule" aria-hidden="true"></span>
+
+      <div class="case__approach">
+        <p class="case__label"><b>&bull;</b> The admin behind it</p>
+        <div>
+          <p>A festival runs on more than a website. This is the tool the team runs it from, and it is a separate application rather than a plugin: Next.js and TypeScript on Supabase, deployed independently of the WordPress site it reports on.</p>
+          <p>Registrations were arriving in Google Sheets, sales in the payment gateways, traffic in Search Console, and requests to me over WhatsApp. Four places, none of which answered the only question the team actually had, which was how the event is doing. The admin is one place that does, for the twenty or so people running it.</p>
+          <p>The sheets stay the source of truth, because that is where the team already works. Sync is a snapshot replace keyed on a row hash, so an edited row updates, a deleted row soft deletes rather than vanishing, and a row that reappears is restored instead of duplicated. The overview carries a line stating whether every source still matches its sheet, since a dashboard that quietly drifts from its source is worse than no dashboard.</p>
+          <p>Campaigns answers where paying buyers came from rather than where clicks came from. Every share link carries its own funnel, which is what lets one campaign handed to three teams be told apart; grouping by channel cannot do that. It counts checkouts started as well as paid, because a conversion rate without a denominator is just a sales figure.</p>
+          <p>Coupons are created here and priced on the server. The browser names a code and never an amount, so a discount cannot be edited into a larger one on its way to checkout, and a redemption counts on payment rather than on reaching the checkout, so an abandoned attempt cannot burn one of a limited run.</p>
+          <p>Every dashboard route renders per request, which without care means a click leaves the previous page on screen while the server works. Each route has a loading skeleton and the slower third-party calls sit in their own boundary, so one unhurried API cannot hold up the rest of the page. The screens below run on the application’s own preview data rather than live festival figures.</p>
+        </div>
+      </div>
+
+      <div class="case__pair">
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">abfadmin.com</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/africa-blockchain-festival-admin-1@900.webp 900w, /img/shots/africa-blockchain-festival-admin-1.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/africa-blockchain-festival-admin-1.webp" alt="Africa Blockchain Festival — Overview" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">abfadmin.com/campaigns</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/africa-blockchain-festival-admin-2@900.webp 900w, /img/shots/africa-blockchain-festival-admin-2.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/africa-blockchain-festival-admin-2.webp" alt="Africa Blockchain Festival — Campaign attribution" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">abfadmin.com/coupons</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/africa-blockchain-festival-admin-3@900.webp 900w, /img/shots/africa-blockchain-festival-admin-3.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/africa-blockchain-festival-admin-3.webp" alt="Africa Blockchain Festival — Coupons" width="1600" height="1000" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </figure>
+        <figure class="mock mock--browser">
+          <div class="mock__chrome">
+            <span class="mock__dots"><i></i><i></i><i></i></span>
+            <span class="mock__url">abfadmin.com/engineering</span>
+          </div>
+          <div class="mock__screen mock__screen--crop">
+            <picture>
+              <source type="image/webp" srcset="/img/shots/africa-blockchain-festival-admin-4@900.webp 900w, /img/shots/africa-blockchain-festival-admin-4.webp 1600w" sizes="(max-width: 900px) 100vw, 88vw">
+              <img src="/img/shots/africa-blockchain-festival-admin-4.webp" alt="Africa Blockchain Festival — Engineering requests" width="1600" height="1000" loading="lazy" decoding="async">
             </picture>
           </div>
         </figure>

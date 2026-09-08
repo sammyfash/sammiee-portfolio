@@ -23,8 +23,8 @@ export const PROJECTS = [
     year: '2025–2026',
     client: 'Africa Blockchain Festival · World Token Summit',
     location: 'Nairobi, Kenya',
-    services: ['Web Design', 'Product Design', 'WordPress Development'],
-    stack: ['Figma', 'WordPress'],
+    services: ['Web Design', 'Product Design', 'WordPress Development', 'Full-stack Development'],
+    stack: ['Figma', 'WordPress', 'Next.js', 'TypeScript', 'Supabase'],
     card: 'abf',
     shots: { desktop: 4, mobile: 5 },
     metrics: [
@@ -96,6 +96,51 @@ export const PROJECTS = [
         { path: '/register/', label: 'Registration' },
         { path: '/pay/', label: 'Payment' },
         { path: '/travel/', label: 'Travel packages' },
+      ],
+    }, {
+      id: 'admin',
+      title: 'The admin behind it',
+      host: 'abfadmin.com',
+      intro:
+        'A festival runs on more than a website. This is the tool the team runs it from, and it ' +
+        'is a separate application rather than a plugin: Next.js and TypeScript on Supabase, ' +
+        'deployed independently of the WordPress site it reports on.',
+      body: [
+        'Registrations were arriving in Google Sheets, sales in the payment gateways, traffic in ' +
+        'Search Console, and requests to me over WhatsApp. Four places, none of which answered ' +
+        'the only question the team actually had, which was how the event is doing. The admin is ' +
+        'one place that does, for the twenty or so people running it.',
+
+        'The sheets stay the source of truth, because that is where the team already works. Sync ' +
+        'is a snapshot replace keyed on a row hash, so an edited row updates, a deleted row soft ' +
+        'deletes rather than vanishing, and a row that reappears is restored instead of ' +
+        'duplicated. The overview carries a line stating whether every source still matches its ' +
+        'sheet, since a dashboard that quietly drifts from its source is worse than no dashboard.',
+
+        'Campaigns answers where paying buyers came from rather than where clicks came from. Every ' +
+        'share link carries its own funnel, which is what lets one campaign handed to three teams ' +
+        'be told apart; grouping by channel cannot do that. It counts checkouts started as well as ' +
+        'paid, because a conversion rate without a denominator is just a sales figure.',
+
+        'Coupons are created here and priced on the server. The browser names a code and never an ' +
+        'amount, so a discount cannot be edited into a larger one on its way to checkout, and a ' +
+        'redemption counts on payment rather than on reaching the checkout, so an abandoned ' +
+        'attempt cannot burn one of a limited run.',
+
+        'Every dashboard route renders per request, which without care means a click leaves the ' +
+        'previous page on screen while the server works. Each route has a loading skeleton and the ' +
+        'slower third-party calls sit in their own boundary, so one unhurried API cannot hold up ' +
+        'the rest of the page. The screens below run on the application’s own preview data ' +
+        'rather than live festival figures.',
+      ],
+      // Behind a login, so these are rendered from the app's built-in preview
+      // mode rather than captured from production. That also keeps real
+      // registrant names and addresses out of a public case study.
+      frames: [
+        { label: 'Overview', url: 'abfadmin.com' },
+        { label: 'Campaign attribution', url: 'abfadmin.com/campaigns' },
+        { label: 'Coupons', url: 'abfadmin.com/coupons' },
+        { label: 'Engineering requests', url: 'abfadmin.com/engineering' },
       ],
     }],
   },
