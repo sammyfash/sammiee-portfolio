@@ -1,0 +1,11 @@
+# Cloudflare Pages / Netlify redirects.
+#
+# /abf-ticketing was live for a few hours on 8 September 2026 as a seventh case
+# study before the ticketing work was folded into the festival case as a
+# chapter. Without this rule the path falls through to index.html and answers
+# 200, which is a soft 404: a crawler that saw the page reads the homepage as
+# its new content rather than learning the page moved.
+#
+# 301 rather than 302, because it is not coming back.
+/abf-ticketing   /africa-blockchain-festival   301
+/abf-ticketing/  /africa-blockchain-festival   301
