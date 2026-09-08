@@ -59,10 +59,15 @@ export const PROJECTS = [
       { label: 'Three languages', text: 'English, French and Swahili from one set of templates.' },
       { label: 'Client-owned', text: 'Speakers, tiers and partners are all editable without a developer.' },
     ],
-    // A second act inside the same case, not a second case. The marketing site
-    // and the thing that takes the money are one project, and splitting them
-    // into two cards read as the same client listed twice.
-    chapter: {
+    // Second and third acts inside the same case, not separate cases. The
+    // marketing site, the thing that takes the money and the tool the team runs
+    // it from are one engagement, and splitting them into separate cards read
+    // as the same client listed three times.
+    //
+    // `id` is the shot prefix, so frames land as <slug>-<id>-N and never
+    // collide with the main page's -desktop-N slices.
+    chapters: [{
+      id: 'flow',
       title: 'The ticketing flow',
       live: 'https://africablockchainfestival.com/get-ticket/',
       intro:
@@ -92,7 +97,7 @@ export const PROJECTS = [
         { path: '/pay/', label: 'Payment' },
         { path: '/travel/', label: 'Travel packages' },
       ],
-    },
+    }],
   },
 
   {

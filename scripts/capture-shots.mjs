@@ -82,36 +82,45 @@ async function captureViewportSlices(page, slug, kind, count) {
 }
 
 /**
- * A project can carry a `chapter`: a second act inside the same case study,
+ * A project can carry `chapters`: further acts inside the same case study,
  * covering a route across several screens rather than one more scroll of the
- * same page. Its frames are named `<slug>-flow-N` so they never collide with
- * the `-desktop-N` slices of the main page.
+ * same page. Frames are named `<slug>-<chapter.id>-N`, so they collide neither
+ * with the `-desktop-N` slices of the main page nor with each other.
  *
- *   chapter: { live, steps: [{ path, label, at }] }
+ *   chapters: [{ id, live, steps: [{ path, label, at }] }]
  *
  * `at` is an optional scroll position as a fraction of the page, for steps
  * where the part worth showing sits below the fold.
  */
-async function captureChapter(page, project) {
-  const { chapter } = project
+async function captureChapters(page, project) {
   await page.setViewport(DESKTOP)
 
-  for (const [i, step] of chapter.steps.entries()) {
-    const url = new URL(step.path, chapter.live ?? project.live).href
-    await page.goto(url, { waitUntil: 'networkidle2' })
-    await dismissClutter(page)
-    await settle(page)
-
-    if (step.at) {
-      await page.evaluate((fraction) => {
-        const usable = Math.max(document.body.scrollHeight - window.innerHeight, 0)
-        window.scrollTo(0, Math.round(usable * fraction))
-      }, step.at)
-      await new Promise((r) => setTimeout(r, 700))
+  for (const chapter of project.chapters) {
+    // A chapter behind a login cannot be captured, so its frames are supplied
+    // by hand instead. Those chapters carry `frames` rather than `steps`.
+    if (!chapter.steps?.length) {
+      console.log(`  · ${chapter.title}: frames supplied by hand, nothing to capture`)
+      continue
     }
+    console.log(`  · ${chapter.title}`)
 
-    await shoot(page, `${project.slug}-flow-${i + 1}.png`)
-    console.log(`     ${step.label}`)
+    for (const [i, step] of chapter.steps.entries()) {
+      const url = new URL(step.path, chapter.live ?? project.live).href
+      await page.goto(url, { waitUntil: 'networkidle2' })
+      await dismissClutter(page)
+      await settle(page)
+
+      if (step.at) {
+        await page.evaluate((fraction) => {
+          const usable = Math.max(document.body.scrollHeight - window.innerHeight, 0)
+          window.scrollTo(0, Math.round(usable * fraction))
+        }, step.at)
+        await new Promise((r) => setTimeout(r, 700))
+      }
+
+      await shoot(page, `${project.slug}-${chapter.id}-${i + 1}.png`)
+      console.log(`     ${step.label}`)
+    }
   }
 }
 
@@ -213,7 +222,7 @@ for (const project of wanted) {
     await settle(page, 2000)
     await captureViewportSlices(page, project.slug, 'mobile', project.shots?.mobile ?? 2)
 
-    if (project.chapter) await captureChapter(page, project)
+    if (project.chapters?.length) await captureChapters(page, project)
   } catch (error) {
     console.warn(`  ! skipped: ${error.message.split('\n')[0]}`)
   } finally {

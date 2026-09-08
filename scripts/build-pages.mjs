@@ -312,12 +312,21 @@ function render(p) {
   const media = (base, alt, crop) =>
     framed ? browserMock(base, p.liveLabel, alt, crop) : bareShot(base, alt)
 
-  // A chapter is a second act inside the same case: a route across several
-  // screens. Its frames are `-flow-N`, and each browser mock is labelled with
-  // that step's real path, since the point is the route rather than the page.
+  // Chapters are further acts inside the same case. Frames are `-<id>-N`, and
+  // each browser mock is labelled with that step's real address, since the
+  // point of a chapter is the route rather than any single page.
   const host = (p.liveLabel ?? '').split('/')[0]
-  const stepUrl = (step) => `${host}${step.path.replace(/\/$/, '')}`
-  const chapterShots = p.chapter ? shotsOf(p.slug, 'flow', p.chapter.steps.length) : []
+  const chapterFrames = (c) => {
+    // `steps` are captured from live paths; `frames` are supplied by hand for
+    // anything behind a login, which cannot be captured.
+    const entries = c.steps ?? c.frames ?? []
+    const files = shotsOf(p.slug, c.id, entries.length)
+    return files.map((base, i) => {
+      const e = entries[i]
+      const url = e.path ? `${c.host ?? host}${e.path.replace(/\/$/, '')}` : (e.url ?? c.host ?? host)
+      return { base, url, label: e.label }
+    })
+  }
 
   const hero = desktop[0]
   const rest = desktop.slice(1)
@@ -401,18 +410,22 @@ ${phones.length ? `
         </div>
       </div>` : ''}
 
-${p.chapter && chapterShots.length ? `
+${(p.chapters ?? []).map((c) => {
+  const frames = chapterFrames(c)
+  if (!frames.length) return ''
+  return `
       <span class="rule" aria-hidden="true"></span>
 
       <div class="case__approach">
-        <p class="case__label"><b>&bull;</b> ${esc(p.chapter.title)}</p>
+        <p class="case__label"><b>&bull;</b> ${esc(c.title)}</p>
         <div>
-          <p>${esc(p.chapter.intro)}</p>${p.chapter.body.map((t) => `\n          <p>${esc(t)}</p>`).join('')}
+          <p>${esc(c.intro)}</p>${c.body.map((t) => `\n          <p>${esc(t)}</p>`).join('')}
         </div>
       </div>
 
-      <div class="case__pair">${chapterShots.map((b, i) => browserMock(b, stepUrl(p.chapter.steps[i]), `${p.name} — ${p.chapter.steps[i].label}`, true)).join('')}
-      </div>` : ''}
+      <div class="case__pair">${frames.map((f) => browserMock(f.base, f.url, `${p.name} — ${f.label}`, true)).join('')}
+      </div>`
+}).join('')}
 
       <div class="case__highlights">${p.highlights.map((h) => `
         <div class="case__highlight">
