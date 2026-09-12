@@ -1,13 +1,21 @@
 # Cloudflare Pages / Netlify security + caching headers.
 #
 # The CSP is strict because the site needs almost nothing: no inline <script>,
-# no third-party origins, self-hosted fonts. `style-src` keeps 'unsafe-inline'
-# because GSAP animates via element.style, which CSP counts as inline style.
+# self-hosted fonts, and only two third-party origins. `style-src` keeps
+# 'unsafe-inline' because GSAP animates via element.style, which CSP counts as
+# inline style.
 #
 # Adding a form backend (Formspree, Web3Forms) means adding its origin to
 # connect-src — nothing else here needs to change.
+#
+# Cloudflare Web Analytics needs BOTH of its origins, which is easy to get
+# half-right: the beacon is fetched from static.cloudflareinsights.com, then
+# POSTs what it measures to cloudflareinsights.com/cdn-cgi/rum. Allowing only
+# the script origin loads a beacon whose every report is then blocked, so the
+# console stays noisy and the dashboard stays empty. If Web Analytics is ever
+# turned off for this zone, remove both again rather than leaving them open.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; connect-src 'self' https://formspree.io; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self' data:; connect-src 'self' https://formspree.io https://cloudflareinsights.com; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
