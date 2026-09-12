@@ -53,6 +53,9 @@ export function initContact() {
   const status = qs('.contact__status', dialog)
   const submit = qs('button[type="submit"]', form)
   const submitLabel = qs('.pill__label', submit)
+  // Read the resting label rather than repeating it, so changing the button's
+  // wording in the markup cannot leave the form restoring the old one.
+  const submitIdle = submitLabel.textContent
   const fields = qsa('.contact__field', form)
 
   let open = false
@@ -214,7 +217,7 @@ export function initContact() {
       sending = false
       form.dataset.sending = 'false'
       submit.disabled = false
-      submitLabel.textContent = 'Send it'
+      submitLabel.textContent = submitIdle
     }
   })
 

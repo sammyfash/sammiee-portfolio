@@ -22,8 +22,9 @@ export function initHero() {
   const gridLines = qsa('.hero__grid span, .hero__rails span', hero)
   const header = qs('.site-header')
   const greeting = qs('.hero__greeting', hero)
-  const statement = qs('.hero__display', qs('.hero__statement', hero))
+  const statement = qs('.hero__headline', hero)
   const lede = qs('.hero__lede', hero)
+  const hire = qs('.hero__hire', hero)
   const portrait = qs('.hero__portrait', hero)
   const plates = qsa('.hero__plate', hero)
   const photo = qs('.hero__portrait img', hero)
@@ -63,6 +64,9 @@ export function initHero() {
       yPercent: 118, opacity: 0, duration: 1.1, stagger: 0.018,
       onComplete: openLines(stateChars),
     }, 0.45)
+    // The hiring block lands with the copy, not after it. It is the half of
+    // the first screen a recruiter came for, so it must not wait on the plates.
+    .from(hire, { yPercent: 18, opacity: 0, duration: 1, ease: 'expo.out' }, 0.75)
     .from(photo, { scale: 1.35, duration: 1.6, ease: 'expo.out' }, 0.5)
     .from(portrait, { yPercent: 14, opacity: 0, duration: 1.2 }, 0.5)
     // …and only now do the plates swing out from behind the photo.
@@ -82,7 +86,7 @@ export function initHero() {
   })
     .to(portrait, { yPercent: 26, ease: 'none' }, 0)
     .to(greeting, { yPercent: -32, opacity: 0.25, ease: 'none' }, 0)
-    .to(qs('.hero__statement', hero), { yPercent: -12, opacity: 0.35, ease: 'none' }, 0)
+    .to([qs('.hero__statement', hero), hire], { yPercent: -12, opacity: 0.35, ease: 'none' }, 0)
     .to(gridLines, { opacity: 0.35, ease: 'none' }, 0)
 
   // Pointer parallax — small, so it reads as depth rather than as a gimmick.

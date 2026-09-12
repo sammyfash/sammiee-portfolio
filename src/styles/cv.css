@@ -113,6 +113,30 @@
   .cv__download { margin-left: 0; }
 }
 
+/* On a phone the switch wraps into a ragged three-row pile: label with the
+   first track, second track alone, then the download. Give it an explicit
+   shape instead — the label on its own line, the two tracks paired, and the
+   download last, where the reading order already puts it. */
+@media (max-width: 600px) {
+  .cv__switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .cv__switch-label {
+    grid-column: 1 / -1;
+    margin-right: 0;
+  }
+  .cv__track-btn {
+    padding-inline: 0.75em;
+    text-align: center;
+  }
+  .cv__download {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+}
+
 /* --- sections -------------------------------------------------------------- */
 
 .cv__section { margin-top: clamp(56px, 6.5vw, 112px); }

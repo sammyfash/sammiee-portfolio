@@ -9,9 +9,14 @@
   width: var(--shell);
   margin-inline: auto;
   padding: clamp(40px, 4.63vw, 90px) clamp(24px, 6.06vw, 118px);
-  min-height: 37.7vw;                 /* 652 / 1728 */
+  /* Was 37.7vw, sized around a three-line statement. The statement is one
+     short line now, with the argument in the paragraph under it, so the box
+     closes up rather than framing a field of black. */
+  min-height: 26vw;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 .about__statement {
   font-size: var(--fs-statement);
@@ -19,6 +24,19 @@
   letter-spacing: -0.02em;
   text-wrap: balance;
   max-width: 92%;                     /* 1318 / 1428 inner */
+}
+/* The claim moved out of the display line and into a paragraph that can
+   actually carry it. Measure held near 60ch so it reads as prose, not as a
+   second headline. */
+.about__text {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(22px, 2.31vw, 44px);
+  max-width: 58ch;
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--c-ink-dim);
+  text-wrap: pretty;
 }
 /* Each word starts dimmed and lights up as the block scrubs through. */
 .about__statement .word { color: color-mix(in srgb, var(--c-ink) 16%, transparent); }

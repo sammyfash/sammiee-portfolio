@@ -23,6 +23,7 @@ export function initAbout() {
 
   const statement = qs('.about__statement', section)
   const box = qs('.about__box', section)
+  const text = qs('.about__text', section)
   const more = qs('.about__more', section)
 
   if (prefersReducedMotion()) {
@@ -40,11 +41,13 @@ export function initAbout() {
     .set(statement, { visibility: 'visible' })
     .from(statement, { opacity: 0, y: 14, duration: 0.6, ease: 'power2.out' })
 
-  // The link out to the full About page lands last, once the statement has
-  // settled. It carries data-reveal, so without this it stays invisible.
-  if (more) {
-    intro.set(more, { visibility: 'visible' })
-        .from(more, { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, '-=0.15')
+  // The paragraph and the link out to the full About page land last, once the
+  // statement has settled. Both carry data-reveal, so without this they stay
+  // invisible.
+  for (const el of [text, more]) {
+    if (!el) continue
+    intro.set(el, { visibility: 'visible' })
+        .from(el, { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, '-=0.15')
   }
 
   gsap.to(words, {

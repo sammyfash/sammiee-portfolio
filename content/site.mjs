@@ -16,8 +16,8 @@ export const SITE = {
   email: 'me@sammiee.dev',
   tagline: 'The designer who builds',
   description:
-    'Design engineer with ten years in product design and front-end. WordPress, Webflow, '
-    + 'Framer, and hand-written HTML, CSS and JavaScript.',
+    'Design engineer with ten years of experience in product design and front-end '
+    + 'development. I work in Figma, WordPress, Webflow, Framer, HTML, CSS and JavaScript.',
   // sameAs is how search engines tie this site to an identity, so only real
   // profiles belong here. LinkedIn leads: with no location and no CV timeline
   // on the site, it is where a recruiter goes to fill in the gaps. GitHub

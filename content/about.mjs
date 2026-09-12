@@ -8,13 +8,23 @@
  *   - plain words over impressive ones
  *   - rhetorical lists of exactly three are a tell, factual lists are fine
  *   - claim nothing that cannot be pointed at
+ *   - lead with the work and the result, not with a claim about how important
+ *     the work was, and let a paragraph end when its point is made
+ *
+ * Company-wide revenue, traffic and sponsorship are never attributed to a
+ * person here. "The platform later processed" is a fact; "my work drove" is a
+ * claim, and a recruiter will ask which one is meant.
  */
 
 export const PROFILE = {
-  // Legal name. The wordmark stays "Sammiee" (SITE.name), but everything a
-  // recruiter reads or a crawler indexes says Samuel Fasipe, so the CV, the
-  // LinkedIn profile and this site are provably the same person.
+  // Legal name. It leads everywhere a recruiter, an ATS or a crawler reads:
+  // the page title, the About page heading, the CV and the structured data.
   name: 'Samuel Fasipe',
+  // The name the hero greets with, and the one on LinkedIn. The wordmark stays
+  // "Sammiee" (SITE.name); these three are the same person by design, and the
+  // hiring block under the hero states the legal name so nothing is left to
+  // inference.
+  known: 'Sammy Fash',
   role: 'Design engineer',
   years: 10,
   // No location. The target is remote roles with international teams, so a
@@ -24,69 +34,93 @@ export const PROFILE = {
   hours: 'European and US working hours',
   available: true,
 
-  /** The homepage hero, under "The designer who builds". */
-  lede:
-    'Design engineer, ten years in. I cover product design and the front-end that ships ' +
-    'it, so what gets signed off in Figma is what reaches production. I build in WordPress, ' +
-    'Webflow and Framer, and write HTML, CSS and JavaScript when a project calls for it.',
+  /** Displayed over the portrait. Two lines, both set at display size. */
+  greeting: ['Hello', 'I’m Sammy Fash'],
 
-  /** The one-line statement in the homepage about band. */
-  statement:
-    'Ten years of design engineering behind work that carries real weight: over a billion ' +
-    'dollars moved through one build, a hundred thousand visitors a day through another.',
+  /** The homepage h1. */
+  headline: 'I design digital products and build the front end.',
+
+  /** The paragraph under the h1. */
+  lede:
+    'I’m a design engineer with ten years of experience. I take websites and product ' +
+    'interfaces from early structure in Figma through to a working build in WordPress, ' +
+    'Webflow, Framer or hand-written front-end code.',
+
+  /** Sits above the fold, next to the two first-screen actions. */
+  availability:
+    'Available for remote design engineering roles and selected freelance projects.',
+
+  /** The expressive line. Kept as the brand statement, not as the job title. */
+  statement: 'The designer who builds.',
+
+  /** The paragraph under it, on the homepage about band. */
+  statementBody:
+    'My work sits between design and front-end development. I think through the layout, ' +
+    'interaction and responsive behaviour, then build what we agreed. That keeps the final ' +
+    'site close to the design and gives the team one person to speak to from brief to launch.',
 
   /** Opening of the About page. Read as one block, so the rhythm matters. */
   intro: [
-    'I have spent ten years on both sides of the handoff. Design is where I start, in Figma, ' +
-    'working through structure, states and interaction until the thing is actually resolved. ' +
-    'Then I build it, because a design only counts once it is running in a browser at the ' +
-    'quality it was drawn at.',
+    'I’m a design engineer. I started in graphic design, moved into product design and ' +
+    'learned to build the interfaces I was designing. Ten years later, that overlap is still ' +
+    'where I do my best work.',
 
-    'Most of my work has been for teams in Web3, live events and fintech, where the launch ' +
-    'date is fixed and the site is the commercial surface. Recent builds include a neobank ' +
-    'front door that now takes around a hundred thousand visitors a day, and a festival site ' +
-    'that helped secure close to $100,000 in sponsorship for its edition.',
+    'I usually begin in Figma, working out the structure, responsive behaviour and key ' +
+    'interactions. From there, I can build the site in WordPress, Webflow or Framer, or write ' +
+    'the front end in HTML, CSS and JavaScript. Clients do not have to translate the design ' +
+    'for another developer, and developers receive decisions that have already been tested ' +
+    'against the browser.',
 
-    'I use WordPress and Webflow when a client needs to own their content without calling a ' +
-    'developer, Framer when speed matters more than depth, and plain HTML, CSS and JavaScript ' +
-    'when a project deserves something bespoke. This site is that last case: hand-built, no ' +
-    'framework, no page builder.',
+    'Most of my recent work has been in fintech, Web3 and live events. I have designed and ' +
+    'built for BMONI, Africa Blockchain Festival, ETHSafari and teams in the Internet Computer ' +
+    'ecosystem. The projects differ, but the job is often the same: make a complicated offer ' +
+    'easy to understand, ship on time and leave the team with something they can manage.',
+
+    'I work remotely across European and US hours. I’m currently looking for a design ' +
+    'engineering role, and I’m also open to selected website projects.',
   ],
 }
 
-/** Numbers a recruiter can check against the case studies. */
+/**
+ * Numbers a recruiter can check against the case studies.
+ *
+ * Each label states whose number it is and what it measures. The platform
+ * figures belong to BMONI and are qualified as such: the site launched, the
+ * platform later reported the volume, and nothing here claims the first caused
+ * the second. Keep the "after the website launch" and "reported" wording unless
+ * there is analytics and attribution to support something stronger.
+ */
 export const PROOF = [
-  { value: '10 yrs', label: 'designing and building for the web' },
-  { value: '$1B+', label: 'processed on a platform my work fronts' },
-  { value: '~100K', label: 'visitors a day on the busiest build' },
-  { value: '6', label: 'case studies documented on this site' },
+  { value: '10 years', label: 'working across design and front-end development' },
+  { value: '$1B+', label: 'processed by the BMONI platform after the website launch' },
+  { value: '~100K', label: 'daily visits reported for BMONI’s website' },
+  { value: '6', label: 'case studies of design and development work documented here' },
 ]
 
 /**
  * Capabilities, grouped the way the job actually splits. Deliberately four
  * groups rather than three, and uneven in length, because tidy triads are the
  * first thing that reads as generated.
+ *
+ * No explanatory line under each group: the tool names are clearer on their own,
+ * and the notes that used to sit here were the site's densest cluster of
+ * self-describing copy.
  */
 export const CAPABILITIES = [
   {
-    title: 'Product & UI design',
-    items: ['Figma', 'Design systems', 'Interaction design', 'Prototyping', 'Responsive layout', 'Accessibility'],
-    note: 'Every screen resolved to its states before a line of code exists.',
+    title: 'Product and interface design',
+    items: ['Figma', 'Responsive layouts', 'Design systems', 'Prototyping', 'Interaction design', 'Accessibility'],
   },
   {
-    title: 'CMS & no-code build',
-    items: ['WordPress', 'Custom themes', 'ACF', 'Webflow', 'Framer', 'Elementor'],
-    note: 'Content models the client can run themselves once I hand over.',
+    title: 'WordPress, Webflow and Framer',
+    items: ['Custom WordPress builds', 'Reusable content blocks', 'Webflow CMS', 'Framer sites', 'Client handover'],
   },
   {
-    title: 'Front-end engineering',
-    items: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Motion design', 'Vite'],
-    note: 'Hand-written when a build deserves more than a page builder can give it.',
+    title: 'Front-end development',
+    items: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Vite', 'Responsive implementation'],
   },
   {
-    title: 'Performance & search',
-    items: ['Core Web Vitals', 'Semantic markup', 'Structured data', 'Technical SEO', 'Image pipelines', 'CSP & headers'],
-    note: 'The parts that decide whether the work is ever actually found.',
+    title: 'Performance and search',
+    items: ['Core Web Vitals', 'Semantic markup', 'Structured data', 'Image optimisation', 'Technical SEO'],
   },
 ]
-

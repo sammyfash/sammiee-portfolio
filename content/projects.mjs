@@ -8,13 +8,22 @@
  *   video                         slug of a build video in /public/video
  *   metrics                       the two or three numbers that carry the case
  *   stack                         the tools the work was actually made with
+ *
+ * Copy rules, same as content/about.mjs. Two that matter most here:
+ *
+ *   1. Every number states whose it is and what it measures. A figure that
+ *      belongs to the client's platform is written as the client's, with the
+ *      timeframe or the source attached. Nothing implies the website caused a
+ *      business result unless there is something to point at.
+ *   2. Six case studies must not share one argumentative shape. "The audience
+ *      is X, so I did Y, which means Z" reads as a template by the third page.
  */
 
 export const PROJECTS = [
   {
     slug: 'africa-blockchain-festival',
     seoTitle: 'Event website design & WordPress build | Sammiee',
-    seoDescription: 'How a blockchain festival site was designed in Figma and built in WordPress, with separate sponsor and ticket funnels, three languages, and a client-owned content model.',
+    seoDescription: 'Website design and WordPress development for Africa Blockchain Festival, including separate sponsor and ticket journeys, multilingual content and an event management dashboard.',
     name: 'Africa Blockchain Festival',
     title: 'Africa Blockchain Festival 2026',
     colour: '#0895fa',
@@ -28,36 +37,37 @@ export const PROJECTS = [
     card: 'abf',
     shots: { desktop: 4, mobile: 5 },
     metrics: [
-      { value: '~$100K', label: 'in sponsorship secured for the edition the site launched' },
-      { value: '3,000+', label: 'attendees across policy, capital and builder tracks' },
-      { value: '2 editions', label: 'designed and shipped — 2025, then retained for 2026' },
+      { value: '~$100K', label: 'in sponsorship reported by the organisers for the 2025 edition' },
+      { value: '2 editions', label: 'designed and built: 2025, then retained for 2026' },
+      { value: '3 languages', label: 'English, French and Swahili, from one set of templates' },
     ],
     intro:
-      'Africa’s largest blockchain festival and tokenisation summit. Three days at the Sarit ' +
-      'Expo Centre in Nairobi — and the page every sponsor, policymaker and investor works ' +
-      'through before they commit budget.',
+      'Africa Blockchain Festival brings policymakers, investors, founders and developers ' +
+      'together in Nairobi. I designed and built the public website for the 2025 edition, then ' +
+      'returned for 2026. The site supports ticket sales, sponsorship outreach and the event ' +
+      'team’s day-to-day publishing.',
     approach: [
-      'I designed the site end to end in Figma before any code existed — every section, every ' +
-      'breakpoint, every state. Against a fixed event date that mattered more than usual: it ' +
-      'moved the hard conversations to the design phase and kept the build from being ' +
-      'renegotiated halfway through.',
-      'The commercial problem was that a $50 attendee and a $25,000 sponsor are not the same ' +
-      'visitor, and a single ticket funnel serves neither well. So the sponsor path runs ' +
-      'separately from the ticket path, with its own proof — audience numbers, past partners, ' +
-      'and the deal context a sponsorship lead actually needs before taking a call.',
-      'The build is WordPress, mapped onto the festival’s own content model rather than a theme. ' +
-      'Speakers, sponsors, ticket tiers, travel guides and three languages are all editable by ' +
-      'the team, so a campaign that runs for months does not queue behind a developer.',
+      'The launch date could not move, so I completed the page structure, responsive layouts ' +
+      'and important states in Figma before development began. That gave the team a clear view ' +
+      'of the site early and reduced changes during the build.',
+
+      'Sponsors and attendees needed different information. The sponsor route focuses on ' +
+      'audience, previous partners and commercial opportunities. The ticket route focuses on ' +
+      'the programme, access levels, travel and payment. Both routes remain visible without ' +
+      'competing for the same call to action.',
+
+      'I built the main site in WordPress around the festival’s content. The team can update ' +
+      'speakers, sponsors, ticket tiers, travel information and translations without editing ' +
+      'templates.',
     ],
     outcome:
-      'The edition secured close to $100,000 in sponsorship, with the site working as the ' +
-      'primary pitch surface for partners evaluating the event. On the strength of it I was ' +
-      'retained to design the 2026 edition, which now runs on the same content model — the team ' +
-      'has taken it through a full campaign cycle without opening a code editor.',
+      'I was retained for the 2026 edition after the first launch. The organisers report that ' +
+      'the 2025 edition secured close to $100,000 in sponsorship, with the website used during ' +
+      'partner outreach. The same content structure now supports a second campaign.',
     highlights: [
-      { label: 'Two funnels', text: 'Sponsors and ticket buyers get separate routes, because they are buying different things.' },
-      { label: 'Three languages', text: 'English, French and Swahili from one set of templates.' },
-      { label: 'Client-owned', text: 'Speakers, tiers and partners are all editable without a developer.' },
+      { label: 'Separate journeys', text: 'Sponsor information and ticket sales have distinct routes through the site.' },
+      { label: 'Three languages', text: 'English, French and Swahili content uses the same page templates.' },
+      { label: 'Easy to update', text: 'The event team manages speakers, partners, ticket tiers and travel content in WordPress.' },
     ],
     // Second and third acts inside the same case, not separate cases. The
     // marketing site, the thing that takes the money and the tool the team runs
@@ -71,25 +81,17 @@ export const PROJECTS = [
       title: 'The ticketing flow',
       live: 'https://africablockchainfestival.com/get-ticket/',
       intro:
-        'Selling the event is one job. Taking the money is another, and it runs across four ' +
-        'screens rather than one page.',
+        'The ticket journey covers selection, registration, payment and travel. I planned the ' +
+        'sequence before designing the screens, then kept the calls to action and page states ' +
+        'consistent from one step to the next.',
       body: [
-        'I started this part with a written blueprint rather than a layout. It fixed the ' +
-        'positioning first, then mapped the journey a buyer actually moves through: attention, ' +
-        'credibility, desire, belonging, selection, confidence, purchase. After that every ' +
-        'section had to earn its place by serving one of those stages, which is a much easier ' +
-        'argument to have than one about taste.',
+        'Passes are presented by level of access, which makes the difference between workshop, ' +
+        'general and VIP options easier to compare. One recommended option is visually ' +
+        'prominent, while sponsorship remains available as a separate route.',
 
-        'Tiers are presented as access levels rather than as products, because someone weighing ' +
-        'a workshop pass against a full VIP package is deciding how much of the event to be part ' +
-        'of, not comparing line items. One package is featured, which moves average order value ' +
-        'without pressuring anyone. The CTA hierarchy then holds across all four screens, so the ' +
-        'sponsorship path stays reachable without ever competing with the ticket sale.',
-
-        'Checkout gets a real state rather than an error. Arrive at the payment screen without a ' +
-        'pass selected and it asks which one you want, offers a route back to the tiers, and says ' +
-        'plainly that nothing has been charged. Money makes people nervous, and a checkout that ' +
-        'explains where you are beats one that assumes nobody arrives the wrong way.',
+        'The payment page also handles the case where someone arrives without choosing a pass. ' +
+        'It explains that no charge has been made and sends the visitor back to ticket selection ' +
+        'instead of leaving them at an error.',
       ],
       steps: [
         { path: '/get-ticket/', label: 'Ticket selection', at: 0.28 },
@@ -102,36 +104,24 @@ export const PROJECTS = [
       title: 'The admin behind it',
       host: 'abfadmin.com',
       intro:
-        'A festival runs on more than a website. This is the tool the team runs it from, and it ' +
-        'is a separate application rather than a plugin: Next.js and TypeScript on Supabase, ' +
-        'deployed independently of the WordPress site it reports on.',
+        'I also built a separate event dashboard with Next.js, TypeScript and Supabase. It ' +
+        'brings registrations, payment data, campaign links, coupons and engineering requests ' +
+        'into one place for the event team.',
       body: [
-        'Registrations were arriving in Google Sheets, sales in the payment gateways, traffic in ' +
-        'Search Console, and requests to me over WhatsApp. Four places, none of which answered ' +
-        'the only question the team actually had, which was how the event is doing. The admin is ' +
-        'one place that does, for the twenty or so people running it.',
+        'Google Sheets remains the team’s source of truth. The dashboard synchronises those ' +
+        'records and shows whether each source is up to date. Edited rows update, deleted rows ' +
+        'are retained as inactive records and restored rows are not duplicated.',
 
-        'The sheets stay the source of truth, because that is where the team already works. Sync ' +
-        'is a snapshot replace keyed on a row hash, so an edited row updates, a deleted row soft ' +
-        'deletes rather than vanishing, and a row that reappears is restored instead of ' +
-        'duplicated. The overview carries a line stating whether every source still matches its ' +
-        'sheet, since a dashboard that quietly drifts from its source is worse than no dashboard.',
+        'Campaign reporting follows individual share links through to checkout and payment. ' +
+        'That lets the team compare the links given to different partners instead of relying ' +
+        'only on broad channel labels.',
 
-        'Campaigns answers where paying buyers came from rather than where clicks came from. Every ' +
-        'share link carries its own funnel, which is what lets one campaign handed to three teams ' +
-        'be told apart; grouping by channel cannot do that. It counts checkouts started as well as ' +
-        'paid, because a conversion rate without a denominator is just a sales figure.',
+        'Coupon values are set on the server and redemptions are counted only after payment. ' +
+        'Loading states are included on each route so slower services do not make the ' +
+        'application appear frozen.',
 
-        'Coupons are created here and priced on the server. The browser names a code and never an ' +
-        'amount, so a discount cannot be edited into a larger one on its way to checkout, and a ' +
-        'redemption counts on payment rather than on reaching the checkout, so an abandoned ' +
-        'attempt cannot burn one of a limited run.',
-
-        'Every dashboard route renders per request, which without care means a click leaves the ' +
-        'previous page on screen while the server works. Each route has a loading skeleton and the ' +
-        'slower third-party calls sit in their own boundary, so one unhurried API cannot hold up ' +
-        'the rest of the page. The screens below run on the application’s own preview data ' +
-        'rather than live festival figures.',
+        'The screens below run on the application’s own preview data rather than live festival ' +
+        'figures, because the dashboard sits behind a login and holds real registrant details.',
       ],
       // Behind a login, so these are rendered from the app's built-in preview
       // mode rather than captured from production. That also keeps real
@@ -148,7 +138,7 @@ export const PROJECTS = [
   {
     slug: 'bmoni',
     seoTitle: 'Fintech website design & WordPress build | Sammiee',
-    seoDescription: 'Designing and building the front door for a cross-border neobank: product-led layout, a market switch for two continents, and a reusable block library in WordPress.',
+    seoDescription: 'Product design and WordPress development for BMONI, a cross-border neobank serving Nigeria and Mexico.',
     name: 'BMONI',
     title: 'BMONI — like your bank, but smarter',
     colour: '#e879f9',
@@ -166,43 +156,42 @@ export const PROJECTS = [
     card: 'bmoni',
     shots: { desktop: 4, mobile: 0 },
     metrics: [
-      { value: '$1B+', label: 'in transactions processed on the platform this fronted' },
-      { value: '~100K', label: 'visitors a day — the highest-traffic surface BMONI owns' },
-      { value: '2 markets', label: 'live at launch, Nigeria and Mexico, from one template set' },
+      { value: '$1B+', label: 'processed by the BMONI platform after the website launched' },
+      { value: '~100K', label: 'daily visits reported for the website' },
+      { value: '2 markets', label: 'Nigeria and Mexico, from one set of templates' },
     ],
     intro:
-      'A cross-border neobank running on stablecoin rails, live in Nigeria and Mexico. The site ' +
-      'is the front door to a platform that has since processed over $1 billion in transactions ' +
-      'and takes roughly 100,000 visitors a day.',
+      'BMONI is a cross-border neobank serving customers in Nigeria and Mexico. I designed and ' +
+      'built the marketing website in 2025. The platform later reported more than $1 billion in ' +
+      'processed transactions, and the website receives roughly 100,000 visits a day.',
     approach: [
-      'Fintech sites fail in one of two directions — so buttoned-up they read as a legacy ' +
-      'institution nobody under forty wants, or so playful nobody trusts them with money. I ' +
-      'designed BMONI in Figma around the product itself: real app screens, at real scale, doing ' +
-      'recognisable things. The interface carries the credibility, so the copy does not have to ' +
-      'oversell.',
-      'Structure follows the decision a switcher actually makes. Four claims — no abusive fees, ' +
-      'open 24/7, multi-currency, borderless — each earn a section instead of being flattened ' +
-      'into a feature grid, and the market switch sits above the fold because the audience is ' +
-      'split across two continents.',
-      'Built in WordPress with every section as a reusable block. That was a deliberate call for ' +
-      'a company opening one market at a time: new regions are assembled from existing parts ' +
-      'rather than commissioned as new design work.',
+      'The site needed to feel modern without making money management look casual. I used real ' +
+      'product screens throughout the page, so visitors could see the accounts, transfers and ' +
+      'currency features instead of relying on illustrations or broad claims.',
+
+      'The page is organised around four reasons to switch: fees, availability, currencies and ' +
+      'cross-border access. A market switch appears near the top because the product and offer ' +
+      'differ between Nigeria and Mexico.',
+
+      'I built each section as a reusable WordPress block. When BMONI added a second market, ' +
+      'the team could assemble the page from the same system instead of starting another ' +
+      'website from scratch.',
     ],
     outcome:
-      'At roughly 100,000 visitors a day this is the busiest thing BMONI owns, and it holds up ' +
-      'at that volume. The block library has since carried a second market live without ' +
-      'additional design work — which is the return the modular build was there to earn.',
+      'The block system supported the launch of a second market without a separate redesign. It ' +
+      'also gives BMONI a consistent way to publish new product and campaign pages as the ' +
+      'service grows.',
     highlights: [
-      { label: 'Product-led', text: 'Real interface screens carry the argument instead of stock illustration.' },
-      { label: 'Market switch', text: 'Nigeria and Mexico surfaced up front, since the audience is split.' },
-      { label: 'Built to extend', text: 'Sections are blocks, so a new market is assembly rather than a redesign.' },
+      { label: 'Product on the page', text: 'Real interface screens explain how BMONI works.' },
+      { label: 'Two markets', text: 'Nigeria and Mexico use one flexible set of page templates.' },
+      { label: 'Reusable blocks', text: 'New pages can be assembled from existing WordPress sections.' },
     ],
   },
 
   {
     slug: 'icp-hub-kenya',
     seoTitle: 'Web3 education site design & Webflow build | Sammiee',
-    seoDescription: 'Designing a blockchain education hub for three audiences at once, then building it in Webflow so the team could run it without a developer.',
+    seoDescription: 'Website and Webflow build for ICP Hub Kenya, with clear routes for developers, students and ecosystem partners.',
     name: 'ICP Hub Kenya',
     title: 'ICP Hub Kenya',
     colour: '#a855f7',
@@ -222,36 +211,36 @@ export const PROJECTS = [
       { value: 'Webflow', label: 'designed and built, then handed over for the team to run' },
     ],
     intro:
-      'The regional hub for the Internet Computer in East Africa. It had to read as locally ' +
-      'rooted to a Nairobi developer and as globally credible to the DFINITY ecosystem funding ' +
-      'them — at the same time, on the same page.',
+      'ICP Hub Kenya supports the Internet Computer developer community in East Africa. I ' +
+      'designed the website for developers, students and potential partners, then built it in ' +
+      'Webflow so the local team could manage events, programmes and community updates.',
     approach: [
-      'I mapped the journeys before drawing anything, because three audiences arrive here wanting ' +
-      'different things: developers looking for grants and docs, students looking for events, ' +
-      'partners looking for proof. Trying to serve all three with one hero is how these sites ' +
-      'usually fail, so Events, Community, Grants and Learn ICP each got their own way in.',
-      'The visual direction holds clean whitespace and an ICP-aligned futurism against vibrant ' +
-      'local photography, so the page never reads as a global template dropped onto a region. ' +
-      'Calls to action are placed against intent rather than repeated — newsletter, developer ' +
-      'onboarding, event RSVP, grant application.',
-      'Built in Webflow so a small team could keep publishing events and cohort news without ' +
-      'engineering time, and handed over with the CMS collections structured for them to extend.',
+      'I mapped the three main audiences before designing the page. Developers could find grants ' +
+      'and technical resources; students could find events and learning programmes; partners ' +
+      'could see the hub’s work and ways to get involved.',
+
+      'The visual direction combines the Internet Computer brand with photography from the local ' +
+      'community. The result feels connected to the wider ecosystem without losing its Nairobi ' +
+      'identity.',
+
+      'I created Webflow CMS collections for events, programmes and news, then handed the site ' +
+      'over to the team. They could keep publishing without waiting for a developer.',
     ],
     outcome:
-      'A regionally tailored site that positions Kenya as a strategic hub inside the global ' +
-      'ecosystem, used in outreach to investors, sponsors and university partners. The build ' +
-      'video below is the full walkthrough — the domain has since lapsed, but the work stands.',
+      'The site supported outreach to developers, universities, sponsors and ecosystem partners ' +
+      'during my time with the hub. The original domain has since lapsed, so the case study ' +
+      'includes a recorded walkthrough of the finished build.',
     highlights: [
-      { label: 'Three audiences', text: 'Developers, students and partners each get their own route through one page.' },
-      { label: 'Grants path', text: 'Applications surfaced as a first-class action, not buried in a menu.' },
-      { label: 'Handed over', text: 'CMS collections structured so the team publishes without a developer.' },
+      { label: 'Clear audience routes', text: 'Developers, students and partners can find the information meant for them.' },
+      { label: 'Grants are visible', text: 'Funding opportunities are available from the main journey instead of being buried in navigation.' },
+      { label: 'Team managed', text: 'Webflow CMS lets the hub publish events and programme updates independently.' },
     ],
   },
 
   {
     slug: 'ethsafari',
     seoTitle: 'Conference website design & WordPress build | Sammiee',
-    seoDescription: 'Designing and building a conference site for one of Africa’s largest Ethereum events, structured around programme, travel and ticketing.',
+    seoDescription: 'Art direction, website design and WordPress development for ETHSafari, a nine-day Ethereum event travelling from Nairobi to Kilifi.',
     name: 'ETHSafari',
     title: 'ETHSafari — the watering hole for web3',
     colour: '#22c55e',
@@ -265,43 +254,40 @@ export const PROJECTS = [
     card: 'ethsafari',
     shots: { desktop: 4, mobile: 5 },
     metrics: [
-      { value: '3,000+', label: 'attendees at the most recent edition' },
+      { value: '3,000+', label: 'attendees at the most recent edition, reported by the organisers' },
       { value: '150+', label: 'speakers across nine days, Nairobi to the coast' },
-      { value: '80+', label: 'companies and 50+ press covering the week' },
+      { value: '5 years', label: 'of past editions kept live in the schedule archive' },
     ],
     intro:
-      'Africa’s flagship Ethereum and web3 celebration, and one of the largest Ethereum events ' +
-      'on the continent — nine days moving from Nairobi to the Kilifi coast, drawing 3,000+ ' +
-      'attendees, 150+ speakers and 80+ companies.',
+      'ETHSafari is a nine-day Ethereum event that moves from Nairobi to the Kenyan coast. The ' +
+      'latest edition brought together more than 3,000 attendees, 150 speakers and 80 ' +
+      'companies. I designed the event website and built it in WordPress.',
     approach: [
-      'Most crypto event sites are dark, neon and interchangeable, which is a positioning problem ' +
-      'before it is a design one: if you look like every other conference, you are one. ETHSafari ' +
-      'went the other way — light ground, heavy display type, and a ticker of coordinates and ' +
-      'in-jokes running through the page. “GAS: LOW · VIBES: HIGH” is on the site because it is ' +
-      'the register the community actually speaks in.',
-      'The structure follows the journey rather than the org chart: dates, then route, then ' +
-      'edition. Nairobi to Kilifi is the spine of the layout the same way it is the spine of the ' +
-      'programme, and the schedule archive carries five years of editions so a first-time ' +
-      'attendee can see what they are buying into.',
-      'Designed in Figma and built in WordPress against a content model the organisers run ' +
-      'themselves — speakers, schedule, side events and vendor applications all move fast in the ' +
-      'weeks before an event, and none of that should need a developer.',
+      'I moved away from the dark, neon look common to crypto conferences. The site uses a light ' +
+      'background, large type, route coordinates and the event’s own humour. It feels like ' +
+      'ETHSafari rather than a reusable conference theme.',
+
+      'The journey from Nairobi to Kilifi shapes the page. Visitors see the dates and route ' +
+      'first, then the programme, tickets and previous editions. The archive covers five years, ' +
+      'which gives new attendees useful context before they book.',
+
+      'Speakers, schedules, side events and vendor applications are managed in WordPress. The ' +
+      'organisers can update information quickly during the final weeks before the event.',
     ],
     outcome:
-      'An event site with a voice the community quotes back, still doing the unglamorous work of ' +
-      'moving 3,000+ people through tickets, applications and a nine-day schedule that changes ' +
-      'weekly right up to the doors opening.',
+      'The site gives ETHSafari a recognisable voice while handling tickets, applications and a ' +
+      'programme that changes frequently before opening day.',
     highlights: [
-      { label: 'Route as structure', text: 'Nairobi → Kilifi organises the page the way it organises the week.' },
-      { label: 'Five-year archive', text: 'Past editions kept live, so newcomers can see the track record.' },
-      { label: 'Light on purpose', text: 'A deliberate break from the dark-neon default of the category.' },
+      { label: 'The route leads', text: 'Nairobi to Kilifi provides the structure for the page and the event programme.' },
+      { label: 'Five years of editions', text: 'Previous programmes remain available for new attendees and partners.' },
+      { label: 'Built for updates', text: 'The team manages speakers, schedules, side events and applications in WordPress.' },
     ],
   },
 
   {
     slug: 'smartdev-studios',
     seoTitle: 'Agency website design & Webflow build | Sammiee',
-    seoDescription: 'Designing a blockchain development studio’s site around what a founder needs to decide, then building it in Webflow.',
+    seoDescription: 'Website design and Webflow development for SmartDev Studios, explaining its blockchain development services to founders and non-technical buyers.',
     name: 'SmartDev Studios',
     title: 'SmartDev Studios',
     colour: '#fb923c',
@@ -317,40 +303,38 @@ export const PROJECTS = [
     video: 'smartdev-studios',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
-      { value: '5 seconds', label: 'to communicate what they do and why to trust them' },
+      { value: '4 services', label: 'smart contracts, DeFi, NFT platforms and audits, described for a non-technical buyer' },
       { value: 'Webflow', label: 'designed and built, responsive across three breakpoints' },
     ],
     intro:
-      'A Web3-native development studio — smart contracts, DeFi, NFTs, audits. The entire job ' +
-      'was making deep technical capability legible to a founder deciding who to trust with ' +
-      'their protocol.',
+      'SmartDev Studios builds blockchain products, including smart contracts, DeFi ' +
+      'applications, NFT platforms and audits. I designed and built a Webflow site that ' +
+      'explains those services to founders who may not have a technical background.',
     approach: [
-      'Their buyer is often not an engineer. They are a founder with capital and a deadline, ' +
-      'scanning for signals of competence. So the site opens with what SmartDev actually does ' +
-      'rather than an abstract claim, and the service blocks translate a long technical menu — ' +
-      'audits, DApps, DeFi, NFTs — into outcomes a non-engineer can weigh against a budget.',
-      'The visual language is minimal and confident: dark ground, strong type hierarchy, ' +
-      'restrained iconography, and motion used strictly as a cue toward the next action. Mobile ' +
-      'and tablet were designed alongside desktop rather than retrofitted, because more than half ' +
-      'the inbound arrives on a phone.',
-      'Built in Webflow, which suited a studio that wanted to edit its own service copy as the ' +
-      'offer evolved without booking developer time to change a sentence.',
+      'The opening section says what the studio builds and who it works with. Each service then ' +
+      'explains the kind of problem it solves, helping a founder compare the offer without first ' +
+      'learning the technical vocabulary.',
+
+      'I used a simple dark interface, clear type and restrained motion. Desktop, tablet and ' +
+      'mobile layouts were designed together so the hierarchy remained clear on smaller screens.',
+
+      'The site was built in Webflow, allowing the team to edit service descriptions as its ' +
+      'offer changed.',
     ],
     outcome:
-      'A professional digital face the team now leads with in both cold outreach and inbound, ' +
-      'with a markedly shorter path from landing to enquiry. The walkthrough below is the full ' +
-      'build — the domain has since lapsed, but the work stands.',
+      'SmartDev used the site in outreach and for inbound enquiries. The original domain has ' +
+      'since lapsed, so the case study includes a recorded walkthrough of the completed build.',
     highlights: [
-      { label: 'Five-second test', text: 'What they do, who it is for, and why to trust them — above the fold.' },
-      { label: 'Service translation', text: 'Audits, DApps, DeFi and NFTs described in outcomes, not jargon.' },
-      { label: 'Motion as cue', text: 'Transitions that point at the next action rather than perform.' },
+      { label: 'Clear opening', text: 'Visitors can quickly see what the studio builds and who it works with.' },
+      { label: 'Plain service descriptions', text: 'Technical services are explained in language a founder can use.' },
+      { label: 'Responsive by design', text: 'Desktop, tablet and mobile layouts were planned together.' },
     ],
   },
 
   {
     slug: 'dynasty-labs',
     seoTitle: 'Web3 venture site design & Webflow build | Sammiee',
-    seoDescription: 'Designing and building a Web3 accelerator’s site: positioning, service structure, and a Webflow build the team owns.',
+    seoDescription: 'One-page website design and Webflow development for Dynasty Labs, a Hong Kong growth firm working with Web3 companies.',
     name: 'Dynasty Labs',
     title: 'Dynasty Labs',
     colour: '#22d3ee',
@@ -366,32 +350,33 @@ export const PROJECTS = [
     video: 'dynasty-labs',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
-      { value: 'One page', label: 'carrying four service pillars without losing the thread' },
+      { value: 'One page', label: 'covering community, partnerships, liquidity support and investor access' },
       { value: 'Webflow', label: 'designed and built as a single scroll narrative' },
     ],
     intro:
-      'A Hong Kong growth firm for Web3 projects. One page, four pillars, and a founder audience ' +
-      'that decides inside a minute whether you are worth a reply.',
+      'Dynasty Labs is a Hong Kong growth firm for Web3 companies. I designed and built a ' +
+      'one-page Webflow site covering community, partnerships, liquidity support and investor ' +
+      'access.',
     approach: [
-      'Everything was pulled toward one sentence — we scale Web3 projects the right way — and any ' +
-      'section that did not support it was cut rather than shrunk. Community building, strategic ' +
-      'partnerships, liquidity support and investor access each carry one clear block, in the ' +
-      'order a founder would ask about them.',
-      'It is built as a scroll narrative rather than a stack of panels. Each section hands off to ' +
-      'the next, so a founder skimming on a phone at an airport still arrives at the enquiry form ' +
-      'with the argument intact. The palette is dark and restrained — the audience reads ' +
-      'loudness as inexperience.',
-      'Built in Webflow so the firm could move quickly on positioning copy, which for an early ' +
-      'growth business changes more often than the design does.',
+      'The page opens with the firm’s offer, then gives each of its four services a clear ' +
+      'section. I removed content that repeated the same promise so a founder could understand ' +
+      'the business in one pass.',
+
+      'The layout is designed for scrolling, with each section leading naturally to the enquiry ' +
+      'form. The visual style stays dark and restrained, leaving the offer and client ' +
+      'conversations to do the work.',
+
+      'I built the site in Webflow so the team could update its positioning and service copy ' +
+      'without changing the design.',
     ],
     outcome:
-      'Measurably clearer to first-time visitors in feedback rounds, and now the firm’s lead ' +
-      'asset in investor and founder conversations. The walkthrough below is the full build — ' +
-      'the domain has since lapsed, but the work stands.',
+      'The finished page became the firm’s main website for founder and investor conversations. ' +
+      'The original domain has since lapsed, so the case study includes a recorded walkthrough ' +
+      'of the completed build.',
     highlights: [
-      { label: 'One argument', text: 'Every section supports a single claim, or it was cut.' },
-      { label: 'Scroll narrative', text: 'Sections hand off, so a skim still lands the case.' },
-      { label: 'Restrained', text: 'A dark, quiet palette for an audience that reads loud as junior.' },
+      { label: 'One clear offer', text: 'The four services support a single explanation of what Dynasty Labs does.' },
+      { label: 'Easy to scan', text: 'The page still makes sense when read quickly on a phone.' },
+      { label: 'Simple to update', text: 'The team can change service and positioning copy in Webflow.' },
     ],
   },
 ]

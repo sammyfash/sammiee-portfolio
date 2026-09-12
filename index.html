@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Design Engineer &amp; Web Designer | Sammiee</title>
-  <meta name="description" content="Design engineer and web designer, ten years in. I design in Figma and build in WordPress, Webflow, Framer and hand-written code. Remote, working worldwide.">
+  <title>Samuel Fasipe | Design Engineer and Front End Developer</title>
+  <meta name="description" content="Design engineer with ten years of experience in product design and front-end development. I work in Figma, WordPress, Webflow, Framer, HTML, CSS and JavaScript.">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://sammiee.dev/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Design Engineer &amp; Web Designer | Sammiee">
-  <meta property="og:description" content="Design engineer, ten years in. Product design through to production front-end.">
+  <meta property="og:title" content="Samuel Fasipe | Design Engineer and Front End Developer">
+  <meta property="og:description" content="I design digital products and build the front end. Ten years across fintech, Web3 and live events.">
   <meta property="og:site_name" content="Sammiee">
   <meta property="og:url" content="https://sammiee.dev/">
   <meta property="og:image" content="https://sammiee.dev/img/work/abf.jpg">
@@ -27,11 +27,11 @@
       "@type": "Person",
       "@id": "https://sammiee.dev/#person",
       "name": "Samuel Fasipe",
-      "alternateName": "Sammiee",
+      "alternateName": ["Sammy Fash", "Sammiee"],
       "url": "https://sammiee.dev/",
       "email": "mailto:me@sammiee.dev",
       "jobTitle": "Design Engineer",
-      "description": "Design engineer and web designer with ten years' experience across product design and front-end development.",
+      "description": "Design engineer with ten years of experience across product design and front-end development, working in Figma, WordPress, Webflow, Framer, HTML, CSS and JavaScript.",
       "knowsAbout": [
         "Web Design",
         "Product Design",
@@ -102,6 +102,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <!-- first-paint curtain -->
   <div class="preloader">
     <div class="preloader__inner">
@@ -149,11 +151,11 @@
         <span class="nav-link__index">01</span>
       </a></li>
       <li><a class="nav-link" href="/about">
-        <span class="nav-link__roll"><span>About me</span><span aria-hidden="true">About me</span></span>
+        <span class="nav-link__roll"><span>About</span><span aria-hidden="true">About</span></span>
         <span class="nav-link__index">02</span>
       </a></li>
       <li><a class="nav-link" href="#work">
-        <span class="nav-link__roll"><span>My Works</span><span aria-hidden="true">My Works</span></span>
+        <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
         <span class="nav-link__index">03</span>
       </a></li>
       <li><a class="nav-link" href="/cv">
@@ -161,7 +163,7 @@
         <span class="nav-link__index">04</span>
       </a></li>
       <li><a class="nav-link" href="#contact" data-contact-open>
-        <span class="nav-link__roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+        <span class="nav-link__roll"><span>Contact</span><span aria-hidden="true">Contact</span></span>
         <span class="nav-link__index">05</span>
       </a></li>
     </ul>
@@ -170,8 +172,7 @@
       <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
       <span>
         <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
-        <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a> &nbsp;
-                <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
       </span>
     </div>
   </nav>
@@ -183,7 +184,7 @@
     </button>
   </header>
 
-  <main>
+  <main id="main" tabindex="-1">
 
     <!-- ================= HERO ================= -->
     <section class="hero" data-cursor-zone="cross">
@@ -204,7 +205,7 @@
 
         <p class="hero__greeting hero__display" data-reveal>
           <span class="line hero__line--hello"><span class="line__inner">Hello</span></span>
-          <span class="line hero__line--name"><span class="line__inner">I&rsquo;m Sammiee</span></span>
+          <span class="line hero__line--name"><span class="line__inner">I&rsquo;m Sammy Fash</span></span>
         </p>
 
         <div class="hero__portrait" data-reveal>
@@ -213,17 +214,35 @@
           <img src="/img/portrait.webp" alt="Sammiee, smiling, in a black polo shirt" width="640" height="640" fetchpriority="high" decoding="async">
         </div>
 
+        <!-- The headline runs the full width under the portrait, then the
+             stage closes on one row: what I do on the left, and on the right
+             the two things a recruiter came to do. Name, title and availability
+             are carried by the page title, the CV and the footer rather than
+             repeated here. -->
         <div class="hero__statement">
-          <h1 class="hero__display" data-reveal>
-            <span class="line"><span class="line__inner">The designer</span></span>
-            <span class="line hero__line--builds"><span class="line__inner">who builds</span></span>
+          <h1 class="hero__headline" data-reveal>
+            <span class="line"><span class="line__inner">I design digital products</span></span>
+            <span class="line"><span class="line__inner">and build the front end.</span></span>
           </h1>
-          <p class="hero__lede" data-reveal>
-          Design engineer, ten years in. I cover product design and the front-end that ships
-          it, so what gets signed off in Figma is what reaches production. I build in
-          WordPress, Webflow and Framer, and write HTML, CSS and JavaScript when a project
-          calls for it.
-        </p>
+
+          <div class="hero__foot">
+            <p class="hero__lede" data-reveal>
+              I&rsquo;m a design engineer with ten years of experience. I take websites and
+              product interfaces from early structure in Figma through to a working build in
+              WordPress, Webflow, Framer or hand-written front-end code.
+            </p>
+
+            <div class="hero__hire" data-reveal>
+              <div class="hero__actions">
+                <a class="pill" href="#work" data-magnetic="0.24"
+                   data-cursor-tag="See the work" data-cursor-color="#0895fa">
+                  <span class="pill__label">View my work</span>
+                </a>
+                <a class="link-wipe hero__actions-alt" href="/cv"
+                   data-cursor-tag="Read the CV" data-cursor-color="#edaa0b">Read my CV</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -239,10 +258,12 @@
           <span class="frame__edge frame__edge--l"></span>
           <i></i><i></i><i></i><i></i>
         </span>
-        <h2 class="about__statement" data-reveal>
-          Ten years of design engineering behind work that carries real weight: over a billion
-          dollars moved through one build, a hundred thousand visitors a day through another.
-        </h2>
+        <h2 class="about__statement" data-reveal>The designer who builds.</h2>
+        <p class="about__text" data-reveal>
+          My work sits between design and front-end development. I think through the layout,
+          interaction and responsive behaviour, then build what we agreed. That keeps the final
+          site close to the design and gives the team one person to speak to from brief to launch.
+        </p>
         <a class="about__more link-wipe" href="/about" data-reveal
            data-cursor-tag="More about me" data-cursor-color="#edaa0b">
           Read more about me
@@ -257,8 +278,11 @@
     <section class="work" id="work">
       <div class="shell">
         <h2 class="work__title" data-reveal>
-          <span class="line"><span class="line__inner">My recent works</span></span>
+          <span class="line"><span class="line__inner">Selected work</span></span>
         </h2>
+        <p class="work__intro" data-reveal>
+          Websites and product work for fintech, Web3 and live events.
+        </p>
 
         <div class="work__grid">
           <a class="work__card" href="/africa-blockchain-festival"
@@ -271,7 +295,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">Africa Blockchain Festival</span>
-              <span class="work__tag">Web design &middot; WordPress</span>
+              <span class="work__tag">Figma &middot; WordPress &middot; Next.js</span>
             </span>
           </a>
 
@@ -285,7 +309,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">BMONI</span>
-              <span class="work__tag">Product &middot; Web design</span>
+              <span class="work__tag">Figma &middot; WordPress</span>
             </span>
           </a>
 
@@ -299,7 +323,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">ICP Hub Kenya</span>
-              <span class="work__tag">Web design &middot; Development</span>
+              <span class="work__tag">Figma &middot; Webflow</span>
             </span>
           </a>
 
@@ -313,7 +337,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">ETHSafari</span>
-              <span class="work__tag">Event &middot; Web design</span>
+              <span class="work__tag">Figma &middot; WordPress</span>
             </span>
           </a>
 
@@ -327,7 +351,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">SmartDev Studios</span>
-              <span class="work__tag">Web design &middot; WordPress</span>
+              <span class="work__tag">Figma &middot; Webflow</span>
             </span>
           </a>
 
@@ -341,7 +365,7 @@
             </span>
             <span class="work__meta">
               <span class="work__name">Dynasty Labs</span>
-              <span class="work__tag">Web design &middot; Development</span>
+              <span class="work__tag">Figma &middot; Webflow</span>
             </span>
           </a>
 
@@ -354,65 +378,61 @@
       <span class="rule" aria-hidden="true"></span>
 
       <div class="hire__head">
-        <h2 class="hire__title" data-reveal>Design engineer, both halves of the job</h2>
+        <h2 class="hire__title" data-reveal>Design and development, together</h2>
         <p class="hire__lead" data-reveal>
-          I take a brief through research, interface design and production build without a
-          handover in the middle. That removes the gap where quality usually leaks, and it
-          means one person is accountable for how the thing looks and how fast it loads.
+          I usually begin in Figma, working out the structure, responsive behaviour and key
+          interactions. From there I build the site in WordPress, Webflow or Framer, or write
+          the front end in HTML, CSS and JavaScript.
         </p>
       </div>
 
       <dl class="hire__proof">
             <div class="hire__stat" data-reveal>
-              <dt>10 yrs</dt>
-              <dd>designing and building for the web</dd>
+              <dt>10 years</dt>
+              <dd>working across design and front-end development</dd>
             </div>
             <div class="hire__stat" data-reveal>
               <dt>$1B+</dt>
-              <dd>processed on a platform my work fronts</dd>
+              <dd>processed by the BMONI platform after the website launch</dd>
             </div>
             <div class="hire__stat" data-reveal>
               <dt>~100K</dt>
-              <dd>visitors a day on the busiest build</dd>
+              <dd>daily visits reported for BMONI&rsquo;s website</dd>
             </div>
             <div class="hire__stat" data-reveal>
               <dt>6</dt>
-              <dd>case studies documented on this site</dd>
+              <dd>case studies of design and development work documented here</dd>
             </div>
       </dl>
 
       <div class="hire__caps">
           <div class="cap" data-reveal>
-            <h3 class="cap__title">Product &amp; UI design</h3>
-            <ul class="cap__list"><li>Figma</li><li>Design systems</li><li>Interaction design</li><li>Prototyping</li><li>Responsive layout</li><li>Accessibility</li></ul>
-            <p class="cap__note">Every screen resolved to its states before a line of code exists.</p>
+            <h3 class="cap__title">Product and interface design</h3>
+            <ul class="cap__list"><li>Figma</li><li>Responsive layouts</li><li>Design systems</li><li>Prototyping</li><li>Interaction design</li><li>Accessibility</li></ul>
           </div>
           <div class="cap" data-reveal>
-            <h3 class="cap__title">CMS &amp; no-code build</h3>
-            <ul class="cap__list"><li>WordPress</li><li>Custom themes</li><li>ACF</li><li>Webflow</li><li>Framer</li><li>Elementor</li></ul>
-            <p class="cap__note">Content models the client can run themselves once I hand over.</p>
+            <h3 class="cap__title">WordPress, Webflow and Framer</h3>
+            <ul class="cap__list"><li>Custom WordPress builds</li><li>Reusable content blocks</li><li>Webflow CMS</li><li>Framer sites</li><li>Client handover</li></ul>
           </div>
           <div class="cap" data-reveal>
-            <h3 class="cap__title">Front-end engineering</h3>
-            <ul class="cap__list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GSAP</li><li>Motion design</li><li>Vite</li></ul>
-            <p class="cap__note">Hand-written when a build deserves more than a page builder can give it.</p>
+            <h3 class="cap__title">Front-end development</h3>
+            <ul class="cap__list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GSAP</li><li>Vite</li><li>Responsive implementation</li></ul>
           </div>
           <div class="cap" data-reveal>
-            <h3 class="cap__title">Performance &amp; search</h3>
-            <ul class="cap__list"><li>Core Web Vitals</li><li>Semantic markup</li><li>Structured data</li><li>Technical SEO</li><li>Image pipelines</li><li>CSP &amp; headers</li></ul>
-            <p class="cap__note">The parts that decide whether the work is ever actually found.</p>
+            <h3 class="cap__title">Performance and search</h3>
+            <ul class="cap__list"><li>Core Web Vitals</li><li>Semantic markup</li><li>Structured data</li><li>Image optimisation</li><li>Technical SEO</li></ul>
           </div>
       </div>
 
       <div class="hire__cta" data-reveal>
-        <a class="pill" href="/about" data-magnetic="0.24"
-           data-cursor-tag="More about me" data-cursor-color="#edaa0b">
-          <span class="pill__label">Read more about me</span>
+        <a class="pill" href="/cv" data-magnetic="0.24"
+           data-cursor-tag="Read the CV" data-cursor-color="#0895fa">
+          <span class="pill__label">Read my CV</span>
         </a>
-        <a class="link-wipe hire__cta-alt" href="/cv"
-           data-cursor-tag="Read the CV" data-cursor-color="#0895fa">See the full CV</a>
+        <a class="link-wipe hire__cta-alt" href="/about"
+           data-cursor-tag="More about me" data-cursor-color="#edaa0b">More about me</a>
         <a class="link-wipe hire__cta-alt" href="#contact" data-contact-open
-           data-cursor-tag="Say hello" data-cursor-color="#22c55e">Or start a conversation</a>
+           data-cursor-tag="Say hello" data-cursor-color="#22c55e">Tell me about a role</a>
       </div>
     </section>
 
@@ -433,14 +453,14 @@
       </span>
 
       <div class="site-footer__cta">
-        <h2 class="site-footer__heading" data-reveal>Let&rsquo;s talk about what you&rsquo;re building.</h2>
+        <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
           <p class="site-footer__availability" data-reveal>
-            Open to design engineering roles and selected project work.
-            Remote, and comfortable across European and US working hours.
+            Available for remote design engineering roles and selected freelance
+            projects. I work across European and US hours.
           </p>
         <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Enquiry%20from%20sammiee.dev"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
-          <span class="pill__label">Get in touch</span>
+          <span class="pill__label">Email me</span>
         </a>
       </div>
 
@@ -448,6 +468,7 @@
         <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
         <div class="site-footer__social">
           <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
           <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
           <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
         </div>
@@ -478,13 +499,13 @@
 
       <div class="contact__grid">
         <div>
-          <h2 class="contact__title" id="contact-title">Let&rsquo;s create magic</h2>
+          <h2 class="contact__title" id="contact-title">Tell me about the role or project</h2>
           <p class="contact__blurb">
-            Tell me what you&rsquo;re building and roughly when you need it live.
-            I read everything and reply within a day or two.
+            Share a little about what you need, your timeline and the best way to
+            reach you. I usually reply within two working days.
           </p>
           <p class="contact__direct">
-            Rather just email?<br>
+            Prefer email?<br>
             <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
           </p>
         </div>
@@ -493,7 +514,7 @@
           <form novalidate>
             <div class="contact__field" data-label="Name">
               <label for="contact-name">Name</label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Sammiee" required>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
               <span class="contact__error" aria-live="polite"></span>
             </div>
 
@@ -504,8 +525,8 @@
             </div>
 
             <div class="contact__field" data-label="Message">
-              <label for="contact-message">Project</label>
-              <textarea id="contact-message" name="message" rows="3" placeholder="A new site for a Web3 event, live by October." required></textarea>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="We&rsquo;re hiring a design engineer for&hellip;" required></textarea>
               <span class="contact__error" aria-live="polite"></span>
             </div>
 
@@ -520,15 +541,15 @@
 
             <div class="contact__submit">
               <button class="pill" type="submit" data-magnetic="0.2">
-                <span class="pill__label">Send it</span>
+                <span class="pill__label">Send message</span>
               </button>
               <span class="contact__status" role="status" aria-live="polite"></span>
             </div>
           </form>
 
           <div class="contact__sent" role="status">
-            <p>Thanks, that&rsquo;s on its way.</p>
-            <p>I&rsquo;ll come back to you at the address you gave me, usually within a day or two.</p>
+            <p>Thanks, your message has been sent.</p>
+            <p>I&rsquo;ll reply to the email address you provided, usually within two working days.</p>
           </div>
         </div>
       </div>

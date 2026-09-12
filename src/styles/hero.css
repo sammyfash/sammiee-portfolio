@@ -60,23 +60,64 @@
 
 .hero__greeting {
   position: absolute;
-  left: 52.66%;
-  top: 17.19%;      /* 152 / 884 */
-  width: 47.32%;
+  left: 44%;
+  top: 9.5%;
+  width: 56%;       /* same right edge as before, more room to the left */
+  font-size: var(--fs-greeting);
 }
-.hero__greeting .hero__line--hello { padding-left: 57.42%; }
+/* Keeps "Hello" at the same point on the stage (79.83%) now that the box that
+   holds it starts further left. */
+.hero__greeting .hero__line--hello { padding-left: 63.98%; }
 .hero__greeting .hero__line--name  { text-align: right; margin-top: -0.508em; }
 
+/* Everything under the portrait: the headline across the full stage, then one
+   row that pairs what I do with whether I am available. */
 .hero__statement {
   position: absolute;
   left: 0;
-  top: 65.27%;      /* 577 / 884 */
-  width: 47.32%;
+  top: 66%;
+  width: 100%;
 }
-.hero__statement .hero__line--builds { margin-top: -0.508em; }
+.hero__foot {
+  margin-top: clamp(22px, 2.31vw, 44px);
+  display: grid;
+  grid-template-columns: 47.32% 1fr;
+  gap: clamp(24px, 3.4vw, 64px);
+  align-items: start;
+}
+/* The actions column holds two controls against a four-line paragraph, so it
+   aligns to the copy's first line instead of drifting to the top of the row. */
+.hero__hire { padding-top: 0.15em; }
+
+/* The h1 is a sentence now, so it drops a step off the display face and sets
+   its own line height. Still nowrap, still two authored lines: --fs-hero-head
+   is sized so neither line reaches the end of the column at any width. */
+.hero__headline {
+  font-size: var(--fs-hero-head);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+}
+
+/* The hiring half of the first screen, in the quadrant the poster leaves empty:
+   bottom-right, under the greeting and clear of the portrait. Bottom-anchored,
+   so it holds the stage's baseline however the copy above it reflows. */
+.hero__hire {
+  pointer-events: auto;    /* the stage lets the pointer through; this opts back in */
+}
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.62vw, 32px);
+  flex-wrap: wrap;
+}
+.hero__actions-alt {
+  font-size: var(--fs-body);
+  font-weight: 500;
+}
 
 .hero__lede {
-  margin-top: clamp(14px, 1.45vw, 28px);
   width: 85.2%;              /* 612 / 718 */
   font-size: var(--fs-body);
   line-height: var(--lh-body);
@@ -90,7 +131,10 @@
   /* Offset rather than translated, because GSAP owns this element's transform
      for the pointer parallax and would overwrite a centring translate. */
   left: 41.917%;    /* 636 / 1517.34 */
-  top: 41.29%;      /* 365 / 884 */
+  /* Lifted from the comp's 41.29%. The stage carries a headline, a lede and a
+     hiring block below the portrait now, where it used to carry two words, and
+     that band needs the height more than the top of the frame does. */
+  top: 33%;
   width: 16.21%;    /* 246 / 1517.34 */
   aspect-ratio: 1;
   pointer-events: auto;   /* the portrait has its own hover, so it opts back in */
@@ -156,6 +200,22 @@
     width: 100%;
     transform: none;
   }
+  /* On a phone the actions matter more than the portrait, so the copy and the
+     hiring block come first and the photo drops below them. */
+  .hero__greeting { order: 1; }
+  .hero__statement { order: 2; }
+  .hero__portrait { order: 3; }
+  .hero__foot {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  /* The h1's two lines are authored for the desktop composition. Below 900 they
+     are just two clauses: let them reflow as one paragraph and balance, rather
+     than each wrapping on its own and leaving "products" and "end." stranded on
+     rows of their own. */
+  .hero__headline { white-space: normal; text-wrap: balance; }
+  .hero__headline .line,
+  .hero__headline .line__inner { display: inline; }
   .hero__greeting .hero__line--hello { padding-left: 0; }
   .hero__greeting .hero__line--name  { text-align: left; }
   .hero__portrait { width: 62%; align-self: center; }

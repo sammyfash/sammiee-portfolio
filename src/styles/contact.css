@@ -161,7 +161,7 @@ html.cursor-custom body[data-contact-open='true'] button { cursor: auto; }
 html.cursor-custom body[data-contact-open='true'] a,
 html.cursor-custom body[data-contact-open='true'] button { cursor: pointer; }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .contact__grid { grid-template-columns: 1fr; }
 }
 

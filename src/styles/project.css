@@ -237,6 +237,14 @@
   .case__pair { grid-template-columns: 1fr; }
 }
 
+/* A tablet has the width for two of these; only a phone needs one. The wide
+   screenshots in .case__pair stay single-column at every size below 900 —
+   a 370px-wide desktop capture is unreadable. */
+@media (min-width: 601px) and (max-width: 900px) {
+  .case__facts,
+  .case__highlights { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* --- the numbers that carry the case ---------------------------------------
    Set above the approach, because a hiring manager scanning a case study reads
    the outcome before they read the process. */

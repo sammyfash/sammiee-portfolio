@@ -42,14 +42,13 @@ export const TRACKS = {
     short: 'Design engineer',
     file: 'Samuel-Fasipe-Design-Engineer',
     title: 'Design engineer',
-    subtitle: 'Product and interface design, and the front-end that ships it',
+    subtitle: 'Product design and front-end development',
     summary:
-      'Design engineer with ten years across product design and front-end development. I take a brief '
-      + 'through research, interface design and production build without a handover in the middle, so what '
-      + 'gets signed off in Figma is what reaches the browser. Most recently the front door for a '
-      + 'cross-border neobank that now takes around 100,000 visitors a day, and a festival site that helped '
-      + 'secure close to $100,000 in sponsorship. I work in WordPress, Webflow and Framer, and write HTML, '
-      + 'CSS and JavaScript when a project deserves something bespoke.',
+      'Design engineer with ten years of experience across product design and front-end development. '
+      + 'I take websites and product interfaces from structure and interaction design in Figma through '
+      + 'to production. Recent work includes BMONI&rsquo;s marketing website, used across Nigeria and '
+      + 'Mexico, and two editions of Africa Blockchain Festival. I work in WordPress, Webflow and Framer, '
+      + 'and build custom interfaces with HTML, CSS and JavaScript.',
     skills: [
       { group: 'Design', items: ['Figma', 'Design systems', 'Interaction design', 'Prototyping', 'Responsive layout', 'Accessibility'] },
       { group: 'Front-end', items: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'Vite', 'Motion design'] },
@@ -63,13 +62,12 @@ export const TRACKS = {
     short: 'WordPress and Webflow developer',
     file: 'Samuel-Fasipe-WordPress-Webflow-Developer',
     title: 'WordPress &amp; Webflow developer',
-    subtitle: 'Sites designed and built by one person, then handed over properly',
+    subtitle: 'Websites designed, built and handed over clearly',
     summary:
-      'WordPress and Webflow developer with ten years in design and build. Projects can come to me as a '
-      + 'brief rather than as finished artwork, because I design them as well: structure, states and '
-      + 'interaction resolved in Figma, then built on a content model the client can actually run. Recent '
-      + 'builds include a fintech site taking around 100,000 visitors a day and a three-language event site '
-      + 'the team has taken through a full campaign cycle without opening a code editor.',
+      'WordPress and Webflow developer with ten years of experience in design and front-end development. '
+      + 'I can start with a brief, design the responsive interface in Figma and build a content system '
+      + 'the client can manage. Recent projects include a two-market fintech website and a multilingual '
+      + 'event site used across two campaign cycles.',
     skills: [
       { group: 'WordPress', items: ['Custom themes', 'ACF', 'Reusable blocks', 'Multilingual', 'Elementor', 'Migration'] },
       { group: 'Webflow and Framer', items: ['Webflow CMS', 'Interactions', 'Framer', 'Responsive build'] },
@@ -91,7 +89,7 @@ export const ROLES = [
     caseStudy: 'bmoni',
     note: 'Cross-border neobank on stablecoin rails, live in Nigeria and Mexico.',
     bullets: [
-      { t: 'both', text: 'Designed and built the marketing site that fronts a platform which has since processed over $1 billion in transactions, and which now takes roughly 100,000 visitors a day.' },
+      { t: 'both', text: 'Designed and built the marketing website for a cross-border neobank. BMONI reports more than $1 billion processed on the platform since launch, and roughly 100,000 visits a day to the site.' },
       { t: 'de', text: 'Structured the page around the decision a switching customer actually makes, with four product claims each earning their own section instead of being flattened into a feature grid.' },
       { t: 'wp', text: 'Built every section as a reusable WordPress block, so a new market is assembled from existing parts rather than commissioned as new design work.' },
       { t: 'both', text: 'Shipped a market switch above the fold for an audience split across two continents, and carried a second market live on the same template set.' },
@@ -108,11 +106,12 @@ export const ROLES = [
     caseStudy: 'africa-blockchain-festival',
     note: 'Africa’s largest blockchain festival and tokenisation summit, Nairobi.',
     bullets: [
-      { t: 'both', text: 'Designed and built the site for an edition that secured close to $100,000 in sponsorship, with the site working as the primary pitch surface for partners evaluating the event.' },
+      { t: 'both', text: 'Designed and built the website for the 2025 edition, which the organisers used during partner outreach. They report the edition secured close to $100,000 in sponsorship.' },
       { t: 'both', text: 'Separated the sponsor funnel from the ticket funnel, because a $50 attendee and a $25,000 sponsor are not the same visitor and a single path serves neither well.' },
       { t: 'wp', text: 'Built speakers, sponsors, ticket tiers, travel guides and three languages onto the festival’s own content model, so a months-long campaign never queued behind a developer.' },
       { t: 'de', text: 'Resolved every section, breakpoint and state in Figma before the build began, against a fixed event date that made mid-build renegotiation impossible.' },
-      { t: 'both', text: 'Retained for the 2026 edition on the strength of the first, which the team has run through a full campaign cycle themselves.' },
+      { t: 'de', text: 'Built the event team&rsquo;s admin dashboard in Next.js, TypeScript and Supabase: registration and payment sync from Google Sheets, per-link campaign attribution, and server-priced coupons redeemed only on payment.' },
+      { t: 'both', text: 'Retained for the 2026 edition, which the team has run through a full campaign cycle themselves.' },
     ],
   },
   {
@@ -126,7 +125,7 @@ export const ROLES = [
     note: 'The DFINITY ecosystem’s primary hub in East Africa.',
     bullets: [
       { t: 'both', text: 'Designed and launched the official website and visual identity for the hub, and owned all social and branding material across two years.' },
-      { t: 'both', text: 'Helped position the hub as a DFINITY-backed success story, contributing to over $500,000 in ecosystem grants.' },
+      { t: 'both', text: 'Created the website and visual materials used in developer, university and partner outreach.' },
       { t: 'de', text: 'Improved developer and partner onboarding through clearer navigation and a route through the site that matched what each audience had come to do.' },
       { t: 'both', text: 'Recommended into the sister hubs in the United States and Germany on the strength of the work.' },
     ],
@@ -174,7 +173,7 @@ export const ROLES = [
     bullets: [
       { t: 'both', text: 'Joined as a graphic designer owning the full creative suite for an early-stage brand, and was promoted into UI and product design.' },
       { t: 'de', text: 'Worked directly with product and engineering on the core consumer app and its supporting dashboards, across four years of the company’s growth.' },
-      { t: 'both', text: 'Contributed to the brand and product experience behind Bitnob securing over $5 million in venture funding.' },
+      { t: 'both', text: 'Owned the brand and product design work through the period in which Bitnob raised over $5 million in venture funding.' },
     ],
   },
   {
@@ -183,23 +182,22 @@ export const ROLES = [
     kind: 'Freelance',
     from: '2016',
     to: '2018',
-    // TODO(sammiee): these two lines are a conservative placeholder, written
-    // without knowledge of the actual clients or projects. Replace them with
-    // what the work really was: the kinds of client, the kinds of build, and
-    // any outcome worth naming. An interviewer will ask about the first two
-    // years, and this is the only entry on the CV that cannot currently be
-    // backed by a case study.
+    // TODO(sammiee): this entry still needs the real detail. Name the kinds of
+    // client, the kinds of build and any outcome that can be checked. An
+    // interviewer will ask about the first two years, and it is the only entry
+    // on the CV that cannot be backed by a case study. The second bullet was
+    // removed rather than rewritten: it was reflective filler, and a recruiter
+    // cannot verify a sentence about where a skill came from.
     bullets: [
       { t: 'both', text: 'Designed and built websites for independent clients, and took on brand and campaign work alongside them.' },
-      { t: 'both', text: 'Where the graphic design and front-end foundation came from, and the reason the later product work never needed a handover.' },
     ],
   },
 ]
 
 /** Case studies worth naming on the CV itself, in the order they carry weight. */
 export const SELECTED = [
-  { name: 'BMONI', slug: 'bmoni', line: 'Neobank front door. ~100K visitors a day, $1B+ processed on the platform it fronts.' },
-  { name: 'Africa Blockchain Festival', slug: 'africa-blockchain-festival', line: 'Two editions. ~$100K sponsorship secured, three languages, client-owned content model.' },
+  { name: 'BMONI', slug: 'bmoni', line: 'Marketing website for a cross-border neobank, live in Nigeria and Mexico.' },
+  { name: 'Africa Blockchain Festival', slug: 'africa-blockchain-festival', line: 'Two editions. Three languages, a client-owned content model and a Next.js admin dashboard.' },
   { name: 'ETHSafari', slug: 'ethsafari', line: 'Art direction and WordPress build for a pan-African Ethereum event.' },
   { name: 'ICP Hub Kenya', slug: 'icp-hub-kenya', line: 'Website and identity for the DFINITY ecosystem hub in East Africa.' },
 ]

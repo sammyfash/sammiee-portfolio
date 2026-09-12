@@ -115,7 +115,9 @@ ${jsonLd({
   })}
   </script>`,
 
-  preface: `  <div class="preloader">
+  preface: `  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="preloader">
     <div class="preloader__inner">
       <span class="preloader__mark">Sammieeeee</span>
       <span class="preloader__count">0%</span>
@@ -153,12 +155,12 @@ ${jsonLd({
         <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
         <span class="nav-link__index">01</span>
       </a></li>
-      <li><a class="nav-link" href="/#about">
-        <span class="nav-link__roll"><span>About me</span><span aria-hidden="true">About me</span></span>
+      <li><a class="nav-link" href="/about">
+        <span class="nav-link__roll"><span>About</span><span aria-hidden="true">About</span></span>
         <span class="nav-link__index">02</span>
       </a></li>
       <li><a class="nav-link" href="/#work">
-        <span class="nav-link__roll"><span>My Works</span><span aria-hidden="true">My Works</span></span>
+        <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
         <span class="nav-link__index">03</span>
       </a></li>
       <li><a class="nav-link" href="/cv">
@@ -166,7 +168,7 @@ ${jsonLd({
         <span class="nav-link__index">04</span>
       </a></li>
       <li><a class="nav-link" href="#contact" data-contact-open>
-        <span class="nav-link__roll"><span>Get in touch</span><span aria-hidden="true">Get in touch</span></span>
+        <span class="nav-link__roll"><span>Contact</span><span aria-hidden="true">Contact</span></span>
         <span class="nav-link__index">05</span>
       </a></li>
     </ul>
@@ -175,8 +177,7 @@ ${jsonLd({
       <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
       <span>
         <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
-        <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a> &nbsp;
-                <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
       </span>
     </div>
   </nav>
@@ -207,13 +208,13 @@ ${jsonLd({
 
       <div class="contact__grid">
         <div>
-          <h2 class="contact__title" id="contact-title">Let&rsquo;s create magic</h2>
+          <h2 class="contact__title" id="contact-title">Tell me about the role or project</h2>
           <p class="contact__blurb">
-            Tell me what you&rsquo;re building and roughly when you need it live.
-            I read everything and reply within a day or two.
+            Share a little about what you need, your timeline and the best way to
+            reach you. I usually reply within two working days.
           </p>
           <p class="contact__direct">
-            Rather just email?<br>
+            Prefer email?<br>
             <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
           </p>
         </div>
@@ -222,7 +223,7 @@ ${jsonLd({
           <form novalidate>
             <div class="contact__field" data-label="Name">
               <label for="contact-name">Name</label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Sammiee" required>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
               <span class="contact__error" aria-live="polite"></span>
             </div>
 
@@ -233,8 +234,8 @@ ${jsonLd({
             </div>
 
             <div class="contact__field" data-label="Message">
-              <label for="contact-message">Project</label>
-              <textarea id="contact-message" name="message" rows="3" placeholder="A new site for a Web3 event, live by October." required></textarea>
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="We&rsquo;re hiring a design engineer for&hellip;" required></textarea>
               <span class="contact__error" aria-live="polite"></span>
             </div>
 
@@ -249,15 +250,15 @@ ${jsonLd({
 
             <div class="contact__submit">
               <button class="pill" type="submit" data-magnetic="0.2">
-                <span class="pill__label">Send it</span>
+                <span class="pill__label">Send message</span>
               </button>
               <span class="contact__status" role="status" aria-live="polite"></span>
             </div>
           </form>
 
           <div class="contact__sent" role="status">
-            <p>Thanks, that&rsquo;s on its way.</p>
-            <p>I&rsquo;ll come back to you at the address you gave me, usually within a day or two.</p>
+            <p>Thanks, your message has been sent.</p>
+            <p>I&rsquo;ll reply to the email address you provided, usually within two working days.</p>
           </div>
         </div>
       </div>
@@ -277,14 +278,14 @@ ${jsonLd({
       </span>
 
       <div class="site-footer__cta">
-        <h2 class="site-footer__heading" data-reveal>Let&rsquo;s talk about what you&rsquo;re building.</h2>
+        <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
           <p class="site-footer__availability" data-reveal>
-            Open to design engineering roles and selected project work.
-            Remote, and comfortable across European and US working hours.
+            Available for remote design engineering roles and selected freelance
+            projects. I work across European and US hours.
           </p>
         <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Enquiry%20from%20sammiee.dev"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
-          <span class="pill__label">Get in touch</span>
+          <span class="pill__label">Email me</span>
         </a>
       </div>
 
@@ -292,6 +293,7 @@ ${jsonLd({
         <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
         <div class="site-footer__social">
           <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
           <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
           <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
         </div>
@@ -340,7 +342,7 @@ ${chrome.head(p)}
 
 ${chrome.preface}
 
-  <main>
+  <main id="main" tabindex="-1">
     <article class="case" style="--accent: ${p.colour}">
 
       <span class="rule" aria-hidden="true"></span>
@@ -481,7 +483,7 @@ const renderAbout = () => `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About ${SITE.name} — Design Engineer &amp; Web Designer</title>
+  <title>About ${esc(PROFILE.name)} — Design Engineer &amp; Front End Developer</title>
   <meta name="description" content="${esc(metaTrim(PROFILE.intro[0]))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -490,7 +492,7 @@ const renderAbout = () => `<!doctype html>
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="${SITE.name}">
   <meta property="og:url" content="${abs('/about')}">
-  <meta property="og:title" content="About ${SITE.name} — ${PROFILE.role}">
+  <meta property="og:title" content="About ${esc(PROFILE.name)} — ${PROFILE.role}">
   <meta property="og:description" content="${esc(metaTrim(PROFILE.intro[0]))}">
   <meta property="og:image" content="${abs('/img/work/abf.jpg')}">
   <meta name="twitter:card" content="summary_large_image">
@@ -501,7 +503,8 @@ ${jsonLd({
   '@type': 'ProfilePage',
   mainEntity: {
     '@type': 'Person',
-    name: SITE.name,
+    name: PROFILE.name,
+    alternateName: [PROFILE.known, SITE.alternateName],
     url: SITE.url,
     email: `mailto:${SITE.email}`,
     jobTitle: PROFILE.role,
@@ -517,9 +520,9 @@ ${jsonLd({
 <body>
 ${chrome.preface}
 
-  <main class="about-page">
+  <main class="about-page" id="main" tabindex="-1">
     <section class="about-page__intro">
-      <p class="about-page__eyebrow" data-reveal>${esc(PROFILE.role)}</p>
+      <p class="about-page__eyebrow" data-reveal>About</p>
       <h1 class="about-page__title" data-reveal>${esc(PROFILE.name)}</h1>
       <div class="about-page__lead" data-reveal>
 ${PROFILE.intro.map((t) => `        <p>${esc(t)}</p>`).join('\n')}
@@ -529,7 +532,7 @@ ${PROFILE.intro.map((t) => `        <p>${esc(t)}</p>`).join('\n')}
     <span class="rule" aria-hidden="true"></span>
 
     <section class="about-page__proof">
-      <h2 class="sr-only">By the numbers</h2>
+      <h2 class="visually-hidden">By the numbers</h2>
       <dl>
 ${PROOF.map((m) => `        <div class="about-page__stat" data-reveal>
           <dt>${esc(m.value)}</dt>
@@ -541,12 +544,11 @@ ${PROOF.map((m) => `        <div class="about-page__stat" data-reveal>
     <span class="rule" aria-hidden="true"></span>
 
     <section class="about-page__caps">
-      <h2 class="about-page__h2" data-reveal>What I do</h2>
+      <h2 class="about-page__h2" data-reveal>What I work with</h2>
       <div class="about-page__caps-grid">
 ${CAPABILITIES.map((c) => `        <div class="cap" data-reveal>
           <h3>${esc(c.title)}</h3>
           <ul>${c.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>
-          <p>${esc(c.note)}</p>
         </div>`).join('\n')}
       </div>
     </section>
@@ -559,11 +561,16 @@ ${CAPABILITIES.map((c) => `        <div class="cap" data-reveal>
 ${PROJECTS.map((p) => `        <li data-reveal>
           <a href="/${p.slug}" data-cursor-tag="View project" data-cursor-color="${p.colour}">
             <span class="about-page__work-name">${esc(p.name)}</span>
-            <span class="about-page__work-meta">${esc(p.stack.join(' &middot; '))}</span>
+            <span class="about-page__work-meta">${esc(p.stack.join(' \u00b7 '))}</span>
             <span class="about-page__work-year">${esc(p.year)}</span>
           </a>
         </li>`).join('\n')}
       </ul>
+
+      <a class="pill about-page__cv" href="/cv" data-reveal data-magnetic="0.24"
+         data-cursor-tag="Read the CV" data-cursor-color="#0895fa">
+        <span class="pill__label">See my CV</span>
+      </a>
     </section>
   </main>
 
@@ -689,7 +696,7 @@ ${jsonLd({
 <body>
 ${chrome.preface}
 
-  <main class="cv" data-track="de">
+  <main class="cv" id="main" tabindex="-1" data-track="de">
 
     <header class="cv__head">
       <div>

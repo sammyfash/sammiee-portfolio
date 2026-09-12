@@ -18,7 +18,7 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
+h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 img, picture, svg, video { display: block; max-width: 100%; }
 /* <picture> is inline by default, which leaves baseline slack under any img
@@ -37,6 +37,31 @@ a {
   outline: 2px solid var(--c-ink);
   outline-offset: 4px;
   border-radius: 2px;
+}
+
+/* Focused only by the skip link, and only to move the tab order. A ring round
+   the whole page would say nothing useful. */
+main:focus { outline: none; }
+
+/* First thing in the tab order on every page. Off-screen until focused, then
+   it lands over the header rather than shifting the layout under it. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+  transform: translate(-50%, -120%);
+  padding: 0.7em 1.4em;
+  background: var(--c-ink);
+  color: var(--c-bg);
+  font-size: var(--fs-btn);
+  font-weight: 600;
+  border-radius: 0 0 12px 12px;
+  transition: transform var(--dur-fast) var(--ease-out-expo);
+}
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  outline-offset: -6px;
 }
 
 .visually-hidden {

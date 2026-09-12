@@ -9,6 +9,14 @@
   line-height: 1.26;
   text-align: center;
 }
+.work__intro {
+  margin-top: clamp(12px, 1.16vw, 22px);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-ink-dim);
+  text-align: center;
+  text-wrap: pretty;
+}
 .work__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -43,23 +51,29 @@
   filter: saturate(1.12) brightness(1.04);
 }
 
-/* caption bar that slides up out of the bottom edge on hover */
+/* The caption names the project and what it was built with, and it is readable
+   without hovering: a recruiter scanning the grid on a touch screen, a trackpad
+   or a keyboard should never have to discover it. Hover deepens the scrim
+   rather than producing the text. */
 .work__meta {
   position: absolute;
   inset: auto 0 0 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
+  row-gap: 0.35em;
   padding: clamp(16px, 1.62vw, 32px) clamp(18px, 1.85vw, 36px);
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0));
-  transform: translateY(101%);
-  opacity: 0;
-  transition: transform var(--dur-mid) var(--ease-out-expo),
-              opacity var(--dur-fast) linear;
+  background: linear-gradient(to top,
+              rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0) 100%);
+  transition: background var(--dur-fast) linear;
 }
 .work__card:hover .work__meta,
-.work__card:focus-visible .work__meta { transform: translateY(0); opacity: 1; }
+.work__card:focus-visible .work__meta {
+  background: linear-gradient(to top,
+              rgba(0,0,0,0.94) 0%, rgba(0,0,0,0.76) 55%, rgba(0,0,0,0.08) 100%);
+}
 
 .work__name {
   font-size: var(--fs-md);
@@ -72,9 +86,8 @@
   white-space: nowrap;
 }
 
-@media (hover: none) {
-  /* No hover on touch — keep the caption permanently visible instead. */
-  .work__meta { transform: none; opacity: 1; }
+@media (max-width: 560px) {
+  .work__tag { white-space: normal; }
 }
 
 @media (max-width: 900px) {

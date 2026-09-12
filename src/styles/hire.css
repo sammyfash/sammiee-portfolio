@@ -160,6 +160,8 @@
 }
 
 
+.about-page__cv { margin-top: clamp(32px, 3.4vw, 60px); }
+
 .about-page__work-list { list-style: none; }
 .about-page__work-list a {
   display: grid;

@@ -8,13 +8,30 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { revealAll } from './utils.js'
-import { initScroll, trackViewportUnit } from './scroll.js'
+import { initScroll, trackViewportUnit, scrollTo } from './scroll.js'
 import { runPreloader } from './preloader.js'
 import { initCursor } from './cursor.js'
 import { initMenu } from './menu.js'
 import { initTransitions } from './transitions.js'
 import { initFlashGrids } from './flash-grid.js'
 import { initContact } from './contact.js'
+
+/**
+ * The skip link has to do two things a bare `href="#main"` does not reliably do
+ * here: scroll through Lenis rather than past it, and actually move focus into
+ * the page so the next Tab continues from the content.
+ */
+function initSkipLink() {
+  const link = document.querySelector('.skip-link')
+  const main = document.getElementById('main')
+  if (!link || !main) return
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault()
+    scrollTo(main)
+    main.focus({ preventScroll: true })
+  })
+}
 
 /** Run `fn`, and if it throws, log it and make sure the page is still readable. */
 export function guard(name, fn) {
@@ -42,6 +59,7 @@ export function boot({ beforePreloader, afterPreloader } = {}) {
   window.addEventListener('error', () => revealAll())
   window.addEventListener('unhandledrejection', () => revealAll())
 
+  guard('skip link', initSkipLink)
   guard('viewport unit', trackViewportUnit)
   guard('smooth scroll', initScroll)
   guard('cursor', initCursor)

@@ -21,16 +21,36 @@ const FAILSAFE = 9000
  */
 const HARD_STOP = 12000
 /** How long the count itself takes, once assets are not the bottleneck. */
-const COUNT_DURATION = 2.1
+const COUNT_DURATION = 1.1
+/**
+ * Marks that this tab has already seen the intro.
+ *
+ * The curtain is an introduction, and an introduction happens once. A visitor
+ * reading the homepage, the CV and three case studies was sitting through it
+ * five times, which on a site whose whole job is to be evaluated quickly is the
+ * most expensive thing on the page. sessionStorage rather than localStorage, so
+ * a later visit on another day still gets it.
+ */
+const SEEN_KEY = 'sammiee:intro-seen'
+
+/** Private mode and blocked storage both throw; neither should break the page. */
+const seenThisSession = () => {
+  try { return sessionStorage.getItem(SEEN_KEY) === '1' } catch { return false }
+}
+const markSeen = () => {
+  try { sessionStorage.setItem(SEEN_KEY, '1') } catch { /* storage unavailable */ }
+}
 
 export function runPreloader() {
   const el = qs('.preloader')
   if (!el) return Promise.resolve()
 
-  if (prefersReducedMotion()) {
+  if (prefersReducedMotion() || seenThisSession()) {
     el.remove()
     return Promise.resolve()
   }
+
+  markSeen()
 
   stopScroll()
   window.scrollTo(0, 0)

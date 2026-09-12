@@ -25,6 +25,14 @@
                ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --fs-display:   clamp(2.75rem,  6.830vw, 8.50rem);  /* 118.03 @1728 */
+  /* The hero h1 is a sentence rather than two words, so it sits a step under
+     the display face: sized so both lines still fit the 47.32% column without
+     wrapping at every width down to the 900px breakpoint. */
+  --fs-hero-head: clamp(1.75rem,  4.100vw, 5.00rem);  /*  70.8 @1728 */
+  /* The greeting sets one step under the display face. "I'm Sammy Fash" is
+     three characters longer than the name it replaced, and at the old size the
+     line either ran off the stage or sat on the portrait. */
+  --fs-greeting:  clamp(2.25rem,  5.600vw, 7.00rem);  /*  96.8 @1728 */
   --fs-statement: clamp(2.00rem,  5.208vw, 6.50rem);  /*  90    @1728 */
   --fs-h3:        clamp(1.375rem, 2.315vw, 2.875rem); /*  40    @1728 */
   --fs-wordmark:  clamp(1.25rem,  2.156vw, 2.600rem); /*  37.25 @1728 */
@@ -60,7 +68,12 @@
     --shell: calc(100vw - 2 * 24px);
     --gutter: 24px;
     --card-gap: 16px;
-    --fs-display:   clamp(2.5rem, 12.5vw, 5rem);
+    /* The floor has to hold at 320, not just at 375: "I'm Sammy Fash" is the
+       longest unbreakable line on the site, and a 2.5rem minimum orphaned
+       "Fash" onto its own row on a small phone. */
+    --fs-display:   clamp(2rem, 10.6vw, 5rem);
+    --fs-hero-head: clamp(1.625rem, 7.2vw, 2.75rem);
+    --fs-greeting:  clamp(2rem, 10.6vw, 4.25rem);
     --fs-statement: clamp(1.75rem, 7.6vw, 3rem);
     --fs-h3:        1.5rem;
     --fs-wordmark:  1.375rem;
@@ -69,5 +82,33 @@
     --fs-btn:       0.9375rem;
     --fs-body:      1rem;
     --fs-contact:   1.0625rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Tablet, 601 to 900.
+
+   The layout collapses to single-column stacks at 900 along with the phone,
+   which is right: two 370px columns on an iPad serve nobody. The type scale
+   should not collapse with it. Without this tier a 768px tablet was reading
+   16px body copy and a 24px section heading inside a 720px measure, which is
+   a phone layout stretched rather than a tablet layout.
+   --------------------------------------------------------------------------- */
+@media (min-width: 601px) and (max-width: 900px) {
+  :root {
+    --shell: calc(100vw - 2 * 40px);
+    --gutter: 40px;
+    --card-gap: 24px;
+    --fs-display:   clamp(3.00rem, 9.00vw, 4.50rem);
+    --fs-greeting:  clamp(2.75rem, 7.60vw, 4.00rem);
+    --fs-hero-head: clamp(2.00rem, 5.20vw, 3.00rem);
+    --fs-statement: clamp(2.00rem, 5.60vw, 3.25rem);
+    --fs-h3:        clamp(1.625rem, 3.90vw, 2.25rem);
+    --fs-wordmark:  1.625rem;
+    --fs-lg:        clamp(1.50rem, 3.25vw, 1.875rem);
+    --fs-md:        clamp(1.25rem, 2.60vw, 1.50rem);
+    --fs-btn:       1rem;
+    --fs-body:      clamp(1.0625rem, 1.95vw, 1.1875rem);
+    --fs-contact:   clamp(1.125rem, 2.20vw, 1.3125rem);
   }
 }
