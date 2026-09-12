@@ -119,7 +119,7 @@ ${jsonLd({
 
   <div class="preloader">
     <div class="preloader__inner">
-      <span class="preloader__mark">Sammieeeee</span>
+      <span class="preloader__mark">Sammy Fash</span>
       <span class="preloader__count">0%</span>
     </div>
   </div>
@@ -144,7 +144,7 @@ ${jsonLd({
 
   <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
     <div class="nav-overlay__header">
-      <a class="wordmark" href="/">Sammieeeee</a>
+      <a class="wordmark" href="/">Sammy Fash</a>
       <button class="nav-close" type="button" aria-label="Close menu">
         <span></span><span></span>
       </button>
@@ -174,7 +174,7 @@ ${jsonLd({
     </ul>
 
     <div class="nav-overlay__foot">
-      <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+      <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
       <span>
         <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
         <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
@@ -183,7 +183,7 @@ ${jsonLd({
   </nav>
 
   <header class="site-header" id="top">
-    <a class="wordmark" href="/">Sammieeeee</a>
+    <a class="wordmark" href="/">Sammy Fash</a>
     <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span><span></span><span></span>
     </button>
@@ -215,7 +215,7 @@ ${jsonLd({
           </p>
           <p class="contact__direct">
             Prefer email?<br>
-            <a class="link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+            <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
           </p>
         </div>
 
@@ -283,14 +283,14 @@ ${jsonLd({
             Available for remote design engineering roles and selected freelance
             projects. I work across European and US hours.
           </p>
-        <a class="pill site-footer__button" href="mailto:me@sammiee.dev?subject=Enquiry%20from%20sammiee.dev"
+        <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
           <span class="pill__label">Email me</span>
         </a>
       </div>
 
       <div class="site-footer__contact">
-        <a class="site-footer__email link-wipe" href="mailto:me@sammiee.dev">me@sammiee.dev</a>
+        <a class="site-footer__email link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
         <div class="site-footer__social">
           <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
           <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
@@ -301,7 +301,7 @@ ${jsonLd({
     </div>
 
     <p class="site-footer__fineprint">
-      &copy; 2026 Sammiee. Designed and built by me.
+      &copy; 2026 Sammy Fash. Designed and built by me.
     </p>
   </footer>`,
 }
@@ -504,7 +504,9 @@ ${jsonLd({
   mainEntity: {
     '@type': 'Person',
     name: PROFILE.name,
-    alternateName: [PROFILE.known, SITE.alternateName],
+    alternateName: [PROFILE.legal, 'Sammiee'],
+    givenName: 'Samuel',
+    familyName: 'Fasipe',
     url: SITE.url,
     email: `mailto:${SITE.email}`,
     jobTitle: PROFILE.role,
@@ -678,7 +680,7 @@ ${jsonLd({
   mainEntity: {
     '@type': 'Person',
     name: IDENTITY.name,
-    alternateName: IDENTITY.known,
+    alternateName: [IDENTITY.known, 'Sammiee'],
     url: SITE.url,
     email: `mailto:${IDENTITY.email}`,
     jobTitle: TRACKS.de.title,

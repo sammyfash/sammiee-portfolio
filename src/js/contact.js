@@ -24,7 +24,7 @@ import { drawFrame } from './frame.js'
  * The form id is not a secret: it ships in the client bundle either way.
  */
 const ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || ''
-const MAIL_TO = 'me@sammiee.dev'
+const MAIL_TO = 'me@sammyfash.com'
 
 /**
  * Pull a human message out of an error response without betting on a schema.
@@ -210,7 +210,7 @@ export function initContact() {
         : (await readError(response)) || `Could not send (${response.status}). Email ${MAIL_TO} instead.`
     } catch (error) {
       // Network-level failure: offline, DNS, CORS, blocked by an extension.
-      console.error('[sammiee] contact form', error)
+      console.error('[sammyfash] contact form', error)
       status.dataset.state = 'error'
       status.textContent = `Could not reach the server. Email ${MAIL_TO} instead.`
     } finally {

@@ -38,7 +38,7 @@ export function guard(name, fn) {
   try {
     return fn()
   } catch (error) {
-    console.error(`[sammiee] ${name} failed — revealing content`, error)
+    console.error(`[sammyfash] ${name} failed — revealing content`, error)
     revealAll()
     return undefined
   }
@@ -71,7 +71,7 @@ export function boot({ beforePreloader, afterPreloader } = {}) {
   if (beforePreloader) guard('sections', beforePreloader)
 
   runPreloader()
-    .catch((error) => { console.error('[sammiee] preloader failed', error); revealAll() })
+    .catch((error) => { console.error('[sammyfash] preloader failed', error); revealAll() })
     .then(() => {
       if (afterPreloader) guard('intro', afterPreloader)
       ScrollTrigger.refresh()

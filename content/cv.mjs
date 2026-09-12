@@ -19,13 +19,14 @@
  */
 
 export const IDENTITY = {
+  // The one place the legal name still leads. Everywhere else on the site is
+  // Sammy Fash, but a CV is read by an applicant tracking system and checked
+  // against contracts and references, all of which key on this.
   name: 'Samuel Fasipe',
-  // The portfolio wordmark stays "Sammiee". The CV, LinkedIn, contracts and
-  // references all key on the legal name, so that is what leads here.
-  known: 'Sammiee',
-  email: 'me@sammiee.dev',
-  site: 'sammiee.dev',
-  siteUrl: 'https://sammiee.dev',
+  known: 'Sammy Fash',
+  email: 'me@sammyfash.com',
+  site: 'sammyfash.com',
+  siteUrl: 'https://sammyfash.com',
   linkedin: 'linkedin.com/in/sammy-fash',
   linkedinUrl: 'https://www.linkedin.com/in/sammy-fash/',
   github: 'github.com/sammyfash',
@@ -182,7 +183,7 @@ export const ROLES = [
     kind: 'Freelance',
     from: '2016',
     to: '2018',
-    // TODO(sammiee): this entry still needs the real detail. Name the kinds of
+    // TODO(sammyfash): this entry still needs the real detail. Name the kinds of
     // client, the kinds of build and any outcome that can be checked. An
     // interviewer will ask about the first two years, and it is the only entry
     // on the CV that cannot be backed by a case study. The second bullet was

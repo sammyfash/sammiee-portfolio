@@ -9,6 +9,13 @@
  *   metrics                       the two or three numbers that carry the case
  *   stack                         the tools the work was actually made with
  *
+ * The three video cases used to carry a `videoUrl` pointing at the old
+ * WordPress site on sammyfash.com, which `npm run shots` fetched from when the
+ * source file was missing. That site is gone and the domain now serves this
+ * one, so the field was removed rather than left to fetch an HTML page into an
+ * .mp4. The masters live in assets-src/video/, which is gitignored; keep a copy
+ * somewhere durable, because nothing can re-fetch them now.
+ *
  * Copy rules, same as content/about.mjs. Two that matter most here:
  *
  *   1. Every number states whose it is and what it measures. A figure that
@@ -22,7 +29,7 @@
 export const PROJECTS = [
   {
     slug: 'africa-blockchain-festival',
-    seoTitle: 'Event website design & WordPress build | Sammiee',
+    seoTitle: 'Event website design & WordPress build | Sammy Fash',
     seoDescription: 'Website design and WordPress development for Africa Blockchain Festival, including separate sponsor and ticket journeys, multilingual content and an event management dashboard.',
     name: 'Africa Blockchain Festival',
     title: 'Africa Blockchain Festival 2026',
@@ -137,7 +144,7 @@ export const PROJECTS = [
 
   {
     slug: 'bmoni',
-    seoTitle: 'Fintech website design & WordPress build | Sammiee',
+    seoTitle: 'Fintech website design & WordPress build | Sammy Fash',
     seoDescription: 'Product design and WordPress development for BMONI, a cross-border neobank serving Nigeria and Mexico.',
     name: 'BMONI',
     title: 'BMONI — like your bank, but smarter',
@@ -190,14 +197,13 @@ export const PROJECTS = [
 
   {
     slug: 'icp-hub-kenya',
-    seoTitle: 'Web3 education site design & Webflow build | Sammiee',
+    seoTitle: 'Web3 education site design & Webflow build | Sammy Fash',
     seoDescription: 'Website and Webflow build for ICP Hub Kenya, with clear routes for developers, students and ecosystem partners.',
     name: 'ICP Hub Kenya',
     title: 'ICP Hub Kenya',
     colour: '#a855f7',
     live: null,
     liveLabel: 'icphubkenya.io',
-    videoUrl: 'https://sammyfash.com/wp-content/uploads/2025/05/ICP-HubKenya.mp4',
     year: '2025',
     client: 'ICP Hub Kenya · DFINITY ecosystem',
     location: 'Nairobi, Kenya',
@@ -239,7 +245,7 @@ export const PROJECTS = [
 
   {
     slug: 'ethsafari',
-    seoTitle: 'Conference website design & WordPress build | Sammiee',
+    seoTitle: 'Conference website design & WordPress build | Sammy Fash',
     seoDescription: 'Art direction, website design and WordPress development for ETHSafari, a nine-day Ethereum event travelling from Nairobi to Kilifi.',
     name: 'ETHSafari',
     title: 'ETHSafari — the watering hole for web3',
@@ -286,14 +292,13 @@ export const PROJECTS = [
 
   {
     slug: 'smartdev-studios',
-    seoTitle: 'Agency website design & Webflow build | Sammiee',
+    seoTitle: 'Agency website design & Webflow build | Sammy Fash',
     seoDescription: 'Website design and Webflow development for SmartDev Studios, explaining its blockchain development services to founders and non-technical buyers.',
     name: 'SmartDev Studios',
     title: 'SmartDev Studios',
     colour: '#fb923c',
     live: null,
     liveLabel: 'smart-devstudios.com',
-    videoUrl: 'https://sammyfash.com/wp-content/uploads/2025/04/DEVSHOP.mp4',
     year: '2025',
     client: 'SmartDev Studios',
     location: 'Remote',
@@ -333,14 +338,13 @@ export const PROJECTS = [
 
   {
     slug: 'dynasty-labs',
-    seoTitle: 'Web3 venture site design & Webflow build | Sammiee',
+    seoTitle: 'Web3 venture site design & Webflow build | Sammy Fash',
     seoDescription: 'One-page website design and Webflow development for Dynasty Labs, a Hong Kong growth firm working with Web3 companies.',
     name: 'Dynasty Labs',
     title: 'Dynasty Labs',
     colour: '#22d3ee',
     live: null,
     liveLabel: 'dynasty-labs.io',
-    videoUrl: 'https://sammyfash.com/wp-content/uploads/2025/05/DynastyLabs-lg.mp4',
     year: '2025',
     client: 'Dynasty Labs',
     location: 'Hong Kong',

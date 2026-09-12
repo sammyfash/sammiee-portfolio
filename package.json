@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Sammiee \u2014 web design portfolio. Static build, WordPress-portable markup.",
+  "description": "Sammy Fash \u2014 web design portfolio. Static build, WordPress-portable markup.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

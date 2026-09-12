@@ -1,5 +1,33 @@
 # Cloudflare Pages / Netlify redirects.
 #
+# ---------------------------------------------------------------------------
+# sammiee.dev -> sammyfash.com
+#
+# The site moved domains in September 2026. This file CANNOT carry that rule on
+# Cloudflare Pages: its _redirects only matches paths, never hostnames, so a
+# rule written here would be skipped and every old link would quietly keep
+# serving the site on the old domain. Two hostnames answering with the same
+# pages and no redirect is duplicate content, and it splits whatever ranking
+# sammiee.dev has instead of handing it over.
+#
+# Do it at the edge instead, keeping sammiee.dev registered and pointed at the
+# same project:
+#
+#   Cloudflare  Rules -> Redirect Rules. Match hostname equals sammiee.dev,
+#               redirect to concat("https://sammyfash.com", http.request.uri.path),
+#               status 301, preserve query string.
+#   Netlify     Uncomment the rule below; Netlify does match full URLs here.
+#               The trailing ! makes it win over the built page.
+#
+# 301, not 302: the move is permanent, and only a 301 passes the old domain's
+# authority to the new one.
+#
+# /*  https://sammyfash.com/:splat  301!
+#
+# Mail is separate from this. Anything still routed at the old domain keeps
+# working regardless of what happens to the web traffic.
+# ---------------------------------------------------------------------------
+
 # /abf-ticketing was live for a few hours on 8 September 2026 as a seventh case
 # study before the ticketing work was folded into the festival case as a
 # chapter. Without this rule the path falls through to index.html and answers

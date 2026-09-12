@@ -138,15 +138,28 @@ const browser = await puppeteer.launch({
 async function captureVideoFrames(page, project) {
   const onDisk = resolve(process.cwd(), 'assets-src/video', project.videoSource)
 
-  // The source videos are too large to keep in git, so fetch on demand.
+  // The source videos are too large to keep in git, so fetch on demand where a
+  // project still records somewhere to fetch them from.
   try {
     await access(onDisk)
   } catch {
-    if (!project.videoUrl) throw new Error(`missing ${project.videoSource} and no videoUrl to fetch it from`)
+    if (!project.videoUrl) {
+      throw new Error(
+        `missing assets-src/video/${project.videoSource}, and ${project.slug} records no `
+        + 'videoUrl to fetch it from. Restore the master from your own backup.',
+      )
+    }
     console.log(`  ↓ fetching ${project.videoSource}…`)
     await mkdir(resolve(process.cwd(), 'assets-src/video'), { recursive: true })
     const res = await fetch(project.videoUrl)
     if (!res.ok) throw new Error(`download failed: ${res.status}`)
+    // A single-page site answers 200 with index.html for any path it does not
+    // have, so `res.ok` alone would happily write a web page into an .mp4 and
+    // leave ffmpeg to report something unrelated several steps later.
+    const type = res.headers.get('content-type') ?? ''
+    if (!type.startsWith('video/')) {
+      throw new Error(`${project.videoUrl} returned ${type || 'no content-type'}, not a video`)
+    }
     await writeFile(onDisk, Buffer.from(await res.arrayBuffer()))
   }
 

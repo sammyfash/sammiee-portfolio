@@ -31,7 +31,7 @@ const COUNT_DURATION = 1.1
  * most expensive thing on the page. sessionStorage rather than localStorage, so
  * a later visit on another day still gets it.
  */
-const SEEN_KEY = 'sammiee:intro-seen'
+const SEEN_KEY = 'sammyfash:intro-seen'
 
 /** Private mode and blocked storage both throw; neither should break the page. */
 const seenThisSession = () => {

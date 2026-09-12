@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sammiee.dev/sitemap.xml
+Sitemap: https://sammyfash.com/sitemap.xml

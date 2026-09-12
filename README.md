@@ -1,4 +1,4 @@
-# Sammiee — web design portfolio
+# Sammy Fash — web design portfolio
 
 Static build on Figma file 
 Two pages, one shared design system, motion built with GSAP.
@@ -182,9 +182,14 @@ Cloudflare Pages settings:
 | Environment variable | `VITE_FORM_ENDPOINT` — **required**, or the contact form silently falls back to the visitor's mail client |
 
 Repository: <https://github.com/sammyfash/sammiee-portfolio>. Every push to `main` deploys;
-branches get their own preview URL. Set `SITE_URL` if the domain is ever not `https://sammiee.dev` — every canonical, OG
+branches get their own preview URL. Set `SITE_URL` if the domain is ever not `https://sammyfash.com` — every canonical, OG
 tag and sitemap entry resolves through [`content/site.mjs`](content/site.mjs), so that one env
 var moves the whole site.
+
+**The domain moved.** The site was `sammiee.dev` until September 2026 and is now
+`sammyfash.com`. Keep the old domain registered and pointed here, and keep the 301 in front of
+it: see the note at the top of [`public/_redirects`](public/_redirects) for why that rule cannot
+live in this repo on Cloudflare Pages and where to put it instead.
 
 **Clean URLs.** Pages serves `/bmoni` from `bmoni.html`, so internal links have no `.html`.
 A small Vite plugin in [`vite.config.js`](vite.config.js) does the same rewrite for `npm run

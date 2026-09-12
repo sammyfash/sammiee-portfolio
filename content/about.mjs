@@ -17,14 +17,13 @@
  */
 
 export const PROFILE = {
-  // Legal name. It leads everywhere a recruiter, an ATS or a crawler reads:
-  // the page title, the About page heading, the CV and the structured data.
-  name: 'Samuel Fasipe',
-  // The name the hero greets with, and the one on LinkedIn. The wordmark stays
-  // "Sammiee" (SITE.name); these three are the same person by design, and the
-  // hiring block under the hero states the legal name so nothing is left to
-  // inference.
-  known: 'Sammy Fash',
+  // The public name, and now the only one the site says out loud: the wordmark,
+  // the greeting, the page titles and the structured data all agree. It is the
+  // name already on LinkedIn, GitHub and the domain.
+  name: 'Sammy Fash',
+  // Kept for the CV, the PDFs and the structured data's alternate names. A CV
+  // is a formal document and an ATS parses it against the name on file.
+  legal: 'Samuel Fasipe',
   role: 'Design engineer',
   years: 10,
   // No location. The target is remote roles with international teams, so a
