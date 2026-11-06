@@ -86,6 +86,8 @@ const chrome = {
   <meta name="description" content="${esc(metaTrim(p.seoDescription || p.intro))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="${abs(`/${p.slug}`)}">
 
   <meta property="og:type" content="article">
@@ -1065,6 +1067,8 @@ const renderAbout = () => `<!doctype html>
   <meta name="description" content="${esc(metaTrim(PROFILE.intro[0]))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="${abs('/about')}">
 
   <meta property="og:type" content="profile">
@@ -1241,6 +1245,8 @@ const renderCv = () => `<!doctype html>
   <meta name="description" content="${esc(metaTrim(TRACKS.de.summary))}">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="${abs('/cv')}">
 
   <meta property="og:type" content="profile">
