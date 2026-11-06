@@ -38,7 +38,7 @@ export default defineConfig({
         ['home', resolve(process.cwd(), 'index.html')],
         ['about', resolve(process.cwd(), 'about.html')],
         ['cv', resolve(process.cwd(), 'cv.html')],
-        ...PROJECTS.map((p) => [p.slug, resolve(process.cwd(), `${p.slug}.html`)]),
+        ...PROJECTS.filter((p) => !p.draft).map((p) => [p.slug, resolve(process.cwd(), `${p.slug}.html`)]),
       ]),
     },
   },

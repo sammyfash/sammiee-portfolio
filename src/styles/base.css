@@ -15,7 +15,10 @@ body {
   font-synthesis-weight: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* clip, not hidden: hidden makes body a scroll container, which silently
+     breaks position: sticky for everything inside it. */
   overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
@@ -224,6 +227,8 @@ main:focus { outline: none; }
 .js .line { overflow: hidden; }
 .js .line.is-open { overflow: visible; }
 .line__inner { display: block; will-change: transform; }
+/* A split line must stay one line while it animates (see openLines). */
+[data-split-lines] .line__inner { white-space: nowrap; }
 .word { display: inline-block; white-space: pre; }
 .char { display: inline-block; will-change: transform; }
 

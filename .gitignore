@@ -14,3 +14,14 @@ assets-src/video/
 # local secrets / per-environment config
 .env
 .env.local
+
+# Rate card — the repo is public and this document has my prices in it.
+# Source and build script are tracked; the rendered card is not.
+rate-card/*.pdf
+rate-card/*.html
+
+# Licensed stock photos (Freepik, via Magnific). The composited mockups in
+# public/img/mockups are fine to publish; the raw photos must not be
+# redistributed on their own, so they stay out of this public repo.
+assets-src/stock/
+.impeccable/

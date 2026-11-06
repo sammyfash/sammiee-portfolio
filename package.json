@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Sammy Fash \u2014 web design portfolio. Static build, WordPress-portable markup.",
+  "description": "Sammy Fash — web design portfolio. Static build, WordPress-portable markup.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,7 +11,9 @@
     "images": "node scripts/optimize-images.mjs",
     "shots": "node scripts/capture-shots.mjs",
     "pages": "node scripts/build-pages.mjs",
-    "cv": "node scripts/build-cv-pdf.mjs"
+    "cv": "node scripts/build-cv-pdf.mjs",
+    "rate-card": "node rate-card/build.mjs",
+    "mockups": "node scripts/compose-mockups.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^25.8.0",

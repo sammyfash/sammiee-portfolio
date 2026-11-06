@@ -16,7 +16,7 @@
 .contact__scrim {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.86);
+  background: var(--c-scrim);
   opacity: 0;
 }
 
@@ -116,14 +116,14 @@
 .contact__field textarea:focus { outline: none; border-bottom-color: var(--c-ink); }
 
 .contact__field[data-invalid='true'] input,
-.contact__field[data-invalid='true'] textarea { border-bottom-color: #ff6b6b; }
+.contact__field[data-invalid='true'] textarea { border-bottom-color: var(--c-error); }
 
 .contact__error {
   display: block;
   margin-top: 0.45em;
   min-height: 1.2em;
   font-size: 0.8125rem;
-  color: #ff6b6b;
+  color: var(--c-error);
 }
 
 .contact__submit {
@@ -137,7 +137,7 @@
   font-size: var(--fs-body);
   color: var(--c-ink-dim);
 }
-.contact__status[data-state='error'] { color: #ff6b6b; }
+.contact__status[data-state='error'] { color: var(--c-error); }
 
 .contact form[data-sending='true'] { opacity: 0.55; pointer-events: none; }
 

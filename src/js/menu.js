@@ -85,5 +85,19 @@ export function initMenu() {
     })
   }
 
+  // Discipline links. On the homepage they switch the grid's lens in place
+  // (work.js listens for popstate) instead of reloading the page.
+  for (const link of qsa('.nav-sub__link', overlay)) {
+    link.addEventListener('click', (e) => {
+      const work = qs('#work')
+      if (!work) return
+      e.preventDefault()
+      setOpen(false)
+      history.pushState(null, '', link.getAttribute('href'))
+      dispatchEvent(new PopStateEvent('popstate'))
+      setTimeout(() => scrollTo(work), 320)
+    })
+  }
+
   return { close: () => setOpen(false) }
 }

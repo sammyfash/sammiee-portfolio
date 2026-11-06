@@ -29,6 +29,18 @@ export function revealAll() {
 export function openLines(elements) {
   return () => {
     for (const el of elements) el.closest?.('.line')?.classList.add('is-open')
+
+    // Line-split paragraphs go back to plain text once they have animated in.
+    // Frozen line boxes are only safe for the length of the animation: any
+    // later change to the width or the font (the scrollbar arriving after the
+    // preloader, a fluid font size at a very wide window) made a frozen line a
+    // pixel too wide, and it then wrapped inside itself, breaking sentences in
+    // the middle. Plain text reflows like any paragraph.
+    const host = elements[0]?.closest?.('[data-split-lines]')
+    if (host?.dataset.splitSource) {
+      host.textContent = host.dataset.splitSource.trim()
+      host.dataset.splitDone = ''
+    }
   }
 }
 
@@ -101,7 +113,11 @@ export function splitChars(el) {
 export function watchLines(el, apply) {
   let last = -1
 
+  el.dataset.splitLines = ''
+
   const run = () => {
+    // Once the intro has played the text is plain again; never re-freeze it.
+    if ('splitDone' in el.dataset) return
     const width = el.getBoundingClientRect().width
     // A zero-width box has not been laid out — the ResizeObserver will call back.
     if (width < 1) return

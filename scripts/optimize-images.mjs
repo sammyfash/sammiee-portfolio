@@ -45,7 +45,9 @@ try {
   for (const file of await readdir(shotsDir)) {
     if (!/\.(png|jpe?g)$/i.test(file)) continue
     const { name } = parse(file)
-    const widths = name.includes('-mobile-') ? [560] : [1600, 900]
+    // Product screens sit inside a laptop that can span the whole shell on a
+    // retina display, so they keep more pixels than a scroll slice does.
+    const widths = name.includes('-mobile-') ? [560] : name.includes('-screen-') ? [2400, 1200] : [1600, 900]
     const written = await emit(resolve(shotsDir, file), resolve(out, 'shots'), name, widths, { jpg: false })
     console.log(`shots/${file} -> ${written.join(', ')}`)
   }

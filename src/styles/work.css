@@ -29,7 +29,7 @@
   display: block;
   aspect-ratio: 747 / 534;
   overflow: hidden;
-  background: #0a0a0a;
+  background: var(--c-surface);
   isolation: isolate;
 }
 .work__media {
@@ -93,3 +93,56 @@
 @media (max-width: 900px) {
   .work__grid { grid-template-columns: 1fr; }
 }
+
+/* --- discipline filter ----------------------------------------------------
+   Lenses rather than tags: "Product design" and "Development" show the same
+   products, and each card then opens its case study on the matching half.
+   --------------------------------------------------------------------------- */
+.work__filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: clamp(28px, 3.2vw, 56px);
+}
+.work__lens {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.7em 1.15em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--c-rule-strong);
+  font-size: var(--fs-btn);
+  color: var(--c-ink-dim);
+  transition: color var(--dur-fast) var(--ease-out-expo),
+              background-color var(--dur-fast) var(--ease-out-expo),
+              border-color var(--dur-fast) var(--ease-out-expo);
+}
+.work__lens:hover { color: var(--c-ink); border-color: var(--c-ink); }
+.work__lens:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
+.work__lens[aria-pressed='true'] {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+  color: var(--c-bg);
+}
+.work__count {
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+.work__lens-note {
+  min-height: 1.5em;
+  margin-top: 1rem;
+  font-size: var(--fs-body);
+  color: var(--c-ink-dim);
+  text-align: center;
+}
+
+.work__grid { margin-top: clamp(32px, 4.6vw, 88px); }
+.work__item[hidden] { display: none; }
+
+/* The caption carries one tag per lens on product cards; only the active
+   lens's tag shows. "All" shows the design one. */
+.work__tag[data-tag-for='development'] { display: none; }
+.work[data-lens='development'] .work__tag[data-tag-for='design'] { display: none; }
+.work[data-lens='development'] .work__tag[data-tag-for='development'] { display: inline; }

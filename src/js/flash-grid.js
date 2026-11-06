@@ -26,7 +26,8 @@ export function initFlashGrids() {
 
 function initLayer(layer) {
   // Tuning lives in CSS so the look can be dialled without touching JS.
-  const flash = Number(getComputedStyle(layer).getPropertyValue('--cell-flash')) || 0.2
+  // Re-read per flash: the light theme dials it down, and the theme can change.
+  const flashOf = () => Number(getComputedStyle(layer).getPropertyValue('--cell-flash')) || 0.2
 
   const build = () => {
     const { width, height } = layer.getBoundingClientRect()
@@ -57,7 +58,7 @@ function initLayer(layer) {
     if (!cell.classList?.contains('flash-cell')) return
 
     gsap.killTweensOf(cell)
-    gsap.set(cell, { opacity: flash })
+    gsap.set(cell, { opacity: flashOf() })
     gsap.to(cell, { opacity: 0, duration: FADE, ease: 'power2.out' })
   })
 }

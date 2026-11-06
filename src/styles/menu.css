@@ -124,3 +124,30 @@
 .nav-overlay__foot a:hover { color: var(--c-ink); }
 
 body[data-nav-open='true'] { overflow: hidden; }
+
+/* Work, by discipline: three small links under the Work row, so a visitor
+   who came for one kind of role can go straight to it. */
+.nav-sub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: var(--shell);
+  margin: clamp(2px, 0.4vw, 8px) auto clamp(18px, 2vw, 36px);
+}
+.nav-sub__link {
+  display: inline-block;
+  padding: 0.55em 1.05em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--c-rule-strong);
+  font-size: var(--fs-btn);
+  color: var(--c-ink-dim);
+  transition: color var(--dur-fast) var(--ease-out-expo),
+              border-color var(--dur-fast) var(--ease-out-expo),
+              background-color var(--dur-fast) var(--ease-out-expo);
+}
+.nav-sub__link:hover,
+.nav-sub__link:focus-visible {
+  color: var(--c-bg);
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+}

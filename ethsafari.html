@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="/theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Conference website design &amp; WordPress build | Sammy Fash</title>
   <meta name="description" content="Art direction, website design and WordPress development for ETHSafari, a nine-day Ethereum event travelling from Nairobi to Kilifi.">
@@ -96,7 +97,13 @@
       <li><a class="nav-link" href="/#work">
         <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
         <span class="nav-link__index">03</span>
-      </a></li>
+      </a>
+        <ul class="nav-sub" aria-label="Work by discipline">
+          <li><a class="nav-sub__link" href="/?work=design#work">Product design</a></li>
+          <li><a class="nav-sub__link" href="/?work=development#work">Development</a></li>
+          <li><a class="nav-sub__link" href="/?work=web#work">Websites</a></li>
+        </ul>
+      </li>
       <li><a class="nav-link" href="/cv">
         <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
         <span class="nav-link__index">04</span>
@@ -113,14 +120,22 @@
         <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
         <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
       </span>
+      <button class="theme-toggle theme-toggle--labelled" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg><span data-theme-label>Light mode</span>
+      </button>
     </div>
   </nav>
 
   <header class="site-header" id="top">
     <a class="wordmark" href="/">Sammy Fash</a>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span><span></span><span></span>
-    </button>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
@@ -382,12 +397,12 @@
       <div class="site-footer__cta">
         <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
           <p class="site-footer__availability" data-reveal>
-            Available for remote design engineering roles and selected freelance
-            projects. I work across European and US hours.
+            Available for remote product design, front-end and design engineering roles,
+            and selected freelance projects. I work across European and US hours.
           </p>
         <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
-          <span class="pill__label">Email me</span>
+          <span class="pill__label">Send me a message</span>
         </a>
       </div>
 

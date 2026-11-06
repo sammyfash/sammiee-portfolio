@@ -26,7 +26,8 @@ const MOBILE = { width: 390, height: 844, deviceScaleFactor: 3, isMobile: true, 
 
 const filter = process.argv.slice(2).filter((a) => !a.startsWith('-'))
 const matches = (p) => !filter.length || filter.some((f) => p.slug.includes(f))
-const wanted = PROJECTS.filter((p) => (p.live || p.videoSource) && matches(p))
+// Products are captured from their own synthetic seeds, not from the live site.
+const wanted = PROJECTS.filter((p) => p.kind !== 'product' && (p.live || p.videoSource) && matches(p))
 
 /** Let lazy content and entrance animations settle before shooting. */
 async function settle(page, ms = 2600) {

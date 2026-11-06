@@ -2,12 +2,12 @@ import '../styles/main.css'
 import { boot } from './boot.js'
 import { initHero } from './hero.js'
 import { initAbout } from './about.js'
-import { initWork } from './work.js'
+import { initWork, initWorkLenses } from './work.js'
 import { initHire } from './hire.js'
 import { initFooter } from './footer.js'
 
 boot({
   // Built up front so nothing flashes unstyled when the curtain lifts.
-  beforePreloader: () => { initAbout(); initWork(); initHire(); initFooter() },
+  beforePreloader: () => { initAbout(); initWork(); initWorkLenses(); initHire(); initFooter() },
   afterPreloader: initHero,
 })

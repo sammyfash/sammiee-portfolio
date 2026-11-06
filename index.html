@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="/theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sammy Fash | Design Engineer and Front End Developer</title>
-  <meta name="description" content="Design engineer with ten years of experience in product design and front-end development. I work in Figma, WordPress, Webflow, Framer, HTML, CSS and JavaScript.">
+  <title>Sammy Fash | Design Engineer: Product Design and Front-End Development</title>
+  <meta name="description" content="Design engineer with ten years of experience in product design and front-end development, working in Figma, React, Next.js and TypeScript, as well as WordPress and Webflow for websites.">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://sammyfash.com/">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sammy Fash | Design Engineer and Front End Developer">
-  <meta property="og:description" content="I design digital products and build the front end. Ten years across fintech, Web3 and live events.">
+  <meta property="og:title" content="Sammy Fash | Design Engineer: Product Design and Front-End Development">
+  <meta property="og:description" content="I design digital products and build the front end: platforms, dashboards, mobile apps and websites. Ten years across fintech, Web3 and live events.">
   <meta property="og:site_name" content="Sammy Fash">
   <meta property="og:url" content="https://sammyfash.com/">
   <meta property="og:image" content="https://sammyfash.com/img/work/abf.jpg">
@@ -33,12 +34,16 @@
       "url": "https://sammyfash.com/",
       "email": "mailto:me@sammyfash.com",
       "jobTitle": "Design Engineer",
-      "description": "Design engineer with ten years of experience across product design and front-end development, working in Figma, WordPress, Webflow, Framer, HTML, CSS and JavaScript.",
+      "description": "Design engineer with ten years of experience across product design and front-end development, working in Figma, React, Next.js and TypeScript, as well as WordPress and Webflow for websites.",
       "knowsAbout": [
         "Web Design",
         "Product Design",
         "UI/UX Design",
+        "User Research",
         "Design Systems",
+        "React",
+        "Next.js",
+        "TypeScript",
         "WordPress Development",
         "Webflow Development",
         "Framer",
@@ -53,7 +58,7 @@
         "@type": "Occupation",
         "name": "Design Engineer",
         "occupationalCategory": "15-1255.00",
-        "skills": "Product design, UI/UX design, WordPress, Webflow, Framer, HTML, CSS, JavaScript"
+        "skills": "Product design, UI/UX design, design systems, React, Next.js, TypeScript, HTML, CSS, JavaScript, WordPress, Webflow"
       },
       "sameAs": [
         "https://www.linkedin.com/in/sammy-fash/",
@@ -86,7 +91,7 @@
         "Landing page design",
         "Website redesign"
       ],
-      "description": "Design and front-end build for teams that need a site to look considered and load fast. WordPress, Webflow, Framer and hand-written code."
+      "description": "Product design and front-end development for platforms, dashboards, mobile apps and websites, from user research in Figma to a tested front end in React and Next.js."
     },
     {
       "@type": "WebSite",
@@ -159,7 +164,13 @@
       <li><a class="nav-link" href="#work">
         <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
         <span class="nav-link__index">03</span>
-      </a></li>
+      </a>
+        <ul class="nav-sub" aria-label="Work by discipline">
+          <li><a class="nav-sub__link" href="/?work=design#work">Product design</a></li>
+          <li><a class="nav-sub__link" href="/?work=development#work">Development</a></li>
+          <li><a class="nav-sub__link" href="/?work=web#work">Websites</a></li>
+        </ul>
+      </li>
       <li><a class="nav-link" href="/cv">
         <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
         <span class="nav-link__index">04</span>
@@ -176,14 +187,22 @@
         <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
         <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
       </span>
+      <button class="theme-toggle theme-toggle--labelled" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg><span data-theme-label>Light mode</span>
+      </button>
     </div>
   </nav>
 
   <header class="site-header" id="top" data-header="overlay">
     <a class="wordmark" href="/">Sammy Fash</a>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span><span></span><span></span>
-    </button>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">
@@ -229,9 +248,10 @@
 
           <div class="hero__foot">
             <p class="hero__lede" data-reveal>
-              I&rsquo;m a design engineer with ten years of experience. I take websites and
-              product interfaces from early structure in Figma through to a working build in
-              WordPress, Webflow, Framer or hand-written front-end code.
+              I&rsquo;m a design engineer with ten years of experience designing digital products
+              and building their front ends. I design platforms, dashboards and mobile apps in
+              Figma and build them in React and Next.js, and I also design and build websites for
+              fintech, Web3 and event brands.
             </p>
 
             <div class="hero__hire" data-reveal>
@@ -260,11 +280,12 @@
           <span class="frame__edge frame__edge--l"></span>
           <i></i><i></i><i></i><i></i>
         </span>
-        <h2 class="about__statement" data-reveal>The designer who builds.</h2>
+        <h2 class="about__statement" data-reveal>I design it, then I build it.</h2>
         <p class="about__text" data-reveal>
-          My work sits between design and front-end development. I think through the layout,
-          interaction and responsive behaviour, then build what we agreed. That keeps the final
-          site close to the design and gives the team one person to speak to from brief to launch.
+          In most teams, a product passes from a designer to a developer, and small details get
+          lost in the handover. I do both, so the layouts, interactions and responsive behaviour I
+          plan in Figma are the ones that actually ship. Your team gets one person who understands
+          the product from the first sketch to launch.
         </p>
         <a class="about__more link-wipe" href="/about" data-reveal
            data-cursor-tag="More about me" data-cursor-color="#edaa0b">
@@ -283,95 +304,136 @@
           <span class="line"><span class="line__inner">Selected work</span></span>
         </h2>
         <p class="work__intro" data-reveal>
-          Websites and product work for fintech, Web3 and live events.
+          Products and websites I designed and built, for live events, fintech and Web3.
         </p>
 
-        <div class="work__grid">
-          <a class="work__card" href="/africa-blockchain-festival"
-             data-cursor-tag="View project" data-cursor-color="#0895fa">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/abf@800.webp 800w, /img/work/abf.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/abf.jpg" alt="The Africa Blockchain Festival 2025 website on a desktop monitor" width="1400" height="777" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">Africa Blockchain Festival</span>
-              <span class="work__tag">Figma &middot; WordPress &middot; Next.js</span>
-            </span>
-          </a>
-
-          <a class="work__card" href="/bmoni"
-             data-cursor-tag="View project" data-cursor-color="#e879f9">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/bmoni@800.webp 800w, /img/work/bmoni.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/bmoni.jpg" alt="The BMONI fintech website on a laptop" width="1400" height="939" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">BMONI</span>
-              <span class="work__tag">Figma &middot; WordPress</span>
-            </span>
-          </a>
-
-          <a class="work__card" href="/icp-hub-kenya"
-             data-cursor-tag="View project" data-cursor-color="#a855f7">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/icp-kenya@800.webp 800w, /img/work/icp-kenya.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/icp-kenya.jpg" alt="The ICP Hub Kenya website on a tablet" width="1400" height="852" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">ICP Hub Kenya</span>
-              <span class="work__tag">Figma &middot; Webflow</span>
-            </span>
-          </a>
-
-          <a class="work__card" href="/ethsafari"
-             data-cursor-tag="View project" data-cursor-color="#22c55e">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/ethsafari@800.webp 800w, /img/work/ethsafari.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/ethsafari.jpg" alt="The ETHSafari website on a desktop monitor" width="1400" height="819" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">ETHSafari</span>
-              <span class="work__tag">Figma &middot; WordPress</span>
-            </span>
-          </a>
-
-          <a class="work__card" href="/smartdev-studios"
-             data-cursor-tag="View project" data-cursor-color="#fb923c">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/blockchain-solutions@800.webp 800w, /img/work/blockchain-solutions.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/blockchain-solutions.jpg" alt="The SmartDev Studios website on a laptop" width="1400" height="797" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">SmartDev Studios</span>
-              <span class="work__tag">Figma &middot; Webflow</span>
-            </span>
-          </a>
-
-          <a class="work__card" href="/dynasty-labs"
-             data-cursor-tag="View project" data-cursor-color="#22d3ee">
-            <span class="work__media">
-              <picture>
-                <source type="image/webp" srcset="/img/work/dynasty-labs@800.webp 800w, /img/work/dynasty-labs.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                <img src="/img/work/dynasty-labs.jpg" alt="The Dynasty Labs website on a MacBook" width="1400" height="809" loading="lazy" decoding="async">
-              </picture>
-            </span>
-            <span class="work__meta">
-              <span class="work__name">Dynasty Labs</span>
-              <span class="work__tag">Figma &middot; Webflow</span>
-            </span>
-          </a>
-
+        <!-- work:start — generated by `npm run pages` from content/projects.mjs.
+             Edits between these markers are overwritten. -->
+        <div class="work__filter" role="group" aria-label="Filter the work by discipline" data-reveal>
+          <button class="work__lens" type="button" data-lens="all" aria-pressed="true">
+            All work <span class="work__count">7</span>
+          </button>
+          <button class="work__lens" type="button" data-lens="design" aria-pressed="false">
+            Product design <span class="work__count">1</span>
+          </button>
+          <button class="work__lens" type="button" data-lens="development" aria-pressed="false">
+            Development <span class="work__count">1</span>
+          </button>
+          <button class="work__lens" type="button" data-lens="web" aria-pressed="false">
+            Websites <span class="work__count">6</span>
+          </button>
         </div>
+        <p class="work__lens-note" data-lens-note aria-live="polite"></p>
+
+        <ul class="work__grid" role="list">
+          <li class="work__item" data-lenses="all design development">
+            <a class="work__card" href="/soravya" data-product
+               data-cursor-tag="View project" data-cursor-color="#6d5ff0">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/soravya@800.webp 800w, /img/work/soravya.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/soravya.jpg" alt="The Soravya organiser console on a laptop on a wooden desk" width="1400" height="875" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">Soravya</span>
+                <span class="work__tag" data-tag-for="design">Product design · Front-end engineering</span>
+                <span class="work__tag" data-tag-for="development">Next.js · React · TypeScript</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/africa-blockchain-festival"
+               data-cursor-tag="View project" data-cursor-color="#0895fa">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/abf@800.webp 800w, /img/work/abf.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/abf.jpg" alt="The Africa Blockchain Festival 2025 website on a desktop monitor" width="1400" height="777" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">Africa Blockchain Festival</span>
+                <span class="work__tag">Figma · WordPress · Next.js</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/bmoni"
+               data-cursor-tag="View project" data-cursor-color="#e879f9">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/bmoni@800.webp 800w, /img/work/bmoni.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/bmoni.jpg" alt="The BMONI fintech website on a laptop" width="1400" height="939" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">BMONI</span>
+                <span class="work__tag">Figma · WordPress</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/icp-hub-kenya"
+               data-cursor-tag="View project" data-cursor-color="#a855f7">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/icp-kenya@800.webp 800w, /img/work/icp-kenya.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/icp-kenya.jpg" alt="The ICP Hub Kenya website on a tablet" width="1400" height="852" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">ICP Hub Kenya</span>
+                <span class="work__tag">Figma · Webflow</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/ethsafari"
+               data-cursor-tag="View project" data-cursor-color="#22c55e">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/ethsafari@800.webp 800w, /img/work/ethsafari.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/ethsafari.jpg" alt="The ETHSafari website on a desktop monitor" width="1400" height="819" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">ETHSafari</span>
+                <span class="work__tag">Figma · WordPress</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/smartdev-studios"
+               data-cursor-tag="View project" data-cursor-color="#fb923c">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/blockchain-solutions@800.webp 800w, /img/work/blockchain-solutions.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/blockchain-solutions.jpg" alt="The SmartDev Studios website on a laptop" width="1400" height="797" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">SmartDev Studios</span>
+                <span class="work__tag">Figma · Webflow</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all web">
+            <a class="work__card" href="/dynasty-labs"
+               data-cursor-tag="View project" data-cursor-color="#22d3ee">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/dynasty-labs@800.webp 800w, /img/work/dynasty-labs.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/dynasty-labs.jpg" alt="The Dynasty Labs website on a MacBook" width="1400" height="809" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">Dynasty Labs</span>
+                <span class="work__tag">Figma · Webflow</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <!-- work:end -->
       </div>
     </section>
 
@@ -380,11 +442,11 @@
       <span class="rule" aria-hidden="true"></span>
 
       <div class="hire__head">
-        <h2 class="hire__title" data-reveal>Design and development, together</h2>
+        <h2 class="hire__title" data-reveal>What I can do for your team</h2>
         <p class="hire__lead" data-reveal>
-          I usually begin in Figma, working out the structure, responsive behaviour and key
-          interactions. From there I build the site in WordPress, Webflow or Framer, or write
-          the front end in HTML, CSS and JavaScript.
+          I can join as a product designer, a front-end engineer, or both. I&rsquo;m used to taking
+          a product from user personas and early screens in Figma to a tested, accessible front
+          end that works on real devices.
         </p>
       </div>
 
@@ -398,27 +460,27 @@
               <dd>processed by the BMONI platform after the website launch</dd>
             </div>
             <div class="hire__stat" data-reveal>
-              <dt>~100K</dt>
-              <dd>daily visits reported for BMONI&rsquo;s website</dd>
+              <dt>105</dt>
+              <dd>pages designed and built for the Soravya event platform</dd>
             </div>
             <div class="hire__stat" data-reveal>
-              <dt>6</dt>
-              <dd>case studies of design and development work documented here</dd>
+              <dt>1,900+</dt>
+              <dd>automated tests protecting every Soravya release</dd>
             </div>
       </dl>
 
       <div class="hire__caps">
           <div class="cap" data-reveal>
             <h3 class="cap__title">Product and interface design</h3>
-            <ul class="cap__list"><li>Figma</li><li>Responsive layouts</li><li>Design systems</li><li>Prototyping</li><li>Interaction design</li><li>Accessibility</li></ul>
+            <ul class="cap__list"><li>Figma</li><li>User research and personas</li><li>Design systems</li><li>Prototyping</li><li>Interaction design</li><li>Accessibility</li></ul>
           </div>
           <div class="cap" data-reveal>
-            <h3 class="cap__title">WordPress, Webflow and Framer</h3>
-            <ul class="cap__list"><li>Custom WordPress builds</li><li>Reusable content blocks</li><li>Webflow CMS</li><li>Framer sites</li><li>Client handover</li></ul>
+            <h3 class="cap__title">Front-end engineering</h3>
+            <ul class="cap__list"><li>React</li><li>Next.js</li><li>TypeScript</li><li>HTML and CSS</li><li>JavaScript</li><li>Accessibility testing</li></ul>
           </div>
           <div class="cap" data-reveal>
-            <h3 class="cap__title">Front-end development</h3>
-            <ul class="cap__list"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GSAP</li><li>Vite</li><li>Responsive implementation</li></ul>
+            <h3 class="cap__title">Websites</h3>
+            <ul class="cap__list"><li>Custom WordPress builds</li><li>Webflow CMS</li><li>Framer sites</li><li>GSAP animation</li><li>Client handover</li></ul>
           </div>
           <div class="cap" data-reveal>
             <h3 class="cap__title">Performance and search</h3>
@@ -457,12 +519,12 @@
       <div class="site-footer__cta">
         <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
           <p class="site-footer__availability" data-reveal>
-            Available for remote design engineering roles and selected freelance
-            projects. I work across European and US hours.
+            Available for remote product design, front-end and design engineering roles,
+            and selected freelance projects. I work across European and US hours.
           </p>
         <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
            data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
-          <span class="pill__label">Email me</span>
+          <span class="pill__label">Send me a message</span>
         </a>
       </div>
 

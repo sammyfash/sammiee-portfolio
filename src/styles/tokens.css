@@ -13,6 +13,14 @@
   --c-rule:          color-mix(in srgb, var(--c-hairline) 42%, transparent);
   --c-rule-strong:   color-mix(in srgb, var(--c-hairline) 72%, transparent);
   --c-glow:          #141414;   /* Figma: the big radial "Ellipse 1"        */
+  --c-surface:       #0a0a0a;   /* image wells before the photo decodes     */
+  --c-scrim:         rgba(0, 0, 0, 0.86);
+  --c-error:         #ff6b6b;
+  /* the wordmark's radial metal, centre → edge */
+  --wm-1: #ffffff;
+  --wm-2: #cccccc;
+  --wm-3: #999999;
+  color-scheme: dark;
 
   /* accent cards behind the portrait */
   --c-blue-hi:       #0895fa;

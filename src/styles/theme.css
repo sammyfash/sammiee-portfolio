@@ -1,0 +1,108 @@
+/* ---------------------------------------------------------------------------
+   Light theme.
+
+   Light is the default; dark follows the visitor's OS until they choose. Both are the same
+   design printed on paper: same layout, same type, same motion, with the
+   tokens inverted. The attribute is set on <html> by /theme.js before first
+   paint, so a returning visitor who chose light never sees a black flash.
+
+   Three things deliberately do NOT invert:
+   - device mockups: a browser window and a phone are dark physical objects,
+     so they re-scope the ink tokens back to dark inside themselves;
+   - the scrim behind project captions, which sits on photography, not paper;
+   - the two portrait plates, which are brand colour, not chrome.
+   --------------------------------------------------------------------------- */
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --c-bg:        #f3f2ee;
+  --c-ink:       #0b0b0c;
+  --c-ink-dim:   #5a5955;   /* 6.6:1 on --c-bg */
+  --c-hairline:  #8c8a84;
+  --c-glow:      #ffffff;
+  --c-surface:   #e4e2dc;
+  --c-scrim:     rgba(243, 242, 238, 0.9);
+  --c-error:     #c22f2f;   /* 5.3:1 on --c-bg; the dark theme's coral fails here */
+
+  --wm-1: #0b0b0c;
+  --wm-2: #3a3a3c;
+  --wm-3: #6e6e70;
+}
+
+/* The flash cells read as light on dark. On paper the same opacity is a smudge,
+   so they are dimmer and warm instead of pure black. */
+:root[data-theme='light'] [data-flash-grid] { --cell-flash: 0.07; }
+
+/* Devices stay dark objects in both themes. */
+:root[data-theme='light'] .mock {
+  --c-ink: #ffffff;
+  --c-ink-dim: #a9a8a8;
+}
+:root[data-theme='light'] .mock--browser {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.14) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 2px 6px rgba(20, 20, 30, 0.12),
+    0 40px 80px -28px rgba(20, 20, 30, 0.42);
+}
+:root[data-theme='light'] .mock::before { opacity: 0.35; }
+
+/* Captions sit on photography, so they keep light text on a dark scrim. */
+:root[data-theme='light'] .work__meta { --c-ink: #ffffff; --c-ink-dim: #c9c8c6; color: var(--c-ink); }
+
+/* --- the switch -----------------------------------------------------------
+   One control, two states. The glyph is a disc half-filled with ink: the
+   filled half turns 180° on switch, so the icon itself shows which way the
+   page is about to go rather than relying on a sun/moon convention.
+   --------------------------------------------------------------------------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.6vw, 28px);
+}
+
+.theme-toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(34px, 2.6vw, 46px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--c-rule-strong);
+  color: var(--c-ink);
+  transition: border-color var(--dur-fast) var(--ease-out-expo),
+              background-color var(--dur-fast) var(--ease-out-expo);
+}
+.theme-toggle:hover { border-color: var(--c-ink); }
+.theme-toggle:focus-visible { outline: 2px solid var(--c-ink); outline-offset: 3px; }
+
+.theme-toggle svg {
+  width: 48%;
+  height: 48%;
+  overflow: visible;
+  transition: transform var(--dur-mid) var(--ease-out-expo);
+}
+:root[data-theme='light'] .theme-toggle svg { transform: rotate(180deg); }
+
+/* A text label for the menu overlay, where there is room to say it. */
+.theme-toggle--labelled {
+  width: auto;
+  aspect-ratio: auto;
+  border-radius: var(--radius-pill);
+  grid-auto-flow: column;
+  gap: 0.6em;
+  padding: 0.55em 1em 0.55em 0.8em;
+  font-size: var(--fs-btn);
+}
+.theme-toggle--labelled svg { width: 1.1em; height: 1.1em; }
+
+/* View-transition reveal: the new theme spreads out from the switch as a
+   circle. Set up in js/theme.js; without View Transitions support, or with
+   reduced motion, the switch is instant. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) { z-index: 2; }

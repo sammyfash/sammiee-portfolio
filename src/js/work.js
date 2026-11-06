@@ -47,3 +47,52 @@ export function initWork() {
 
   ScrollTrigger.refresh()
 }
+
+/**
+ * Discipline lenses. The choice is mirrored into ?work= so a filtered grid
+ * can be linked from an application ("sammyfash.com/?work=design#work").
+ */
+const NOTES = {
+  all: '',
+  design: 'Products, starting with the design side: research, personas and key screens.',
+  development: 'The same products, starting with how I built the front end.',
+  web: 'Marketing and event websites, designed in Figma and built in WordPress or Webflow.',
+}
+
+export function initWorkLenses() {
+  const section = qs('.work')
+  const buttons = qsa('[data-lens]', section ?? document)
+  if (!section || !buttons.length) return
+
+  const items = qsa('.work__item', section)
+  const note = qs('[data-lens-note]', section)
+
+  const apply = (lens, { push = false } = {}) => {
+    if (!NOTES.hasOwnProperty(lens)) lens = 'all'
+    section.dataset.lens = lens
+
+    for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.lens === lens))
+    for (const item of items) {
+      item.hidden = !item.dataset.lenses.split(' ').includes(lens)
+      const card = qs('.work__card', item)
+      const slug = card.getAttribute('href').split('?')[0]
+      card.setAttribute('href', card.hasAttribute('data-product') && (lens === 'design' || lens === 'development')
+        ? `${slug}?view=${lens}` : slug)
+    }
+    if (note) note.textContent = NOTES[lens]
+
+    const url = new URL(location.href)
+    lens === 'all' ? url.searchParams.delete('work') : url.searchParams.set('work', lens)
+    history[push ? 'pushState' : 'replaceState'](null, '', url)
+
+    if (!prefersReducedMotion()) {
+      gsap.fromTo(items.filter((i) => !i.hidden), { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'expo.out', clearProps: 'transform' })
+    }
+    ScrollTrigger.refresh()
+  }
+
+  for (const b of buttons) b.addEventListener('click', () => apply(b.dataset.lens, { push: true }))
+  addEventListener('popstate', () => apply(new URL(location.href).searchParams.get('work') ?? 'all'))
+  apply(new URL(location.href).searchParams.get('work') ?? 'all')
+}

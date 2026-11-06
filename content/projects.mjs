@@ -26,7 +26,9 @@
  *      is X, so I did Y, which means Z" reads as a template by the third page.
  */
 
-export const PROJECTS = [
+import { PRODUCTS } from './products.mjs'
+
+const WEBSITES = [
   {
     slug: 'africa-blockchain-festival',
     seoTitle: 'Event website design & WordPress build | Sammy Fash',
@@ -42,6 +44,10 @@ export const PROJECTS = [
     services: ['Web Design', 'Product Design', 'WordPress Development', 'Full-stack Development'],
     stack: ['Figma', 'WordPress', 'Next.js', 'TypeScript', 'Supabase'],
     card: 'abf',
+    kind: 'website',
+    cardAlt: 'The Africa Blockchain Festival 2025 website on a desktop monitor',
+    cardTag: 'Figma · WordPress · Next.js',
+    cardSize: [1400, 777],
     shots: { desktop: 4, mobile: 5 },
     metrics: [
       { value: '~$100K', label: 'in sponsorship reported by the organisers for the 2025 edition' },
@@ -161,6 +167,10 @@ export const PROJECTS = [
     services: ['Product Design', 'Web Design', 'WordPress Development'],
     stack: ['Figma', 'WordPress'],
     card: 'bmoni',
+    kind: 'website',
+    cardAlt: 'The BMONI fintech website on a laptop',
+    cardTag: 'Figma · WordPress',
+    cardSize: [1400, 939],
     shots: { desktop: 4, mobile: 0 },
     metrics: [
       { value: '$1B+', label: 'processed by the BMONI platform after the website launched' },
@@ -210,6 +220,10 @@ export const PROJECTS = [
     services: ['UI/UX Design', 'Web Design', 'Webflow Development'],
     stack: ['Figma', 'Webflow'],
     card: 'icp-kenya',
+    kind: 'website',
+    cardAlt: 'The ICP Hub Kenya website on a tablet',
+    cardTag: 'Figma · Webflow',
+    cardSize: [1400, 852],
     video: 'icp-hub-kenya',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
@@ -258,6 +272,10 @@ export const PROJECTS = [
     services: ['Web Design', 'Art Direction', 'WordPress Development'],
     stack: ['Figma', 'WordPress'],
     card: 'ethsafari',
+    kind: 'website',
+    cardAlt: 'The ETHSafari website on a desktop monitor',
+    cardTag: 'Figma · WordPress',
+    cardSize: [1400, 819],
     shots: { desktop: 4, mobile: 5 },
     metrics: [
       { value: '3,000+', label: 'attendees at the most recent edition, reported by the organisers' },
@@ -305,6 +323,10 @@ export const PROJECTS = [
     services: ['UI/UX Design', 'Web Design', 'Webflow Development'],
     stack: ['Figma', 'Webflow'],
     card: 'blockchain-solutions',
+    kind: 'website',
+    cardAlt: 'The SmartDev Studios website on a laptop',
+    cardTag: 'Figma · Webflow',
+    cardSize: [1400, 797],
     video: 'smartdev-studios',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
@@ -351,6 +373,10 @@ export const PROJECTS = [
     services: ['UI/UX Design', 'Landing Page', 'Webflow Development'],
     stack: ['Figma', 'Webflow'],
     card: 'dynasty-labs',
+    kind: 'website',
+    cardAlt: 'The Dynasty Labs website on a MacBook',
+    cardTag: 'Figma · Webflow',
+    cardSize: [1400, 809],
     video: 'dynasty-labs',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
@@ -385,7 +411,12 @@ export const PROJECTS = [
   },
 ]
 
+/** Products lead: they are the evidence for product and front-end roles. */
+export const PROJECTS = [...PRODUCTS, ...WEBSITES]
+
+/** Next published project, skipping drafts. */
 export const nextOf = (slug) => {
-  const i = PROJECTS.findIndex((p) => p.slug === slug)
-  return PROJECTS[(i + 1) % PROJECTS.length]
+  const live = PROJECTS.filter((p) => !p.draft)
+  const i = live.findIndex((p) => p.slug === slug)
+  return live[(i + 1) % live.length]
 }

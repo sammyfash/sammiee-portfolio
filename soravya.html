@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soravya: product design and front-end engineering case study | Sammy Fash</title>
+  <meta name="description" content="Soravya is an event management platform for tech conferences and events worldwide. I designed the organiser console and the attendee mobile app, and…">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://sammyfash.com/soravya">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sammy Fash">
+  <meta property="og:url" content="https://sammyfash.com/soravya">
+  <meta property="og:title" content="Soravya: product design and front-end engineering case study | Sammy Fash">
+  <meta property="og:description" content="Soravya is an event management platform for tech conferences and events worldwide. I designed the organiser console and the attendee mobile app, and…">
+  <meta property="og:image" content="https://sammyfash.com/img/work/soravya.jpg">
+  <meta property="og:image:alt" content="Soravya — Product design by Sammy Fash">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sammyfash.com/img/work/soravya.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Soravya, the event management platform",
+  "headline": "Soravya",
+  "description": "Soravya is an event management platform for tech conferences and events around the world. Organisers run their entire event from one dashboard, while attendees get the programme, their personal agenda and networking right on their phone. I designed both sides of the product, the Soravya console…",
+  "url": "https://sammyfash.com/soravya",
+  "image": "https://sammyfash.com/img/work/soravya.jpg",
+  "dateCreated": "2026",
+  "inLanguage": "en",
+  "keywords": "Product design, Design system, Interaction design, Front-end engineering, Figma, Next.js, React, TypeScript, Tailwind CSS, Vitest",
+  "creator": {
+    "@type": "Person",
+    "name": "Sammy Fash",
+    "url": "https://sammyfash.com"
+  },
+  "about": {
+    "@type": "Organization"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Nairobi, Kenya · remote"
+  }
+}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__mark">Sammy Fash</span>
+      <span class="preloader__count">0%</span>
+    </div>
+  </div>
+
+  <div class="curtain" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true">
+    <svg class="cursor__icon cursor__arrow" viewBox="0 0 28 28">
+      <g><path d="M7 4 L24 13.9 L15.7 15.6 L11.6 23.2 Z" /></g>
+    </svg>
+    <svg class="cursor__icon cursor__hand" viewBox="0 0 32 36">
+      <g>
+        <path class="hand-shape" d="M9 5.5 A2.5 2.5 0 0 1 14 5.5 L14 15 A2.25 2.25 0 0 1 18.5 15 L18.5 16.5 A2.25 2.25 0 0 1 23 16.5 L23 18 A2.25 2.25 0 0 1 27.5 18 L27.5 25 C27.5 30.5 24 34 19 34 L16 34 C12.5 34 10.2 32.3 8.6 29.6 L3.4 21.2 A2.6 2.6 0 0 1 7.8 18.4 L9 20.3 Z" />
+        <path class="hand-creases" d="M14 15.5 L14 19.5 M18.5 17 L18.5 20 M23 18.5 L23 21" />
+      </g>
+    </svg>
+    <span class="cursor__line cursor__line--x"></span>
+    <span class="cursor__line cursor__line--y"></span>
+    <span class="cursor__knot"><i></i></span>
+    <span class="cursor__tag"><span>View project</span></span>
+  </div>
+
+  <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
+    <div class="nav-overlay__header">
+      <a class="wordmark" href="/">Sammy Fash</a>
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      <li><a class="nav-link" href="/">
+        <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
+        <span class="nav-link__index">01</span>
+      </a></li>
+      <li><a class="nav-link" href="/about">
+        <span class="nav-link__roll"><span>About</span><span aria-hidden="true">About</span></span>
+        <span class="nav-link__index">02</span>
+      </a></li>
+      <li><a class="nav-link" href="/#work">
+        <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
+        <span class="nav-link__index">03</span>
+      </a>
+        <ul class="nav-sub" aria-label="Work by discipline">
+          <li><a class="nav-sub__link" href="/?work=design#work">Product design</a></li>
+          <li><a class="nav-sub__link" href="/?work=development#work">Development</a></li>
+          <li><a class="nav-sub__link" href="/?work=web#work">Websites</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="/cv">
+        <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
+      <li><a class="nav-link" href="#contact" data-contact-open>
+        <span class="nav-link__roll"><span>Contact</span><span aria-hidden="true">Contact</span></span>
+        <span class="nav-link__index">05</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-overlay__foot">
+      <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+      <span>
+        <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
+        <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+      </span>
+      <button class="theme-toggle theme-toggle--labelled" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg><span data-theme-label>Light mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="/">Sammy Fash</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article class="case pcase">
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <header class="phead">
+        <div class="phead__text">
+          <ul class="ptags" data-reveal aria-label="My role on this project"><li class="ptag">Product design</li><li class="ptag">Front-end engineering</li></ul>
+          <h1 class="case__title" data-reveal>
+            <span class="line"><span class="line__inner">Soravya</span></span>
+          </h1>
+          <p class="case__summary phead__summary" data-reveal>Soravya is an event management platform for tech conferences and events around the world. Organisers run their entire event from one dashboard, while attendees get the programme, their personal agenda and networking right on their phone. I designed both sides of the product, the Soravya console and the mobile app attendees use at the event, and I built the front end of both.</p>
+        </div>
+        <figure class="phead__media" data-reveal>
+          <button type="button" class="zoom" data-zoom="/img/screens/soravya-control.webp" data-zoom-w="2400" data-zoom-h="2792" data-zoom-kind="page" data-zoom-caption="Event Control, the overview organisers open first" data-cursor-tag="View" aria-label="View full size: Event Control, the overview organisers open first">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-control@1200.webp 1200w, /img/mockups/soravya-control.webp 2400w" sizes="(max-width: 900px) 100vw, 55vw">
+            <img src="/img/mockups/soravya-control.webp" alt="Soravya: the organiser console on a laptop" width="2400" height="1600" fetchpriority="high" decoding="async">
+          </picture>
+          </button>
+        </figure>
+      </header>
+
+      <div class="glance">
+        <div class="glance__cell glance__cell--role" data-reveal>
+          <p class="glance__label">My role</p>
+          <ul class="chips"><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Product design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Design system</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>Interaction design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Front-end engineering</li></ul>
+        </div>
+        <div class="glance__cell glance__cell--stack" data-reveal>
+          <p class="glance__label">Built with</p>
+          <ul class="techgrid"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/nextjs.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Next.js</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/tailwind.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Tailwind CSS</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/vitest.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Vitest</span>
+            </li>
+          </ul>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M15.5 14.8c2.9-.4 5.3 1.2 6 4.2"/></svg> Team</p>
+          <p class="glance__text">A team of about five people across different fields. I led the product design and the design system, and built the front end of both the console and the app.</p>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Timeline</p>
+          <p class="glance__big">12 weeks</p>
+          <p class="glance__text">July to October 2026<br>Nairobi, Kenya · remote</p>
+        </div>
+      </div>
+
+      <ul class="impact">
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+          <p class="impact__value">105<span>pages</span></p>
+          
+          <p class="impact__text">designed and built across the organiser console and the attendee app.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14l4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg></span>
+          <p class="impact__value">212<span>KB</span></p>
+          <span class="impact__bar" role="img" aria-label="212 of 300 KB used"><i style="width:71%"></i><b style="left:100%"></b></span>
+          <span class="impact__scale"><span>0</span><span>300 KB limit</span></span>
+          <p class="impact__text">is all an attendee’s phone downloads on the first visit, well under the 300 KB limit. If any page goes over that limit, the build stops it from going live.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <p class="impact__value">1,900+<span>tests</span></p>
+          
+          <p class="impact__text">check every release, from accessibility to who is allowed to see what, before anything reaches users.</p>
+        </li>
+      </ul>
+      <div class="pswitch" data-product-switch>
+        <div class="pswitch__inner" role="tablist" aria-label="Read this case study as">
+          <button class="pswitch__tab" type="button" role="tab" id="tab-design" aria-controls="design" aria-selected="true" data-view="design">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg> Design
+          </button>
+          <button class="pswitch__tab" type="button" role="tab" id="tab-development" aria-controls="development" aria-selected="false" data-view="development" tabindex="-1">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg> Development
+          </button>
+          <span class="pswitch__thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="ppanel" id="design" role="tabpanel" aria-labelledby="tab-design" data-panel="design">
+        <h2 class="visually-hidden">Design</h2>
+        <p class="ppanel__lede" data-reveal>Soravya was built to solve the problems organisers face once ticketing is done: managing attendees and everything else that happens during the event. Organisers often struggle to communicate clearly with attendees, whether that’s a change to the programme, news about a side event, or collecting feedback. They also need to learn about the people attending and help them meet each other, so everyone gets the full value of what they paid for. I mapped out all of these problems and turned them into user personas before the design began. That gave me a clear picture of who I was designing for, what they were struggling with, and how design could solve it.</p>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">What shaped the product</h3>
+          <p class="psec__intro">Four findings shaped every design and development decision behind Soravya.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+            <h4>Built for every level of tech experience</h4>
+            <p>A tech conference brings together developers, investors, policymakers and first-time attendees. I didn’t assume everyone is tech-savvy, so every flow is designed to be easy to understand and use, whatever someone’s experience with digital products.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span>
+            <h4>Made for busy venues and weak internet</h4>
+            <p>People use the app while moving between halls, often on crowded Wi-Fi or a weak mobile signal, and on all kinds of phones. So the app loads quickly, keeps working offline and keeps every screen simple to read at a glance.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="M2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span>
+            <h4>Side events as a core feature</h4>
+            <p>The competitor platform we reviewed in detail only offered side-event management on its most expensive plan. In Soravya, every organiser gets the full flow, from submission and approval to publishing.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h4>Privacy and consent from day one</h4>
+            <p>Networking only works if people trust it. Attendees choose whether they are visible, their contact details stay private until they accept a meeting, and they can opt out at any time.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Who it’s for</h3>
+          <p class="psec__intro">Soravya is built for everyone involved in running or attending an event. They share the same goal, a successful event, but each needs something different from the product. I grouped them into four types of users.</p>
+        </header>
+        <ul class="personas">
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+              <h4>Attendees</h4>
+            </div>
+            <p class="persona__context">Join through their invitation email and use Soravya on their phone throughout the event.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Know where to be and when</li><li>Build a personal agenda</li><li>Get updates when plans change</li><li>Connect with the right people, if they choose to</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+              <h4>Organisers</h4>
+            </div>
+            <p class="persona__context">Run the whole event from the console, usually on a laptop and sometimes on a tablet at the venue.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Import and invite attendees</li><li>Build and update the programme</li><li>Approve side events</li><li>Track how the event is going</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+              <h4>Comms leads</h4>
+            </div>
+            <p class="persona__context">Keep attendees informed by sending announcements during the event.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Send updates quickly</li><li>See who received them</li></ul>
+            <p class="persona__note">They only see what their job needs, which keeps the console simple and attendee data secure.</p>
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg></span>
+              <h4>Check-in staff</h4>
+            </div>
+            <p class="persona__context">Welcome attendees at the entrance and check them in as quickly as possible.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Scan a pass or enter its code</li><li>Find attendees without a pass</li><li>Print badges on the spot</li></ul>
+            
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">The principles behind every decision</h3>
+          <p class="psec__intro">I set these five rules before designing any screens, and used them to settle decisions throughout the project.</p>
+        </header>
+        <ol class="principles">
+          <li data-reveal><span class="principles__n">1</span><div><h4>Show only what’s real</h4><p>No placeholder numbers or unfinished features presented as finished. When there is no data yet, the screen says so clearly.</p></div></li>
+          <li data-reveal><span class="principles__n">2</span><div><h4>Prioritise the attendee</h4><p>Attendee screens are seen by thousands of people at every event, so they received the most design attention.</p></div></li>
+          <li data-reveal><span class="principles__n">3</span><div><h4>Keep screens focused</h4><p>People use Soravya while busy, so every element on a screen has to earn its place.</p></div></li>
+          <li data-reveal><span class="principles__n">4</span><div><h4>Always have a fallback</h4><p>If the internet drops or a service fails, people see a clear message and a way forward, never a blank screen.</p></div></li>
+          <li data-reveal><span class="principles__n">5</span><div><h4>Respect people’s choices</h4><p>No one’s details are shared without their permission, and opting out takes effect within a minute.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">How the product is organised</h3>
+          <p class="psec__intro">Organisers move around the console with a side menu grouped by the tasks they do. Attendees use five tabs at the bottom of the app that follow the same structure. When an organiser turns a feature off, it disappears from the app completely instead of showing as a disabled button.</p>
+        </header>
+        <div class="ia" data-reveal>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Organiser dashboard</p>
+            <ol class="ia__list"><li>Event Control</li><li>Programme</li><li>Check-in</li><li>Sponsors &amp; partners</li><li>Audience</li><li>Announcements</li><li>Networking</li><li>Insight</li><li>Settings</li></ol>
+          </div>
+          <div class="ia__visual">
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-rail.webp" data-zoom-w="472" data-zoom-h="1800" data-zoom-kind="image" data-zoom-caption="The dashboard's navigation rail" data-cursor-tag="View" aria-label="View full size: The dashboard's navigation rail">
+            <img src="/img/components/soravya-rail.webp" alt="The dashboard's navigation rail" width="472" height="1800" loading="lazy" class="ia__rail">
+          </button>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-tabbar.webp" data-zoom-w="1170" data-zoom-h="324" data-zoom-kind="image" data-zoom-caption="The attendee app's tab bar" data-cursor-tag="View" aria-label="View full size: The attendee app's tab bar">
+            <img src="/img/components/soravya-tabbar.webp" alt="The attendee app's tab bar" width="1170" height="324" loading="lazy" class="ia__tabbar">
+          </button>
+          </div>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Attendee app</p>
+            <ol class="ia__list"><li>Home</li><li>Program</li><li>People</li><li>Meetings</li><li>Profile</li></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">Key screens in the console</h3>
+          <p class="psec__intro">Six of the most important screens, and the design thinking behind each one.</p>
+        </header>
+
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Event Control: everything that needs attention, in one place</h4>
+            <p>The first version of the event home page was a list of eleven links. It showed organisers where they could go, but not what needed their attention. I moved the navigation into the side menu and redesigned the page as Event Control, a single overview of attendee numbers, sign-up progress, check-ins and anything waiting for a decision.</p>
+            <p>Each section only appears if the person’s role allows them to act on it, so nobody sees cards they can’t use.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-control.webp" data-zoom-w="2400" data-zoom-h="2792" data-zoom-kind="page" data-zoom-caption="Event Control, the first screen organisers see." data-cursor-tag="View" aria-label="View full size: Event Control, the first screen organisers see.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-control@1200.webp 1200w, /img/mockups/soravya-control.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-control.webp" alt="Soravya: Event Control, the first screen organisers see." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Event Control, the first screen organisers see.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Insight: data that is easy to read</h4>
+            <p>Colours in the charts carry meaning. The sign-up funnel moves from grey to amber to blue to green as people get closer to a complete profile. Programme tracks share one purple colour family because no track is more important than another, and red is only ever used for errors.</p>
+            <p>Insight shows totals but never names individuals. Any group smaller than ten people shows as “&lt;10”, so nobody can be identified from the numbers.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-insight.webp" data-zoom-w="2400" data-zoom-h="1515" data-zoom-kind="page" data-zoom-caption="Insight, showing how the event is performing." data-cursor-tag="View" aria-label="View full size: Insight, showing how the event is performing.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-insight@1200.webp 1200w, /img/mockups/soravya-insight.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-insight.webp" alt="Soravya: Insight, showing how the event is performing." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Insight, showing how the event is performing.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Programme: clear warnings when something is wrong</h4>
+            <p>Most buttons are kept neutral so that only one action stands out on each screen. When something needs attention, such as two sessions booked into the same room, the organiser sees a clear notice explaining the problem.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-programme.webp" data-zoom-w="2400" data-zoom-h="4333" data-zoom-kind="page" data-zoom-caption="The programme builder flagging a room clash." data-cursor-tag="View" aria-label="View full size: The programme builder flagging a room clash.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-programme@1200.webp 1200w, /img/mockups/soravya-programme.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-programme.webp" alt="Soravya: The programme builder flagging a room clash." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The programme builder flagging a room clash.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Experiences: managing side events step by step</h4>
+            <p>Side events move from submitted to approved to published in one table, with capacity tracked along the way. Every status is written in words, like “Awaiting approval” or “Live to attendees”, so organisers never have to guess what a colour means.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-experiences.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Experiences, with one side event waiting for approval." data-cursor-tag="View" aria-label="View full size: Experiences, with one side event waiting for approval.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-experiences@1200.webp 1200w, /img/mockups/soravya-experiences.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-experiences.webp" alt="Soravya: Experiences, with one side event waiting for approval." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Experiences, with one side event waiting for approval.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Announcements: reaching the right people</h4>
+            <p>Organisers can write an announcement without leaving Event Control. Before sending, they choose who receives it, how urgent it is, and whether it goes to the event workspace, by email, or both.</p>
+            <p>Every announcement is reviewed before it goes out, so nothing reaches thousands of attendees by accident.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-compose.webp" data-zoom-w="2400" data-zoom-h="2792" data-zoom-kind="page" data-zoom-caption="Writing an announcement from Event Control." data-cursor-tag="View" aria-label="View full size: Writing an announcement from Event Control.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-compose@1200.webp 1200w, /img/mockups/soravya-compose.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-compose.webp" alt="Soravya: Writing an announcement from Event Control." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Writing an announcement from Event Control.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Moderation: keeping networking safe</h4>
+            <p>When an attendee reports someone, the report goes into a moderation queue with a clear response target: 20 minutes for harassment and 2 hours for anything else. Reports that miss their target move to the top, so nothing is forgotten.</p>
+            <p>If something serious happens, organisers can pause all networking at the event immediately, while the programme and agendas keep working as normal.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-moderation.webp" data-zoom-w="2400" data-zoom-h="4333" data-zoom-kind="page" data-zoom-caption="The moderation queue, with reports waiting for a decision." data-cursor-tag="View" aria-label="View full size: The moderation queue, with reports waiting for a decision.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-moderation@1200.webp 1200w, /img/mockups/soravya-moderation.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/soravya-moderation.webp" alt="Soravya: The moderation queue, with reports waiting for a decision." width="2400" height="1600" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The moderation queue, with reports waiting for a decision.</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">The attendee app 📱</h3>
+          <p class="psec__intro">This is the part of Soravya that every attendee uses, so it received the most attention. The home screen shows today’s agenda and side events. The programme can be filtered by day and track, and any session can be saved in one tap. The People tab suggests who to meet and explains why in plain words, such as “You both listed fintech and settlement”. Once both people agree to meet, the meeting appears with its time and place, and only then are contact details shared. The event pass is always one tap away for check-in.</p>
+        </header>
+        <ul class="phones">
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-home.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="Home: today’s agenda and side events" data-cursor-tag="View" aria-label="View full size: Home: today’s agenda and side events">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-home@1200.webp 1200w, /img/mockups/soravya-home.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-home.webp" alt="Soravya attendee app: Home: today’s agenda and side events" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>Home: today’s agenda and side events</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-program.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="The programme, filtered by day and track" data-cursor-tag="View" aria-label="View full size: The programme, filtered by day and track">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-program@1200.webp 1200w, /img/mockups/soravya-program.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-program.webp" alt="Soravya attendee app: The programme, filtered by day and track" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>The programme, filtered by day and track</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-session.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="Session details, saved in one tap" data-cursor-tag="View" aria-label="View full size: Session details, saved in one tap">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-session@1200.webp 1200w, /img/mockups/soravya-session.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-session.webp" alt="Soravya attendee app: Session details, saved in one tap" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>Session details, saved in one tap</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-experiences-phone.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="Side events around the main event" data-cursor-tag="View" aria-label="View full size: Side events around the main event">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-experiences-phone@1200.webp 1200w, /img/mockups/soravya-experiences-phone.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-experiences-phone.webp" alt="Soravya attendee app: Side events around the main event" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>Side events around the main event</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-people.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="People: suggestions with clear reasons" data-cursor-tag="View" aria-label="View full size: People: suggestions with clear reasons">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-people@1200.webp 1200w, /img/mockups/soravya-people.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-people.webp" alt="Soravya attendee app: People: suggestions with clear reasons" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>People: suggestions with clear reasons</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-meetings.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="Meetings, confirmed with time and place" data-cursor-tag="View" aria-label="View full size: Meetings, confirmed with time and place">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-meetings@1200.webp 1200w, /img/mockups/soravya-meetings.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-meetings.webp" alt="Soravya attendee app: Meetings, confirmed with time and place" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>Meetings, confirmed with time and place</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-profile.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="Profile and settings in one menu" data-cursor-tag="View" aria-label="View full size: Profile and settings in one menu">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-profile@1200.webp 1200w, /img/mockups/soravya-profile.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-profile.webp" alt="Soravya attendee app: Profile and settings in one menu" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>Profile and settings in one menu</p>
+          </li>
+          <li class="phones__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/soravya-pass.webp" data-zoom-w="1170" data-zoom-h="2532" data-zoom-kind="phone" data-zoom-caption="The event pass, ready to scan at the door" data-cursor-tag="View" aria-label="View full size: The event pass, ready to scan at the door">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/soravya-pass@1200.webp 1200w, /img/mockups/soravya-pass.webp 2400w" sizes="(max-width: 900px) 50vw, 25vw">
+            <img src="/img/mockups/soravya-pass.webp" alt="Soravya attendee app: The event pass, ready to scan at the door" width="2400" height="2935" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <p>The event pass, ready to scan at the door</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">07</p>
+          <h3 class="psec__title">The design system</h3>
+          <p class="psec__intro">Design systems that only live in Figma tend to drift away from the real product over time. To avoid that, I built Soravya’s design system directly into the code. Every component uses named colour tokens, and the build fails if anyone uses a colour outside the system. Organisers can add their own brand colour, but Soravya checks that it is readable before saving it.</p>
+        </header>
+        <ul class="pspec__swatches" aria-label="Core colour tokens">
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#5b4fd6"></span>
+            <span class="pspec__name">Accent</span>
+            <code>#5b4fd6</code>
+            <span class="pspec__note">5.92:1 contrast on white</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#16121c"></span>
+            <span class="pspec__name">Ink</span>
+            <code>#16121c</code>
+            <span class="pspec__note">text and main buttons</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#7e828e"></span>
+            <span class="pspec__name">Roster</span>
+            <code>#7e828e</code>
+            <span class="pspec__note">funnel, step 1</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#e99449"></span>
+            <span class="pspec__name">Invited</span>
+            <code>#e99449</code>
+            <span class="pspec__note">funnel, step 2</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#2e6fd9"></span>
+            <span class="pspec__name">Activated</span>
+            <code>#2e6fd9</code>
+            <span class="pspec__note">funnel, step 3</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#1e8e52"></span>
+            <span class="pspec__name">Complete</span>
+            <code>#1e8e52</code>
+            <span class="pspec__note">funnel, final step</span>
+          </li>
+        </ul>
+        <div class="pspec__foot">
+          <div class="pspec__type" data-reveal>
+            <p class="pspec__label">Typeface</p>
+            <p class="pspec__family">Aa</p>
+            <p class="pspec__family-name">Hanken Grotesk</p>
+            <p class="pspec__note">A single, self-hosted typeface. The original display font was replaced when its licence turned out to cover desktop use only, which meant it could not be used on the live product.</p>
+          </div>
+          <div class="pspec__rules" data-reveal>
+            <p class="pspec__label">Standards every screen meets</p>
+            <ul><li>A loading, empty, error and offline state for every screen</li><li>Colour is never the only way information is shown</li><li>Text contrast of at least 4.5:1</li><li>Light, dark and system themes</li><li>Short, clear interface text of no more than 14 words per sentence</li></ul>
+          </div>
+        </div>
+        
+        <p class="pspec__label pspec__label--gap">Components from the live product</p>
+        <ul class="bento">
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-kpi.webp" data-zoom-w="362" data-zoom-h="330" data-zoom-kind="image" data-zoom-caption="KPI tile component" data-cursor-tag="View" aria-label="View full size: KPI tile component">
+            <span class="bento__frame"><img src="/img/components/soravya-kpi.webp" alt="KPI tile component" width="362" height="330" loading="lazy"></span>
+          </button>
+            <span class="bento__label">KPI tile</span>
+          </li>
+          <li class="bento__item bento__item--wide" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-funnel-card.webp" data-zoom-w="1400" data-zoom-h="488" data-zoom-kind="image" data-zoom-caption="Funnel chart component" data-cursor-tag="View" aria-label="View full size: Funnel chart component">
+            <span class="bento__frame"><img src="/img/components/soravya-funnel-card.webp" alt="Funnel chart component" width="1400" height="488" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Funnel chart</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-decision.webp" data-zoom-w="834" data-zoom-h="426" data-zoom-kind="image" data-zoom-caption="Decision card component" data-cursor-tag="View" aria-label="View full size: Decision card component">
+            <span class="bento__frame"><img src="/img/components/soravya-decision.webp" alt="Decision card component" width="834" height="426" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Decision card</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-person.webp" data-zoom-w="1050" data-zoom-h="480" data-zoom-kind="image" data-zoom-caption="People card component" data-cursor-tag="View" aria-label="View full size: People card component">
+            <span class="bento__frame"><img src="/img/components/soravya-person.webp" alt="People card component" width="1050" height="480" loading="lazy"></span>
+          </button>
+            <span class="bento__label">People card</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-pass.webp" data-zoom-w="960" data-zoom-h="546" data-zoom-kind="image" data-zoom-caption="Event pass component" data-cursor-tag="View" aria-label="View full size: Event pass component">
+            <span class="bento__frame"><img src="/img/components/soravya-pass.webp" alt="Event pass component" width="960" height="546" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Event pass</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/soravya-experience.webp" data-zoom-w="1050" data-zoom-h="855" data-zoom-kind="image" data-zoom-caption="Experience card component" data-cursor-tag="View" aria-label="View full size: Experience card component">
+            <span class="bento__frame"><img src="/img/components/soravya-experience.webp" alt="Experience card component" width="1050" height="855" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Experience card</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">08</p>
+          <h3 class="psec__title">Project timeline</h3>
+          <p class="psec__intro">Twelve weeks from the first prototype to a live event.</p>
+        </header>
+        <ol class="ptime">
+          <li data-reveal><time>28 Jul</time><p>Work begins, starting from a concept prototype in Figma.</p></li>
+          <li data-reveal><time>24 Aug</time><p>The final “Event Control” design direction is approved.</p></li>
+          <li data-reveal><time>25 Aug</time><p>Light, dark and system themes are added.</p></li>
+          <li data-reveal><time>26 Aug</time><p>Hanken Grotesk becomes the single typeface.</p></li>
+          <li data-reveal><time>27 Aug</time><p>The target audience is confirmed: tech conferences of 1,000 to 5,000 people.</p></li>
+          <li data-reveal><time>15 Sep</time><p>The design system is brought into the native attendee app.</p></li>
+          <li data-reveal><time>15–17 Oct</time><p>Africa Blockchain Festival 2026 runs its attendee app on Soravya. 🎉</p></li>
+        </ol>
+      </section>
+      </div>
+
+      <div class="ppanel ppanel--dev" id="development" role="tabpanel" aria-labelledby="tab-development" data-panel="development">
+        <h2 class="visually-hidden">Development</h2>
+        <p class="ppanel__lede" data-reveal>On the development side, I built the front end of both the console and the attendee app. The console is a Next.js 16 application made mostly of React server components. Pages are rendered on the server, forms send data straight to the server, and each screen keeps its state in the URL. Every page also checks who the user is and what they are allowed to see before showing anything.</p>
+
+        <ul class="techrow" aria-label="Stack"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/nextjs.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Next.js</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/tailwind.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Tailwind CSS</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/vitest.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Vitest</span>
+            </li>
+        </ul>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">How a console page loads</h3>
+          <p class="psec__intro">The six steps between an organiser opening a page and seeing it. The solid boxes are the parts I built; the dashed boxes were built by other members of the team.</p>
+        </header>
+        <figure class="pflow" data-reveal>
+          <ol class="pflow__track">
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Browser</span>
+              <span class="pflow__sub">the organiser opens a page</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Server component</span>
+              <span class="pflow__sub">the page is rendered on the server</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Access check</span>
+              <span class="pflow__sub">organisation, session, role and event</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Data loading</span>
+              <span class="pflow__sub">insight, programme and side events, in parallel</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">withTenancy()</span>
+              <span class="pflow__sub">each request limited to one organiser</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">Postgres + RLS</span>
+              <span class="pflow__sub">database security for each organiser</span>
+            </li>
+          </ol>
+          <figcaption class="pflow__key">
+            <span class="pflow__key-item pflow__key-item--me">Built by me</span>
+            <span class="pflow__key-item pflow__key-item--partner">Built by the team</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Code organised like the product</h3>
+          <p class="psec__intro">Each folder in the console’s code matches a section in the side menu. This makes it easy for anyone on the team to find the code behind any screen.</p>
+        </header>
+          <p class="psec__aside">105 pages and 71 API routes across the whole platform.</p>
+        </div>
+        <figure class="ptree" data-reveal>
+          <figcaption><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> src/app/org/[slug]/e/[eventSlug]/</figcaption>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>(overview)/</code><span>Event Control</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>programme/</code><span>sessions, imports, printing</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>attendees/</code><span>the attendee list</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>experiences/</code><span>side events</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>announcements/</code><span>writing and sending updates</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>insight/</code><span>reports and charts</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>check-in/</code><span>entrance scanning and badges</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>moderation/</code><span>networking reports</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>branding/ · domain/ · features/</code><span>organiser settings</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>roster.csv · .xlsx · .pdf</code><span>downloadable exports</span></li>
+          </ul>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">Pages that adapt to each user’s role</h3>
+          
+        </header>
+          <div class="psec__body"><p>When Event Control loads, it first identifies the organisation, the user’s session, their role and the event. It turns the role into a list of permissions and then loads every card at the same time. If the user doesn’t have permission for a card, that data is never even requested.</p>
+            <p>The links to a page and the page itself use the same permission check, so a user is never shown a link to something they can’t open.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>org/[slug]/e/[eventSlug]/(overview)/page.tsx</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-k">const</span> { organization, session, role, event } =
+<span class="pcode__ln" aria-hidden="true">2</span>  <span class="tk-k">await</span> <span class="tk-f">organizerRouteContext</span>({ slug, eventSlug });
+<span class="pcode__ln" aria-hidden="true">3</span><span class="tk-k">const</span> can = <span class="tk-f">capabilitiesFor</span>(role);
+<span class="pcode__ln" aria-hidden="true">4</span>
+<span class="pcode__ln" aria-hidden="true">5</span><span class="tk-k">const</span> [funnel, delivery, cases, imports] = <span class="tk-k">await</span> <span class="tk-t">Promise</span>.<span class="tk-f">all</span>([
+<span class="pcode__ln" aria-hidden="true">6</span>  can.<span class="tk-f">includes</span>(<span class="tk-s">'insight.view'</span>) ? <span class="tk-f">readFunnel</span>(scope, { since }) : <span class="tk-k">null</span>,
+<span class="pcode__ln" aria-hidden="true">7</span>  can.<span class="tk-f">includes</span>(<span class="tk-s">'insight.view'</span>) ? <span class="tk-f">readAnnouncementDelivery</span>(scope) : <span class="tk-k">null</span>,
+<span class="pcode__ln" aria-hidden="true">8</span>  can.<span class="tk-f">includes</span>(<span class="tk-s">'event.operate'</span>) ? <span class="tk-f">listCases</span>(scope, { status: <span class="tk-s">'open'</span> }) : [],
+<span class="pcode__ln" aria-hidden="true">9</span>  can.<span class="tk-f">includes</span>(<span class="tk-s">'memberships.manage'</span>) ? <span class="tk-f">listImportBatches</span>(scope) : [],
+<span class="pcode__ln" aria-hidden="true">10</span>]);</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">Privacy built into the code</h3>
+          
+        </header>
+          <div class="psec__body"><p>Reports never show a group of fewer than ten people. Rather than relying on every chart to remember this rule, I created a dedicated data type for people counts. Once a count is hidden, it no longer contains the real number, so it can’t accidentally appear in a log or an export.</p>
+            <p>A real bug shaped the wording. A hidden percentage once showed as “&lt;10”, which looked like “less than 10%” when the true figure was 100%. Hidden percentages now read “too few to report” instead.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>src/insight/count.ts</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-c">/** The threshold is the PRD’s. Changing it is a PRD change. */</span>
+<span class="pcode__ln" aria-hidden="true">2</span><span class="tk-k">export</span> <span class="tk-k">const</span> <span class="tk-t">K_FLOOR</span> = <span class="tk-n">10</span>;
+<span class="pcode__ln" aria-hidden="true">3</span>
+<span class="pcode__ln" aria-hidden="true">4</span><span class="tk-k">export</span> <span class="tk-k">type</span> <span class="tk-t">PeopleCount</span> =
+<span class="pcode__ln" aria-hidden="true">5</span>  | { <span class="tk-k">readonly</span> shown: <span class="tk-k">true</span>; <span class="tk-k">readonly</span> n: number }
+<span class="pcode__ln" aria-hidden="true">6</span>  | { <span class="tk-k">readonly</span> shown: <span class="tk-k">false</span> };
+<span class="pcode__ln" aria-hidden="true">7</span>
+<span class="pcode__ln" aria-hidden="true">8</span><span class="tk-k">export</span> <span class="tk-k">const</span> <span class="tk-t">SUPPRESSED</span> = <span class="tk-s">'&lt;10'</span>;
+<span class="pcode__ln" aria-hidden="true">9</span><span class="tk-k">export</span> <span class="tk-k">const</span> <span class="tk-t">SUPPRESSED_RATE</span> = <span class="tk-s">'too few to report'</span>;</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">Screen state saved in the URL</h3>
+          
+        </header>
+          <div class="psec__body"><p>Details like the selected date range, an open announcement form or a step in the setup guide are stored in the page address. This means the page loads in exactly the right state, the back button works as expected, and organisers can share a link to exactly what they are looking at.</p>
+            <p>Every value in the address is checked before it is used. If something unexpected comes in, the page simply falls back to the default view instead of breaking.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>org/[slug]/e/[eventSlug]/(overview)/page.tsx</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-k">type</span> <span class="tk-t">Props</span> = {
+<span class="pcode__ln" aria-hidden="true">2</span>  params: <span class="tk-t">Promise</span>&lt;{ slug: string; eventSlug: string }&gt;;
+<span class="pcode__ln" aria-hidden="true">3</span>  <span class="tk-c">// ?compose=1 opens the announcement sheet; ?step= drives setup.</span>
+<span class="pcode__ln" aria-hidden="true">4</span>  searchParams: <span class="tk-t">Promise</span>&lt;<span class="tk-t">Record</span>&lt;string, string | string[] | undefined&gt;&gt;;
+<span class="pcode__ln" aria-hidden="true">5</span>};
+<span class="pcode__ln" aria-hidden="true">6</span>
+<span class="pcode__ln" aria-hidden="true">7</span><span class="tk-k">const</span> query = <span class="tk-f">flatten</span>(<span class="tk-k">await</span> searchParams); <span class="tk-c">// narrowed once, here</span>
+<span class="pcode__ln" aria-hidden="true">8</span><span class="tk-k">const</span> range = <span class="tk-f">parseRange</span>(query.range);    <span class="tk-c">// unknown → default</span></code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">Design rules checked automatically</h3>
+          
+        </header>
+          <div class="psec__body"><p>I turned the design system’s rules into automated tests so they can’t be broken by mistake. One test blocks any component that uses a colour outside the system. Another finds styles that are referenced but never defined. A third fails the build if any screen is missing its loading, empty, error or offline state.</p>
+            <p>This came from experience: early on, the sign-in button went live invisible because it referred to a colour that didn’t exist.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>tests/ux/state-matrix.ts</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-k">export</span> <span class="tk-k">type</span> <span class="tk-t">StateName</span> =
+<span class="pcode__ln" aria-hidden="true">2</span>  <span class="tk-s">'loading'</span> | <span class="tk-s">'empty'</span> | <span class="tk-s">'error'</span> | <span class="tk-s">'offline'</span> | <span class="tk-s">'permission-denied'</span>;
+<span class="pcode__ln" aria-hidden="true">3</span>
+<span class="pcode__ln" aria-hidden="true">4</span><span class="tk-k">export</span> <span class="tk-k">type</span> <span class="tk-t">ScreenFamily</span> = {
+<span class="pcode__ln" aria-hidden="true">5</span>  name: string;
+<span class="pcode__ln" aria-hidden="true">6</span>  states: <span class="tk-t">StateName</span>[];
+<span class="pcode__ln" aria-hidden="true">7</span>  <span class="tk-c">// Flipping to true without fixtures fails CI.</span>
+<span class="pcode__ln" aria-hidden="true">8</span>  built: boolean;
+<span class="pcode__ln" aria-hidden="true">9</span>};</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">07</p>
+          <h3 class="psec__title">Fast on any phone, even offline</h3>
+          
+        </header>
+          <div class="psec__body"><p>Attendee pages send no client-side JavaScript to the phone, and link prefetching is turned off because it uses up mobile data. A service worker saves the programme and agenda so they can still be read offline, along with a note showing when they were last updated.</p>
+            <p>After every build, an automatic check measures the size of each page. Any page that hasn’t been categorised gets the strictest limit by default.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>scripts/check-bundle-budget.mjs</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-k">const</span> <span class="tk-t">BUDGETS</span> = {
+<span class="pcode__ln" aria-hidden="true">2</span>  <span class="tk-c">/** UXR-004 first-load budget for attendee-facing routes. */</span>
+<span class="pcode__ln" aria-hidden="true">3</span>  attendeeFirstLoadKb: <span class="tk-n">300</span>,
+<span class="pcode__ln" aria-hidden="true">4</span>  organizerFirstLoadKb: <span class="tk-n">450</span>,
+<span class="pcode__ln" aria-hidden="true">5</span>};
+<span class="pcode__ln" aria-hidden="true">6</span><span class="tk-c">// Unclassified routes get the attendee budget: fail safe.</span></code></pre>
+          </figure>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">08</p>
+          <h3 class="psec__title">Testing</h3>
+          <p class="psec__intro">Four groups of automated tests run on every update, alongside the regular unit tests.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h4>Permissions</h4>
+            <p>Checks what every role can and cannot do across the platform.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h4>Accessibility</h4>
+            <p>Scans the live build for accessibility issues using axe-core.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+            <h4>Screen states</h4>
+            <p>Confirms every screen has a loading, empty, error and offline state.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+            <h4>Mobile usability</h4>
+            <p>Checks tap target sizes, input zoom, screen edges and that forms keep answers after an error.</p>
+          </li>
+        </ul>
+        <dl class="pquality">
+          <div class="pquality__item" data-reveal><dt>494</dt><dd>code changes (commits) in 12 weeks, 342 of them mine</dd></div>
+          <div class="pquality__item" data-reveal><dt>113</dt><dd>pull requests reviewed and tested before release</dd></div>
+          <div class="pquality__item" data-reveal><dt>170</dt><dd>automated test files</dd></div>
+        </dl>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">09</p>
+          <h3 class="psec__title">My contribution</h3>
+          <p class="psec__intro">Soravya was built by a team of about five people. This is the part of the work I was responsible for, and the parts handled by the rest of the team.</p>
+        </header>
+        <div class="psplit" data-reveal>
+          <div class="psplit__col psplit__col--mine">
+            <p class="pspec__label">What I built</p>
+            <ul><li>The organiser console</li><li>The attendee app</li><li>The design system and component library</li><li>Offline support for attendees</li><li>The page size checks</li><li>The accessibility and screen-state tests</li><li>The audio player for recorded sessions</li></ul>
+          </div>
+          <div class="psplit__col">
+            <p class="pspec__label">What the rest of the team built</p>
+            <ul><li>The database and data structure</li><li>Security and data separation between organisers</li><li>User authentication</li><li>Email delivery</li><li>Hosting and deployment</li></ul>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="case__outcome" data-scene-end>
+        <p class="case__label"><b>&bull;</b> The result</p>
+        <div class="case__outcome-body">
+          <div></div>
+          <div>
+            <p>Soravya now runs as a complete platform where each organiser has their own web address, email sender, branding and set of features. In October, Africa Blockchain Festival 2026 used it to run its attendee app, and seeing the product I designed support a real festival was a proud moment for me.</p>
+            <a class="pill" href="https://soravya.com" rel="noopener"
+               data-magnetic="0.28" data-cursor-tag="Open soravya.com" data-cursor-color="#6d5ff0">
+              <span class="pill__label">Visit soravya.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="case__next" href="/africa-blockchain-festival"
+         data-cursor-tag="Next project" data-cursor-color="#0895fa">
+        <span class="case__next-label">Next project</span>
+        <span class="case__next-title">
+          Africa Blockchain Festival
+          <span class="case__next-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+      </a>
+
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact" data-cursor-zone="cross">
+    <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+
+    <div class="site-footer__box">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <div class="site-footer__cta">
+        <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
+          <p class="site-footer__availability" data-reveal>
+            Available for remote product design, front-end and design engineering roles,
+            and selected freelance projects. I work across European and US hours.
+          </p>
+        <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
+           data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
+          <span class="pill__label">Send me a message</span>
+        </a>
+      </div>
+
+      <div class="site-footer__contact">
+        <a class="site-footer__email link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+        <div class="site-footer__social">
+          <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+          <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__fineprint">
+      &copy; 2026 Sammy Fash. Designed and built by me.
+    </p>
+  </footer>
+
+  <!-- contact dialog, opened by anything with [data-contact-open] -->
+  <div class="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <div class="contact__scrim"></div>
+
+    <div class="contact__panel">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <button class="contact__close" type="button" aria-label="Close contact form">
+        <span></span><span></span>
+      </button>
+
+      <div class="contact__grid">
+        <div>
+          <h2 class="contact__title" id="contact-title">Tell me about the role or project</h2>
+          <p class="contact__blurb">
+            Share a little about what you need, your timeline and the best way to
+            reach you. I usually reply within two working days.
+          </p>
+          <p class="contact__direct">
+            Prefer email?<br>
+            <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+          </p>
+        </div>
+
+        <div>
+          <form novalidate>
+            <div class="contact__field" data-label="Name">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Email">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Message">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="We&rsquo;re hiring a design engineer for&hellip;" required></textarea>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <!-- Spam trap. Bots fill every field they find; people never see
+                 this one. Formspree discards a submission where it is set.
+                 Deliberately not .contact__field, so validation ignores it. -->
+            <p class="contact__gotcha" aria-hidden="true">
+              <label>Leave this empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </label>
+            </p>
+
+            <div class="contact__submit">
+              <button class="pill" type="submit" data-magnetic="0.2">
+                <span class="pill__label">Send message</span>
+              </button>
+              <span class="contact__status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="contact__sent" role="status">
+            <p>Thanks, your message has been sent.</p>
+            <p>I&rsquo;ll reply to the email address you provided, usually within two working days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/product.js"></script>
+</body>
+</html>

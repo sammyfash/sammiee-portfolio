@@ -19,7 +19,7 @@
   line-height: 1.26;
   letter-spacing: -0.01em;
   background-image: radial-gradient(ellipse 100% 100% at 50% 50%,
-                    #ffffff 0%, #cccccc 50%, #999999 100%);
+                    var(--wm-1) 0%, var(--wm-2) 50%, var(--wm-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

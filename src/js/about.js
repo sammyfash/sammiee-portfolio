@@ -14,8 +14,9 @@ const FRAME_START = 'top 58%'
 const WORDS_START = 'top 42%'
 const WORDS_END = 'bottom 62%'
 
-const WORD_DIM = 'rgba(255,255,255,0.16)'
-const WORD_LIT = 'rgba(255,255,255,1)'
+// The scrub tweens `--lit` (0 → 1) rather than a colour. CSS mixes the two
+// theme tokens from it, so switching light/dark mid-scroll repaints every word
+// in the new theme instead of leaving GSAP's captured white on paper.
 
 export function initAbout() {
   const section = qs('.about')
@@ -33,7 +34,7 @@ export function initAbout() {
 
   // Word splitting does not depend on the box width, so this only runs once.
   const words = splitWords(statement)
-  gsap.set(words, { color: WORD_DIM })
+  gsap.set(words, { '--lit': 0 })
 
   // The statement stays hidden until the box has finished drawing itself — it
   // arrives dim, and only then does the scroll scrub light it up.
@@ -51,7 +52,7 @@ export function initAbout() {
   }
 
   gsap.to(words, {
-    color: WORD_LIT,
+    '--lit': 1,
     ease: 'none',
     stagger: 1,
     scrollTrigger: { trigger: box, start: WORDS_START, end: WORDS_END, scrub: 0.5 },

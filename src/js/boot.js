@@ -15,6 +15,7 @@ import { initMenu } from './menu.js'
 import { initTransitions } from './transitions.js'
 import { initFlashGrids } from './flash-grid.js'
 import { initContact } from './contact.js'
+import { initTheme } from './theme.js'
 
 /**
  * The skip link has to do two things a bare `href="#main"` does not reliably do
@@ -59,6 +60,7 @@ export function boot({ beforePreloader, afterPreloader } = {}) {
   window.addEventListener('error', () => revealAll())
   window.addEventListener('unhandledrejection', () => revealAll())
 
+  guard('theme', initTheme)
   guard('skip link', initSkipLink)
   guard('viewport unit', trackViewportUnit)
   guard('smooth scroll', initScroll)

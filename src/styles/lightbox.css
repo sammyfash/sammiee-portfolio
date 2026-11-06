@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Lightbox (js/lightbox.js)
+   Any case-study image wrapped in .zoom opens full size. The viewer is dark
+   in both themes, so screens are judged against a neutral ground.
+   ========================================================================== */
+
+/* --- the trigger ---------------------------------------------------------- */
+.zoom {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: clamp(12px, 1.4vw, 24px);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+.zoom:focus-visible { outline: 2px solid var(--accent, currentColor); outline-offset: 4px; }
+
+/* A small expand badge, so it is clear the image opens. Always shown on touch
+   screens (no hover there); on a mouse it brightens on hover. */
+.zoom::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center / 16px no-repeat,
+    rgba(12, 12, 14, 0.62);
+  backdrop-filter: blur(6px);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.3s var(--ease-out-expo);
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .zoom::after { opacity: 0; transform: scale(0.85); }
+  .zoom:hover::after, .zoom:focus-visible::after { opacity: 1; transform: none; }
+}
+/* the bento tray and the navigation images carry their own corners */
+.bento__item .zoom, .ia__visual .zoom { border-radius: 18px; }
+
+/* --- the viewer ----------------------------------------------------------- */
+html[data-lightbox] { overflow: hidden; }
+html[data-lightbox] .cursor { visibility: hidden; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: none;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  background: #0b0b0d;
+  color: #f4f4f2;
+  overscroll-behavior: contain;
+}
+.lightbox[open] { display: grid; animation: lightbox-in 0.28s var(--ease-out-expo); }
+.lightbox::backdrop { background: transparent; }
+@keyframes lightbox-in { from { opacity: 0; } }
+
+/* The page's custom cursor sits under the dialog's top layer, so the native
+   cursor comes back in here. */
+.cursor-custom .lightbox,
+.cursor-custom .lightbox * { cursor: auto; }
+.cursor-custom .lightbox button { cursor: pointer; }
+.lightbox .lightbox__img { cursor: zoom-in; }
+.lightbox[data-zoomed='true'] .lightbox__img { cursor: zoom-out; }
+.lightbox[data-zoomed='true'] .lightbox__stage { cursor: grab; }
+.lightbox[data-dragging] .lightbox__stage,
+.lightbox[data-dragging] .lightbox__img { cursor: grabbing; }
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px clamp(12px, 2vw, 24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.lightbox__caption {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+.lightbox__count {
+  font-size: 0.8125rem;
+  color: rgba(244, 244, 242, 0.68);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.lightbox__tools { display: flex; gap: 4px; }
+.lightbox__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+.lightbox__btn:hover { background: rgba(255, 255, 255, 0.1); }
+.lightbox__btn:focus-visible { outline: 2px solid #f4f4f2; outline-offset: 2px; }
+.lightbox__btn[hidden] { display: none; }
+.lightbox__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.lightbox__stage {
+  display: flex;
+  overflow: auto;
+  padding: 24px;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+.lightbox__img {
+  /* auto margins centre it, and unlike place-items they never push an
+     oversized image past the scrollable edge */
+  margin: auto;
+  flex: none;
+  max-width: none;
+  border-radius: 8px;
+  background: #1a1a1d;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+.lightbox[data-loading='true'] .lightbox__img { opacity: 0.35; }
+
+.lightbox__hint {
+  padding: 10px 16px 14px;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: rgba(244, 244, 242, 0.68);
+}
+
+@media (max-width: 640px) {
+  .lightbox__bar { flex-wrap: wrap; row-gap: 4px; }
+  .lightbox__caption { flex-basis: 100%; order: 2; font-size: 0.875rem; }
+  .lightbox__count { order: 0; flex: 1; }
+  .lightbox__tools { order: 1; }
+  .lightbox__stage { padding: 12px; }
+  .lightbox__hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox[open] { animation: none; }
+  .zoom::after, .lightbox__img, .lightbox__btn { transition: none; }
+}

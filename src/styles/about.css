@@ -39,7 +39,12 @@
   text-wrap: pretty;
 }
 /* Each word starts dimmed and lights up as the block scrubs through. */
-.about__statement .word { color: color-mix(in srgb, var(--c-ink) 16%, transparent); }
+/* Each word starts dimmed and lights up as the block scrubs through. GSAP
+   drives --lit per word; the colour is mixed here, so it follows the theme. */
+@property --lit { syntax: '<number>'; inherits: false; initial-value: 0; }
+.about__statement .word {
+  color: color-mix(in srgb, var(--c-ink) calc(16% + var(--lit) * 84%), transparent);
+}
 
 @media (max-width: 900px) {
   .about__box { min-height: 0; }
