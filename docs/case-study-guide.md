@@ -148,9 +148,10 @@ Added 2026-11-06, after his review of the finished Soravya page.
 - **Colour lives in the icons, and in several colours.** Icons cycle through the homepage's
   mix (blue, green, orange, pink, cyan, gold), never one hue. Section and card backgrounds stay
   neutral. In light mode use the darker shades so every icon clears 3:1 on white.
-- **Cards in light mode are pure white** with the same hairline border. He disliked the
-  off-white tinted cards and the purple-tinted impact cards. Dark mode keeps its dark cards,
-  which he likes.
+- **Cards in light mode are pure white.** He disliked the off-white tinted cards and the
+  purple-tinted impact cards. Dark mode keeps its dark cards, which he likes.
+- **Cards have no border, in either theme.** The fill alone separates them from the page, so
+  the dark-mode fill is a little stronger (5.5% white) to stay visible on black.
 - **The product's own palette still belongs in its design-system section**, because there it
   documents the product rather than styling the page.
 - **Numbered lists use big numerals, not rules.** The principles lost the line above each

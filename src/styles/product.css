@@ -14,7 +14,9 @@
 .pcase {
   --gap: var(--card-gap);
   --accent: var(--c-ink);
-  --card-bg: color-mix(in srgb, var(--c-ink) 2.5%, transparent);
+  /* No borders on cards (Sammy's call): the fill alone separates them, so the
+     dark fill is a touch stronger than it was with a border. */
+  --card-bg: color-mix(in srgb, var(--c-ink) 5.5%, transparent);
   --tile-bg: color-mix(in srgb, var(--c-ink) 7%, transparent);
   /* bright on dark */
   --ic-1: #0895fa;
@@ -86,7 +88,6 @@
 .glance__cell {
   padding: clamp(18px, 1.8vw, 32px);
   border-radius: 18px;
-  border: 1px solid var(--c-rule);
   background: var(--card-bg);
 }
 .glance__label .icon { color: var(--ic, currentColor); }
@@ -148,7 +149,6 @@
   padding: clamp(20px, 2.2vw, 40px);
   border-radius: 18px;
   background: var(--card-bg);
-  border: 1px solid var(--c-rule);
 }
 .impact__icon {
   display: grid;
@@ -308,7 +308,6 @@
   gap: 0.6rem;
   padding: clamp(20px, 2vw, 36px);
   border-radius: 18px;
-  border: 1px solid var(--c-rule);
   background: var(--card-bg);
 }
 .pcard__icon,
@@ -330,7 +329,6 @@
 .persona {
   padding: clamp(20px, 2vw, 36px);
   border-radius: 18px;
-  border: 1px solid var(--c-rule);
   background: var(--card-bg);
 }
 .persona__head { display: flex; align-items: center; gap: 0.8rem; }
@@ -368,7 +366,6 @@
   align-items: center;
   padding: clamp(20px, 3vw, 56px);
   border-radius: 24px;
-  border: 1px solid var(--c-rule);
   background: var(--card-bg);
 }
 .ia__label { display: flex; align-items: center; gap: 0.5em; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-ink-dim); }
@@ -418,7 +415,7 @@
 .pspec__swatch code { font: 0.8125rem ui-monospace, 'SF Mono', Menlo, monospace; color: var(--c-ink-dim); }
 .pspec__note { color: var(--c-ink-dim); font-size: 0.8125rem; }
 .pspec__foot { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); margin-top: var(--gap); }
-.pspec__type, .pspec__rules, .psplit__col { padding: clamp(20px, 2.4vw, 44px); border-radius: 18px; border: 1px solid var(--c-rule); background: var(--card-bg); }
+.pspec__type, .pspec__rules, .psplit__col { padding: clamp(20px, 2.4vw, 44px); border-radius: 18px; background: var(--card-bg); }
 .pspec__label { font-size: 0.8125rem; font-weight: 600; color: var(--c-ink-dim); letter-spacing: 0.08em; text-transform: uppercase; }
 .pspec__label--gap { margin: clamp(40px, 4vw, 72px) 0 1.2rem; }
 .pspec__family { margin-top: 0.2em; font-family: 'Hanken Grotesk Variable', 'Hanken Grotesk', var(--font-sans); font-size: clamp(4rem, 9vw, 9rem); line-height: 1; letter-spacing: -0.04em; }
@@ -438,7 +435,6 @@
   min-height: 220px;
   padding: clamp(16px, 2vw, 36px);
   border-radius: 18px;
-  border: 1px solid var(--c-rule);
   background: var(--card-bg);
 }
 .bento__frame img {
@@ -554,7 +550,6 @@
 .pflow__key-item--partner::before { border-style: dashed; }
 
 .psplit { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
-.psplit__col--mine { border-color: color-mix(in srgb, var(--accent) 60%, transparent); }
 .psplit__col:not(.psplit__col--mine) li { color: var(--c-ink-dim); }
 
 .pquality {
