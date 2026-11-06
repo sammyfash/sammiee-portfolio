@@ -15,6 +15,7 @@ import { initFooter } from './footer.js'
 import { prefersReducedMotion, qs, qsa } from './utils.js'
 import { getLenis } from './scroll.js'
 import { initLightbox } from './lightbox.js'
+import { initEcho, echoEnabled } from './echo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -138,7 +139,9 @@ function initDepth() {
 function initSteps() {
   const page = qs('.pcase')
   if (!page || prefersReducedMotion()) return
-  for (const media of qsa('.pstep__media, .pstep__phones, .pspec__swatches, .psplit, .pquality', page)) {
+  // With the wireframe echo, the screens arrive through their rectangles instead.
+  const sel = echoEnabled() ? '.pstep__phones, .pspec__swatches, .psplit, .pquality' : '.pstep__media, .pstep__phones, .pspec__swatches, .psplit, .pquality'
+  for (const media of qsa(sel, page)) {
     gsap.from(media, {
       y: 40, opacity: 0, duration: 1.1, ease: 'expo.out',
       scrollTrigger: { trigger: media, start: 'top 88%' },
@@ -241,5 +244,5 @@ function initLife() {
 
 boot({
   beforePreloader: () => { initFooter(); guard('product switch', initSwitch); guard('lightbox', initLightbox) },
-  afterPreloader: () => { initCase(); guard('depth', initDepth); guard('steps', initSteps); guard('life', initLife) },
+  afterPreloader: () => { initCase(); guard('depth', initDepth); guard('steps', initSteps); guard('life', initLife); guard('echo', () => initEcho('.phead__media .photo, .pstep__media .photo, .ppair__fig .photo, .phones__item .photo')) },
 })

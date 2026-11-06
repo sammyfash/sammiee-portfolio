@@ -1,6 +1,7 @@
 /** Case-study page: rules draw across, copy unmasks, cover scales in. */
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { echoEnabled } from './echo.js'
 import { splitChars, watchLines, openLines, prefersReducedMotion, qs, qsa } from './utils.js'
 
 export function initCase() {
@@ -65,7 +66,8 @@ export function initCase() {
     })
   }
 
-  for (const mock of qsa('.case__showcase .mock, .case__pair .mock', page)) {
+  // With the wireframe echo, the mockups arrive through their rectangles instead.
+  for (const mock of echoEnabled() ? [] : qsa('.case__showcase .mock, .case__pair .mock', page)) {
     gsap.from(mock, {
       yPercent: 8, opacity: 0, duration: 1.1, ease: 'expo.out',
       scrollTrigger: { trigger: mock, start: 'top 88%' },
