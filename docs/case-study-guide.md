@@ -123,7 +123,8 @@ Added 2026-11-06, from the homepage audit.
   what the team gains from one person doing both.
 - **No website-only language in product positioning** ("the final site" became "the product").
 - **The role line above a project title is a set of tags, not a text line.** One pill per role
-  ("Product design", "Front-end engineering"), tinted with the project's accent. Small tag text
+  ("Product design", "Front-end engineering"), neutral, with a small dot in a different icon
+  colour on each (section 7 replaced the earlier project-accent tint). Small tag text
   must still clear 4.5:1 contrast in both themes.
 
 ## 6. Screens Sammy supplies

@@ -265,9 +265,29 @@ export function initCrew() {
   const followers = new Map()
   const follow = (b, el) => followers.set(b, el)
 
+  /**
+   * Hold an element at the size it has now, so nothing around it reflows while
+   * it is being built; returns the undo. Only the properties it sets are put
+   * back, never GSAP's own inline styles. (On a phone, typing a paragraph and
+   * retyping a copied card both changed heights, and the page jumped.)
+   */
+  const hold = (el, { width = false, clip = false } = {}) => {
+    const r = el.getBoundingClientRect()
+    const keys = ['height', 'boxSizing', ...(width ? ['width', 'whiteSpace'] : []), ...(clip ? ['overflow'] : [])]
+    const before = keys.map((k) => el.style[k])
+    el.style.boxSizing = 'border-box'
+    el.style.height = `${r.height}px`
+    if (width) { el.style.width = `${r.width}px`; el.style.whiteSpace = 'nowrap' }
+    if (clip) el.style.overflow = 'hidden'
+    return () => keys.forEach((k, i) => { el.style[k] = before[i] })
+  }
+  /** A pill, chip or other piece that sits in a row: its width matters too. */
+  const inRow = (el) => /inline/.test(getComputedStyle(el).display) || /flex/.test(getComputedStyle(el.parentElement).display)
+
   /** Type an element in, line by line, the I-beam riding the last letter. */
   const typeInto = async (agent, el) => {
     tool(agent, 'beam')
+    const release = hold(el)
     const split = SplitText.create(el, { type: 'lines', linesClass: 'crew-line' })
     gsap.set(el, { autoAlpha: 1 })
     const lines = split.lines.map((line) => {
@@ -293,6 +313,7 @@ export function initCrew() {
       }))
     }
     split.revert()
+    release()
   }
 
   /** Retype a duplicated label: select the copied words, then type the real ones. */
@@ -405,27 +426,24 @@ export function initCrew() {
       await steps.piece(agent, task, boxes, master, task.chips?.(master) ?? [])
       task.chipsAll = copies.flatMap((c) => task.chips?.(c) ?? [])
 
-      // Each copy takes the master's words. Its height is held so nothing below moves.
+      // Each copy takes the master's words while keeping its own final size:
+      // the copy and every element holding text in it are held, so nothing
+      // reflows (a row of pills never re-wraps, a stacked card never grows).
+      // Copied words that are longer than the real ones are clipped until retyped.
       const masterNodes = textNodes(master)
       const finals = copies.map((c) => textNodes(c).map((n) => n.nodeValue))
+      for (const c of copies) {
+        const holders = new Set([c, ...textNodes(c).map((n) => n.parentElement)])
+        c.crewUndo = [...holders].map((el) => hold(el, { width: inRow(el), clip: true }))
+      }
+      const release = (c) => { c.crewUndo?.forEach((undo) => undo()); c.crewUndo = null }
       task.restore = () => copies.forEach((c, ci) => {
         textNodes(c).forEach((n, k) => { if (finals[ci][k] != null) n.nodeValue = finals[ci][k] })
-        Object.assign(c.style, { minHeight: '', width: '', whiteSpace: '', overflow: '' })
+        release(c)
       })
+      task.release = release
       const jobs = []
-      // In a row of pills, a copy takes the master's width as well as its words,
-      // so every duplicate lands exactly in its slot; it eases to its own width
-      // once retyped. (Without this, each label change re-flowed the whole row
-      // under the boxes and the copies overlapped.)
-      const inRow = /flex/.test(getComputedStyle(master.parentElement).display)
-      const masterW = master.getBoundingClientRect().width
-      copies.forEach((c) => {
-        if (!inRow) return
-        c.crewLocked = true
-        Object.assign(c.style, { width: `${masterW}px`, whiteSpace: 'nowrap', overflow: 'hidden' })
-      })
       copies.forEach((c, ci) => {
-        c.style.minHeight = `${c.offsetHeight}px`
         textNodes(c).forEach((n, k) => {
           const m = masterNodes[k]
           n.nodeValue = m ? m.nodeValue : ''
@@ -478,7 +496,6 @@ export function initCrew() {
         if (--left > 0) return
         task.done = true
         task.restore = null
-        for (const c of copies) c.style.minHeight = ''
         groupBoxes.forEach(dropBox)
       }
       if (!byCopy.size) { left = 1; done() }
@@ -486,17 +503,8 @@ export function initCrew() {
     },
     async retype(agent, task) {
       for (const job of task.list) await retype(agent, job)
-      // A copy held at the master's width now eases to its own.
-      const c = task.el
-      if (c.crewLocked) {
-        const from = c.getBoundingClientRect().width
-        c.style.width = ''
-        const to = c.getBoundingClientRect().width
-        c.style.width = `${from}px`
-        await go(gsap.to(c, { width: to, duration: 0.25, ease: 'power2.out' }))
-        Object.assign(c.style, { width: '', whiteSpace: '', overflow: '' })
-        c.crewLocked = false
-      }
+      // Its real words are in and fit exactly: let go of the held size.
+      task.group.release(task.el)
     },
   }
 
@@ -525,8 +533,7 @@ export function initCrew() {
   const skipRetype = (task) => {
     task.skipped = true
     for (const j of task.list) { j.node.nodeValue = j.final; if (j.parent) gsap.set(j.parent, { autoAlpha: 1 }) }
-    Object.assign(task.el.style, { width: '', whiteSpace: '', overflow: '' })
-    task.el.crewLocked = false
+    task.group.release?.(task.el)
     task.onDone?.()
   }
 
