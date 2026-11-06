@@ -18,6 +18,7 @@ import { mkdir, readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import puppeteer from 'puppeteer-core'
 import sharp from 'sharp'
+import { withStatusBar, homography } from './mockup-lib.mjs'
 
 const ROOT = process.cwd()
 const STOCK = resolve(ROOT, 'assets-src/stock')
@@ -63,21 +64,10 @@ const SCENES = [
   { name: 'soravya-meetings', device: 'phone-studio', shot: 'soravya-app-11-meetings-confirmed', crop: [0.26, 0, 0.46, 1] },
   { name: 'soravya-profile', device: 'phone-studio', shot: 'soravya-app-12-profile', crop: [0.26, 0, 0.46, 1] },
   { name: 'soravya-pass', device: 'phone-studio', shot: 'soravya-app-13-ticket', crop: [0.26, 0, 0.46, 1] },
+  // FarmHub Agro moved to generated scenes: scripts/compose-scenes.mjs
 ]
 
 const only = process.argv[2]
-
-/** Unit square → quad, as a CSS matrix3d for an element of size w×h (Heckbert). */
-function homography([[x0, y0], [x1, y1], [x2, y2], [x3, y3]], w, h) {
-  const dx1 = x1 - x2, dx2 = x3 - x2, dy1 = y1 - y2, dy2 = y3 - y2
-  const sx = x0 - x1 + x2 - x3, sy = y0 - y1 + y2 - y3
-  const det = dx1 * dy2 - dx2 * dy1
-  const g = (sx * dy2 - dx2 * sy) / det
-  const k = (dx1 * sy - sx * dy1) / det
-  const a = x1 - x0 + g * x1, b = x3 - x0 + k * x3
-  const d = y1 - y0 + g * y1, e = y3 - y0 + k * y3
-  return [a / w, d / w, 0, g / w, b / h, e / h, 0, k / h, 0, 0, 1, 0, x0, y0, 0, 1]
-}
 
 await mkdir(OUT, { recursive: true })
 await mkdir(SCREENS_OUT, { recursive: true })
@@ -94,14 +84,15 @@ for (const scene of SCENES) {
   // shifts that window down the page when the best part is lower.
   const [[x0, y0], [x1, y1], , [x3, y3]] = DEVICES[scene.device]
   const screenRatio = Math.hypot(x1 - x0, y1 - y0) / Math.hypot(x3 - x0, y3 - y0)
-  const shotMeta = await sharp(shotFile).metadata()
+  const shotSrc = scene.statusBar ? await withStatusBar(shotFile, scene.statusBar) : shotFile
+  const shotMeta = await sharp(shotSrc).metadata()
   // Too tall for the screen: keep the full width, crop the height. Too wide:
   // keep the full height, crop the sides evenly. Either way, never scale one axis.
   const fitH = Math.min(shotMeta.height, Math.round(shotMeta.width / screenRatio))
   const fitW = Math.min(shotMeta.width, Math.round(fitH * screenRatio))
   const top = Math.min(shotMeta.height - fitH, Math.round((scene.from ?? 0) * shotMeta.height))
   const left = Math.round((shotMeta.width - fitW) / 2)
-  const shotBuf = await sharp(shotFile).extract({ left, top, width: fitW, height: fitH }).png().toBuffer()
+  const shotBuf = await sharp(shotSrc).extract({ left, top, width: fitW, height: fitH }).png().toBuffer()
   const [sw, sh] = [fitW, fitH]
   const matrix = homography(DEVICES[scene.device], sw, sh)
   // Chrome only does the warp, on a transparent page. The photo's own screen
@@ -131,7 +122,7 @@ for (const scene of SCENES) {
   const full = await img.toBuffer()
   await sharp(full).resize({ width: 2400, withoutEnlargement: true }).webp({ quality: 84 }).toFile(resolve(OUT, `${scene.name}.webp`))
   await sharp(full).resize({ width: 1200, withoutEnlargement: true }).webp({ quality: 80 }).toFile(resolve(OUT, `${scene.name}@1200.webp`))
-  await sharp(shotFile).resize({ width: 2400, withoutEnlargement: true }).webp({ quality: 82 }).toFile(resolve(SCREENS_OUT, `${scene.name}.webp`))
+  await sharp(shotSrc).resize({ width: 2400, withoutEnlargement: true }).webp({ quality: 82 }).toFile(resolve(SCREENS_OUT, `${scene.name}.webp`))
   const meta = await sharp(resolve(OUT, `${scene.name}.webp`)).metadata()
   console.log(`mockups/${scene.name}.webp  ${meta.width}×${meta.height}`)
 }

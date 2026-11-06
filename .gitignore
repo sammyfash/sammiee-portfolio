@@ -25,3 +25,7 @@ rate-card/*.html
 # redistributed on their own, so they stay out of this public repo.
 assets-src/stock/
 .impeccable/
+
+# Generated mockup scenes (key-green screens, ~300 MB at 4k). The composited
+# mockups in public/img/mockups are what ships; regenerate scenes if needed.
+assets-src/scenes/

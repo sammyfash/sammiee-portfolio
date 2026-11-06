@@ -143,6 +143,8 @@
 
 /* The caption carries one tag per lens on product cards; only the active
    lens's tag shows. "All" shows the design one. */
-.work__tag[data-tag-for='development'] { display: none; }
+.work__tag[data-tag-for='development'], .work__tag[data-tag-for='web'] { display: none; }
 .work[data-lens='development'] .work__tag[data-tag-for='design'] { display: none; }
 .work[data-lens='development'] .work__tag[data-tag-for='development'] { display: inline; }
+.work[data-lens='web'] .work__item:has(.work__tag[data-tag-for='web']) .work__tag[data-tag-for='design'] { display: none; }
+.work[data-lens='web'] .work__tag[data-tag-for='web'] { display: inline; }

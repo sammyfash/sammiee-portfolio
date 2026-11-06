@@ -471,6 +471,490 @@ export const PRODUCTS = [
       'moment for me.',
   },
 
+  // FarmHub Agro. Screens are Sammy's set (6 Nov 2026): the dashboard and app
+  // from a local copy with invented customers, staff and figures on the real
+  // catalogue; the website from the live public site. Sammy's role is design
+  // and the front end of all three parts; the page claims nothing beyond that
+  // and names no team. Product photos are described as the shop's catalogue.
+  {
+    slug: 'farmhub',
+    kind: 'product',
+    seoTitle: 'FarmHub Agro: mobile app design and front-end engineering case study | Sammy Fash',
+    seoDescription: 'A customer app for ordering food and regular deliveries, with the staff dashboard that runs it, for FarmHub Agro in Osogbo, Nigeria. I designed both and built their front ends.',
+    name: 'FarmHub Agro',
+    title: 'FarmHub Agro, a food market’s customer app and the dashboard behind it',
+    colour: '#2a7d2e',
+    live: 'https://farmhubagro.com',
+    liveLabel: 'farmhubagro.com',
+    year: '2026',
+    timeline: { span: 'July to October 2026', label: '3 months' },
+    location: 'Osogbo, Nigeria · remote',
+    role: 'Mobile app design · Product design · Front-end engineering',
+    team: 'I designed the website order pages, the customer app and the staff dashboard, and built the front end of all three. The server, payments and hosting were outside my part of the work.',
+    services: [
+      { label: 'Product design', icon: 'pen' },
+      { label: 'Design system', icon: 'grid' },
+      { label: 'Mobile app design', icon: 'phone' },
+      { label: 'Front-end engineering', icon: 'code' },
+    ],
+    stack: ['Figma', 'React Native', 'Expo', 'TypeScript', 'Laravel', 'WordPress'],
+    card: 'farmhub',
+    cardAlt: 'The FarmHub Agro customer app on a phone on a kitchen table, with the staff dashboard on a laptop behind it',
+    cardTag: {
+      design: 'Mobile app design · Front-end engineering',
+      development: 'React Native · Expo · Laravel',
+    },
+    cardSize: [1400, 875],
+
+    intro:
+      'FarmHub Agro Services is a food business in Osogbo, Nigeria, that grew from a farm-produce ' +
+      'outlet into a full supermarket. I designed its customer app, where people order food and set up ' +
+      'regular deliveries, and the staff dashboard that runs the app behind the scenes: prices, stock, ' +
+      'orders, riders and reports. I also built the front end of both.',
+
+    impact: [
+      { icon: 'layers', value: '3', unit: 'products', text: 'designed and built on one shared set of design tokens: the website order pages, the customer app and the staff dashboard.' },
+      { icon: 'users', value: '5', unit: 'home screens', text: 'in the dashboard, one for each kind of staff role, so everyone starts on the work they actually do.' },
+      { icon: 'eye', value: '16', unit: 'colour pairs', text: 'checked against WCAG 2.2 AA contrast every time the design tokens change.' },
+    ],
+
+    hero: {
+      laptop: 'farmhub-hero',
+      alt: 'FarmHub Agro: the customer app on a phone, with the staff dashboard on a laptop behind it',
+      caption: 'The customer app’s home screen',
+    },
+
+    design: {
+      lede:
+        'FarmHub had grown from three farm products into a supermarket, but the way customers ordered ' +
+        'had not changed. The order form on its website listed three products and one delivery option, ' +
+        'so most customers sent a WhatsApp message asking whether an item was in stock and how much it ' +
+        'cost. Staff answered those messages one at a time, checked bank transfers by hand, and had no ' +
+        'single place to see orders, deliveries or stock. I mapped these problems and the people behind ' +
+        'them before designing anything, and they shaped every product that followed.',
+
+      research: {
+        title: 'What shaped the product',
+        intro: 'Four findings shaped the design of the app and the dashboard.',
+        items: [
+          { icon: 'tag', title: 'Prices that staff can update themselves', text: 'Prices change often in a Nigerian food market, and a catalogue that needs a developer to update it quickly stops being trusted. Staff change a price once in the dashboard, and the app charges that same price.' },
+          { icon: 'message', title: 'Ordering as easy as sending a message', text: 'Customers were used to ordering by chat, so the app had to be at least as quick. It keeps ordering to a few taps: sizes are chosen from cards, the basket stays on the phone, and checkout only asks what applies.' },
+          { icon: 'truck', title: 'Two very different delivery zones', text: 'Orders inside Osogbo go out by rider the same day, while orders elsewhere in Nigeria go by courier and are paid in advance. Checkout shows each area with its fee and asks only the questions that apply to its zone.' },
+          { icon: 'phone', title: 'Made for mid-range phones and mobile data', text: 'Most customers shop on a mid-range Android phone over mobile data. Pages stay light, with no animation library and no carousels that move by themselves, and searching hundreds of items stays quick.' },
+        ],
+      },
+
+      personasTitle: 'Who it’s for',
+      personasIntro:
+        'FarmHub serves the customers buying food and the team who fulfil their orders. They share one ' +
+        'goal, an order delivered correctly and on time, but each group needs something different. I ' +
+        'grouped them into four types of users.',
+      personas: [
+        { icon: 'phone', name: 'Customers', context: 'Households and small businesses in and around Osogbo, usually on a mid-range Android phone and mobile data.', jobs: ['Find an item and its price quickly', 'Order without a long chat', 'Know when the order will arrive', 'Get regular deliveries without reordering'] },
+        { icon: 'monitor', name: 'Managers', context: 'Run the business and need a clear picture of how it is doing.', jobs: ['Compare sales with last week and last month', 'See the best sellers', 'Follow subscriptions', 'Spot anything waiting for attention'] },
+        { icon: 'users', name: 'Store staff', context: 'Sales, dispatch and inventory staff, each responsible for one part of the work.', jobs: ['Confirm paid orders and check transfers', 'Send orders out with the right rider', 'Keep stock and prices up to date'], note: 'Each role starts on its own home screen in the dashboard.' },
+        { icon: 'truck', name: 'Riders', context: 'Deliver orders across Osogbo, using the dashboard on a phone outdoors.', jobs: ['See only their own deliveries', 'Call the customer in one tap', 'Mark each step of a delivery'] },
+      ],
+
+      principlesTitle: 'The principles behind every decision',
+      principlesIntro: 'I set these five rules at the start and used them to settle decisions across all three products.',
+      principles: [
+        { title: 'Keep the brand people already know', text: 'The client asked for the existing site’s standard or better, not a new look. All three products use the greens and type of farmhubagro.com.' },
+        { title: 'Write every status in words', text: 'Out of stock is written in words, and a falling figure shows in amber with the word “Down” instead of red against green.' },
+        { title: 'Start people on their own work', text: 'Each staff role opens the dashboard on the work it does, instead of a page of figures it cannot act on.' },
+        { title: 'Stay light on mobile data', text: 'No animation library, no self-moving carousels and no images the page doesn’t need, because customers pay for every megabyte.' },
+        { title: 'Be honest about what is done by hand', text: 'A bank transfer is confirmed by a member of staff, so an order paid that way says it is waiting for payment until they do.' },
+      ],
+
+      ia: {
+        title: 'How the product is organised',
+        intro:
+          'Staff move around the dashboard with a side menu grouped into sales, catalogue and settings, ' +
+          'and they only see the sections their role allows. Customers use five tabs at the bottom of ' +
+          'the app, with a basket bar that follows them from screen to screen.',
+        consoleLabel: 'Staff dashboard',
+        attendeeLabel: 'Customer app',
+        console: ['Overview', 'Orders', 'Deliveries', 'Subscriptions', 'Customers', 'Promotions', 'Reports', 'Loyalty', 'Products', 'Stock changes', 'Plans', 'Settings'],
+        attendee: ['Home', 'Categories', 'Basket', 'Orders', 'Account'],
+        rail: 'farmhub-rail',
+        railSize: [544, 1800],
+        railCaption: 'The dashboard’s side menu',
+        tabbar: 'farmhub-tabbar',
+        tabbarSize: [1179, 170],
+        tabbarCaption: 'The customer app’s tab bar',
+      },
+
+      pairSections: [
+        {
+          title: 'Key screens in the customer app',
+          intro:
+            'The app is where customers shop with FarmHub, from finding an item to getting the same ' +
+            'groceries every week. These are its key screens, in the order a customer meets them.',
+          pairs: [
+            {
+              title: 'Finding food and its price',
+              body: [
+                'The home screen opens on search, categories and everyday staples, so a customer can find ' +
+                'rice or palm oil without knowing where it sits in the catalogue. Product photos from ' +
+                'FarmHub’s catalogue sit on a sage background, so every item looks consistent.',
+                'On a product page, every size is a card with its own price, so nobody has to guess what ' +
+                'the bigger bag costs.',
+              ],
+              items: [
+                { mockup: 'farmhub-app-home', caption: 'Home: search, categories and everyday staples' },
+                { mockup: 'farmhub-app-product', caption: 'A product, with every size priced' },
+              ],
+            },
+            {
+              title: 'A basket that stays on the phone, and a short checkout',
+              body: [
+                'The basket bar follows the customer from screen to screen with the item count and the ' +
+                'total. The basket is kept on the phone, so it is still there when they come back to it.',
+                'Checkout lists the areas inside Osogbo, delivered the same day, apart from places ' +
+                'elsewhere in Nigeria, which are paid in advance. Every area shows its fee before the ' +
+                'customer chooses it.',
+              ],
+              items: [
+                { mockup: 'farmhub-app-basket', caption: 'The basket, kept on the phone' },
+                { mockup: 'farmhub-app-checkout', caption: 'Checkout with delivery areas and fees' },
+              ],
+            },
+            {
+              title: 'Following an order to the door',
+              body: [
+                'An order moves through five steps, from placed to delivered, and each step is written in ' +
+                'words as well as marked with a dot. The customer also sees which rider is bringing it ' +
+                'and the address it is going to.',
+                'When it arrives, the same screen shows the order as delivered, with a way back to the ' +
+                'shop and to past orders.',
+              ],
+              items: [
+                { mockup: 'farmhub-app-tracking', caption: 'Following an order in five steps' },
+                { mockup: 'farmhub-app-delivered', caption: 'The same order, delivered' },
+              ],
+            },
+            {
+              title: 'Regular deliveries without reordering',
+              body: [
+                'A household that buys the same things every week can turn its basket into a regular ' +
+                'delivery. The customer picks a plan, a day and how many deliveries to keep it for, and ' +
+                'can pause or cancel at any time from their account.',
+                'The subscription screen shows the next delivery, what is in each box and the card it is ' +
+                'charged to. After the last delivery, FarmHub suggests a fresh box based on what the ' +
+                'household buys.',
+              ],
+              items: [
+                { mockup: 'farmhub-app-subscription', caption: 'A regular delivery: the next date and the box' },
+                { mockup: 'farmhub-app-subscribe', caption: 'Setting up regular deliveries' },
+              ],
+            },
+          ],
+        },
+        {
+          title: 'The rider’s phone',
+          intro:
+            'Riders deliver orders across Osogbo and use the dashboard on their own phones, outdoors and ' +
+            'on the move. Their view leaves out everything except the deliveries in front of them.',
+          pairs: [
+            {
+              title: 'Today’s deliveries, one tap from the customer',
+              body: [
+                'A rider signs in to a home screen built around today’s deliveries. Each delivery shows ' +
+                'the address, a button to call the customer and a way to mark each step.',
+                'Every step a rider marks also updates the order in the customer’s app, which is how the ' +
+                'customer knows who is bringing it and when it has been delivered.',
+              ],
+              items: [
+                { mockup: 'farmhub-rider-home', caption: 'The rider’s home: today’s deliveries' },
+                { mockup: 'farmhub-rider-deliveries', caption: 'A rider’s delivery list on the road' },
+              ],
+            },
+          ],
+        },
+      ],
+
+      screensTitle: 'The dashboard: the control centre behind the app',
+      screensIntro:
+        'Everything a customer sees in the app is run from the staff dashboard. Staff set prices and ' +
+        'stock, change what the app shows, follow customers and what they buy, and see how the business ' +
+        'is doing.',
+      screens: [
+        {
+          title: 'The overview: how the business is doing, at a glance',
+          body: [
+            'Managers wanted to know how today compared with the same point last week and last month. ' +
+            'Instead of a row of identical stat cards, I put today, this week and this month in one ' +
+            'deep-green band that reads from left to right, each figure with its change written in words.',
+            'Below it sit a 30-day sales chart, subscriptions that need attention, best sellers and sales ' +
+            'by category.',
+          ],
+          mockup: 'farmhub-overview',
+          caption: 'The manager’s overview.',
+        },
+        {
+          title: 'Prices and stock that the app follows',
+          body: [
+            'Every price on the products page is what the shop and the app charge, so staff change a ' +
+            'price once and customers see the new one. Each product shows how many are left and whether ' +
+            'it is on sale, with one menu to change its price or stock.',
+          ],
+          mockup: 'farmhub-products',
+          caption: 'Products, with the prices and stock the app uses.',
+        },
+        {
+          title: 'Staff change the app themselves',
+          body: [
+            'The announcement line, the home-screen banners and where each banner leads are all edited from ' +
+            'the dashboard, and changes show in the app within five minutes. Nobody needs a developer to ' +
+            'announce a public holiday or start a promotion.',
+          ],
+          mockup: 'farmhub-storefront',
+          caption: 'The storefront settings, and the app they change.',
+        },
+        {
+          title: 'Customers and what they buy',
+          body: [
+            'Each customer has a page with their details, whether they have an app account and everything ' +
+            'they have bought, most often first. That history is what a regular delivery box is built ' +
+            'from, and staff can set up a subscription or adjust loyalty points from the same page.',
+          ],
+          mockup: 'farmhub-customer',
+          caption: 'A customer and the items they buy most often.',
+        },
+        {
+          title: 'Reports for any period',
+          body: [
+            'Reports cover sales, profit on goods, promotion results, how many app visitors went on to buy ' +
+            'and which baskets were left unpaid. Each report can be printed or downloaded for the accountant.',
+          ],
+          mockup: 'farmhub-reports',
+          caption: 'Reports for the last 30 days.',
+        },
+        {
+          title: 'A home screen for each staff role',
+          body: [
+            'A dispatcher has no use for a sales chart. Dispatch staff open the dashboard on what is ready ' +
+            'to go out, what each rider is carrying and which deliveries are running late. Sales, ' +
+            'inventory and rider staff each get their own home in the same way.',
+          ],
+          mockup: 'farmhub-dispatch',
+          caption: 'The dispatch home, built around riders and late deliveries.',
+        },
+      ],
+
+      system: {
+        title: 'The design system',
+        body:
+          'All three products share one set of design tokens taken from the live farmhubagro.com site, so ' +
+          'they read as one brand. The tokens live in a single file and are generated into the website, ' +
+          'the app and the dashboard, so a colour changed once changes everywhere. The light green is only ' +
+          'ever used for decoration because it is too faint to read as text.',
+        swatches: [
+          { name: 'Green', value: '#2a7d2e', note: 'buttons and links' },
+          { name: 'Deep green', value: '#17511a', note: 'headings and the figures band' },
+          { name: 'Light green', value: '#94d96b', note: 'decoration only, 1.9:1 on white' },
+          { name: 'Paper', value: '#fbfaf7', note: 'page background' },
+          { name: 'Ink', value: '#1e2227', note: 'text' },
+          { name: 'Amber', value: '#8a6100', note: 'warnings, always with a word' },
+        ],
+        type: {
+          family: 'Tenor Sans + Public Sans',
+          note: 'Tenor Sans, the serif-like face from the existing site, sets headings and figures. Public Sans sets the interface text in the app and the dashboard because it stays clear at small sizes.',
+        },
+        componentsLabel: 'Components from the live product',
+        components: [
+          { img: 'farmhub-figures', label: 'Figures band', w: 1400, h: 254, wide: true },
+          { img: 'farmhub-sizes', label: 'Size picker', w: 1100, h: 640 },
+          { img: 'farmhub-tracking', label: 'Order tracking', w: 1100, h: 700 },
+          { img: 'farmhub-rider-card', label: 'Rider delivery card', w: 1135, h: 770 },
+          { img: 'farmhub-basket-bar', label: 'Basket bar', w: 1140, h: 168 },
+        ],
+        rulesLabel: 'Standards every screen meets',
+        rules: [
+          'Text contrast of at least 4.5:1 on every colour pair',
+          'A visible focus ring on every control',
+          'Tap targets of at least 44px on phones',
+          'Status written in words, never shown by colour alone',
+          'Motion only in CSS, and none when reduced motion is turned on',
+        ],
+      },
+    },
+
+    development: {
+      lede:
+        'I built the front end of all three products. The website order pages are a WordPress plugin ' +
+        'written in plain HTML, CSS and JavaScript with no framework, so it runs on the existing site and ' +
+        'stays fast on Nigerian mobile networks. The customer app is built with Expo and React Native in ' +
+        'TypeScript, and runs on iPhone, Android and the web from one codebase. The staff dashboard is ' +
+        'built with Laravel and Filament, where I built the theme, the pages and the home screen for ' +
+        'each role.',
+
+      flowTitle: 'How an app screen loads',
+      flowIntro: 'The six steps between a customer opening a screen and seeing it. The solid boxes are the front end I built; the dashed boxes are the server side, which was outside my part of the work.',
+      flowKey: { me: 'Front end I built', other: 'Server side' },
+      flow: [
+        { label: 'Screen opens', sub: 'a category, product or order', owner: 'me' },
+        { label: 'Shared hooks', sub: 'loading, error and retry handled in one place', owner: 'me' },
+        { label: 'api()', sub: 'one client for every request', owner: 'me' },
+        { label: 'Price check', sub: 'repriced after a pause; old answers ignored', owner: 'me' },
+        { label: 'FarmHub API', sub: 'the shop’s orders and catalogue', owner: 'partner' },
+        { label: 'Paystack', sub: 'card payments confirmed on the server', owner: 'partner' },
+      ],
+
+      treeTitle: 'Code organised like the product',
+      treeIntro:
+        'Each front end keeps its screens, shared pieces and logic in separate folders, and all three ' +
+        'read their colours and type from one tokens package.',
+      tree: {
+        root: 'FarmhubAgro/',
+        items: [
+          { name: 'app-mobile/src/app/(tabs)/', note: 'the five app tabs' },
+          { name: 'app-mobile/src/app/product · category · order/', note: 'screens opened from the tabs' },
+          { name: 'app-mobile/src/components/', note: 'basket bar, product and points cards' },
+          { name: 'app-mobile/src/lib/', note: 'API client, hooks, basket, prices and search' },
+          { name: 'app-dashboard/app/Filament/Pages/', note: 'overview, reports, loyalty, storefront' },
+          { name: 'app-dashboard/…/pages/home/', note: 'one home view per staff role' },
+          { name: 'wp/plugins/farmhub-market/assets/', note: 'the price list and order form' },
+          { name: 'packages/tokens/tokens.json', note: 'the one source of colours and type', file: true },
+        ],
+        note: 'Three front ends, one set of design tokens.',
+      },
+
+      sections: [
+        {
+          title: 'Design tokens the code won’t let you misuse',
+          body: [
+            'The light brand green is too faint to read as text, so the app’s colour tokens carry a type ' +
+            'that says how each one may be used. Using a decoration colour for text stops the app from ' +
+            'compiling, so the mistake is caught before it can reach a customer.',
+            'The same tokens are generated into the website’s CSS and the dashboard’s theme, and an ' +
+            'automatic check fails if any copy drifts from the source.',
+          ],
+          code: {
+            file: 'app-mobile/src/theme/tokens.ts',
+            lines: [
+              '/**',
+              ' * A DecorColor may only be used for borders, fills and decorative marks.',
+              ' * greenLight is 1.9:1 on white, so using it as a text colour is a contrast',
+              ' * failure. The branded types make that a compile error rather than a habit.',
+              ' */',
+              'export type TextColor = string & { readonly __text: unique symbol };',
+              'export type DecorColor = string & { readonly __decor: unique symbol };',
+              '',
+              'export const color = {',
+              '  // …',
+              "  greenLight: '#94D96B' as DecorColor,",
+            ],
+          },
+        },
+        {
+          title: 'One dashboard, a different home for each role',
+          body: [
+            'When someone signs in, the dashboard picks their home screen from their most senior role. ' +
+            'Managers see the business, and everyone else starts on the work their role does. Someone with ' +
+            'no role yet sees only a greeting rather than figures they shouldn’t see.',
+          ],
+          code: {
+            file: 'app-dashboard/app/Filament/Pages/Overview.php',
+            lines: [
+              'public function mode(): string',
+              '{',
+              '    return match (StaffRoles::primary(auth()->user())) {',
+              "        'super_admin', 'manager' => 'business',",
+              "        'sales' => 'sales',",
+              "        'dispatch' => 'dispatch',",
+              "        'inventory' => 'inventory',",
+              "        'rider' => 'rider',",
+              "        default => 'none',",
+              '    };',
+              '}',
+            ],
+          },
+        },
+        {
+          title: 'A basket that survives the app closing',
+          body: [
+            'People often shop in pieces, adding a few items now and finishing later. The basket is saved on ' +
+            'the phone every time it changes and restored when the app opens again, so nothing is lost if the ' +
+            'app closes or the network drops.',
+          ],
+          code: {
+            file: 'app-mobile/src/lib/basketStore.tsx',
+            lines: [
+              '/** The basket survives the app being closed, because people shop in pieces. */',
+              'export function BasketProvider({ children }: { children: ReactNode }) {',
+              '  const [lines, setLines] = useState<B.Basket>([]);',
+              '  const [loaded, setLoaded] = useState(false);',
+              '',
+              '  useEffect(() => {',
+              '    readJson(KEY).then((stored) => {',
+              '      setLines(B.revive(stored));',
+              '      setLoaded(true);',
+              '    });',
+              '  }, []);',
+            ],
+          },
+        },
+        {
+          title: 'An order form with no framework',
+          body: [
+            'The website order form is plain JavaScript, so it loads quickly on mobile data and keeps working ' +
+            'through theme updates. When the customer changes delivery zone, the payment options change with ' +
+            'it, and switching back restores the default so nobody is asked for a receipt they never meant ' +
+            'to attach.',
+          ],
+          code: {
+            file: 'wp/plugins/farmhub-market/assets/js/fh-order.js',
+            lines: [
+              'function onChange(e) {',
+              '  var t = e.target;',
+              '  if (t.name === \'zone\') {',
+              '    S.zone = t.value;',
+              '    // Outside Osogbo is advance payment only. Coming back to Within Osogbo has to',
+              '    // restore the default too, or the customer is silently left on "pay by transfer"',
+              '    // and then blocked for a receipt they never meant to attach.',
+              "    S.payment = 'outside' === S.zone ? 'transfer' : 'delivery';",
+              "    if ('delivery' === S.payment) { S.receipt = null; S.receiptFile = null; delete S.errors.receipt; }",
+              '    renderPanel(); renderSummary(); return;',
+            ],
+          },
+        },
+      ],
+
+      suitesTitle: 'Testing and standards',
+      suitesIntro: 'Checks that run on every change to the front ends, and the standards behind them.',
+      suites: [
+        { icon: 'eye', title: 'Contrast', text: 'Every one of the 16 colour pairs in the tokens is checked against WCAG 2.2 AA.' },
+        { icon: 'layers', title: 'Token sync', text: 'Fails if the website, app or dashboard copy of the tokens drifts from the source.' },
+        { icon: 'code', title: 'App logic', text: 'Tests for the basket, prices, search and money handling in the customer app.' },
+        { icon: 'cursor', title: 'Keyboard and focus', text: 'A visible focus ring on every control, and the whole order form works by keyboard.' },
+      ],
+
+      quality: [
+        { value: '38', label: 'automated tests for the customer app’s logic' },
+        { value: '16', label: 'colour pairs checked for contrast on every change' },
+        { value: '44px', label: 'minimum tap target on phones' },
+      ],
+
+      splitTitle: 'My contribution',
+      splitIntro: 'I was responsible for the design and the front end of all three products.',
+      split: {
+        bothMine: true,
+        mineLabel: 'What I designed',
+        partnerLabel: 'What I built',
+        mine: ['The website price list and order form', 'The customer app', 'The staff dashboard and a home screen for each role', 'The rider screens for phones', 'The shared design system'],
+        partner: ['The WordPress plugin’s front end, in plain JavaScript', 'The Expo app for iPhone, Android and the web', 'The Filament dashboard’s theme, pages and role homes', 'The design tokens package used by all three'],
+      },
+    },
+
+    outcomeLabel: 'The result',
+    outcome:
+      'FarmHub now takes orders through its website and its customer app, and runs every order, delivery ' +
+      'and subscription from one dashboard. Staff change prices, promotions and the app’s front page ' +
+      'themselves, without waiting for a developer. The next step is releasing the app to the App Store ' +
+      'and Google Play.',
+  },
+
   // DRAFT until screens exist. There is no demo mode in the app and no iOS
   // build on disk; sign-in is Firebase-only. Route to screenshots: build the
   // simulator app from ios/ABF 2026.xcworkspace, point tenant.config.json

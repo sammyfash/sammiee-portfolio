@@ -162,3 +162,50 @@ Added 2026-11-06, after his review of the finished Soravya page.
   progress bar fills from zero to its value. Everything runs once, and nothing runs with
   reduced motion; the final values are always in the markup, and screen readers hear the
   final number, never one mid-count.
+
+## 8. FarmHub Agro
+
+Added 2026-11-06, when building the second product case study.
+
+- **Lead with what the portfolio lacks.** (Replaces an earlier rule that listed FarmHub under
+  Websites.) Most of Sammy's work is dashboards and websites, so FarmHub leads with the mobile
+  app: the homepage card and the hero show the phone in front and the dashboard behind it, out
+  of focus. The website is left out of the design half entirely; visitors can see the live site.
+  Ask which part of a multi-product job each case study should lead with.
+- **Credit only what was his, and name no team he doesn't want named.** Sammy's role on
+  FarmHub is design and front-end engineering. The page says so, gives no team size and names
+  nobody else. The contribution section lists "What I designed" and "What I built"; the
+  server side is shown as "outside my part of the work", never as someone else's.
+- **Describe photos by where they come from on the product**: "product photos from FarmHub's
+  catalogue".
+- **Use his timeline**, in his words ("3 months, July to October 2026"). When the dates in a
+  repo don't match it, leave the project-timeline section out instead of mixing the two.
+- **Phone captures from a web build get a status bar.** They have none, so content starts
+  where the clock should be. `statusBar: { fixedBottom }` in `scripts/compose-mockups.mjs`
+  adds a 54pt iOS bar and removes the same height from the scrolling content just above the
+  fixed bottom bars, which is what the phone itself would show. Nothing is scaled.
+- **Describe what ships, not what a spec says.** The FarmHub tokens file names Inter, but the
+  app and dashboard ship Public Sans, so the page says Public Sans.
+
+### Mobile-first structure and generated scenes (corrections, 2026-11-06)
+
+- **Order for an app-led product:** findings → users → principles → how it is organised →
+  key screens in the app → the rider's (or other role's) phone as its own section → the
+  dashboard as "the control centre behind the app" → design system. Never a grid of phones
+  tucked under the dashboard.
+- **App screens go two at a time**: one topic, its text, and two photographs side by side
+  (`design.pairSections` in `content/products.mjs`, rendered as `.ppair`).
+- **Frame the dashboard by what it controls in the app**: prices and stock the app charges,
+  what the app shows, customers and what they buy, reports. Only claim features the product
+  has: FarmHub has announcements and banners, not push notifications, so the page says that.
+- **Never repeat a mockup photo.** Every screen gets its own setting (a market stall, a café
+  table, a doorstep, a motorbike mount, a shop counter, a warehouse), tilted and in
+  perspective. Flat, straight-on laptops on the same desk read as screenshots pasted on a photo.
+- **Generate the scene, keep the screen real.** Scenes are generated (Magnific, Nano Banana
+  2.1, 4k) with each device screen filled with flat key green, or key blue for a second device,
+  and kept in `assets-src/scenes/`. `npm run scenes` (`scripts/compose-scenes.mjs`) measures
+  the key, warps the real screenshot into it, keeps the key's shading as light falloff, and
+  uses the key's exact shape as the screen edge. The UI is never redrawn by the model.
+- **Phone captures get the home-indicator area too** (`safeBottom`): without it the rounded
+  glass clips the tab-bar labels.
+

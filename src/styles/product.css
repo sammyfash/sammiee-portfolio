@@ -402,6 +402,27 @@
   color: var(--c-ink-dim);
 }
 
+/* two phone photographs beside one topic */
+.ppair {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(28px, 4vw, 80px);
+  align-items: center;
+  margin-top: clamp(56px, 6vw, 112px);
+}
+.ppair--flip { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
+.ppair--flip .pstep__text { order: 2; }
+.ppair__media { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.ppair__fig .photo { aspect-ratio: 2400 / 2979; }
+.ppair__fig figcaption { margin-top: 0.8rem; font-size: 0.875rem; color: var(--c-ink-dim); }
+@media (max-width: 900px) {
+  .ppair, .ppair--flip { grid-template-columns: minmax(0, 1fr); }
+  .ppair--flip .pstep__text { order: 0; }
+}
+@media (max-width: 560px) {
+  .ppair__media { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* attendee phones */
 .phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); }
 .phones__item .photo { aspect-ratio: 4 / 5; }

@@ -13,7 +13,8 @@
     "pages": "node scripts/build-pages.mjs",
     "cv": "node scripts/build-cv-pdf.mjs",
     "rate-card": "node rate-card/build.mjs",
-    "mockups": "node scripts/compose-mockups.mjs"
+    "mockups": "node scripts/compose-mockups.mjs",
+    "scenes": "node scripts/compose-scenes.mjs"
   },
   "devDependencies": {
     "puppeteer-core": "^25.8.0",

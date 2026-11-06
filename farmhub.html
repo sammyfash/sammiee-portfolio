@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FarmHub Agro: mobile app design and front-end engineering case study | Sammy Fash</title>
+  <meta name="description" content="A customer app for ordering food and regular deliveries, with the staff dashboard that runs it, for FarmHub Agro in Osogbo, Nigeria. I designed both and…">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://sammyfash.com/farmhub">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sammy Fash">
+  <meta property="og:url" content="https://sammyfash.com/farmhub">
+  <meta property="og:title" content="FarmHub Agro: mobile app design and front-end engineering case study | Sammy Fash">
+  <meta property="og:description" content="A customer app for ordering food and regular deliveries, with the staff dashboard that runs it, for FarmHub Agro in Osogbo, Nigeria. I designed both and…">
+  <meta property="og:image" content="https://sammyfash.com/img/work/farmhub.jpg">
+  <meta property="og:image:alt" content="FarmHub Agro — Product design by Sammy Fash">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sammyfash.com/img/work/farmhub.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "FarmHub Agro, a food market’s customer app and the dashboard behind it",
+  "headline": "FarmHub Agro",
+  "description": "FarmHub Agro Services is a food business in Osogbo, Nigeria, that grew from a farm-produce outlet into a full supermarket. I designed its customer app, where people order food and set up regular deliveries, and the staff dashboard that runs the app behind the scenes: prices, stock, orders, riders…",
+  "url": "https://sammyfash.com/farmhub",
+  "image": "https://sammyfash.com/img/work/farmhub.jpg",
+  "dateCreated": "2026",
+  "inLanguage": "en",
+  "keywords": "Product design, Design system, Mobile app design, Front-end engineering, Figma, React Native, Expo, TypeScript, Laravel, WordPress",
+  "creator": {
+    "@type": "Person",
+    "name": "Sammy Fash",
+    "url": "https://sammyfash.com"
+  },
+  "about": {
+    "@type": "Organization"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Osogbo, Nigeria · remote"
+  }
+}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__mark">Sammy Fash</span>
+      <span class="preloader__count">0%</span>
+    </div>
+  </div>
+
+  <div class="curtain" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true">
+    <svg class="cursor__icon cursor__arrow" viewBox="0 0 28 28">
+      <g><path d="M7 4 L24 13.9 L15.7 15.6 L11.6 23.2 Z" /></g>
+    </svg>
+    <svg class="cursor__icon cursor__hand" viewBox="0 0 32 36">
+      <g>
+        <path class="hand-shape" d="M9 5.5 A2.5 2.5 0 0 1 14 5.5 L14 15 A2.25 2.25 0 0 1 18.5 15 L18.5 16.5 A2.25 2.25 0 0 1 23 16.5 L23 18 A2.25 2.25 0 0 1 27.5 18 L27.5 25 C27.5 30.5 24 34 19 34 L16 34 C12.5 34 10.2 32.3 8.6 29.6 L3.4 21.2 A2.6 2.6 0 0 1 7.8 18.4 L9 20.3 Z" />
+        <path class="hand-creases" d="M14 15.5 L14 19.5 M18.5 17 L18.5 20 M23 18.5 L23 21" />
+      </g>
+    </svg>
+    <span class="cursor__line cursor__line--x"></span>
+    <span class="cursor__line cursor__line--y"></span>
+    <span class="cursor__knot"><i></i></span>
+    <span class="cursor__tag"><span>View project</span></span>
+  </div>
+
+  <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
+    <div class="nav-overlay__header">
+      <a class="wordmark" href="/">Sammy Fash</a>
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      <li><a class="nav-link" href="/">
+        <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
+        <span class="nav-link__index">01</span>
+      </a></li>
+      <li><a class="nav-link" href="/about">
+        <span class="nav-link__roll"><span>About</span><span aria-hidden="true">About</span></span>
+        <span class="nav-link__index">02</span>
+      </a></li>
+      <li><a class="nav-link" href="/#work">
+        <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
+        <span class="nav-link__index">03</span>
+      </a>
+        <ul class="nav-sub" aria-label="Work by discipline">
+          <li><a class="nav-sub__link" href="/?work=design#work">Product design</a></li>
+          <li><a class="nav-sub__link" href="/?work=development#work">Development</a></li>
+          <li><a class="nav-sub__link" href="/?work=web#work">Websites</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="/cv">
+        <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
+      <li><a class="nav-link" href="#contact" data-contact-open>
+        <span class="nav-link__roll"><span>Contact</span><span aria-hidden="true">Contact</span></span>
+        <span class="nav-link__index">05</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-overlay__foot">
+      <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+      <span>
+        <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
+        <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+      </span>
+      <button class="theme-toggle theme-toggle--labelled" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg><span data-theme-label>Light mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="/">Sammy Fash</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article class="case pcase">
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <header class="phead">
+        <div class="phead__text">
+          <ul class="ptags" data-reveal aria-label="My role on this project"><li class="ptag">Mobile app design</li><li class="ptag">Product design</li><li class="ptag">Front-end engineering</li></ul>
+          <h1 class="case__title" data-reveal>
+            <span class="line"><span class="line__inner">FarmHub Agro</span></span>
+          </h1>
+          <p class="case__summary phead__summary" data-reveal>FarmHub Agro Services is a food business in Osogbo, Nigeria, that grew from a farm-produce outlet into a full supermarket. I designed its customer app, where people order food and set up regular deliveries, and the staff dashboard that runs the app behind the scenes: prices, stock, orders, riders and reports. I also built the front end of both.</p>
+        </div>
+        <figure class="phead__media" data-reveal>
+          <button type="button" class="zoom" data-zoom="/img/screens/farmhub-hero.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="page" data-zoom-caption="The customer app’s home screen" data-cursor-tag="View" aria-label="View full size: The customer app’s home screen">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-hero@1200.webp 1200w, /img/mockups/farmhub-hero.webp 2400w" sizes="(max-width: 900px) 100vw, 55vw">
+            <img src="/img/mockups/farmhub-hero.webp" alt="FarmHub Agro: the customer app on a phone, with the staff dashboard on a laptop behind it" width="2400" height="1259" fetchpriority="high" decoding="async">
+          </picture>
+          </button>
+        </figure>
+      </header>
+
+      <div class="glance">
+        <div class="glance__cell glance__cell--role" data-reveal>
+          <p class="glance__label">My role</p>
+          <ul class="chips"><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Product design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Design system</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Mobile app design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Front-end engineering</li></ul>
+        </div>
+        <div class="glance__cell glance__cell--stack" data-reveal>
+          <p class="glance__label">Built with</p>
+          <ul class="techgrid"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React Native</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/expo.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Expo</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/laravel.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Laravel</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/wordpress.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">WordPress</span>
+            </li>
+          </ul>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M15.5 14.8c2.9-.4 5.3 1.2 6 4.2"/></svg> Team</p>
+          <p class="glance__text">I designed the website order pages, the customer app and the staff dashboard, and built the front end of all three. The server, payments and hosting were outside my part of the work.</p>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Timeline</p>
+          <p class="glance__big">3 months</p>
+          <p class="glance__text">July to October 2026<br>Osogbo, Nigeria · remote</p>
+        </div>
+      </div>
+
+      <ul class="impact">
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+          <p class="impact__value">3<span>products</span></p>
+          
+          <p class="impact__text">designed and built on one shared set of design tokens: the website order pages, the customer app and the staff dashboard.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <p class="impact__value">5<span>home screens</span></p>
+          
+          <p class="impact__text">in the dashboard, one for each kind of staff role, so everyone starts on the work they actually do.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <p class="impact__value">16<span>colour pairs</span></p>
+          
+          <p class="impact__text">checked against WCAG 2.2 AA contrast every time the design tokens change.</p>
+        </li>
+      </ul>
+      <div class="pswitch" data-product-switch>
+        <div class="pswitch__inner" role="tablist" aria-label="Read this case study as">
+          <button class="pswitch__tab" type="button" role="tab" id="tab-design" aria-controls="design" aria-selected="true" data-view="design">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg> Design
+          </button>
+          <button class="pswitch__tab" type="button" role="tab" id="tab-development" aria-controls="development" aria-selected="false" data-view="development" tabindex="-1">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg> Development
+          </button>
+          <span class="pswitch__thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="ppanel" id="design" role="tabpanel" aria-labelledby="tab-design" data-panel="design">
+        <h2 class="visually-hidden">Design</h2>
+        <p class="ppanel__lede" data-reveal>FarmHub had grown from three farm products into a supermarket, but the way customers ordered had not changed. The order form on its website listed three products and one delivery option, so most customers sent a WhatsApp message asking whether an item was in stock and how much it cost. Staff answered those messages one at a time, checked bank transfers by hand, and had no single place to see orders, deliveries or stock. I mapped these problems and the people behind them before designing anything, and they shaped every product that followed.</p>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">What shaped the product</h3>
+          <p class="psec__intro">Four findings shaped the design of the app and the dashboard.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+            <h4>Prices that staff can update themselves</h4>
+            <p>Prices change often in a Nigerian food market, and a catalogue that needs a developer to update it quickly stops being trusted. Staff change a price once in the dashboard, and the app charges that same price.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+            <h4>Ordering as easy as sending a message</h4>
+            <p>Customers were used to ordering by chat, so the app had to be at least as quick. It keeps ordering to a few taps: sizes are chosen from cards, the basket stays on the phone, and checkout only asks what applies.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+            <h4>Two very different delivery zones</h4>
+            <p>Orders inside Osogbo go out by rider the same day, while orders elsewhere in Nigeria go by courier and are paid in advance. Checkout shows each area with its fee and asks only the questions that apply to its zone.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+            <h4>Made for mid-range phones and mobile data</h4>
+            <p>Most customers shop on a mid-range Android phone over mobile data. Pages stay light, with no animation library and no carousels that move by themselves, and searching hundreds of items stays quick.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Who it’s for</h3>
+          <p class="psec__intro">FarmHub serves the customers buying food and the team who fulfil their orders. They share one goal, an order delivered correctly and on time, but each group needs something different. I grouped them into four types of users.</p>
+        </header>
+        <ul class="personas">
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
+              <h4>Customers</h4>
+            </div>
+            <p class="persona__context">Households and small businesses in and around Osogbo, usually on a mid-range Android phone and mobile data.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Find an item and its price quickly</li><li>Order without a long chat</li><li>Know when the order will arrive</li><li>Get regular deliveries without reordering</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+              <h4>Managers</h4>
+            </div>
+            <p class="persona__context">Run the business and need a clear picture of how it is doing.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Compare sales with last week and last month</li><li>See the best sellers</li><li>Follow subscriptions</li><li>Spot anything waiting for attention</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <h4>Store staff</h4>
+            </div>
+            <p class="persona__context">Sales, dispatch and inventory staff, each responsible for one part of the work.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Confirm paid orders and check transfers</li><li>Send orders out with the right rider</li><li>Keep stock and prices up to date</li></ul>
+            <p class="persona__note">Each role starts on its own home screen in the dashboard.</p>
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+              <h4>Riders</h4>
+            </div>
+            <p class="persona__context">Deliver orders across Osogbo, using the dashboard on a phone outdoors.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>See only their own deliveries</li><li>Call the customer in one tap</li><li>Mark each step of a delivery</li></ul>
+            
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">The principles behind every decision</h3>
+          <p class="psec__intro">I set these five rules at the start and used them to settle decisions across all three products.</p>
+        </header>
+        <ol class="principles">
+          <li data-reveal><span class="principles__n">1</span><div><h4>Keep the brand people already know</h4><p>The client asked for the existing site’s standard or better, not a new look. All three products use the greens and type of farmhubagro.com.</p></div></li>
+          <li data-reveal><span class="principles__n">2</span><div><h4>Write every status in words</h4><p>Out of stock is written in words, and a falling figure shows in amber with the word “Down” instead of red against green.</p></div></li>
+          <li data-reveal><span class="principles__n">3</span><div><h4>Start people on their own work</h4><p>Each staff role opens the dashboard on the work it does, instead of a page of figures it cannot act on.</p></div></li>
+          <li data-reveal><span class="principles__n">4</span><div><h4>Stay light on mobile data</h4><p>No animation library, no self-moving carousels and no images the page doesn’t need, because customers pay for every megabyte.</p></div></li>
+          <li data-reveal><span class="principles__n">5</span><div><h4>Be honest about what is done by hand</h4><p>A bank transfer is confirmed by a member of staff, so an order paid that way says it is waiting for payment until they do.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">How the product is organised</h3>
+          <p class="psec__intro">Staff move around the dashboard with a side menu grouped into sales, catalogue and settings, and they only see the sections their role allows. Customers use five tabs at the bottom of the app, with a basket bar that follows them from screen to screen.</p>
+        </header>
+        <div class="ia" data-reveal>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Staff dashboard</p>
+            <ol class="ia__list"><li>Overview</li><li>Orders</li><li>Deliveries</li><li>Subscriptions</li><li>Customers</li><li>Promotions</li><li>Reports</li><li>Loyalty</li><li>Products</li><li>Stock changes</li><li>Plans</li><li>Settings</li></ol>
+          </div>
+          <div class="ia__visual">
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-rail.webp" data-zoom-w="544" data-zoom-h="1800" data-zoom-kind="image" data-zoom-caption="The dashboard’s side menu" data-cursor-tag="View" aria-label="View full size: The dashboard’s side menu">
+            <img src="/img/components/farmhub-rail.webp" alt="The dashboard’s side menu" width="544" height="1800" loading="lazy" class="ia__rail">
+          </button>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-tabbar.webp" data-zoom-w="1179" data-zoom-h="170" data-zoom-kind="image" data-zoom-caption="The customer app’s tab bar" data-cursor-tag="View" aria-label="View full size: The customer app’s tab bar">
+            <img src="/img/components/farmhub-tabbar.webp" alt="The customer app’s tab bar" width="1179" height="170" loading="lazy" class="ia__tabbar">
+          </button>
+          </div>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> Customer app</p>
+            <ol class="ia__list"><li>Home</li><li>Categories</li><li>Basket</li><li>Orders</li><li>Account</li></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">Key screens in the customer app</h3>
+          <p class="psec__intro">The app is where customers shop with FarmHub, from finding an item to getting the same groceries every week. These are its key screens, in the order a customer meets them.</p>
+        </header>
+
+        <article class="ppair">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Finding food and its price</h4>
+            <p>The home screen opens on search, categories and everyday staples, so a customer can find rice or palm oil without knowing where it sits in the catalogue. Product photos from FarmHub’s catalogue sit on a sage background, so every item looks consistent.</p>
+            <p>On a product page, every size is a card with its own price, so nobody has to guess what the bigger bag costs.</p>
+          </div>
+          <div class="ppair__media">
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-home.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="Home: search, categories and everyday staples" data-cursor-tag="View" aria-label="View full size: Home: search, categories and everyday staples">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-home@1200.webp 1200w, /img/mockups/farmhub-app-home.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-home.webp" alt="FarmHub Agro: Home: search, categories and everyday staples" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>Home: search, categories and everyday staples</figcaption>
+            </figure>
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-product.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="A product, with every size priced" data-cursor-tag="View" aria-label="View full size: A product, with every size priced">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-product@1200.webp 1200w, /img/mockups/farmhub-app-product.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-product.webp" alt="FarmHub Agro: A product, with every size priced" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>A product, with every size priced</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="ppair ppair--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">A basket that stays on the phone, and a short checkout</h4>
+            <p>The basket bar follows the customer from screen to screen with the item count and the total. The basket is kept on the phone, so it is still there when they come back to it.</p>
+            <p>Checkout lists the areas inside Osogbo, delivered the same day, apart from places elsewhere in Nigeria, which are paid in advance. Every area shows its fee before the customer chooses it.</p>
+          </div>
+          <div class="ppair__media">
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-basket.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="The basket, kept on the phone" data-cursor-tag="View" aria-label="View full size: The basket, kept on the phone">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-basket@1200.webp 1200w, /img/mockups/farmhub-app-basket.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-basket.webp" alt="FarmHub Agro: The basket, kept on the phone" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>The basket, kept on the phone</figcaption>
+            </figure>
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-checkout.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="Checkout with delivery areas and fees" data-cursor-tag="View" aria-label="View full size: Checkout with delivery areas and fees">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-checkout@1200.webp 1200w, /img/mockups/farmhub-app-checkout.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-checkout.webp" alt="FarmHub Agro: Checkout with delivery areas and fees" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>Checkout with delivery areas and fees</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="ppair">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Following an order to the door</h4>
+            <p>An order moves through five steps, from placed to delivered, and each step is written in words as well as marked with a dot. The customer also sees which rider is bringing it and the address it is going to.</p>
+            <p>When it arrives, the same screen shows the order as delivered, with a way back to the shop and to past orders.</p>
+          </div>
+          <div class="ppair__media">
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-tracking.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="Following an order in five steps" data-cursor-tag="View" aria-label="View full size: Following an order in five steps">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-tracking@1200.webp 1200w, /img/mockups/farmhub-app-tracking.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-tracking.webp" alt="FarmHub Agro: Following an order in five steps" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>Following an order in five steps</figcaption>
+            </figure>
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-delivered.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="The same order, delivered" data-cursor-tag="View" aria-label="View full size: The same order, delivered">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-delivered@1200.webp 1200w, /img/mockups/farmhub-app-delivered.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-delivered.webp" alt="FarmHub Agro: The same order, delivered" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>The same order, delivered</figcaption>
+            </figure>
+          </div>
+        </article>
+        <article class="ppair ppair--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Regular deliveries without reordering</h4>
+            <p>A household that buys the same things every week can turn its basket into a regular delivery. The customer picks a plan, a day and how many deliveries to keep it for, and can pause or cancel at any time from their account.</p>
+            <p>The subscription screen shows the next delivery, what is in each box and the card it is charged to. After the last delivery, FarmHub suggests a fresh box based on what the household buys.</p>
+          </div>
+          <div class="ppair__media">
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-subscription.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="A regular delivery: the next date and the box" data-cursor-tag="View" aria-label="View full size: A regular delivery: the next date and the box">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-subscription@1200.webp 1200w, /img/mockups/farmhub-app-subscription.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-subscription.webp" alt="FarmHub Agro: A regular delivery: the next date and the box" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>A regular delivery: the next date and the box</figcaption>
+            </figure>
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-app-subscribe.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="Setting up regular deliveries" data-cursor-tag="View" aria-label="View full size: Setting up regular deliveries">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-app-subscribe@1200.webp 1200w, /img/mockups/farmhub-app-subscribe.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-app-subscribe.webp" alt="FarmHub Agro: Setting up regular deliveries" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>Setting up regular deliveries</figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">The rider’s phone</h3>
+          <p class="psec__intro">Riders deliver orders across Osogbo and use the dashboard on their own phones, outdoors and on the move. Their view leaves out everything except the deliveries in front of them.</p>
+        </header>
+
+        <article class="ppair">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Today’s deliveries, one tap from the customer</h4>
+            <p>A rider signs in to a home screen built around today’s deliveries. Each delivery shows the address, a button to call the customer and a way to mark each step.</p>
+            <p>Every step a rider marks also updates the order in the customer’s app, which is how the customer knows who is bringing it and when it has been delivered.</p>
+          </div>
+          <div class="ppair__media">
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-rider-home.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="The rider’s home: today’s deliveries" data-cursor-tag="View" aria-label="View full size: The rider’s home: today’s deliveries">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-rider-home@1200.webp 1200w, /img/mockups/farmhub-rider-home.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-rider-home.webp" alt="FarmHub Agro: The rider’s home: today’s deliveries" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>The rider’s home: today’s deliveries</figcaption>
+            </figure>
+            <figure class="ppair__fig" data-reveal>
+              <button type="button" class="zoom" data-zoom="/img/screens/farmhub-rider-deliveries.webp" data-zoom-w="1179" data-zoom-h="2556" data-zoom-kind="phone" data-zoom-caption="A rider’s delivery list on the road" data-cursor-tag="View" aria-label="View full size: A rider’s delivery list on the road">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-rider-deliveries@1200.webp 1200w, /img/mockups/farmhub-rider-deliveries.webp 2400w" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw">
+            <img src="/img/mockups/farmhub-rider-deliveries.webp" alt="FarmHub Agro: A rider’s delivery list on the road" width="2400" height="2979" loading="lazy" decoding="async">
+          </picture>
+          </button>
+              <figcaption>A rider’s delivery list on the road</figcaption>
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">07</p>
+          <h3 class="psec__title">The dashboard: the control centre behind the app</h3>
+          <p class="psec__intro">Everything a customer sees in the app is run from the staff dashboard. Staff set prices and stock, change what the app shows, follow customers and what they buy, and see how the business is doing.</p>
+        </header>
+
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">The overview: how the business is doing, at a glance</h4>
+            <p>Managers wanted to know how today compared with the same point last week and last month. Instead of a row of identical stat cards, I put today, this week and this month in one deep-green band that reads from left to right, each figure with its change written in words.</p>
+            <p>Below it sit a 30-day sales chart, subscriptions that need attention, best sellers and sales by category.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-overview.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The manager’s overview." data-cursor-tag="View" aria-label="View full size: The manager’s overview.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-overview@1200.webp 1200w, /img/mockups/farmhub-overview.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-overview.webp" alt="FarmHub Agro: The manager’s overview." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The manager’s overview.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Prices and stock that the app follows</h4>
+            <p>Every price on the products page is what the shop and the app charge, so staff change a price once and customers see the new one. Each product shows how many are left and whether it is on sale, with one menu to change its price or stock.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-products.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Products, with the prices and stock the app uses." data-cursor-tag="View" aria-label="View full size: Products, with the prices and stock the app uses.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-products@1200.webp 1200w, /img/mockups/farmhub-products.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-products.webp" alt="FarmHub Agro: Products, with the prices and stock the app uses." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Products, with the prices and stock the app uses.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Staff change the app themselves</h4>
+            <p>The announcement line, the home-screen banners and where each banner leads are all edited from the dashboard, and changes show in the app within five minutes. Nobody needs a developer to announce a public holiday or start a promotion.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-storefront.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The storefront settings, and the app they change." data-cursor-tag="View" aria-label="View full size: The storefront settings, and the app they change.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-storefront@1200.webp 1200w, /img/mockups/farmhub-storefront.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-storefront.webp" alt="FarmHub Agro: The storefront settings, and the app they change." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The storefront settings, and the app they change.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Customers and what they buy</h4>
+            <p>Each customer has a page with their details, whether they have an app account and everything they have bought, most often first. That history is what a regular delivery box is built from, and staff can set up a subscription or adjust loyalty points from the same page.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-customer.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="A customer and the items they buy most often." data-cursor-tag="View" aria-label="View full size: A customer and the items they buy most often.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-customer@1200.webp 1200w, /img/mockups/farmhub-customer.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-customer.webp" alt="FarmHub Agro: A customer and the items they buy most often." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>A customer and the items they buy most often.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Reports for any period</h4>
+            <p>Reports cover sales, profit on goods, promotion results, how many app visitors went on to buy and which baskets were left unpaid. Each report can be printed or downloaded for the accountant.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-reports.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Reports for the last 30 days." data-cursor-tag="View" aria-label="View full size: Reports for the last 30 days.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-reports@1200.webp 1200w, /img/mockups/farmhub-reports.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-reports.webp" alt="FarmHub Agro: Reports for the last 30 days." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Reports for the last 30 days.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">A home screen for each staff role</h4>
+            <p>A dispatcher has no use for a sales chart. Dispatch staff open the dashboard on what is ready to go out, what each rider is carrying and which deliveries are running late. Sales, inventory and rider staff each get their own home in the same way.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/farmhub-dispatch.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The dispatch home, built around riders and late deliveries." data-cursor-tag="View" aria-label="View full size: The dispatch home, built around riders and late deliveries.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/farmhub-dispatch@1200.webp 1200w, /img/mockups/farmhub-dispatch.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/farmhub-dispatch.webp" alt="FarmHub Agro: The dispatch home, built around riders and late deliveries." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The dispatch home, built around riders and late deliveries.</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">08</p>
+          <h3 class="psec__title">The design system</h3>
+          <p class="psec__intro">All three products share one set of design tokens taken from the live farmhubagro.com site, so they read as one brand. The tokens live in a single file and are generated into the website, the app and the dashboard, so a colour changed once changes everywhere. The light green is only ever used for decoration because it is too faint to read as text.</p>
+        </header>
+        <ul class="pspec__swatches" aria-label="Core colour tokens">
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#2a7d2e"></span>
+            <span class="pspec__name">Green</span>
+            <code>#2a7d2e</code>
+            <span class="pspec__note">buttons and links</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#17511a"></span>
+            <span class="pspec__name">Deep green</span>
+            <code>#17511a</code>
+            <span class="pspec__note">headings and the figures band</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#94d96b"></span>
+            <span class="pspec__name">Light green</span>
+            <code>#94d96b</code>
+            <span class="pspec__note">decoration only, 1.9:1 on white</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#fbfaf7"></span>
+            <span class="pspec__name">Paper</span>
+            <code>#fbfaf7</code>
+            <span class="pspec__note">page background</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#1e2227"></span>
+            <span class="pspec__name">Ink</span>
+            <code>#1e2227</code>
+            <span class="pspec__note">text</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#8a6100"></span>
+            <span class="pspec__name">Amber</span>
+            <code>#8a6100</code>
+            <span class="pspec__note">warnings, always with a word</span>
+          </li>
+        </ul>
+        <div class="pspec__foot">
+          <div class="pspec__type" data-reveal>
+            <p class="pspec__label">Typeface</p>
+            <p class="pspec__family">Aa</p>
+            <p class="pspec__family-name">Tenor Sans + Public Sans</p>
+            <p class="pspec__note">Tenor Sans, the serif-like face from the existing site, sets headings and figures. Public Sans sets the interface text in the app and the dashboard because it stays clear at small sizes.</p>
+          </div>
+          <div class="pspec__rules" data-reveal>
+            <p class="pspec__label">Standards every screen meets</p>
+            <ul><li>Text contrast of at least 4.5:1 on every colour pair</li><li>A visible focus ring on every control</li><li>Tap targets of at least 44px on phones</li><li>Status written in words, never shown by colour alone</li><li>Motion only in CSS, and none when reduced motion is turned on</li></ul>
+          </div>
+        </div>
+        
+        <p class="pspec__label pspec__label--gap">Components from the live product</p>
+        <ul class="bento">
+          <li class="bento__item bento__item--wide" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-figures.webp" data-zoom-w="1400" data-zoom-h="254" data-zoom-kind="image" data-zoom-caption="Figures band component" data-cursor-tag="View" aria-label="View full size: Figures band component">
+            <span class="bento__frame"><img src="/img/components/farmhub-figures.webp" alt="Figures band component" width="1400" height="254" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Figures band</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-sizes.webp" data-zoom-w="1100" data-zoom-h="640" data-zoom-kind="image" data-zoom-caption="Size picker component" data-cursor-tag="View" aria-label="View full size: Size picker component">
+            <span class="bento__frame"><img src="/img/components/farmhub-sizes.webp" alt="Size picker component" width="1100" height="640" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Size picker</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-tracking.webp" data-zoom-w="1100" data-zoom-h="700" data-zoom-kind="image" data-zoom-caption="Order tracking component" data-cursor-tag="View" aria-label="View full size: Order tracking component">
+            <span class="bento__frame"><img src="/img/components/farmhub-tracking.webp" alt="Order tracking component" width="1100" height="700" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Order tracking</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-rider-card.webp" data-zoom-w="1135" data-zoom-h="770" data-zoom-kind="image" data-zoom-caption="Rider delivery card component" data-cursor-tag="View" aria-label="View full size: Rider delivery card component">
+            <span class="bento__frame"><img src="/img/components/farmhub-rider-card.webp" alt="Rider delivery card component" width="1135" height="770" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Rider delivery card</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/farmhub-basket-bar.webp" data-zoom-w="1140" data-zoom-h="168" data-zoom-kind="image" data-zoom-caption="Basket bar component" data-cursor-tag="View" aria-label="View full size: Basket bar component">
+            <span class="bento__frame"><img src="/img/components/farmhub-basket-bar.webp" alt="Basket bar component" width="1140" height="168" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Basket bar</span>
+          </li>
+        </ul>
+      </section>
+      </div>
+
+      <div class="ppanel ppanel--dev" id="development" role="tabpanel" aria-labelledby="tab-development" data-panel="development">
+        <h2 class="visually-hidden">Development</h2>
+        <p class="ppanel__lede" data-reveal>I built the front end of all three products. The website order pages are a WordPress plugin written in plain HTML, CSS and JavaScript with no framework, so it runs on the existing site and stays fast on Nigerian mobile networks. The customer app is built with Expo and React Native in TypeScript, and runs on iPhone, Android and the web from one codebase. The staff dashboard is built with Laravel and Filament, where I built the theme, the pages and the home screen for each role.</p>
+
+        <ul class="techrow" aria-label="Stack"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React Native</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/expo.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Expo</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/laravel.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Laravel</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/wordpress.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">WordPress</span>
+            </li>
+        </ul>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">How an app screen loads</h3>
+          <p class="psec__intro">The six steps between a customer opening a screen and seeing it. The solid boxes are the front end I built; the dashed boxes are the server side, which was outside my part of the work.</p>
+        </header>
+        <figure class="pflow" data-reveal>
+          <ol class="pflow__track">
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Screen opens</span>
+              <span class="pflow__sub">a category, product or order</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Shared hooks</span>
+              <span class="pflow__sub">loading, error and retry handled in one place</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">api()</span>
+              <span class="pflow__sub">one client for every request</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Price check</span>
+              <span class="pflow__sub">repriced after a pause; old answers ignored</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">FarmHub API</span>
+              <span class="pflow__sub">the shop’s orders and catalogue</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">Paystack</span>
+              <span class="pflow__sub">card payments confirmed on the server</span>
+            </li>
+          </ol>
+          <figcaption class="pflow__key">
+            <span class="pflow__key-item pflow__key-item--me">Front end I built</span>
+            <span class="pflow__key-item pflow__key-item--partner">Server side</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Code organised like the product</h3>
+          <p class="psec__intro">Each front end keeps its screens, shared pieces and logic in separate folders, and all three read their colours and type from one tokens package.</p>
+        </header>
+          <p class="psec__aside">Three front ends, one set of design tokens.</p>
+        </div>
+        <figure class="ptree" data-reveal>
+          <figcaption><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> FarmhubAgro/</figcaption>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-mobile/src/app/(tabs)/</code><span>the five app tabs</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-mobile/src/app/product · category · order/</code><span>screens opened from the tabs</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-mobile/src/components/</code><span>basket bar, product and points cards</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-mobile/src/lib/</code><span>API client, hooks, basket, prices and search</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-dashboard/app/Filament/Pages/</code><span>overview, reports, loyalty, storefront</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app-dashboard/…/pages/home/</code><span>one home view per staff role</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>wp/plugins/farmhub-market/assets/</code><span>the price list and order form</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>packages/tokens/tokens.json</code><span>the one source of colours and type</span></li>
+          </ul>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">Design tokens the code won’t let you misuse</h3>
+          
+        </header>
+          <div class="psec__body"><p>The light brand green is too faint to read as text, so the app’s colour tokens carry a type that says how each one may be used. Using a decoration colour for text stops the app from compiling, so the mistake is caught before it can reach a customer.</p>
+            <p>The same tokens are generated into the website’s CSS and the dashboard’s theme, and an automatic check fails if any copy drifts from the source.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>app-mobile/src/theme/tokens.ts</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-c">/**</span>
+<span class="pcode__ln" aria-hidden="true">2</span> * <span class="tk-t">A</span> <span class="tk-t">DecorColor</span> may only be used for borders, fills and decorative marks.
+<span class="pcode__ln" aria-hidden="true">3</span> * greenLight is <span class="tk-n">1</span>.<span class="tk-n">9</span>:<span class="tk-n">1</span> on white, so using it as a text colour is a contrast
+<span class="pcode__ln" aria-hidden="true">4</span> * failure. <span class="tk-t">The</span> branded types make that a compile error rather than a habit.
+<span class="pcode__ln" aria-hidden="true">5</span> */
+<span class="pcode__ln" aria-hidden="true">6</span><span class="tk-k">export</span> <span class="tk-k">type</span> <span class="tk-t">TextColor</span> = string &amp; { <span class="tk-k">readonly</span> __text: unique symbol };
+<span class="pcode__ln" aria-hidden="true">7</span><span class="tk-k">export</span> <span class="tk-k">type</span> <span class="tk-t">DecorColor</span> = string &amp; { <span class="tk-k">readonly</span> __decor: unique symbol };
+<span class="pcode__ln" aria-hidden="true">8</span>
+<span class="pcode__ln" aria-hidden="true">9</span><span class="tk-k">export</span> <span class="tk-k">const</span> color = {
+<span class="pcode__ln" aria-hidden="true">10</span>  <span class="tk-c">// …</span>
+<span class="pcode__ln" aria-hidden="true">11</span>  greenLight: <span class="tk-s">'#94D96B'</span> as <span class="tk-t">DecorColor</span>,</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">One dashboard, a different home for each role</h3>
+          
+        </header>
+          <div class="psec__body"><p>When someone signs in, the dashboard picks their home screen from their most senior role. Managers see the business, and everyone else starts on the work their role does. Someone with no role yet sees only a greeting rather than figures they shouldn’t see.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>app-dashboard/app/Filament/Pages/Overview.php</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span>public <span class="tk-k">function</span> <span class="tk-f">mode</span>(): string
+<span class="pcode__ln" aria-hidden="true">2</span>{
+<span class="pcode__ln" aria-hidden="true">3</span>    <span class="tk-k">return</span> match (<span class="tk-t">StaffRoles</span>::<span class="tk-f">primary</span>(<span class="tk-f">auth</span>()-&gt;<span class="tk-f">user</span>())) {
+<span class="pcode__ln" aria-hidden="true">4</span>        <span class="tk-s">'super_admin'</span>, <span class="tk-s">'manager'</span> =&gt; <span class="tk-s">'business'</span>,
+<span class="pcode__ln" aria-hidden="true">5</span>        <span class="tk-s">'sales'</span> =&gt; <span class="tk-s">'sales'</span>,
+<span class="pcode__ln" aria-hidden="true">6</span>        <span class="tk-s">'dispatch'</span> =&gt; <span class="tk-s">'dispatch'</span>,
+<span class="pcode__ln" aria-hidden="true">7</span>        <span class="tk-s">'inventory'</span> =&gt; <span class="tk-s">'inventory'</span>,
+<span class="pcode__ln" aria-hidden="true">8</span>        <span class="tk-s">'rider'</span> =&gt; <span class="tk-s">'rider'</span>,
+<span class="pcode__ln" aria-hidden="true">9</span>        default =&gt; <span class="tk-s">'none'</span>,
+<span class="pcode__ln" aria-hidden="true">10</span>    };
+<span class="pcode__ln" aria-hidden="true">11</span>}</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">A basket that survives the app closing</h3>
+          
+        </header>
+          <div class="psec__body"><p>People often shop in pieces, adding a few items now and finishing later. The basket is saved on the phone every time it changes and restored when the app opens again, so nothing is lost if the app closes or the network drops.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>app-mobile/src/lib/basketStore.tsx</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-c">/** The basket survives the app being closed, because people shop in pieces. */</span>
+<span class="pcode__ln" aria-hidden="true">2</span><span class="tk-k">export</span> <span class="tk-k">function</span> <span class="tk-t">BasketProvider</span>({ children }: { children: <span class="tk-t">ReactNode</span> }) {
+<span class="pcode__ln" aria-hidden="true">3</span>  <span class="tk-k">const</span> [lines, setLines] = useState&lt;<span class="tk-t">B</span>.<span class="tk-t">Basket</span>&gt;([]);
+<span class="pcode__ln" aria-hidden="true">4</span>  <span class="tk-k">const</span> [loaded, setLoaded] = <span class="tk-f">useState</span>(<span class="tk-k">false</span>);
+<span class="pcode__ln" aria-hidden="true">5</span>
+<span class="pcode__ln" aria-hidden="true">6</span>  <span class="tk-f">useEffect</span>(() =&gt; {
+<span class="pcode__ln" aria-hidden="true">7</span>    <span class="tk-f">readJson</span>(<span class="tk-t">KEY</span>).<span class="tk-f">then</span>((stored) =&gt; {
+<span class="pcode__ln" aria-hidden="true">8</span>      <span class="tk-f">setLines</span>(<span class="tk-t">B</span>.<span class="tk-f">revive</span>(stored));
+<span class="pcode__ln" aria-hidden="true">9</span>      <span class="tk-f">setLoaded</span>(<span class="tk-k">true</span>);
+<span class="pcode__ln" aria-hidden="true">10</span>    });
+<span class="pcode__ln" aria-hidden="true">11</span>  }, []);</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">An order form with no framework</h3>
+          
+        </header>
+          <div class="psec__body"><p>The website order form is plain JavaScript, so it loads quickly on mobile data and keeps working through theme updates. When the customer changes delivery zone, the payment options change with it, and switching back restores the default so nobody is asked for a receipt they never meant to attach.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>wp/plugins/farmhub-market/assets/js/fh-order.js</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span><span class="tk-k">function</span> <span class="tk-f">onChange</span>(e) {
+<span class="pcode__ln" aria-hidden="true">2</span>  var t = e.target;
+<span class="pcode__ln" aria-hidden="true">3</span>  if (t.name === <span class="tk-s">'zone'</span>) {
+<span class="pcode__ln" aria-hidden="true">4</span>    <span class="tk-t">S</span>.zone = t.value;
+<span class="pcode__ln" aria-hidden="true">5</span>    <span class="tk-c">// Outside Osogbo is advance payment only. Coming back to Within Osogbo has to</span>
+<span class="pcode__ln" aria-hidden="true">6</span>    <span class="tk-c">// restore the default too, or the customer is silently left on &quot;pay by transfer&quot;</span>
+<span class="pcode__ln" aria-hidden="true">7</span>    <span class="tk-c">// and then blocked for a receipt they never meant to attach.</span>
+<span class="pcode__ln" aria-hidden="true">8</span>    <span class="tk-t">S</span>.payment = <span class="tk-s">'outside'</span> === <span class="tk-t">S</span>.zone ? <span class="tk-s">'transfer'</span> : <span class="tk-s">'delivery'</span>;
+<span class="pcode__ln" aria-hidden="true">9</span>    if (<span class="tk-s">'delivery'</span> === <span class="tk-t">S</span>.payment) { <span class="tk-t">S</span>.receipt = <span class="tk-k">null</span>; <span class="tk-t">S</span>.receiptFile = <span class="tk-k">null</span>; delete <span class="tk-t">S</span>.errors.receipt; }
+<span class="pcode__ln" aria-hidden="true">10</span>    <span class="tk-f">renderPanel</span>(); <span class="tk-f">renderSummary</span>(); <span class="tk-k">return</span>;</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">07</p>
+          <h3 class="psec__title">Testing and standards</h3>
+          <p class="psec__intro">Checks that run on every change to the front ends, and the standards behind them.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h4>Contrast</h4>
+            <p>Every one of the 16 colour pairs in the tokens is checked against WCAG 2.2 AA.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+            <h4>Token sync</h4>
+            <p>Fails if the website, app or dashboard copy of the tokens drifts from the source.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+            <h4>App logic</h4>
+            <p>Tests for the basket, prices, search and money handling in the customer app.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></span>
+            <h4>Keyboard and focus</h4>
+            <p>A visible focus ring on every control, and the whole order form works by keyboard.</p>
+          </li>
+        </ul>
+        <dl class="pquality">
+          <div class="pquality__item" data-reveal><dt>38</dt><dd>automated tests for the customer app’s logic</dd></div>
+          <div class="pquality__item" data-reveal><dt>16</dt><dd>colour pairs checked for contrast on every change</dd></div>
+          <div class="pquality__item" data-reveal><dt>44px</dt><dd>minimum tap target on phones</dd></div>
+        </dl>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">08</p>
+          <h3 class="psec__title">My contribution</h3>
+          <p class="psec__intro">I was responsible for the design and the front end of all three products.</p>
+        </header>
+        <div class="psplit psplit--both" data-reveal>
+          <div class="psplit__col psplit__col--mine">
+            <p class="pspec__label">What I designed</p>
+            <ul><li>The website price list and order form</li><li>The customer app</li><li>The staff dashboard and a home screen for each role</li><li>The rider screens for phones</li><li>The shared design system</li></ul>
+          </div>
+          <div class="psplit__col psplit__col--mine">
+            <p class="pspec__label">What I built</p>
+            <ul><li>The WordPress plugin’s front end, in plain JavaScript</li><li>The Expo app for iPhone, Android and the web</li><li>The Filament dashboard’s theme, pages and role homes</li><li>The design tokens package used by all three</li></ul>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="case__outcome" data-scene-end>
+        <p class="case__label"><b>&bull;</b> The result</p>
+        <div class="case__outcome-body">
+          <div></div>
+          <div>
+            <p>FarmHub now takes orders through its website and its customer app, and runs every order, delivery and subscription from one dashboard. Staff change prices, promotions and the app’s front page themselves, without waiting for a developer. The next step is releasing the app to the App Store and Google Play.</p>
+            <a class="pill" href="https://farmhubagro.com" rel="noopener"
+               data-magnetic="0.28" data-cursor-tag="Open farmhubagro.com" data-cursor-color="#2a7d2e">
+              <span class="pill__label">Visit farmhubagro.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a class="case__next" href="/africa-blockchain-festival"
+         data-cursor-tag="Next project" data-cursor-color="#0895fa">
+        <span class="case__next-label">Next project</span>
+        <span class="case__next-title">
+          Africa Blockchain Festival
+          <span class="case__next-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+      </a>
+
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact" data-cursor-zone="cross">
+    <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+
+    <div class="site-footer__box">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <div class="site-footer__cta">
+        <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
+          <p class="site-footer__availability" data-reveal>
+            Available for remote product design, front-end and design engineering roles,
+            and selected freelance projects. I work across European and US hours.
+          </p>
+        <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
+           data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
+          <span class="pill__label">Send me a message</span>
+        </a>
+      </div>
+
+      <div class="site-footer__contact">
+        <a class="site-footer__email link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+        <div class="site-footer__social">
+          <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+          <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__fineprint">
+      &copy; 2026 Sammy Fash. Designed and built by me.
+    </p>
+  </footer>
+
+  <!-- contact dialog, opened by anything with [data-contact-open] -->
+  <div class="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <div class="contact__scrim"></div>
+
+    <div class="contact__panel">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <button class="contact__close" type="button" aria-label="Close contact form">
+        <span></span><span></span>
+      </button>
+
+      <div class="contact__grid">
+        <div>
+          <h2 class="contact__title" id="contact-title">Tell me about the role or project</h2>
+          <p class="contact__blurb">
+            Share a little about what you need, your timeline and the best way to
+            reach you. I usually reply within two working days.
+          </p>
+          <p class="contact__direct">
+            Prefer email?<br>
+            <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+          </p>
+        </div>
+
+        <div>
+          <form novalidate>
+            <div class="contact__field" data-label="Name">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Email">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Message">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="We&rsquo;re hiring a design engineer for&hellip;" required></textarea>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <!-- Spam trap. Bots fill every field they find; people never see
+                 this one. Formspree discards a submission where it is set.
+                 Deliberately not .contact__field, so validation ignores it. -->
+            <p class="contact__gotcha" aria-hidden="true">
+              <label>Leave this empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </label>
+            </p>
+
+            <div class="contact__submit">
+              <button class="pill" type="submit" data-magnetic="0.2">
+                <span class="pill__label">Send message</span>
+              </button>
+              <span class="contact__status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="contact__sent" role="status">
+            <p>Thanks, your message has been sent.</p>
+            <p>I&rsquo;ll reply to the email address you provided, usually within two working days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/product.js"></script>
+</body>
+</html>

@@ -510,7 +510,11 @@ const LENSES = [
   { id: 'development', label: 'Development' },
   { id: 'web', label: 'Websites' },
 ]
-const lensesOf = (p) => (p.kind === 'product' ? ['all', 'design', 'development'] : ['all', 'web'])
+// A product that also shipped website work (FarmHub's WordPress order pages)
+// sets `website: true` and appears under Websites as well, with cardTag.web.
+const lensesOf = (p) => (p.kind === 'product'
+  ? ['all', 'design', 'development', ...(p.website ? ['web'] : [])]
+  : ['all', 'web'])
 const listed = PROJECTS.filter((p) => !p.draft)
 
 const workCard = (p) => {
@@ -530,7 +534,8 @@ const workCard = (p) => {
                 <span class="work__name">${esc(p.name)}</span>
                 ${product
                   ? `<span class="work__tag" data-tag-for="design">${esc(p.cardTag.design)}</span>
-                <span class="work__tag" data-tag-for="development">${esc(p.cardTag.development)}</span>`
+                <span class="work__tag" data-tag-for="development">${esc(p.cardTag.development)}</span>${p.cardTag.web ? `
+                <span class="work__tag" data-tag-for="web">${esc(p.cardTag.web)}</span>` : ''}`
                   : `<span class="work__tag">${esc(p.cardTag)}</span>`}
               </span>
             </a>
@@ -574,6 +579,14 @@ const svc = (s) => (typeof s === 'string' ? s : s.label)
 
 /** A small line-icon set, 24×24, stroke-based so it takes currentColor. */
 const ICON_PATHS = {
+  tag: '<path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  truck: '<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/>',
+  message: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>',
+  card: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>',
+  chart: '<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+  store: '<path d="m2 7 4.4-4.4A2 2 0 0 1 7.8 2h8.4a2 2 0 0 1 1.4.6L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/>',
+  box: '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
   pen: '<path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/>',
   grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
   cursor: '<path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/>',
@@ -604,6 +617,7 @@ const icon = (name, cls = 'icon') =>
 const LOGOS = {
   Figma: 'figma', 'Next.js': 'nextjs', React: 'react', TypeScript: 'typescript',
   'Tailwind CSS': 'tailwind', Vitest: 'vitest',
+  'React Native': 'react', Expo: 'expo', Laravel: 'laravel', WordPress: 'wordpress',
 }
 const logoTile = (name) => `<li class="tech">
               <span class="tech__logo">${LOGOS[name] ? `<img src="/img/logos/${LOGOS[name]}.svg" alt="" width="28" height="28" loading="lazy">` : ''}</span>
@@ -727,18 +741,42 @@ function renderDesign(p) {
       <section class="psec">${sectionHead(++n, d.ia.title, d.ia.intro)}
         <div class="ia" data-reveal>
           <div class="ia__col">
-            <p class="ia__label">${icon('monitor')} Organiser dashboard</p>
+            <p class="ia__label">${icon('monitor')} ${esc(d.ia.consoleLabel ?? 'Organiser dashboard')}</p>
             <ol class="ia__list">${d.ia.console.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
           </div>
           <div class="ia__visual">
-            ${zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="The dashboard's navigation rail" width="472" height="1800" loading="lazy" class="ia__rail">`, { src: `/img/components/${d.ia.rail}.webp`, w: 472, h: 1800, caption: "The dashboard's navigation rail" })}
-            ${zoomable(`<img src="/img/components/${d.ia.tabbar}.webp" alt="The attendee app's tab bar" width="1170" height="324" loading="lazy" class="ia__tabbar">`, { src: `/img/components/${d.ia.tabbar}.webp`, w: 1170, h: 324, caption: "The attendee app's tab bar" })}
+            ${(() => {
+              const [rw, rh] = d.ia.railSize ?? [472, 1800]
+              const [tw, th] = d.ia.tabbarSize ?? [1170, 324]
+              const railCap = d.ia.railCaption ?? "The dashboard's navigation rail"
+              const tabCap = d.ia.tabbarCaption ?? "The attendee app's tab bar"
+              return `${zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="${esc(railCap)}" width="${rw}" height="${rh}" loading="lazy" class="ia__rail">`, { src: `/img/components/${d.ia.rail}.webp`, w: rw, h: rh, caption: railCap })}
+            ${zoomable(`<img src="/img/components/${d.ia.tabbar}.webp" alt="${esc(tabCap)}" width="${tw}" height="${th}" loading="lazy" class="ia__tabbar">`, { src: `/img/components/${d.ia.tabbar}.webp`, w: tw, h: th, caption: tabCap })}`
+            })()}
           </div>
           <div class="ia__col">
-            <p class="ia__label">${icon('phone')} Attendee app</p>
+            <p class="ia__label">${icon('phone')} ${esc(d.ia.attendeeLabel ?? 'Attendee app')}</p>
             <ol class="ia__list">${d.ia.attendee.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
           </div>
         </div>
+      </section>`)
+
+  // Phone screens shown two at a time: one topic, its text, and two photographs.
+  for (const ps of d.pairSections ?? []) parts.push(`
+      <section class="psec">${sectionHead(++n, ps.title, ps.intro)}
+${ps.pairs.map((pr, i) => `
+        <article class="ppair${i % 2 ? ' ppair--flip' : ''}">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">${esc(pr.title)}</h4>
+            ${pr.body.map((t) => `<p>${esc(t)}</p>`).join('\n            ')}
+          </div>
+          <div class="ppair__media">${pr.items.map((x) => `
+            <figure class="ppair__fig" data-reveal>
+              ${mockup(x.mockup, `${p.name}: ${x.caption}`, { sizes: '(max-width: 560px) 100vw, (max-width: 900px) 50vw, 30vw', caption: x.caption, kind: 'phone' })}
+              <figcaption>${esc(x.caption)}</figcaption>
+            </figure>`).join('')}
+          </div>
+        </article>`).join('')}
       </section>`)
 
   if (d.screens) parts.push(`
@@ -760,7 +798,7 @@ ${d.screens.map((sc, i) => `
       <section class="psec">${sectionHead(++n, d.phones.title, d.phones.body)}
         <ul class="phones">${d.phones.items.map((x) => `
           <li class="phones__item" data-reveal>
-            ${mockup(x.mockup, `${p.name} attendee app: ${x.caption}`, { sizes: '(max-width: 900px) 50vw, 25vw', caption: x.caption, kind: 'phone' })}
+            ${mockup(x.mockup, `${p.name} ${d.phones.altLabel ?? 'attendee app'}: ${x.caption}`, { sizes: '(max-width: 900px) 50vw, 25vw', caption: x.caption, kind: 'phone' })}
             <p>${esc(x.caption)}</p>
           </li>`).join('')}
         </ul>
@@ -836,8 +874,8 @@ function renderDevelopment(p) {
             </li>`).join('')}
           </ol>
           <figcaption class="pflow__key">
-            <span class="pflow__key-item pflow__key-item--me">Built by me</span>
-            <span class="pflow__key-item pflow__key-item--partner">Built by the team</span>
+            <span class="pflow__key-item pflow__key-item--me">${esc(v.flowKey?.me ?? 'Built by me')}</span>
+            <span class="pflow__key-item pflow__key-item--partner">${esc(v.flowKey?.other ?? 'Built by the team')}</span>
           </figcaption>
         </figure>
       </section>`)
@@ -878,12 +916,12 @@ function renderDevelopment(p) {
 
   if (v.split) parts.push(`
       <section class="psec">${sectionHead(++n, v.splitTitle ?? 'Who built what', v.splitIntro)}
-        <div class="psplit" data-reveal>
+        <div class="psplit${v.split.bothMine ? ' psplit--both' : ''}" data-reveal>
           <div class="psplit__col psplit__col--mine">
             <p class="pspec__label">${esc(v.split.mineLabel ?? 'What I built')}</p>
             <ul>${v.split.mine.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
           </div>
-          <div class="psplit__col">
+          <div class="psplit__col${v.split.bothMine ? ' psplit__col--mine' : ''}">
             <p class="pspec__label">${esc(v.split.partnerLabel ?? 'What the team built')}</p>
             <ul>${v.split.partner.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
           </div>
@@ -921,7 +959,7 @@ ${chrome.preface}
           <p class="case__summary phead__summary" data-reveal>${esc(p.intro)}</p>
         </div>${p.hero?.laptop ? `
         <figure class="phead__media" data-reveal>
-          ${mockup(p.hero.laptop, `${p.name}: the organiser console on a laptop`, { eager: true, sizes: '(max-width: 900px) 100vw, 55vw', caption: p.hero.caption ?? `${p.name} on a laptop` })}
+          ${mockup(p.hero.laptop, p.hero.alt ?? `${p.name}: the organiser console on a laptop`, { eager: true, sizes: '(max-width: 900px) 100vw, 55vw', caption: p.hero.caption ?? `${p.name} on a laptop` })}
         </figure>` : ''}
       </header>
 
@@ -941,7 +979,7 @@ ${chrome.preface}
         </div>
         <div class="glance__cell" data-reveal>
           <p class="glance__label">${icon('clock')} Timeline</p>
-          <p class="glance__big">${esc(p.timeline?.weeks ?? '')} weeks</p>
+          <p class="glance__big">${esc(p.timeline?.label ?? `${p.timeline?.weeks ?? ''} weeks`)}</p>
           <p class="glance__text">${esc(p.timeline?.span ?? p.year)}<br>${esc(p.location)}</p>
         </div>
       </div>

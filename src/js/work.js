@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { splitChars, openLines, prefersReducedMotion, qs, qsa } from './utils.js'
 
-export function initWork() {
+export function initWork({ crew = false } = {}) {
   const section = qs('.work')
   if (!section) return
 
@@ -14,7 +14,8 @@ export function initWork() {
   const title = qs('.work__title .line__inner', section)
   const cards = qsa('.work__card', section)
 
-  if (title) {
+  // With the build crew, only the image parallax stays: the crew places the rest.
+  if (title && !crew) {
     const chars = splitChars(title)
     gsap.from(chars, {
       yPercent: 115, opacity: 0, duration: 0.9, stagger: 0.02, ease: 'expo.out',
@@ -26,7 +27,7 @@ export function initWork() {
   cards.forEach((card, i) => {
     const media = qs('.work__media', card)
 
-    gsap.from(card, {
+    if (!crew) gsap.from(card, {
       yPercent: 12,
       opacity: 0,
       duration: 1.1,
