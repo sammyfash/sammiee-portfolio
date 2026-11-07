@@ -107,7 +107,7 @@ export const ROLES = [
     caseStudy: 'africa-blockchain-festival',
     note: 'Africa’s largest blockchain festival and tokenisation summit, Nairobi.',
     bullets: [
-      { t: 'both', text: 'Designed and built the website for the 2025 edition, which the organisers used during partner outreach. They report the edition secured close to $100,000 in sponsorship.' },
+      { t: 'both', text: 'Designed and built the website for the 2025 edition, which the organisers used during partner outreach. The festival has secured more than $160,000 in sponsorship.' },
       { t: 'both', text: 'Separated the sponsor funnel from the ticket funnel, because a $50 attendee and a $25,000 sponsor are not the same visitor and a single path serves neither well.' },
       { t: 'wp', text: 'Built speakers, sponsors, ticket tiers, travel guides and three languages onto the festival’s own content model, so a months-long campaign never queued behind a developer.' },
       { t: 'de', text: 'Resolved every section, breakpoint and state in Figma before the build began, against a fixed event date that made mid-build renegotiation impossible.' },

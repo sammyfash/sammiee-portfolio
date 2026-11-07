@@ -78,6 +78,16 @@ const phoneMock = (base, alt) => `
             </div>
           </figure>`
 
+/**
+ * A generated photo scene (scripts/compose-scenes.mjs) on a website case, in
+ * place of a flat browser frame. Opens the clean screen in the lightbox.
+ */
+const sceneFig = (p, x, cls = '') => `
+        <figure class="case__scene${cls}">
+          ${mockup(x.mockup, `${p.name}: ${x.caption}`, { caption: x.caption, kind: x.phone ? 'phone' : 'page', sizes: x.phone ? '(max-width: 600px) 100vw, 30vw' : '(max-width: 900px) 100vw, 88vw' })}
+          <figcaption>${esc(x.caption)}</figcaption>
+        </figure>`
+
 const chrome = {
   head: (p) => `  <meta charset="utf-8">
   <script src="/theme.js"></script>
@@ -407,7 +417,9 @@ ${chrome.preface}
       </dl>
 
       <span class="rule" aria-hidden="true"></span>
-${p.video ? `
+${p.scenes?.hero ? `
+      <div class="case__showcase">${sceneFig(p, p.scenes.hero, ' case__scene--hero')}
+      </div>` : p.video ? `
       <div class="case__showcase">
 ${videoMock(p.video, p.liveLabel, `${p.slug}-poster`, `${p.name} — a walkthrough of the finished build`)}
       </div>` : hero ? `
@@ -420,10 +432,14 @@ ${media(hero, `${p.name} — the landing screen`, false)}
         <div>${p.approach.map((t) => `\n          <p>${esc(t)}</p>`).join('')}
         </div>
       </div>
-${rest.length ? `
+${p.scenes?.pair ? `
+      <div class="case__pair">${p.scenes.pair.map((x) => sceneFig(p, x)).join('')}
+      </div>` : rest.length ? `
       <div class="case__pair">${rest.map((b, i) => media(b, `${p.name} — section ${i + 2}`, true)).join('')}
       </div>` : ''}
-${phones.length ? `
+${p.scenes?.phones ? `
+      <div class="case__trio">${p.scenes.phones.map((x) => sceneFig(p, { ...x, phone: true })).join('')}
+      </div>` : phones.length ? `
       <div class="case__phones" data-phone-rail>
         <div class="case__phones-track">${[...phones, ...phones, ...phones].map((b, i) => phoneMock(b, `${p.name} on mobile, view ${(i % phones.length) + 1}`)).join('')}
         </div>
@@ -431,18 +447,19 @@ ${phones.length ? `
 
 ${(p.chapters ?? []).map((c) => {
   const frames = chapterFrames(c)
-  if (!frames.length) return ''
+  if (!frames.length && !c.scenes) return ''
   return `
       <span class="rule" aria-hidden="true"></span>
 
       <div class="case__approach">
         <p class="case__label"><b>&bull;</b> ${esc(c.title)}</p>
         <div>
-          <p>${esc(c.intro)}</p>${c.body.map((t) => `\n          <p>${esc(t)}</p>`).join('')}
+          <p>${esc(c.intro)}</p>${c.body.map((t) => `\n          <p>${esc(t)}</p>`).join('')}${c.link ? `
+          <p><a class="case__link" href="${esc(c.link.href)}" data-cursor-tag="Open">${esc(c.link.label)} <span aria-hidden="true">&rarr;</span></a></p>` : ''}
         </div>
       </div>
 
-      <div class="case__pair">${frames.map((f) => browserMock(f.base, f.url, `${p.name} — ${f.label}`, true)).join('')}
+      <div class="case__pair">${c.scenes ? c.scenes.map((x) => sceneFig(p, x)).join('') : frames.map((f) => browserMock(f.base, f.url, `${p.name} — ${f.label}`, true)).join('')}
       </div>`
 }).join('')}
 
@@ -618,8 +635,9 @@ const icon = (name, cls = 'icon') =>
 /** Stack name → logo file in /img/logos (from the open svgl.app library). */
 const LOGOS = {
   Figma: 'figma', 'Next.js': 'nextjs', React: 'react', TypeScript: 'typescript',
-  'Tailwind CSS': 'tailwind', Vitest: 'vitest',
+  'Tailwind CSS': 'tailwind', Vitest: 'vitest', Supabase: 'supabase',
   'React Native': 'react', Expo: 'expo', Laravel: 'laravel', WordPress: 'wordpress',
+  Elementor: 'elementor', PHP: 'php', Stripe: 'stripe',
 }
 const logoTile = (name) => `<li class="tech">
               <span class="tech__logo">${LOGOS[name] ? `<img src="/img/logos/${LOGOS[name]}.svg" alt="" width="28" height="28" loading="lazy">` : ''}</span>
@@ -752,19 +770,21 @@ function renderDesign(p) {
               const [tw, th] = d.ia.tabbarSize ?? [1170, 324]
               const railCap = d.ia.railCaption ?? "The dashboard's navigation rail"
               const tabCap = d.ia.tabbarCaption ?? "The attendee app's tab bar"
-              return `${zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="${esc(railCap)}" width="${rw}" height="${rh}" loading="lazy" class="ia__rail">`, { src: `/img/components/${d.ia.rail}.webp`, w: rw, h: rh, caption: railCap })}
-            ${zoomable(`<img src="/img/components/${d.ia.tabbar}.webp" alt="${esc(tabCap)}" width="${tw}" height="${th}" loading="lazy" class="ia__tabbar">`, { src: `/img/components/${d.ia.tabbar}.webp`, w: tw, h: th, caption: tabCap })}`
+              return `${zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="${esc(railCap)}" width="${rw}" height="${rh}" loading="lazy" class="ia__rail"${d.ia.railWhole ? ` style="aspect-ratio:${rw} / ${rh}"` : ''}>`, { src: `/img/components/${d.ia.rail}.webp`, w: rw, h: rh, caption: railCap })}
+            ${d.ia.tabbar ? zoomable(`<img src="/img/components/${d.ia.tabbar}.webp" alt="${esc(tabCap)}" width="${tw}" height="${th}" loading="lazy" class="ia__tabbar">`, { src: `/img/components/${d.ia.tabbar}.webp`, w: tw, h: th, caption: tabCap }) : ''}`
             })()}
           </div>
           <div class="ia__col">
-            <p class="ia__label">${icon('phone')} ${esc(d.ia.attendeeLabel ?? 'Attendee app')}</p>
+            <p class="ia__label">${icon(d.ia.attendeeIcon ?? 'phone')} ${esc(d.ia.attendeeLabel ?? 'Attendee app')}</p>
             <ol class="ia__list">${d.ia.attendee.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
           </div>
         </div>
       </section>`)
 
   // Phone screens shown two at a time: one topic, its text, and two photographs.
-  for (const ps of d.pairSections ?? []) parts.push(`
+  // A section marked `after` follows the dashboard screens instead (a
+  // dashboard-led product's phone view).
+  const pairSection = (ps) => `
       <section class="psec">${sectionHead(++n, ps.title, ps.intro)}
 ${ps.pairs.map((pr, i) => `
         <article class="ppair${i % 2 ? ' ppair--flip' : ''}">
@@ -779,7 +799,8 @@ ${ps.pairs.map((pr, i) => `
             </figure>`).join('')}
           </div>
         </article>`).join('')}
-      </section>`)
+      </section>`
+  for (const ps of (d.pairSections ?? []).filter((x) => !x.after)) parts.push(pairSection(ps))
 
   if (d.screens) parts.push(`
       <section class="psec">${sectionHead(++n, d.screensTitle ?? 'The dashboard', d.screensIntro)}
@@ -795,6 +816,8 @@ ${d.screens.map((sc, i) => `
           </figure>
         </article>`).join('')}
       </section>`)
+
+  for (const ps of (d.pairSections ?? []).filter((x) => x.after)) parts.push(pairSection(ps))
 
   if (d.phones) parts.push(`
       <section class="psec">${sectionHead(++n, d.phones.title, d.phones.body)}

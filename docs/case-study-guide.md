@@ -210,3 +210,73 @@ Added 2026-11-06, when building the second product case study.
 - **Phone captures get the home-indicator area too** (`safeBottom`): without it the rounded
   glass clips the tab-bar labels.
 
+
+## 9. ABF (2026-11-07)
+
+Sammy supplied a zip of website and ABF Admin captures (demo data in the dashboard, the live
+public site for the website) and chose:
+
+- **Two cards.** ABF Admin is its own product case study (`abf-admin` in
+  `content/products.mjs`). The website case keeps its card; its "admin behind it" chapter is
+  gone, and the ticketing chapter ends with a link to ABF Admin (`chapter.link`).
+- **All of it is his:** design, the WordPress build, the PHP payments plugin and ABF Admin. No
+  team named, no team size.
+- **Timeline in his words:** ABF Admin is "2 months, May to July 2026". The repo's commit
+  dates don't match it, so the page has no dated timeline and no "built in a day" claim. The
+  website case keeps "2025 edition, retained for 2026".
+
+Rules that came out of it:
+
+- **An internal dashboard gets no phone mockups** (his correction): no phone in the hero, no
+  phone section, no phone view in the IA. Laptops and monitors only.
+- **"Bad placement and weird shadow"** (his correction): generated key screens carry grain and
+  darker patches, which printed onto the screenshot as dirt, and a very steep laptop angle reads
+  as a warped screen. Scenes now use `smooth: true` (the key's shading blurred to room scale,
+  at lower strength), prompts ask for a matte green with no texture or patches, and laptops
+  are kept to a gentle angle (about 15–30 degrees).
+- **No tests, no test claims.** ABF Admin has no test suite, so its "Testing" slot is
+  "Keeping the numbers trustworthy" and lists the safeguards that do exist (sync check,
+  failure emails, secret-checked pushes, soft deletes), and says plainly that there is no
+  automated suite.
+- **IA with roles instead of a second app:** the second column is "Admins only"
+  (`attendeeIcon: 'shield'`), and the visual pairs the side menu with the overview it opens on.
+- **Supplied flow captures replace live captures.** A chapter with `frames` is not
+  re-captured by `npm run shots`, so the flow stays as it shipped.
+- **Laptop seen from the side:** foreshortening can make its top edge look shorter than its
+  sides, so `compose-scenes.mjs` picks the highest near-horizontal side as the top, not the
+  longer one. Check every laptop scene for a screen turned 90°.
+- **Generated green screens sometimes come back with a darker square patch.** Pick the variant
+  without it; the patch survives as a shading blotch on the screenshot.
+- **A website Sammy is proud of gets the full product layout, not the short website one.**
+  New scenes in the short layout still read to him as "very different from the recent case
+  studies". ABF moved to `content/products.mjs` as `kind: 'product', website: true` (it still
+  lists under Websites, with `cardTag.web`), with both halves: findings, audiences,
+  principles, the site map, key pages, phones, the design system, then the build, real code
+  and safeguards. The design source was the Get Ticket blueprint; the code was the
+  abf-payments plugin. Ask before giving an older website the short layout again.
+- **The phone's camera cutout tilted every phone screen** ("why do you keep giving me badly
+  placed image mockups"). The Dynamic Island is a hole in the green key, and its edge was
+  being counted as part of the screen's outline, which pulled the fitted top edge askew and
+  rotated the screenshot. `compose-scenes.mjs` now fills holes before tracing the outline and
+  fits each side to its middle 60%. After any change to screen detection, draw the detected
+  corners over each raw photo and check them before composing.
+- **When every variant of a key has a patch** (it happened on all five co-working photos),
+  `flat: true` keeps the key's shape and drops its shading entirely.
+
+### Website-case corrections (2026-11-07, second pass)
+
+- **Impact numbers are headline wins, not build details** (his correction): "14 → 4 form
+  fields" was rejected as not an accomplishment. The three numbers are what a stakeholder or
+  recruiter would boast about: money raised, reach, being brought back. ABF's sponsorship
+  figure is **$160K+**, in his words ("they secured 160k+"); it replaces the earlier ~$100K on
+  the page and in the CV. Don't repeat an at-a-glance value (the timeline) as an impact number.
+- **The impact unit sits on its own line under the number**, on every case study, so a wide
+  value like "$160K+" never strands its unit on a separate line from half its words.
+- **A homepage card he has approved stays.** The generated café scene replaced ABF's monitor
+  card and he asked for the old one back ("this style is becoming boring"). Change a card image
+  only when he asks.
+- **Every name in "Built with" needs a logo.** A blank tile reads as broken. Add the SVG from
+  svgl.app to `public/img/logos/` and map it in `LOGOS` before the page ships.
+- **Findings copy: plain is not the same as clear** (his correction: "very plain and not
+  interesting, and difficult to understand"). Each finding names the problem in people's
+  terms, gives a concrete example, and ends with what the site does about it.

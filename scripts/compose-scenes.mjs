@@ -60,6 +60,28 @@ const SCENES = [
   { name: 'farmhub-customer', photo: 'farmhub-monitor', layers: [{ key: 'green', shot: 'farmhub-dash-05-customer-detail', ratio: 16 / 9 }] },
   { name: 'farmhub-reports', photo: 'farmhub-cafe-evening', layers: [{ key: 'green', shot: 'farmhub-dash-11-reports' }] },
   { name: 'farmhub-dispatch', photo: 'farmhub-warehouse', layers: [{ key: 'green', shot: 'farmhub-home-dispatch' }] },
+  // ABF Admin: the festival team's dashboard, at the venue and in the office.
+  { name: 'abfadmin-hero', photo: 'abfadmin-hero', layers: [{ key: 'green', shot: 'abfadmin-dash-01-overview', smooth: true }] },
+  { name: 'abfadmin-registrations', photo: 'abfadmin-regdesk', layers: [{ key: 'green', shot: 'abfadmin-dash-03-registrations-event', smooth: true }] },
+  { name: 'abfadmin-sales', photo: 'abfadmin-office', layers: [{ key: 'green', shot: 'abfadmin-dash-05-ticket-sales', smooth: true }] },
+  { name: 'abfadmin-campaigns', photo: 'abfadmin-monitor', layers: [{ key: 'green', shot: 'abfadmin-dash-06-campaigns', ratio: 16 / 9, smooth: true }] },
+  { name: 'abfadmin-coupons', photo: 'abfadmin-cafe', layers: [{ key: 'green', shot: 'abfadmin-dash-07-coupons', smooth: true }] },
+  { name: 'abfadmin-engineering', photo: 'abfadmin-devdesk', layers: [{ key: 'green', shot: 'abfadmin-dash-09-engineering-ticket', smooth: true }] },
+  { name: 'abfadmin-team', photo: 'abfadmin-greenroom', layers: [{ key: 'green', shot: 'abfadmin-dash-11-team', smooth: true }] },
+  // Africa Blockchain Festival website: the public site, on laptops and phones.
+  { name: 'abfweb-hero', photo: 'abfweb-hero', layers: [
+    { key: 'green', shot: 'abfweb-desk-01-home', smooth: true },
+    { key: 'blue', shot: 'abfweb-phone-01-home', statusBar: {}, blur: 4, smooth: true },
+  ] },
+  { name: 'abfweb-speakers', photo: 'abfweb-lobby', layers: [{ key: 'green', shot: 'abfweb-desk-05-speakers', smooth: true }] },
+  { name: 'abfweb-agenda', photo: 'abfweb-morning', layers: [{ key: 'green', shot: 'abfweb-desk-06-agenda', smooth: true }] },
+  { name: 'abfweb-tickets', photo: 'abfweb-kitchen', layers: [{ key: 'green', shot: 'abfweb-desk-02-tickets', smooth: true }] },
+  { name: 'abfweb-register', photo: 'abfweb-walnut', layers: [{ key: 'green', shot: 'abfweb-desk-03-register-now', smooth: true }] },
+  { name: 'abfweb-checkout', photo: 'abfweb-cowork', layers: [{ key: 'green', shot: 'abfweb-desk-04-pay-checkout', flat: true }] },
+  { name: 'abfweb-travel', photo: 'abfweb-hotel', layers: [{ key: 'green', shot: 'abfweb-desk-12-travel-packages', smooth: true }] },
+  { name: 'abfweb-phone-tickets', photo: 'abfweb-street', layers: [{ key: 'green', shot: 'abfweb-phone-02-tickets', statusBar: {}, smooth: true }] },
+  { name: 'abfweb-phone-checkout', photo: 'abfweb-cafe-phone', layers: [{ key: 'green', shot: 'abfweb-phone-04-pay-checkout', statusBar: {}, smooth: true }] },
+  { name: 'abfweb-phone-guide', photo: 'abfweb-airport', layers: [{ key: 'green', shot: 'abfweb-phone-11-nairobi-travel-guide', statusBar: {}, smooth: true }] },
 ]
 
 const only = process.argv[2]
@@ -103,11 +125,27 @@ function findScreen(px, W, H, key, portrait) {
     }
   }
   // Corners from the outline, so any tilt or perspective works the same way.
-  // 1. The outline of the region and its convex hull.
+  // 1. The OUTER outline of the region and its convex hull. Holes (the Dynamic
+  //    Island, a reflection the model left on the glass) are filled first: their
+  //    edges sit just inside the top of a phone screen and, counted as outline,
+  //    tilt the fitted top edge, which rotates the whole screenshot.
+  let rx0 = W, ry0 = H, rx1 = 0, ry1 = 0
+  for (let i = 0; i < pts.length; i += 2) { rx0 = Math.min(rx0, pts[i]); rx1 = Math.max(rx1, pts[i]); ry0 = Math.min(ry0, pts[i + 1]); ry1 = Math.max(ry1, pts[i + 1]) }
+  rx0 = Math.max(0, rx0 - 1); ry0 = Math.max(0, ry0 - 1); rx1 = Math.min(W - 1, rx1 + 1); ry1 = Math.min(H - 1, ry1 + 1)
+  const outside = new Uint8Array(W * H), out2 = []
+  for (let x = rx0; x <= rx1; x++) out2.push(ry0 * W + x, ry1 * W + x)
+  for (let y = ry0; y <= ry1; y++) out2.push(y * W + rx0, y * W + rx1)
+  for (const i of out2) if (!comp[i]) outside[i] = 1
+  while (out2.length) {
+    const i = out2.pop(), x = i % W, y = (i / W) | 0
+    for (const j of [x > rx0 ? i - 1 : -1, x < rx1 ? i + 1 : -1, y > ry0 ? i - W : -1, y < ry1 ? i + W : -1]) {
+      if (j >= 0 && !comp[j] && !outside[j]) { outside[j] = 1; out2.push(j) }
+    }
+  }
   const outline = []
   for (let i = 0; i < pts.length; i += 2) {
     const x = pts[i], y = pts[i + 1], j = y * W + x
-    if (!comp[j - 1] || !comp[j + 1] || !comp[j - W] || !comp[j + W]) outline.push([x, y])
+    if (outside[j - 1] || outside[j + 1] || outside[j - W] || outside[j + W] || x <= rx0 || x >= rx1 || y <= ry0 || y >= ry1) outline.push([x, y])
   }
   const hull = (() => {
     const p = outline.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1])
@@ -140,7 +178,8 @@ function findScreen(px, W, H, key, portrait) {
     const near = outline.filter(([x, y]) => {
       const t = ((x - p[0]) * ux + (y - p[1]) * uy) / len
       const off = Math.abs((x - p[0]) * uy - (y - p[1]) * ux)
-      return t > 0.15 && t < 0.85 && off < len * 0.04 + 4
+      // 20–80%: a phone's corner radius is about 14% of its width.
+      return t > 0.2 && t < 0.8 && off < len * 0.04 + 4
     })
     // Total least squares through the samples.
     let mx = 0, my = 0
@@ -178,9 +217,19 @@ function findScreen(px, W, H, key, portrait) {
     return n
   }
   const midY = (i) => (corners[i][1] + corners[(i + 1) % 4][1]) / 2
+  // A laptop seen from the side is foreshortened until its top edge looks
+  // shorter than its sides, so length can't pick it. An upright screen's top
+  // runs closer to horizontal than vertical: take the highest such side.
+  const flat = [0, 1, 2, 3].filter((i) => {
+    const p = corners[i], q = corners[(i + 1) % 4]
+    return Math.abs(q[1] - p[1]) < Math.abs(q[0] - p[0])
+  })
+  const landscapeTop = flat.length
+    ? flat.reduce((a, b) => (midY(a) <= midY(b) ? a : b))
+    : (midY(candidates[0]) <= midY(candidates[1]) ? candidates[0] : candidates[1])
   const top = portrait
     ? (darkNear(candidates[0]) >= darkNear(candidates[1]) ? candidates[0] : candidates[1])
-    : (midY(candidates[0]) <= midY(candidates[1]) ? candidates[0] : candidates[1])
+    : landscapeTop
   // TL, TR, BR, BL: clockwise from the start of the top side.
   const ordered = [0, 1, 2, 3].map((k) => corners[(top + k) % 4])
   const diag = Math.hypot(ordered[2][0] - ordered[0][0], ordered[2][1] - ordered[0][1])
@@ -247,6 +296,24 @@ for (const scene of SCENES) {
     }
     const { data: wp } = await warped.ensureAlpha().raw().toBuffer({ resolveWithObject: true })
 
+    // `smooth`: generated keys can carry grain or a darker patch, which would
+    // print onto the screenshot as dirt. Blur the key's shading to the scale of
+    // the room's light, so only the broad falloff across the glass survives.
+    const [bx0s, by0s, bx1s, by1s] = scr.box
+    let level = scr.level, levelW = W, levelX = 0, levelY = 0
+    if (layer.smooth) {
+      const sw = bx1s - bx0s, sh = by1s - by0s
+      const lv = Buffer.alloc(sw * sh)
+      for (let y = 0; y < sh; y++) for (let x = 0; x < sw; x++) {
+        const i = (y + by0s) * W + (x + bx0s)
+        lv[y * sw + x] = scr.comp[i] ? Math.min(255, scr.level[i]) : Math.min(255, scr.ref)
+      }
+      const sigma = Math.max(8, Math.hypot(sw, sh) * 0.06)
+      level = await sharp(lv, { raw: { width: sw, height: sh, channels: 1 } }).blur(sigma).raw().toBuffer()
+      levelW = sw; levelX = bx0s; levelY = by0s
+    }
+    const strength = layer.smooth ? 0.45 : 0.75
+
     // Composite inside the box: the key's soft alpha cuts the screen, the key's
     // shading becomes light falloff, and green spill on the bezel is removed.
     const bw = clip.width
@@ -259,8 +326,10 @@ for (const scene of SCENES) {
       if (layer.key === 'green' && g > Math.max(r, b)) g = Math.max(r, b)
       if (layer.key === 'blue' && b > Math.max(r, g)) b = Math.max(r, g)
       if (a <= 0) { out[p] = r; out[p + 1] = g; out[p + 2] = b; continue }
-      const shade = Math.min(1.04, Math.max(0.55, scr.level[i] / scr.ref))
-      const f = 1 - 0.75 * (1 - shade)
+      const lvl = layer.smooth ? level[(y - levelY) * levelW + (x - levelX)] : level[i]
+      const shade = Math.min(1.04, Math.max(0.55, lvl / scr.ref))
+      // `flat`: the key is too uneven to trust, so keep only its shape.
+      const f = layer.flat ? 0.97 : 1 - strength * (1 - shade)
       // Screens in photographs never reach pure black or pure white.
       const sr = (wp[q] * 0.965 + 5) * f, sg = (wp[q + 1] * 0.965 + 5) * f, sb = (wp[q + 2] * 0.965 + 5) * f
       out[p] = Math.round(r * (1 - a) + Math.min(255, sr) * a)

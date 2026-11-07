@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ABF Admin: event dashboard design and Next.js build | Sammy Fash</title>
+  <meta name="description" content="The private dashboard the Africa Blockchain Festival 2026 team used to follow registrations, ticket sales, campaigns and coupons in one place. I designed…">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://sammyfash.com/abf-admin">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Sammy Fash">
+  <meta property="og:url" content="https://sammyfash.com/abf-admin">
+  <meta property="og:title" content="ABF Admin: event dashboard design and Next.js build | Sammy Fash">
+  <meta property="og:description" content="The private dashboard the Africa Blockchain Festival 2026 team used to follow registrations, ticket sales, campaigns and coupons in one place. I designed…">
+  <meta property="og:image" content="https://sammyfash.com/img/work/abf-admin.jpg">
+  <meta property="og:image:alt" content="ABF Admin — Product design by Sammy Fash">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sammyfash.com/img/work/abf-admin.jpg">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "ABF Admin, the dashboard behind Africa Blockchain Festival 2026",
+  "headline": "ABF Admin",
+  "description": "Africa Blockchain Festival 2026 brought founders, investors, policymakers and builders to the Sarit Expo Centre in Nairobi for three days in October. ABF Admin is the private dashboard the festival team used to follow registrations, ticket sales, campaigns and coupons in one place. I designed it…",
+  "url": "https://sammyfash.com/abf-admin",
+  "image": "https://sammyfash.com/img/work/abf-admin.jpg",
+  "dateCreated": "2026",
+  "inLanguage": "en",
+  "keywords": "Product design, Dashboard design, Front-end engineering, Full-stack development, Figma, Next.js, React, TypeScript, Tailwind CSS, Supabase",
+  "creator": {
+    "@type": "Person",
+    "name": "Sammy Fash",
+    "url": "https://sammyfash.com"
+  },
+  "about": {
+    "@type": "Organization"
+  },
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Nairobi, Kenya · remote"
+  }
+}
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="preloader">
+    <div class="preloader__inner">
+      <span class="preloader__mark">Sammy Fash</span>
+      <span class="preloader__count">0%</span>
+    </div>
+  </div>
+
+  <div class="curtain" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true">
+    <svg class="cursor__icon cursor__arrow" viewBox="0 0 28 28">
+      <g><path d="M7 4 L24 13.9 L15.7 15.6 L11.6 23.2 Z" /></g>
+    </svg>
+    <svg class="cursor__icon cursor__hand" viewBox="0 0 32 36">
+      <g>
+        <path class="hand-shape" d="M9 5.5 A2.5 2.5 0 0 1 14 5.5 L14 15 A2.25 2.25 0 0 1 18.5 15 L18.5 16.5 A2.25 2.25 0 0 1 23 16.5 L23 18 A2.25 2.25 0 0 1 27.5 18 L27.5 25 C27.5 30.5 24 34 19 34 L16 34 C12.5 34 10.2 32.3 8.6 29.6 L3.4 21.2 A2.6 2.6 0 0 1 7.8 18.4 L9 20.3 Z" />
+        <path class="hand-creases" d="M14 15.5 L14 19.5 M18.5 17 L18.5 20 M23 18.5 L23 21" />
+      </g>
+    </svg>
+    <span class="cursor__line cursor__line--x"></span>
+    <span class="cursor__line cursor__line--y"></span>
+    <span class="cursor__knot"><i></i></span>
+    <span class="cursor__tag"><span>View project</span></span>
+  </div>
+
+  <nav class="nav-overlay" aria-hidden="true" aria-label="Main">
+    <div class="nav-overlay__header">
+      <a class="wordmark" href="/">Sammy Fash</a>
+      <button class="nav-close" type="button" aria-label="Close menu">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-list">
+      <li><a class="nav-link" href="/">
+        <span class="nav-link__roll"><span>Home</span><span aria-hidden="true">Home</span></span>
+        <span class="nav-link__index">01</span>
+      </a></li>
+      <li><a class="nav-link" href="/about">
+        <span class="nav-link__roll"><span>About</span><span aria-hidden="true">About</span></span>
+        <span class="nav-link__index">02</span>
+      </a></li>
+      <li><a class="nav-link" href="/#work">
+        <span class="nav-link__roll"><span>Work</span><span aria-hidden="true">Work</span></span>
+        <span class="nav-link__index">03</span>
+      </a>
+        <ul class="nav-sub" aria-label="Work by discipline">
+          <li><a class="nav-sub__link" href="/?work=design#work">Product design</a></li>
+          <li><a class="nav-sub__link" href="/?work=development#work">Development</a></li>
+          <li><a class="nav-sub__link" href="/?work=web#work">Websites</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="/cv">
+        <span class="nav-link__roll"><span>CV</span><span aria-hidden="true">CV</span></span>
+        <span class="nav-link__index">04</span>
+      </a></li>
+      <li><a class="nav-link" href="#contact" data-contact-open>
+        <span class="nav-link__roll"><span>Contact</span><span aria-hidden="true">Contact</span></span>
+        <span class="nav-link__index">05</span>
+      </a></li>
+    </ul>
+
+    <div class="nav-overlay__foot">
+      <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+      <span>
+        <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a> &nbsp;
+        <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+      </span>
+      <button class="theme-toggle theme-toggle--labelled" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg><span data-theme-label>Light mode</span>
+      </button>
+    </div>
+  </nav>
+
+  <header class="site-header" id="top">
+    <a class="wordmark" href="/">Sammy Fash</a>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2a10 10 0 0 0 0 20z" fill="currentColor"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <article class="case pcase">
+
+      <span class="rule" aria-hidden="true"></span>
+
+      <header class="phead">
+        <div class="phead__text">
+          <ul class="ptags" data-reveal aria-label="My role on this project"><li class="ptag">Product design</li><li class="ptag">Front-end engineering</li><li class="ptag">Full-stack development</li></ul>
+          <h1 class="case__title" data-reveal>
+            <span class="line"><span class="line__inner">ABF Admin</span></span>
+          </h1>
+          <p class="case__summary phead__summary" data-reveal>Africa Blockchain Festival 2026 brought founders, investors, policymakers and builders to the Sarit Expo Centre in Nairobi for three days in October. ABF Admin is the private dashboard the festival team used to follow registrations, ticket sales, campaigns and coupons in one place. I designed it and built it, from the first screen to the database.</p>
+        </div>
+        <figure class="phead__media" data-reveal>
+          <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-hero.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The overview" data-cursor-tag="View" aria-label="View full size: The overview">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-hero@1200.webp 1200w, /img/mockups/abfadmin-hero.webp 2400w" sizes="(max-width: 900px) 100vw, 55vw">
+            <img src="/img/mockups/abfadmin-hero.webp" alt="ABF Admin: the overview on a laptop at an event venue" width="2400" height="1340" fetchpriority="high" decoding="async">
+          </picture>
+          </button>
+        </figure>
+      </header>
+
+      <div class="glance">
+        <div class="glance__cell glance__cell--role" data-reveal>
+          <p class="glance__label">My role</p>
+          <ul class="chips"><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Product design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>Dashboard design</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Front-end engineering</li><li class="chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>Full-stack development</li></ul>
+        </div>
+        <div class="glance__cell glance__cell--stack" data-reveal>
+          <p class="glance__label">Built with</p>
+          <ul class="techgrid"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/nextjs.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Next.js</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/tailwind.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Tailwind CSS</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/supabase.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Supabase</span>
+            </li>
+          </ul>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M15.5 14.8c2.9-.4 5.3 1.2 6 4.2"/></svg> Team</p>
+          <p class="glance__text">I designed ABF Admin and built all of it: the screens, the sign-in and roles, the Google Sheets sync and the database. I also built the payments plugin on the festival website that sends each sale to the dashboard.</p>
+        </div>
+        <div class="glance__cell" data-reveal>
+          <p class="glance__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Timeline</p>
+          <p class="glance__big">2 months</p>
+          <p class="glance__text">May to July 2026<br>Nairobi, Kenya · remote</p>
+        </div>
+      </div>
+
+      <ul class="impact">
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+          <p class="impact__value">6<span>areas</span></p>
+          
+          <p class="impact__text">in one side menu for the whole team: the overview, registrations, ticket sales, campaigns, coupons and website requests.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+          <p class="impact__value">14<span>screens</span></p>
+          
+          <p class="impact__text">designed and built, covering registrations, sales, campaigns, coupons, website requests and the team.</p>
+        </li>
+        <li class="impact__item" data-reveal>
+          <span class="impact__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <p class="impact__value">3<span>payment methods</span></p>
+          
+          <p class="impact__text">feeding one sales view: card through Stripe, and M-Pesa or USDC through Minisend.</p>
+        </li>
+      </ul>
+      <div class="pswitch" data-product-switch>
+        <div class="pswitch__inner" role="tablist" aria-label="Read this case study as">
+          <button class="pswitch__tab" type="button" role="tab" id="tab-design" aria-controls="design" aria-selected="true" data-view="design">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg> Design
+          </button>
+          <button class="pswitch__tab" type="button" role="tab" id="tab-development" aria-controls="development" aria-selected="false" data-view="development" tabindex="-1">
+            <svg class="pswitch__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg> Development
+          </button>
+          <span class="pswitch__thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="ppanel" id="design" role="tabpanel" aria-labelledby="tab-design" data-panel="design">
+        <h2 class="visually-hidden">Design</h2>
+        <p class="ppanel__lede" data-reveal>Every form on the festival website wrote into its own tab of a shared Google Sheet, and payments were recorded somewhere else again. Anyone who wanted to know how many people had registered, who had paid or which campaign brought them in had to open several spreadsheets and count by hand. The team needed those numbers live, in one place, without giving up the sheets they already worked in.</p>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">What shaped the product</h3>
+          <p class="psec__intro">Four findings shaped the dashboard before I designed a screen.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <h4>The sheets had to stay</h4>
+            <p>The team already ran the festival from Google Sheets, and every website form wrote into them. The dashboard reads the sheets every hour instead of replacing them, so nobody had to change how they worked.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+            <h4>A registration is not a sale</h4>
+            <p>Many people registered and never paid. Each person’s row shows whether they have paid, abandoned checkout or not started, so the team knows who to follow up with.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h4>Numbers people can trust</h4>
+            <p>A dashboard that quietly falls behind its sheets is worse than none. The overview checks every sheet against what the dashboard holds and says so in a single line.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span>
+            <h4>Which partner brought each buyer</h4>
+            <p>Partners and media shared their own tracking links. The team needed to see which link led to a paid ticket, not only which channel sent visitors.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Who it’s for</h3>
+          <p class="psec__intro">ABF Admin is used only by the festival team, and access is by invitation. Everyone shares the same goal, a full and well-run festival, but each group comes to the dashboard for something different.</p>
+        </header>
+        <ul class="personas">
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+              <h4>Festival leads</h4>
+            </div>
+            <p class="persona__context">Run the festival and report on how it is going.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>See registrations and sales at a glance</li><li>Compare this week with last week</li><li>Trust that the figures are up to date</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+              <h4>Marketing and partnerships</h4>
+            </div>
+            <p class="persona__context">Run campaigns and share tracking links with partners and media.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>See which link each buyer came from</li><li>Create discount codes</li><li>Find people who started checkout and stopped</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <h4>Attendee support</h4>
+            </div>
+            <p class="persona__context">Answer attendees and chase unfinished payments.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Find a person and their payment status</li><li>Follow up on declined cards</li><li>Export a list when needed</li></ul>
+            
+          </li>
+          <li class="persona" data-reveal>
+            <div class="persona__head">
+              <span class="persona__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              <h4>Admins</h4>
+            </div>
+            <p class="persona__context">Look after the website and who can use the dashboard.</p>
+            <p class="persona__label">Needs to</p>
+            <ul class="persona__jobs"><li>Invite people and set their role</li><li>Approve access requests</li><li>Connect new sheets and watch the sync</li></ul>
+            <p class="persona__note">Team and Settings are shown to admins only.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">The principles behind every decision</h3>
+          <p class="psec__intro">I set these rules at the start and used them to settle decisions on every screen.</p>
+        </header>
+        <ol class="principles">
+          <li data-reveal><span class="principles__n">1</span><div><h4>Keep the tools the team already uses</h4><p>The sheets remain the team’s own record. The dashboard reads them and adds live numbers on top, so nothing the team relied on was taken away.</p></div></li>
+          <li data-reveal><span class="principles__n">2</span><div><h4>Calmer than the festival brand</h4><p>The public site is loud and dark. A tool people read all day needs to be quiet, so the dashboard is white and grey, with the festival’s magenta kept for the current page and small accents.</p></div></li>
+          <li data-reveal><span class="principles__n">3</span><div><h4>Write every status in words</h4><p>Paid, Abandoned, In checkout and Not started are written on every tag, so the meaning never depends on colour alone.</p></div></li>
+          <li data-reveal><span class="principles__n">4</span><div><h4>Say when the numbers are behind</h4><p>Every page says when its data last synced, and anything that fails is named with the source, the missing rows and the error.</p></div></li>
+          <li data-reveal><span class="principles__n">5</span><div><h4>One row per person</h4><p>People often registered more than once. The table shows each person once, with their latest entry and a small count of repeat registrations.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">How the product is organised</h3>
+          <p class="psec__intro">A side menu holds the six areas the whole team uses, in the order they look at them: the overview first, then registrations and sales, then campaigns and coupons, then website requests. Team and Settings sit apart under Manage and appear only for admins.</p>
+        </header>
+        <div class="ia" data-reveal>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Every team member</p>
+            <ol class="ia__list"><li>Overview</li><li>Registrations</li><li>Ticket Sales</li><li>Campaigns</li><li>Coupons</li><li>Engineering</li></ol>
+          </div>
+          <div class="ia__visual">
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-rail.webp" data-zoom-w="512" data-zoom-h="1800" data-zoom-kind="image" data-zoom-caption="The dashboard’s side menu" data-cursor-tag="View" aria-label="View full size: The dashboard’s side menu">
+            <img src="/img/components/abfadmin-rail.webp" alt="The dashboard’s side menu" width="512" height="1800" loading="lazy" class="ia__rail">
+          </button>
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-overview-top.webp" data-zoom-w="2368" data-zoom-h="1480" data-zoom-kind="image" data-zoom-caption="The overview, where the menu opens" data-cursor-tag="View" aria-label="View full size: The overview, where the menu opens">
+            <img src="/img/components/abfadmin-overview-top.webp" alt="The overview, where the menu opens" width="2368" height="1480" loading="lazy" class="ia__tabbar">
+          </button>
+          </div>
+          <div class="ia__col">
+            <p class="ia__label"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Admins only</p>
+            <ol class="ia__list"><li>ABF Team</li><li>Settings</li></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">Key screens in the dashboard</h3>
+          <p class="psec__intro">These are the screens the team used most during the run-up to the festival, in the order they appear in the menu.</p>
+        </header>
+
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">The overview: the whole festival on one page</h4>
+            <p>The overview opens on total leads, event registrations and ticket sales, each with its change this week and a small trend line. Below them, a chart of form submissions over the last 30 days and a breakdown by form show where interest is coming from.</p>
+            <p>A single line under the figures confirms that every sheet matches the dashboard. Website traffic from Google Search sits at the bottom of the page, so the team can see how many people found the festival through search.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-hero.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The overview." data-cursor-tag="View" aria-label="View full size: The overview.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-hero@1200.webp 1200w, /img/mockups/abfadmin-hero.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-hero.webp" alt="ABF Admin: The overview." width="2400" height="1340" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The overview.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Registrations, with who has paid</h4>
+            <p>Each form has its own list, with one row per person. A tag in the first column shows whether they have paid, tried and failed, abandoned checkout, are still in checkout or have not started.</p>
+            <p>Payment status is matched by email, then by phone, against the sales records, so the team can filter to the people who registered but never paid and follow them up.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-registrations.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Event registrations, one row per person with a payment tag." data-cursor-tag="View" aria-label="View full size: Event registrations, one row per person with a payment tag.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-registrations@1200.webp 1200w, /img/mockups/abfadmin-registrations.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-registrations.webp" alt="ABF Admin: Event registrations, one row per person with a payment tag." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Event registrations, one row per person with a payment tag.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Ticket sales, and the cards that were declined</h4>
+            <p>Every paid pass appears here, from card, M-Pesa and USDC payments, with the pass, the amount and the buyer. Declined card attempts have their own count, with how many still need a person to follow up and how many paid later.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-sales.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Ticket sales across both payment providers." data-cursor-tag="View" aria-label="View full size: Ticket sales across both payment providers.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-sales@1200.webp 1200w, /img/mockups/abfadmin-sales.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-sales.webp" alt="ABF Admin: Ticket sales across both payment providers." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Ticket sales across both payment providers.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Campaigns: which link brought each buyer</h4>
+            <p>Each tracking link shows how many people started checkout, how many paid, how many stopped and the revenue it brought in. The team can compare the links given to different partners instead of relying only on broad channel names.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-campaigns.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Campaigns, from tracking link to paid ticket." data-cursor-tag="View" aria-label="View full size: Campaigns, from tracking link to paid ticket.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-campaigns@1200.webp 1200w, /img/mockups/abfadmin-campaigns.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-campaigns.webp" alt="ABF Admin: Campaigns, from tracking link to paid ticket." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Campaigns, from tracking link to paid ticket.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Coupons the team can create themselves</h4>
+            <p>Discount codes are created, edited and switched off from the dashboard. Each code shows how often it was used, how many people reached checkout with it, the revenue it produced and how much it gave away.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-coupons.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="Coupons, with their use and revenue." data-cursor-tag="View" aria-label="View full size: Coupons, with their use and revenue.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-coupons@1200.webp 1200w, /img/mockups/abfadmin-coupons.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-coupons.webp" alt="ABF Admin: Coupons, with their use and revenue." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>Coupons, with their use and revenue.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep pstep--flip">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Website requests in one queue</h4>
+            <p>Instead of asking for website changes in chat, the team files a request with a priority. Each request has a status, notes and a timeline of every change, so anyone can see where it stands.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-engineering.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="A website request and its timeline." data-cursor-tag="View" aria-label="View full size: A website request and its timeline.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-engineering@1200.webp 1200w, /img/mockups/abfadmin-engineering.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-engineering.webp" alt="ABF Admin: A website request and its timeline." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>A website request and its timeline.</figcaption>
+          </figure>
+        </article>
+        <article class="pstep">
+          <div class="pstep__text" data-reveal>
+            <h4 class="pstep__title">Invitations and access requests</h4>
+            <p>Admins invite people by email and choose their role. Someone without an account can ask for access from the sign-in page, and every admin gets an email to approve or decline it in one tap.</p>
+          </div>
+          <figure class="pstep__media" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/screens/abfadmin-team.webp" data-zoom-w="2400" data-zoom-h="1500" data-zoom-kind="page" data-zoom-caption="The team page, with pending access requests." data-cursor-tag="View" aria-label="View full size: The team page, with pending access requests.">
+            <picture class="photo">
+            <source type="image/webp" srcset="/img/mockups/abfadmin-team@1200.webp 1200w, /img/mockups/abfadmin-team.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw">
+            <img src="/img/mockups/abfadmin-team.webp" alt="ABF Admin: The team page, with pending access requests." width="2400" height="1610" loading="lazy" decoding="async">
+          </picture>
+          </button>
+            <figcaption>The team page, with pending access requests.</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">The design system</h3>
+          <p class="psec__intro">ABF Admin is deliberately calmer than the public festival brand. It uses white and soft grey surfaces, near-black text and the festival’s magenta for the current page and small accents. Magenta text uses a deeper shade, because the bright one is too light to read as text. Status colours always come with a word.</p>
+        </header>
+        <ul class="pspec__swatches" aria-label="Core colour tokens">
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#dc49e2"></span>
+            <span class="pspec__name">ABF magenta</span>
+            <code>#dc49e2</code>
+            <span class="pspec__note">accents and the current page</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#b02cb5"></span>
+            <span class="pspec__name">Deep magenta</span>
+            <code>#b02cb5</code>
+            <span class="pspec__note">magenta text and links</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#111113"></span>
+            <span class="pspec__name">Ink</span>
+            <code>#111113</code>
+            <span class="pspec__note">text</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#f7f7f8"></span>
+            <span class="pspec__name">Paper</span>
+            <code>#f7f7f8</code>
+            <span class="pspec__note">page background</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#1a9e5c"></span>
+            <span class="pspec__name">Green</span>
+            <code>#1a9e5c</code>
+            <span class="pspec__note">paid and healthy, with a word</span>
+          </li>
+          <li class="pspec__swatch" data-reveal>
+            <span class="pspec__chip" style="background:#b7791f"></span>
+            <span class="pspec__name">Amber</span>
+            <code>#b7791f</code>
+            <span class="pspec__note">abandoned and stale, with a word</span>
+          </li>
+        </ul>
+        <div class="pspec__foot">
+          <div class="pspec__type" data-reveal>
+            <p class="pspec__label">Typeface</p>
+            <p class="pspec__family">Aa</p>
+            <p class="pspec__family-name">Geist + Geist Mono</p>
+            <p class="pspec__note">Geist sets the interface and its figures, which line up in columns. Geist Mono sets codes such as coupon names and request numbers.</p>
+          </div>
+          <div class="pspec__rules" data-reveal>
+            <p class="pspec__label">Standards every screen meets</p>
+            <ul><li>Text contrast of at least 4.5:1, which is why magenta text uses the deeper shade</li><li>Status written in words, never shown by colour alone</li><li>Every page says when its data last synced</li><li>A loading state on every page, so a slow source never looks frozen</li></ul>
+          </div>
+        </div>
+        
+        <p class="pspec__label pspec__label--gap">Components from the live product</p>
+        <ul class="bento">
+          <li class="bento__item bento__item--wide" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-filters.webp" data-zoom-w="1485" data-zoom-h="95" data-zoom-kind="image" data-zoom-caption="Payment filters component" data-cursor-tag="View" aria-label="View full size: Payment filters component">
+            <span class="bento__frame"><img src="/img/components/abfadmin-filters.webp" alt="Payment filters component" width="1485" height="95" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Payment filters</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-stat.webp" data-zoom-w="740" data-zoom-h="276" data-zoom-kind="image" data-zoom-caption="Stat tile component" data-cursor-tag="View" aria-label="View full size: Stat tile component">
+            <span class="bento__frame"><img src="/img/components/abfadmin-stat.webp" alt="Stat tile component" width="740" height="276" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Stat tile</span>
+          </li>
+          <li class="bento__item" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-tags.webp" data-zoom-w="1290" data-zoom-h="860" data-zoom-kind="image" data-zoom-caption="Payment tags in the table component" data-cursor-tag="View" aria-label="View full size: Payment tags in the table component">
+            <span class="bento__frame"><img src="/img/components/abfadmin-tags.webp" alt="Payment tags in the table component" width="1290" height="860" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Payment tags in the table</span>
+          </li>
+          <li class="bento__item bento__item--wide" data-reveal>
+            <button type="button" class="zoom" data-zoom="/img/components/abfadmin-sync.webp" data-zoom-w="820" data-zoom-h="64" data-zoom-kind="image" data-zoom-caption="Sync check component" data-cursor-tag="View" aria-label="View full size: Sync check component">
+            <span class="bento__frame"><img src="/img/components/abfadmin-sync.webp" alt="Sync check component" width="820" height="64" loading="lazy"></span>
+          </button>
+            <span class="bento__label">Sync check</span>
+          </li>
+        </ul>
+      </section>
+      </div>
+
+      <div class="ppanel ppanel--dev" id="development" role="tabpanel" aria-labelledby="tab-development" data-panel="development">
+        <h2 class="visually-hidden">Development</h2>
+        <p class="ppanel__lede" data-reveal>ABF Admin is a Next.js 16 app written in TypeScript, with Tailwind CSS 4 for styling and Supabase for the database and sign-in. Pages are rendered on the server, so figures arrive ready to read. Google Sheets stays the team’s record: a scheduled job copies every sheet into the database each hour, and the festival website’s payments plugin, which I also built, sends each sale as it settles.</p>
+
+        <ul class="techrow" aria-label="Stack"><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/figma.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Figma</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/nextjs.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Next.js</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/react.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">React</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/typescript.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">TypeScript</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/tailwind.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Tailwind CSS</span>
+            </li><li class="tech">
+              <span class="tech__logo"><img src="/img/logos/supabase.svg" alt="" width="28" height="28" loading="lazy"></span>
+              <span class="tech__name">Supabase</span>
+            </li>
+        </ul>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">01</p>
+          <h3 class="psec__title">How a dashboard page loads</h3>
+          <p class="psec__intro">The six steps between a team member opening a page and seeing it. The solid boxes are code I wrote; the dashed boxes are outside services the dashboard reads from.</p>
+        </header>
+        <figure class="pflow" data-reveal>
+          <ol class="pflow__track">
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Session check</span>
+              <span class="pflow__sub">signed-out visitors go to the sign-in page</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Profile and role</span>
+              <span class="pflow__sub">admin-only pages checked on the server</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Server page</span>
+              <span class="pflow__sub">every query in one Promise.all</span>
+            </li>
+            <li class="pflow__node pflow__node--me">
+              <span class="pflow__label">Supabase</span>
+              <span class="pflow__sub">rows, sales and sync history, behind row-level security</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">Google Sheets</span>
+              <span class="pflow__sub">copied into the database every hour</span>
+            </li>
+            <li class="pflow__node pflow__node--partner">
+              <span class="pflow__label">Search Console</span>
+              <span class="pflow__sub">website traffic, streamed in after the page</span>
+            </li>
+          </ol>
+          <figcaption class="pflow__key">
+            <span class="pflow__key-item pflow__key-item--me">Code I wrote</span>
+            <span class="pflow__key-item pflow__key-item--partner">Outside services</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">02</p>
+          <h3 class="psec__title">Code organised like the product</h3>
+          <p class="psec__intro">Each area of the menu is a folder of routes, and the work behind the screens lives in small modules named after what they do.</p>
+        </header>
+          <p class="psec__aside">About 11,400 lines of TypeScript across 53 commits.</p>
+        </div>
+        <figure class="ptree" data-reveal>
+          <figcaption><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> abf-admin/src/</figcaption>
+          <ul>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app/(dashboard)/</code><span>one folder per page in the side menu</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app/login · request-access · access/decide/</code><span>sign-in and access requests</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>app/api/sync · sales/ingest · campaigns/ingest/</code><span>the hourly sync and the website’s data</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><code>components/</code><span>side menu, stat tile, data table, badges, sync check</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>lib/sheets.ts</code><span>the Google Sheets sync</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>lib/sync-health.ts</code><span>does every sheet match the dashboard?</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>lib/payment-status.ts</code><span>the tag on every registration</span></li>
+            <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><code>proxy.ts</code><span>the session check on every request</span></li>
+          </ul>
+        </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">03</p>
+          <h3 class="psec__title">A sync that keeps edits, deletions and restores straight</h3>
+          
+        </header>
+          <div class="psec__body"><p>Every hour the sync reads each sheet and fingerprints every row. A new fingerprint is inserted, one that has disappeared from the sheet is marked as deleted rather than erased, and one that comes back is restored instead of duplicated. An edited row simply becomes a new fingerprint, so the old version is retired and the new one added.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>src/lib/sheets.ts</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span>    <span class="tk-c">// Inserts + restores.</span>
+<span class="pcode__ln" aria-hidden="true">2</span>    <span class="tk-k">const</span> toInsert: object[] = [];
+<span class="pcode__ln" aria-hidden="true">3</span>    <span class="tk-k">const</span> toRestore: number[] = [];
+<span class="pcode__ln" aria-hidden="true">4</span>    for (<span class="tk-k">const</span> [hash, payload] of seen) {
+<span class="pcode__ln" aria-hidden="true">5</span>      <span class="tk-k">const</span> ex = existingByHash.<span class="tk-f">get</span>(hash);
+<span class="pcode__ln" aria-hidden="true">6</span>      if (!ex) {
+<span class="pcode__ln" aria-hidden="true">7</span>        toInsert.<span class="tk-f">push</span>({
+<span class="pcode__ln" aria-hidden="true">8</span>          source_id: source.id,
+<span class="pcode__ln" aria-hidden="true">9</span>          row_hash: hash,
+<span class="pcode__ln" aria-hidden="true">10</span>          payload,
+<span class="pcode__ln" aria-hidden="true">11</span>          submitted_at: <span class="tk-f">parseSubmittedAt</span>(payload),
+<span class="pcode__ln" aria-hidden="true">12</span>        });
+<span class="pcode__ln" aria-hidden="true">13</span>      } else if (ex.deleted_at) {
+<span class="pcode__ln" aria-hidden="true">14</span>        toRestore.<span class="tk-f">push</span>(ex.id);
+<span class="pcode__ln" aria-hidden="true">15</span>      }
+<span class="pcode__ln" aria-hidden="true">16</span>    }
+<span class="pcode__ln" aria-hidden="true">17</span>
+<span class="pcode__ln" aria-hidden="true">18</span>    <span class="tk-c">// Soft-delete rows no longer present in the sheet.</span>
+<span class="pcode__ln" aria-hidden="true">19</span>    <span class="tk-k">const</span> toDelete = existing
+<span class="pcode__ln" aria-hidden="true">20</span>      .<span class="tk-f">filter</span>((r) =&gt; !r.deleted_at &amp;&amp; !seen.<span class="tk-f">has</span>(r.row_hash))
+<span class="pcode__ln" aria-hidden="true">21</span>      .<span class="tk-f">map</span>((r) =&gt; r.id);</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">04</p>
+          <h3 class="psec__title">A check that says when the numbers are wrong</h3>
+          
+        </header>
+          <div class="psec__body"><p>Once, two paid card sales sat in the sales sheet for eleven hours without reaching the dashboard, behind an error nobody could read. After that, every page compares the rows in each sheet with the rows the dashboard holds. If a source is failing, missing rows or out of date, the overview names it, with the gap and the actual error.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>src/lib/sync-health.ts</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span>    <span class="tk-c">// Only a clean run’s count describes the sheet; a failed run may have read</span>
+<span class="pcode__ln" aria-hidden="true">2</span>    <span class="tk-c">// the tab fine and fallen over afterwards, or not read it at all.</span>
+<span class="pcode__ln" aria-hidden="true">3</span>    <span class="tk-k">const</span> sheetRows = lastClean?.sheet_rows ?? <span class="tk-k">null</span>;
+<span class="pcode__ln" aria-hidden="true">4</span>    <span class="tk-k">const</span> missing =
+<span class="pcode__ln" aria-hidden="true">5</span>      sheetRows !== <span class="tk-k">null</span> &amp;&amp; sheetRows &gt; heldRows ? sheetRows - heldRows : <span class="tk-n">0</span>;
+<span class="pcode__ln" aria-hidden="true">6</span>
+<span class="pcode__ln" aria-hidden="true">7</span>    <span class="tk-k">const</span> stale =
+<span class="pcode__ln" aria-hidden="true">8</span>      !lastClean?.finished_at ||
+<span class="pcode__ln" aria-hidden="true">9</span>      now - <span class="tk-k">new</span> <span class="tk-t">Date</span>(lastClean.finished_at).<span class="tk-f">getTime</span>() &gt; <span class="tk-t">STALE_AFTER_MS</span>;
+<span class="pcode__ln" aria-hidden="true">10</span>
+<span class="pcode__ln" aria-hidden="true">11</span>    <span class="tk-c">// Ordered by how much it should worry someone reading the numbers above.</span>
+<span class="pcode__ln" aria-hidden="true">12</span>    <span class="tk-k">let</span> state: <span class="tk-t">HealthState</span> = <span class="tk-s">&quot;ok&quot;</span>;
+<span class="pcode__ln" aria-hidden="true">13</span>    if (latest?.error) state = <span class="tk-s">&quot;failing&quot;</span>;
+<span class="pcode__ln" aria-hidden="true">14</span>    else if (missing &gt; <span class="tk-n">0</span>) state = <span class="tk-s">&quot;drift&quot;</span>;
+<span class="pcode__ln" aria-hidden="true">15</span>    else if (stale) state = <span class="tk-s">&quot;stale&quot;</span>;</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">05</p>
+          <h3 class="psec__title">Coupons counted only when a payment settles</h3>
+          
+        </header>
+          <div class="psec__body"><p>Discount codes are applied by the payments plugin on the festival website, which I wrote in PHP. The browser can name a code but never an amount, so the price is always worked out on the server. A use is counted only when the payment settles, so an abandoned checkout never uses up a limited code.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>abf-payments/includes/coupons.php</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span> * <span class="tk-t">Count</span> one redemption. <span class="tk-t">Called</span> when a payment settles, never when a session is
+<span class="pcode__ln" aria-hidden="true">2</span> * created — an abandoned checkout must not use up a limited code.
+<span class="pcode__ln" aria-hidden="true">3</span> ...
+<span class="pcode__ln" aria-hidden="true">4</span>	$wpdb-&gt;<span class="tk-f">query</span>( $wpdb-&gt;<span class="tk-f">prepare</span>( <span class="tk-s">'UPDATE '</span> . <span class="tk-f">abf_coupon_table</span>() . <span class="tk-s">' SET used_count = used_count + 1 WHERE code = %s'</span>, $code ) );
+<span class="pcode__ln" aria-hidden="true">5</span>}
+<span class="pcode__ln" aria-hidden="true">6</span>
+<span class="pcode__ln" aria-hidden="true">7</span><span class="tk-f">add_action</span>( <span class="tk-s">'abf_pay_paid'</span>, <span class="tk-s">'abf_coupon_count_redemption'</span>, <span class="tk-n">30</span>, <span class="tk-n">1</span> );</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec psec--split">
+        <div>
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">06</p>
+          <h3 class="psec__title">From a tracking link to a paid ticket</h3>
+          
+        </header>
+          <div class="psec__body"><p>A tracking link sets a 30-day cookie when someone first arrives, and the plugin copies it onto their checkout on the server. The campaign report then counts, for each link, how many people started checkout, how many paid, how many did not, and the revenue, which the dashboard shows on the Campaigns page.</p></div>
+        </div>
+          <figure class="pcode" data-reveal>
+            <figcaption><span class="pcode__dots" aria-hidden="true"><i></i><i></i><i></i></span>abf-payments/includes/attribution.php</figcaption>
+            <pre><code><span class="pcode__ln" aria-hidden="true">1</span>			<span class="tk-t">COUNT</span>(*) <span class="tk-t">AS</span> started,
+<span class="pcode__ln" aria-hidden="true">2</span>			<span class="tk-t">SUM</span>( status = <span class="tk-s">'paid'</span> ) <span class="tk-t">AS</span> paid,
+<span class="pcode__ln" aria-hidden="true">3</span>			<span class="tk-t">SUM</span>( status <span class="tk-t">IN</span> ( <span class="tk-s">'created'</span>, <span class="tk-s">'pending'</span>, <span class="tk-s">'abandoned'</span>, <span class="tk-s">'expired'</span> ) ) <span class="tk-t">AS</span> unpaid,
+<span class="pcode__ln" aria-hidden="true">4</span>			<span class="tk-t">SUM</span>( <span class="tk-t">CASE</span> <span class="tk-t">WHEN</span> status = <span class="tk-s">'paid'</span>
+<span class="pcode__ln" aria-hidden="true">5</span>				<span class="tk-t">THEN</span> ( <span class="tk-t">CASE</span> <span class="tk-t">WHEN</span> amount_paid &gt; <span class="tk-n">0</span> <span class="tk-t">THEN</span> amount_paid <span class="tk-t">ELSE</span> amount_usd <span class="tk-t">END</span> )
+<span class="pcode__ln" aria-hidden="true">6</span>				<span class="tk-t">ELSE</span> <span class="tk-n">0</span> <span class="tk-t">END</span> ) <span class="tk-t">AS</span> revenue</code></pre>
+          </figure>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">07</p>
+          <h3 class="psec__title">Keeping the numbers trustworthy</h3>
+          <p class="psec__intro">ABF Admin has no automated test suite. These are the safeguards built into the product instead.</p>
+        </header>
+        <ul class="pcards pcards--4">
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h4>Sync check</h4>
+            <p>Every sheet is compared with the dashboard, and a failing, missing or stale source is named on the overview.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg></span>
+            <h4>Failure emails</h4>
+            <p>The team is emailed when a source starts failing, once, rather than on every hourly run.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h4>Secret-checked pushes</h4>
+            <p>Sales and campaign data from the website are accepted only with a shared secret, and a sale is never recorded twice.</p>
+          </li>
+          <li class="pcard" data-reveal>
+            <span class="pcard__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <h4>Nothing erased</h4>
+            <p>Rows removed from a sheet are marked as deleted, never erased, so they can come back without duplicates.</p>
+          </li>
+        </ul>
+        <dl class="pquality">
+          <div class="pquality__item" data-reveal><dt>1 hr</dt><dd>between syncs, with a refresh button for anything sooner</dd></div>
+          <div class="pquality__item" data-reveal><dt>14</dt><dd>screens, each with its own loading state</dd></div>
+          <div class="pquality__item" data-reveal><dt>2</dt><dd>roles, enforced on the server and in the database</dd></div>
+        </dl>
+      </section>
+
+      <section class="psec">
+        <header class="psec__head" data-reveal>
+          <p class="psec__index">08</p>
+          <h3 class="psec__title">My contribution</h3>
+          <p class="psec__intro">I was responsible for the design and the whole build of ABF Admin, and for the payments plugin that feeds it.</p>
+        </header>
+        <div class="psplit psplit--both" data-reveal>
+          <div class="psplit__col psplit__col--mine">
+            <p class="pspec__label">What I designed</p>
+            <ul><li>All 14 dashboard screens, on desktop and phone</li><li>The overview and its sync check</li><li>Payment tags and filters for every registration</li><li>The campaign and coupon views</li><li>The invitation and access-request flow</li></ul>
+          </div>
+          <div class="psplit__col psplit__col--mine">
+            <p class="pspec__label">What I built</p>
+            <ul><li>The Next.js app, in TypeScript and Tailwind CSS</li><li>The Supabase database, sign-in, roles and row-level security</li><li>The hourly Google Sheets sync and its health check</li><li>The WordPress payments plugin that sends sales, campaigns and coupons to the dashboard</li></ul>
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="case__outcome" data-scene-end>
+        <p class="case__label"><b>&bull;</b> The result</p>
+        <div class="case__outcome-body">
+          <div></div>
+          <div>
+            <p>The festival team followed registrations, sales, campaigns and coupons from one dashboard through the run-up to Africa Blockchain Festival 2026, without giving up the Google Sheets they already used. When something fell behind, the dashboard said so instead of showing figures that looked right but were not.</p>
+
+          </div>
+        </div>
+      </div>
+
+      <a class="case__next" href="/africa-blockchain-festival"
+         data-cursor-tag="Next project" data-cursor-color="#0895fa">
+        <span class="case__next-label">Next project</span>
+        <span class="case__next-title">
+          Africa Blockchain Festival
+          <span class="case__next-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+      </a>
+
+    </article>
+  </main>
+
+  <footer class="site-footer" id="contact" data-cursor-zone="cross">
+    <div class="flash-cells" data-flash-grid aria-hidden="true"></div>
+
+    <div class="site-footer__box">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <div class="site-footer__cta">
+        <h2 class="site-footer__heading" data-reveal>Have a role or project in mind?</h2>
+          <p class="site-footer__availability" data-reveal>
+            Available for remote product design, front-end and design engineering roles,
+            and selected freelance projects. I work across European and US hours.
+          </p>
+        <a class="pill site-footer__button" href="mailto:me@sammyfash.com?subject=Enquiry%20from%20sammyfash.com"
+           data-contact-open data-magnetic="0.28" data-cursor-tag="Say hello" data-cursor-color="#edaa0b">
+          <span class="pill__label">Send me a message</span>
+        </a>
+      </div>
+
+      <div class="site-footer__contact">
+        <a class="site-footer__email link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+        <div class="site-footer__social">
+          <a class="link-wipe" href="https://www.linkedin.com/in/sammy-fash/" rel="noopener">LinkedIn</a>
+          <a class="link-wipe" href="https://github.com/sammyfash" rel="noopener">GitHub</a>
+          <a class="link-wipe" href="https://www.instagram.com/iamsammyfash/" rel="noopener">Instagram</a>
+          <a class="link-wipe" href="https://x.com/sammyyfash" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="site-footer__fineprint">
+      &copy; 2026 Sammy Fash. Designed and built by me.
+    </p>
+  </footer>
+
+  <!-- contact dialog, opened by anything with [data-contact-open] -->
+  <div class="contact" role="dialog" aria-modal="true" aria-labelledby="contact-title" aria-hidden="true">
+    <div class="contact__scrim"></div>
+
+    <div class="contact__panel">
+      <span class="frame" aria-hidden="true">
+        <span class="frame__edge frame__edge--t"></span>
+        <span class="frame__edge frame__edge--r"></span>
+        <span class="frame__edge frame__edge--b"></span>
+        <span class="frame__edge frame__edge--l"></span>
+        <i></i><i></i><i></i><i></i>
+      </span>
+
+      <button class="contact__close" type="button" aria-label="Close contact form">
+        <span></span><span></span>
+      </button>
+
+      <div class="contact__grid">
+        <div>
+          <h2 class="contact__title" id="contact-title">Tell me about the role or project</h2>
+          <p class="contact__blurb">
+            Share a little about what you need, your timeline and the best way to
+            reach you. I usually reply within two working days.
+          </p>
+          <p class="contact__direct">
+            Prefer email?<br>
+            <a class="link-wipe" href="mailto:me@sammyfash.com">me@sammyfash.com</a>
+          </p>
+        </div>
+
+        <div>
+          <form novalidate>
+            <div class="contact__field" data-label="Name">
+              <label for="contact-name">Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Email">
+              <label for="contact-email">Email</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <div class="contact__field" data-label="Message">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="3" placeholder="We&rsquo;re hiring a design engineer for&hellip;" required></textarea>
+              <span class="contact__error" aria-live="polite"></span>
+            </div>
+
+            <!-- Spam trap. Bots fill every field they find; people never see
+                 this one. Formspree discards a submission where it is set.
+                 Deliberately not .contact__field, so validation ignores it. -->
+            <p class="contact__gotcha" aria-hidden="true">
+              <label>Leave this empty
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+              </label>
+            </p>
+
+            <div class="contact__submit">
+              <button class="pill" type="submit" data-magnetic="0.2">
+                <span class="pill__label">Send message</span>
+              </button>
+              <span class="contact__status" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <div class="contact__sent" role="status">
+            <p>Thanks, your message has been sent.</p>
+            <p>I&rsquo;ll reply to the email address you provided, usually within two working days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/product.js"></script>
+</body>
+</html>

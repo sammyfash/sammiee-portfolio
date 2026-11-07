@@ -955,6 +955,809 @@ export const PRODUCTS = [
       'and Google Play.',
   },
 
+  // ABF Admin: the festival team's dashboard. Screens are Sammy's own captures
+  // on made-up demo data (example.com addresses); nothing comes from the live
+  // database. Code facts checked against the abf-admin repo, Nov 2026.
+  {
+    slug: 'abf-admin',
+    kind: 'product',
+    seoTitle: 'ABF Admin: event dashboard design and Next.js build | Sammy Fash',
+    seoDescription: 'The private dashboard the Africa Blockchain Festival 2026 team used to follow registrations, ticket sales, campaigns and coupons in one place. I designed it and built it with Next.js, TypeScript and Supabase.',
+    name: 'ABF Admin',
+    title: 'ABF Admin, the dashboard behind Africa Blockchain Festival 2026',
+    colour: '#dc49e2',
+    year: '2026',
+    timeline: { span: 'May to July 2026', label: '2 months' },
+    location: 'Nairobi, Kenya · remote',
+    role: 'Product design · Front-end engineering · Full-stack development',
+    team: 'I designed ABF Admin and built all of it: the screens, the sign-in and roles, the Google Sheets sync and the database. I also built the payments plugin on the festival website that sends each sale to the dashboard.',
+    services: [
+      { label: 'Product design', icon: 'pen' },
+      { label: 'Dashboard design', icon: 'chart' },
+      { label: 'Front-end engineering', icon: 'code' },
+      { label: 'Full-stack development', icon: 'layers' },
+    ],
+    stack: ['Figma', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    card: 'abf-admin',
+    cardAlt: 'ABF Admin’s overview on a laptop at an event venue',
+    cardTag: {
+      design: 'Dashboard design · Front-end engineering',
+      development: 'Next.js · TypeScript · Supabase',
+    },
+    cardSize: [1400, 875],
+
+    intro:
+      'Africa Blockchain Festival 2026 brought founders, investors, policymakers and builders to the ' +
+      'Sarit Expo Centre in Nairobi for three days in October. ABF Admin is the private dashboard the ' +
+      'festival team used to follow registrations, ticket sales, campaigns and coupons in one place. I ' +
+      'designed it and built it, from the first screen to the database.',
+
+    impact: [
+      { icon: 'layers', value: '6', unit: 'areas', text: 'in one side menu for the whole team: the overview, registrations, ticket sales, campaigns, coupons and website requests.' },
+      { icon: 'grid', value: '14', unit: 'screens', text: 'designed and built, covering registrations, sales, campaigns, coupons, website requests and the team.' },
+      { icon: 'card', value: '3', unit: 'payment methods', text: 'feeding one sales view: card through Stripe, and M-Pesa or USDC through Minisend.' },
+    ],
+
+    hero: {
+      laptop: 'abfadmin-hero',
+      alt: 'ABF Admin: the overview on a laptop at an event venue',
+      caption: 'The overview',
+    },
+
+    design: {
+      lede:
+        'Every form on the festival website wrote into its own tab of a shared Google Sheet, and payments ' +
+        'were recorded somewhere else again. Anyone who wanted to know how many people had registered, ' +
+        'who had paid or which campaign brought them in had to open several spreadsheets and count by ' +
+        'hand. The team needed those numbers live, in one place, without giving up the sheets they ' +
+        'already worked in.',
+
+      research: {
+        title: 'What shaped the product',
+        intro: 'Four findings shaped the dashboard before I designed a screen.',
+        items: [
+          { icon: 'file', title: 'The sheets had to stay', text: 'The team already ran the festival from Google Sheets, and every website form wrote into them. The dashboard reads the sheets every hour instead of replacing them, so nobody had to change how they worked.' },
+          { icon: 'card', title: 'A registration is not a sale', text: 'Many people registered and never paid. Each person’s row shows whether they have paid, abandoned checkout or not started, so the team knows who to follow up with.' },
+          { icon: 'eye', title: 'Numbers people can trust', text: 'A dashboard that quietly falls behind its sheets is worse than none. The overview checks every sheet against what the dashboard holds and says so in a single line.' },
+          { icon: 'link', title: 'Which partner brought each buyer', text: 'Partners and media shared their own tracking links. The team needed to see which link led to a paid ticket, not only which channel sent visitors.' },
+        ],
+      },
+
+      personasTitle: 'Who it’s for',
+      personasIntro:
+        'ABF Admin is used only by the festival team, and access is by invitation. Everyone shares the ' +
+        'same goal, a full and well-run festival, but each group comes to the dashboard for something different.',
+      personas: [
+        { icon: 'chart', name: 'Festival leads', context: 'Run the festival and report on how it is going.', jobs: ['See registrations and sales at a glance', 'Compare this week with last week', 'Trust that the figures are up to date'] },
+        { icon: 'megaphone', name: 'Marketing and partnerships', context: 'Run campaigns and share tracking links with partners and media.', jobs: ['See which link each buyer came from', 'Create discount codes', 'Find people who started checkout and stopped'] },
+        { icon: 'users', name: 'Attendee support', context: 'Answer attendees and chase unfinished payments.', jobs: ['Find a person and their payment status', 'Follow up on declined cards', 'Export a list when needed'] },
+        { icon: 'code', name: 'Admins', context: 'Look after the website and who can use the dashboard.', jobs: ['Invite people and set their role', 'Approve access requests', 'Connect new sheets and watch the sync'], note: 'Team and Settings are shown to admins only.' },
+      ],
+
+      principlesTitle: 'The principles behind every decision',
+      principlesIntro: 'I set these rules at the start and used them to settle decisions on every screen.',
+      principles: [
+        { title: 'Keep the tools the team already uses', text: 'The sheets remain the team’s own record. The dashboard reads them and adds live numbers on top, so nothing the team relied on was taken away.' },
+        { title: 'Calmer than the festival brand', text: 'The public site is loud and dark. A tool people read all day needs to be quiet, so the dashboard is white and grey, with the festival’s magenta kept for the current page and small accents.' },
+        { title: 'Write every status in words', text: 'Paid, Abandoned, In checkout and Not started are written on every tag, so the meaning never depends on colour alone.' },
+        { title: 'Say when the numbers are behind', text: 'Every page says when its data last synced, and anything that fails is named with the source, the missing rows and the error.' },
+        { title: 'One row per person', text: 'People often registered more than once. The table shows each person once, with their latest entry and a small count of repeat registrations.' },
+      ],
+
+      ia: {
+        title: 'How the product is organised',
+        intro:
+          'A side menu holds the six areas the whole team uses, in the order they look at them: the ' +
+          'overview first, then registrations and sales, then campaigns and coupons, then website requests. ' +
+          'Team and Settings sit apart under Manage and appear only for admins.',
+        consoleLabel: 'Every team member',
+        attendeeLabel: 'Admins only',
+        attendeeIcon: 'shield',
+        console: ['Overview', 'Registrations', 'Ticket Sales', 'Campaigns', 'Coupons', 'Engineering'],
+        attendee: ['ABF Team', 'Settings'],
+        rail: 'abfadmin-rail',
+        railSize: [512, 1800],
+        railCaption: 'The dashboard’s side menu',
+        tabbar: 'abfadmin-overview-top',
+        tabbarSize: [2368, 1480],
+        tabbarCaption: 'The overview, where the menu opens',
+      },
+
+      screensTitle: 'Key screens in the dashboard',
+      screensIntro:
+        'These are the screens the team used most during the run-up to the festival, in the order they ' +
+        'appear in the menu.',
+      screens: [
+        {
+          title: 'The overview: the whole festival on one page',
+          body: [
+            'The overview opens on total leads, event registrations and ticket sales, each with its change ' +
+            'this week and a small trend line. Below them, a chart of form submissions over the last 30 days ' +
+            'and a breakdown by form show where interest is coming from.',
+            'A single line under the figures confirms that every sheet matches the dashboard. Website ' +
+            'traffic from Google Search sits at the bottom of the page, so the team can see how many people ' +
+            'found the festival through search.',
+          ],
+          mockup: 'abfadmin-hero',
+          caption: 'The overview.',
+        },
+        {
+          title: 'Registrations, with who has paid',
+          body: [
+            'Each form has its own list, with one row per person. A tag in the first column shows whether ' +
+            'they have paid, tried and failed, abandoned checkout, are still in checkout or have not started.',
+            'Payment status is matched by email, then by phone, against the sales records, so the team can ' +
+            'filter to the people who registered but never paid and follow them up.',
+          ],
+          mockup: 'abfadmin-registrations',
+          caption: 'Event registrations, one row per person with a payment tag.',
+        },
+        {
+          title: 'Ticket sales, and the cards that were declined',
+          body: [
+            'Every paid pass appears here, from card, M-Pesa and USDC payments, with the pass, the amount and ' +
+            'the buyer. Declined card attempts have their own count, with how many still need a person to ' +
+            'follow up and how many paid later.',
+          ],
+          mockup: 'abfadmin-sales',
+          caption: 'Ticket sales across both payment providers.',
+        },
+        {
+          title: 'Campaigns: which link brought each buyer',
+          body: [
+            'Each tracking link shows how many people started checkout, how many paid, how many stopped and ' +
+            'the revenue it brought in. The team can compare the links given to different partners instead ' +
+            'of relying only on broad channel names.',
+          ],
+          mockup: 'abfadmin-campaigns',
+          caption: 'Campaigns, from tracking link to paid ticket.',
+        },
+        {
+          title: 'Coupons the team can create themselves',
+          body: [
+            'Discount codes are created, edited and switched off from the dashboard. Each code shows how ' +
+            'often it was used, how many people reached checkout with it, the revenue it produced and how ' +
+            'much it gave away.',
+          ],
+          mockup: 'abfadmin-coupons',
+          caption: 'Coupons, with their use and revenue.',
+        },
+        {
+          title: 'Website requests in one queue',
+          body: [
+            'Instead of asking for website changes in chat, the team files a request with a priority. Each ' +
+            'request has a status, notes and a timeline of every change, so anyone can see where it stands.',
+          ],
+          mockup: 'abfadmin-engineering',
+          caption: 'A website request and its timeline.',
+        },
+        {
+          title: 'Invitations and access requests',
+          body: [
+            'Admins invite people by email and choose their role. Someone without an account can ask for ' +
+            'access from the sign-in page, and every admin gets an email to approve or decline it in one tap.',
+          ],
+          mockup: 'abfadmin-team',
+          caption: 'The team page, with pending access requests.',
+        },
+      ],
+
+      system: {
+        title: 'The design system',
+        body:
+          'ABF Admin is deliberately calmer than the public festival brand. It uses white and soft grey ' +
+          'surfaces, near-black text and the festival’s magenta for the current page and small accents. ' +
+          'Magenta text uses a deeper shade, because the bright one is too light to read as text. Status ' +
+          'colours always come with a word.',
+        swatches: [
+          { name: 'ABF magenta', value: '#dc49e2', note: 'accents and the current page' },
+          { name: 'Deep magenta', value: '#b02cb5', note: 'magenta text and links' },
+          { name: 'Ink', value: '#111113', note: 'text' },
+          { name: 'Paper', value: '#f7f7f8', note: 'page background' },
+          { name: 'Green', value: '#1a9e5c', note: 'paid and healthy, with a word' },
+          { name: 'Amber', value: '#b7791f', note: 'abandoned and stale, with a word' },
+        ],
+        type: {
+          family: 'Geist + Geist Mono',
+          note: 'Geist sets the interface and its figures, which line up in columns. Geist Mono sets codes such as coupon names and request numbers.',
+        },
+        componentsLabel: 'Components from the live product',
+        components: [
+          { img: 'abfadmin-filters', label: 'Payment filters', w: 1485, h: 95, wide: true },
+          { img: 'abfadmin-stat', label: 'Stat tile', w: 740, h: 276 },
+          { img: 'abfadmin-tags', label: 'Payment tags in the table', w: 1290, h: 860 },
+          { img: 'abfadmin-sync', label: 'Sync check', w: 820, h: 64, wide: true },
+        ],
+        rulesLabel: 'Standards every screen meets',
+        rules: [
+          'Text contrast of at least 4.5:1, which is why magenta text uses the deeper shade',
+          'Status written in words, never shown by colour alone',
+          'Every page says when its data last synced',
+          'A loading state on every page, so a slow source never looks frozen',
+        ],
+      },
+
+    },
+
+    development: {
+      lede:
+        'ABF Admin is a Next.js 16 app written in TypeScript, with Tailwind CSS 4 for styling and Supabase ' +
+        'for the database and sign-in. Pages are rendered on the server, so figures arrive ready to read. ' +
+        'Google Sheets stays the team’s record: a scheduled job copies every sheet into the database each ' +
+        'hour, and the festival website’s payments plugin, which I also built, sends each sale as it settles.',
+
+      flowTitle: 'How a dashboard page loads',
+      flowIntro: 'The six steps between a team member opening a page and seeing it. The solid boxes are code I wrote; the dashed boxes are outside services the dashboard reads from.',
+      flowKey: { me: 'Code I wrote', other: 'Outside services' },
+      flow: [
+        { label: 'Session check', sub: 'signed-out visitors go to the sign-in page', owner: 'me' },
+        { label: 'Profile and role', sub: 'admin-only pages checked on the server', owner: 'me' },
+        { label: 'Server page', sub: 'every query in one Promise.all', owner: 'me' },
+        { label: 'Supabase', sub: 'rows, sales and sync history, behind row-level security', owner: 'me' },
+        { label: 'Google Sheets', sub: 'copied into the database every hour', owner: 'partner' },
+        { label: 'Search Console', sub: 'website traffic, streamed in after the page', owner: 'partner' },
+      ],
+
+      treeTitle: 'Code organised like the product',
+      treeIntro:
+        'Each area of the menu is a folder of routes, and the work behind the screens lives in small ' +
+        'modules named after what they do.',
+      tree: {
+        root: 'abf-admin/src/',
+        items: [
+          { name: 'app/(dashboard)/', note: 'one folder per page in the side menu' },
+          { name: 'app/login · request-access · access/decide/', note: 'sign-in and access requests' },
+          { name: 'app/api/sync · sales/ingest · campaigns/ingest/', note: 'the hourly sync and the website’s data' },
+          { name: 'components/', note: 'side menu, stat tile, data table, badges, sync check' },
+          { name: 'lib/sheets.ts', note: 'the Google Sheets sync', file: true },
+          { name: 'lib/sync-health.ts', note: 'does every sheet match the dashboard?', file: true },
+          { name: 'lib/payment-status.ts', note: 'the tag on every registration', file: true },
+          { name: 'proxy.ts', note: 'the session check on every request', file: true },
+        ],
+        note: 'About 11,400 lines of TypeScript across 53 commits.',
+      },
+
+      sections: [
+        {
+          title: 'A sync that keeps edits, deletions and restores straight',
+          body: [
+            'Every hour the sync reads each sheet and fingerprints every row. A new fingerprint is inserted, ' +
+            'one that has disappeared from the sheet is marked as deleted rather than erased, and one that ' +
+            'comes back is restored instead of duplicated. An edited row simply becomes a new fingerprint, ' +
+            'so the old version is retired and the new one added.',
+          ],
+          code: {
+            file: 'src/lib/sheets.ts',
+            lines: [
+              '    // Inserts + restores.',
+              '    const toInsert: object[] = [];',
+              '    const toRestore: number[] = [];',
+              '    for (const [hash, payload] of seen) {',
+              '      const ex = existingByHash.get(hash);',
+              '      if (!ex) {',
+              '        toInsert.push({',
+              '          source_id: source.id,',
+              '          row_hash: hash,',
+              '          payload,',
+              '          submitted_at: parseSubmittedAt(payload),',
+              '        });',
+              '      } else if (ex.deleted_at) {',
+              '        toRestore.push(ex.id);',
+              '      }',
+              '    }',
+              '',
+              '    // Soft-delete rows no longer present in the sheet.',
+              '    const toDelete = existing',
+              '      .filter((r) => !r.deleted_at && !seen.has(r.row_hash))',
+              '      .map((r) => r.id);',
+            ],
+          },
+        },
+        {
+          title: 'A check that says when the numbers are wrong',
+          body: [
+            'Once, two paid card sales sat in the sales sheet for eleven hours without reaching the ' +
+            'dashboard, behind an error nobody could read. After that, every page compares the rows in each ' +
+            'sheet with the rows the dashboard holds. If a source is failing, missing rows or out of date, ' +
+            'the overview names it, with the gap and the actual error.',
+          ],
+          code: {
+            file: 'src/lib/sync-health.ts',
+            lines: [
+              '    // Only a clean run’s count describes the sheet; a failed run may have read',
+              '    // the tab fine and fallen over afterwards, or not read it at all.',
+              '    const sheetRows = lastClean?.sheet_rows ?? null;',
+              '    const missing =',
+              '      sheetRows !== null && sheetRows > heldRows ? sheetRows - heldRows : 0;',
+              '',
+              '    const stale =',
+              '      !lastClean?.finished_at ||',
+              '      now - new Date(lastClean.finished_at).getTime() > STALE_AFTER_MS;',
+              '',
+              '    // Ordered by how much it should worry someone reading the numbers above.',
+              '    let state: HealthState = "ok";',
+              '    if (latest?.error) state = "failing";',
+              '    else if (missing > 0) state = "drift";',
+              '    else if (stale) state = "stale";',
+            ],
+          },
+        },
+        {
+          title: 'Coupons counted only when a payment settles',
+          body: [
+            'Discount codes are applied by the payments plugin on the festival website, which I wrote in PHP. ' +
+            'The browser can name a code but never an amount, so the price is always worked out on the ' +
+            'server. A use is counted only when the payment settles, so an abandoned checkout never uses up ' +
+            'a limited code.',
+          ],
+          code: {
+            file: 'abf-payments/includes/coupons.php',
+            lines: [
+              ' * Count one redemption. Called when a payment settles, never when a session is',
+              ' * created — an abandoned checkout must not use up a limited code.',
+              ' ...',
+              "\t$wpdb->query( $wpdb->prepare( 'UPDATE ' . abf_coupon_table() . ' SET used_count = used_count + 1 WHERE code = %s', $code ) );",
+              '}',
+              '',
+              "add_action( 'abf_pay_paid', 'abf_coupon_count_redemption', 30, 1 );",
+            ],
+          },
+        },
+        {
+          title: 'From a tracking link to a paid ticket',
+          body: [
+            'A tracking link sets a 30-day cookie when someone first arrives, and the plugin copies it onto ' +
+            'their checkout on the server. The campaign report then counts, for each link, how many people ' +
+            'started checkout, how many paid, how many did not, and the revenue, which the dashboard shows ' +
+            'on the Campaigns page.',
+          ],
+          code: {
+            file: 'abf-payments/includes/attribution.php',
+            lines: [
+              '\t\t\tCOUNT(*) AS started,',
+              "\t\t\tSUM( status = 'paid' ) AS paid,",
+              "\t\t\tSUM( status IN ( 'created', 'pending', 'abandoned', 'expired' ) ) AS unpaid,",
+              "\t\t\tSUM( CASE WHEN status = 'paid'",
+              '\t\t\t\tTHEN ( CASE WHEN amount_paid > 0 THEN amount_paid ELSE amount_usd END )',
+              '\t\t\t\tELSE 0 END ) AS revenue',
+            ],
+          },
+        },
+      ],
+
+      suitesTitle: 'Keeping the numbers trustworthy',
+      suitesIntro: 'ABF Admin has no automated test suite. These are the safeguards built into the product instead.',
+      suites: [
+        { icon: 'eye', title: 'Sync check', text: 'Every sheet is compared with the dashboard, and a failing, missing or stale source is named on the overview.' },
+        { icon: 'message', title: 'Failure emails', text: 'The team is emailed when a source starts failing, once, rather than on every hourly run.' },
+        { icon: 'shield', title: 'Secret-checked pushes', text: 'Sales and campaign data from the website are accepted only with a shared secret, and a sale is never recorded twice.' },
+        { icon: 'file', title: 'Nothing erased', text: 'Rows removed from a sheet are marked as deleted, never erased, so they can come back without duplicates.' },
+      ],
+
+      quality: [
+        { value: '1 hr', label: 'between syncs, with a refresh button for anything sooner' },
+        { value: '14', label: 'screens, each with its own loading state' },
+        { value: '2', label: 'roles, enforced on the server and in the database' },
+      ],
+
+      splitTitle: 'My contribution',
+      splitIntro: 'I was responsible for the design and the whole build of ABF Admin, and for the payments plugin that feeds it.',
+      split: {
+        bothMine: true,
+        mineLabel: 'What I designed',
+        partnerLabel: 'What I built',
+        mine: ['All 14 dashboard screens, on desktop and phone', 'The overview and its sync check', 'Payment tags and filters for every registration', 'The campaign and coupon views', 'The invitation and access-request flow'],
+        partner: ['The Next.js app, in TypeScript and Tailwind CSS', 'The Supabase database, sign-in, roles and row-level security', 'The hourly Google Sheets sync and its health check', 'The WordPress payments plugin that sends sales, campaigns and coupons to the dashboard'],
+      },
+    },
+
+    outcomeLabel: 'The result',
+    outcome:
+      'The festival team followed registrations, sales, campaigns and coupons from one dashboard through ' +
+      'the run-up to Africa Blockchain Festival 2026, without giving up the Google Sheets they already ' +
+      'used. When something fell behind, the dashboard said so instead of showing figures that looked ' +
+      'right but were not.',
+  },
+
+  // The public festival website, written to the same standard as the product
+  // case studies (Sammy, Nov 2026). Sources: the Get Ticket blueprint, the ABF
+  // design system and the abf-payments plugin (v1.32.0, 22 PHP files, about
+  // 7,400 lines), all in ~/African Blockchain Festival. Screens are Sammy's own
+  // captures of the live site; no attendee data appears in them.
+  {
+    slug: 'africa-blockchain-festival',
+    kind: 'product',
+    website: true,
+    seoTitle: 'Africa Blockchain Festival: event website design and WordPress build | Sammy Fash',
+    seoDescription: 'Website design and WordPress development for Africa Blockchain Festival, including separate sponsor and ticket journeys, three languages and a checkout of the festival’s own that takes card, M-Pesa and USDC.',
+    name: 'Africa Blockchain Festival',
+    title: 'Africa Blockchain Festival 2026',
+    colour: '#0895fa',
+    live: 'https://africablockchainfestival.com/',
+    liveLabel: 'africablockchainfestival.com',
+    year: '2025–2026',
+    client: 'Africa Blockchain Festival · World Token Summit',
+    timeline: { span: 'The 2025 and 2026 festivals', label: '2025–2026' },
+    location: 'Nairobi, Kenya · remote',
+    role: 'Web design · WordPress development · Full-stack development',
+    team: 'I designed the website in Figma, built it in WordPress and Elementor, and wrote the payments plugin behind its checkout in PHP.',
+    services: [
+      { label: 'Web design', icon: 'pen' },
+      { label: 'Product design', icon: 'design' },
+      { label: 'WordPress development', icon: 'code' },
+      { label: 'Full-stack development', icon: 'layers' },
+    ],
+    stack: ['Figma', 'WordPress', 'Elementor', 'PHP', 'Stripe'],
+    card: 'abf',
+    cardAlt: 'The Africa Blockchain Festival 2026 website on a desktop monitor',
+    cardTag: {
+      design: 'Web design · Product design',
+      development: 'WordPress · PHP · Stripe',
+      web: 'Figma · WordPress · PHP',
+    },
+    cardSize: [1400, 777],
+
+    intro:
+      'Africa Blockchain Festival brings founders, investors, policymakers, students and builders ' +
+      'together in Nairobi. I designed and built the public website for the 2025 edition, then returned ' +
+      'for 2026, held at the Sarit Expo Centre from 15 to 17 October. The site is where people learn ' +
+      'about the festival and buy their passes, and where sponsors find out how to take part.',
+
+    impact: [
+      { icon: 'chart', value: '$160K+', unit: 'sponsorship', text: 'secured by the festival from sponsors and partners, with the website used throughout its partner outreach.' },
+      { icon: 'card', value: '3', unit: 'ways to pay', text: 'on one checkout: card through Stripe, and M-Pesa or USDC through Minisend, so attendees across Africa can pay the way they already do.' },
+      { icon: 'calendar', value: '2', unit: 'editions', text: 'of the festival on a site I designed and built. After 2025, the organisers brought me back to take it into the 2026 festival.' },
+    ],
+
+    hero: {
+      laptop: 'abfweb-hero',
+      alt: 'The Africa Blockchain Festival 2026 homepage on a laptop in a Nairobi café, with the phone version beside it',
+      caption: 'The homepage, on a laptop and a phone',
+    },
+
+    design: {
+      lede:
+        'The old website was losing ticket buyers at the moment they were ready to pay. People chose a ' +
+        'pass on the site and were then sent to a separate ticketing platform that had forgotten their ' +
+        'choice. That platform also took cards only and settled in Nigerian naira, while the passes are ' +
+        'priced in US dollars and many attendees pay with M-Pesa or stablecoins. My job was to explain the ' +
+        'festival clearly to everyone who visits, then take each buyer from choosing a pass to holding a ' +
+        'paid ticket without losing them along the way.',
+
+      research: {
+        title: 'What shaped the site',
+        intro: 'Before I designed a single page, I looked at where the old site was losing people and what the festival needed it to do. Four problems stood out, and each one shaped a part of the new site.',
+        items: [
+          { icon: 'link', title: 'Ticket buyers were dropping off before paying', text: 'People chose a pass on the old site, then landed on a ticketing platform that didn’t know what they had picked. They had to start again, and many gave up. On the new site, the pass you choose follows you all the way to checkout.' },
+          { icon: 'card', title: 'Attendees pay in different ways', text: 'The festival draws people from across Africa, but the old gateway only took cards and settled in naira. Anyone paying with M-Pesa or USDC was shut out, and card buyers paid conversion fees. I built one checkout that takes all three.' },
+          { icon: 'users', title: 'Every visitor comes for something different', text: 'A founder wants to meet investors, an investor wants the speaker list, a student wants an affordable pass and a sponsor wants to know who will be in the room. Each of them gets a clear route from the homepage, with Get Tickets one tap away on every page.' },
+          { icon: 'eye', title: 'No payment can go unrecorded', text: 'Payment providers don’t always confirm a payment straight away, and sometimes the confirmation never arrives. A buyer who has paid and hears nothing is the worst outcome for the festival, so the site checks every unfinished payment every five minutes until it is settled.' },
+        ],
+      },
+
+      personasTitle: 'Who it’s for',
+      personasIntro:
+        'The website serves everyone deciding whether to attend or support the festival. They share the ' +
+        'same goal, being part of a successful festival, but each comes to the site for something different.',
+      personas: [
+        { icon: 'code', name: 'Founders and builders', context: 'Come to meet investors, learn and show their work.', jobs: ['See who is speaking and when', 'Compare the General and Professional passes', 'Pay by card, M-Pesa or USDC'] },
+        { icon: 'chart', name: 'Investors and senior guests', context: 'Decide whether the festival is worth the trip to Nairobi.', jobs: ['See the speakers and the agenda', 'Compare what the VIP pass includes', 'Plan travel and a hotel'] },
+        { icon: 'pen', name: 'Students', context: 'Want affordable access to the talks and workshops.', jobs: ['Find the $49 student pass', 'See the developer workshops', 'Register quickly on a phone'], note: 'Media and press apply for a free pass through the same form.' },
+        { icon: 'megaphone', name: 'Sponsors and partners', context: 'Decide whether to put their brand in front of the audience.', jobs: ['See who attends and past partners', 'Compare sponsorship options', 'Enquire about group and corporate passes'] },
+      ],
+
+      principlesTitle: 'The principles behind every decision',
+      principlesIntro: 'I set these rules at the start and used them to settle decisions on every page.',
+      principles: [
+        { title: 'One clear path to a ticket', text: 'Every page leads to the same three steps: choose a pass, register, pay. Sponsors have a separate route, so the two calls to action never compete.' },
+        { title: 'Never ask for the same choice twice', text: 'The pass chosen on the tickets page arrives already selected in the registration form, and the order summary follows the buyer to checkout.' },
+        { title: 'Prices live only on the server', text: 'The page can say which pass someone wants, but never what it costs. Every amount sent to a payment gateway is read from one table on the server.' },
+        { title: 'Always tell buyers what happened to their money', text: 'After paying, buyers see a receipt and get a confirmation email. If a card is declined, the site tells them no money was taken.' },
+        { title: 'The team updates the content, not the code', text: 'Speakers, sponsors, passes and translations are edited in WordPress using shared styles, so the team can change them without touching templates.' },
+      ],
+
+      ia: {
+        title: 'How the site is organised',
+        intro:
+          'The main menu holds everything a visitor reads before deciding: the event itself, partnership ' +
+          'and sponsorship, the travel guide, news and contact. Get Tickets sits apart in the top corner of ' +
+          'every page and starts a short path that ends with a paid ticket.',
+        consoleLabel: 'Main menu',
+        console: ['Event: speakers, agenda, side events, fellows and the Unity Games', 'Become a Partner', 'Sponsorship', 'Travel Guide', 'Blogs', 'Contact'],
+        attendeeLabel: 'Buying a pass',
+        attendeeIcon: 'card',
+        attendee: ['Get Tickets: compare the passes', 'Register: four fields', 'Pay: card, M-Pesa or USDC', 'Receipt on the site', 'Confirmation email, which is the ticket'],
+        rail: 'abfweb-home-phone',
+        railSize: [585, 1266],
+        railWhole: true, // a whole phone screen, not a cropped side menu
+        railCaption: 'The homepage on a phone',
+        tabbar: 'abfweb-home-desk',
+        tabbarSize: [1440, 900],
+        tabbarCaption: 'The homepage on desktop, with the main menu and Get Tickets',
+      },
+
+      screensTitle: 'Key pages on the site',
+      screensIntro:
+        'The pages people used most, from deciding to attend through to paying, in the order a visitor ' +
+        'meets them.',
+      screens: [
+        {
+          title: 'Speakers: who will be on stage',
+          body: [
+            'For many visitors the speakers decide whether the trip is worth it, so the speakers page is one ' +
+            'click from the homepage. Eighty speakers were published for 2026, each with a photo, a role and ' +
+            'an organisation.',
+          ],
+          mockup: 'abfweb-speakers',
+          caption: 'Speakers: 80 published for 2026',
+        },
+        {
+          title: 'The agenda, one day at a time',
+          body: [
+            'The agenda is split into tabs for the opening evening and the three festival days, so visitors ' +
+            'see one day at a time instead of one long list. Fifty-nine sessions were published for 2026 from ' +
+            'the same content structure.',
+          ],
+          mockup: 'abfweb-agenda',
+          caption: 'The three-day agenda',
+        },
+        {
+          title: 'Choosing a pass, compared by level of access',
+          body: [
+            'The tickets page opens with the dates, the venue and the festival’s numbers, then compares the ' +
+            'passes side by side by what each one includes, with one recommended option.',
+            'Media passes are free by application, and group and corporate passes go to the sales team, so ' +
+            'those two sit apart from the passes people pay for.',
+          ],
+          mockup: 'abfweb-tickets',
+          caption: 'The tickets page',
+        },
+        {
+          title: 'A registration form with four fields',
+          body: [
+            'The first design asked fourteen questions about each buyer’s role, company and goals. Paying ' +
+            'for a pass only needs the pass, a name, an email and a WhatsApp number, so the form was cut to ' +
+            'those four.',
+            'A summary beside the form keeps the chosen pass, its price and what it includes in view, with a ' +
+            'box for a discount code.',
+          ],
+          mockup: 'abfweb-register',
+          caption: 'The four-field registration form',
+        },
+        {
+          title: 'Checkout: card, M-Pesa or USDC',
+          body: [
+            'Checkout offers two choices in plain words: pay by card in US dollars, or pay with M-Pesa or a ' +
+            'stablecoin. The order summary stays on the right, with a link to change the pass if it is the ' +
+            'wrong one.',
+          ],
+          mockup: 'abfweb-checkout',
+          caption: 'Checkout: card, M-Pesa or USDC',
+        },
+        {
+          title: 'Travel packages for visitors to Nairobi',
+          body: [
+            'Many attendees travel from abroad. Travel packages bundle flights, a hotel, the festival ticket ' +
+            'and East African tours into one booking, reserved with a $500 deposit, and group bookings have ' +
+            'a page of their own.',
+          ],
+          mockup: 'abfweb-travel',
+          caption: 'Travel packages for visitors to Nairobi',
+        },
+      ],
+
+      phones: {
+        title: 'The site on a phone',
+        body:
+          'Every page was designed for a phone as well as a laptop, including the tickets page, the payment ' +
+          'step and the Nairobi travel guide.',
+        altLabel: 'website on a phone',
+        items: [
+          { mockup: 'abfweb-phone-tickets', caption: 'Choosing a pass' },
+          { mockup: 'abfweb-phone-checkout', caption: 'Paying for a pass' },
+          { mockup: 'abfweb-phone-guide', caption: 'The Nairobi travel guide' },
+        ],
+      },
+
+      system: {
+        title: 'The design system',
+        body:
+          'The festival’s 2026 brand is dark and bright: Electric Crimson for the main action, Solar Yellow ' +
+          'for the second, and Prism Lilac and Neo Mint as accents, all on a near-black background. I set ' +
+          'these up as colour and type styles in Figma and as matching global styles in Elementor, so the ' +
+          'design and the live site use the same values.',
+        swatches: [
+          { name: 'Deep Obsidian', value: '#050007', note: 'page background' },
+          { name: 'Electric Crimson', value: '#ef003d', note: 'the main action' },
+          { name: 'Solar Yellow', value: '#fddb00', note: 'the second action' },
+          { name: 'Prism Lilac', value: '#e1a2f1', note: 'highlights' },
+          { name: 'Neo Mint', value: '#beffdc', note: 'card titles' },
+          { name: 'Magenta', value: '#dc49e2', note: 'small labels' },
+        ],
+        type: {
+          family: 'Povlar + Inter',
+          note: 'Povlar sets headings, prices and buttons. Inter sets body text and forms, where it needs to be easy to read at small sizes.',
+        },
+        componentsLabel: 'Components from the live site',
+        components: [
+          { img: 'abfweb-stats', label: 'Festival numbers', w: 2000, h: 230, wide: true },
+          { img: 'abfweb-reg-rail', label: 'Registration summary', w: 768, h: 830 },
+          { img: 'abfweb-order', label: 'Order summary', w: 680, h: 540 },
+          { img: 'abfweb-form', label: 'Registration form', w: 1680, h: 840, wide: true },
+          { img: 'abfweb-pay-methods', label: 'Payment choices', w: 655, h: 505, wide: true },
+        ],
+        rulesLabel: 'Standards every page meets',
+        rules: [
+          'Crimson and yellow are kept for actions, so buttons are easy to find',
+          'Every form field has a visible label, not only a placeholder',
+          'Prices and payment choices are written in words, never shown by colour alone',
+          'Every page is designed for a phone as well as a laptop',
+        ],
+      },
+    },
+
+    development: {
+      lede:
+        'The website runs on WordPress with Elementor. Every page is built on a staging copy of the site ' +
+        'and moved to the live site only after it has been checked, so changes during ticket sales never ' +
+        'break the live site. Behind the checkout is ABF Payments, a WordPress plugin I wrote in PHP. It ' +
+        'holds the price of every pass, talks to Stripe and Minisend, records every payment and sends each ' +
+        'sale to ABF Admin, the festival team’s dashboard.',
+
+      flowTitle: 'How a pass is paid for',
+      flowIntro: 'The six steps between a visitor choosing a pass and receiving their ticket. The solid boxes are code I wrote; the dashed boxes are the payment providers.',
+      flowKey: { me: 'Code I wrote', other: 'Payment providers' },
+      flow: [
+        { label: 'Tickets page', sub: 'the chosen pass travels in the link', owner: 'me' },
+        { label: 'Registration', sub: 'the pass is preselected on the server', owner: 'me' },
+        { label: 'Checkout', sub: 'price read from the server, payment recorded', owner: 'me' },
+        { label: 'Stripe or Minisend', sub: 'card, M-Pesa or USDC', owner: 'partner' },
+        { label: 'Settle once', sub: 'by webhook or a check every five minutes', owner: 'me' },
+        { label: 'Receipt and email', sub: 'and the sale sent to ABF Admin', owner: 'me' },
+      ],
+
+      treeTitle: 'Code organised like the checkout',
+      treeIntro:
+        'The plugin is a set of small files, each named after one job in the checkout, so a change to ' +
+        'one payment provider never touches another.',
+      tree: {
+        root: 'abf-payments/includes/',
+        items: [
+          { name: 'passes.php', note: 'the price of every pass, in one place', file: true },
+          { name: 'register.php · guards.php', note: 'the registration step, and passes with nothing to pay', file: true },
+          { name: 'gateway-stripe.php · gateway-minisend.php', note: 'card, M-Pesa and USDC', file: true },
+          { name: 'ledger.php', note: 'every payment, recorded before the buyer leaves', file: true },
+          { name: 'reconcile.php · sweep.php', note: 'checks for payments nobody was told about', file: true },
+          { name: 'receipt.php · fulfilment.php', note: 'the receipt page and the ticket email', file: true },
+          { name: 'declines.php', note: 'what happens when a card is declined', file: true },
+          { name: 'coupons.php · attribution.php', note: 'discount codes and tracking links', file: true },
+        ],
+        note: 'About 7,400 lines of PHP across 22 files.',
+      },
+
+      sections: [
+        {
+          title: 'One place for every price',
+          body: [
+            'Every pass and its price lives in one table on the server. A link can say which pass someone ' +
+            'wants, but never what it costs, so nobody can change a price by editing the page. The previous ' +
+            'price is stored too, so the site can show early-bird savings from the same numbers.',
+          ],
+          code: {
+            file: 'abf-payments/includes/passes.php',
+            lines: [
+              ' * The pass registry — the ONLY source of price truth.',
+              ' ...',
+              "\t\t'professional' => array(",
+              "\t\t\t'label'   => 'Professional Access',",
+              "\t\t\t'usd'     => 249,",
+              "\t\t\t'was'     => 350,",
+              "\t\t\t'buyable' => true,",
+              "\t\t\t'route'   => '',",
+              '\t\t),',
+            ],
+          },
+        },
+        {
+          title: 'A card payment priced on the server',
+          body: [
+            'When a buyer chooses to pay by card, the plugin opens a Stripe checkout for the amount in that ' +
+            'table, or a discounted amount it worked out itself. The amount never comes from the browser. ' +
+            'Each checkout carries a reference of the festival’s own, so the payment can be matched to its ' +
+            'record whichever way the news of it arrives.',
+          ],
+          code: {
+            file: 'abf-payments/includes/gateway-stripe.php',
+            lines: [
+              '\t$pass      = $passes[ $slug ];',
+              "\t$reference = '' !== $external_id ? $external_id : 'abf-' . wp_generate_uuid4();",
+              '\t// A coupon-adjusted figure when the caller computed one, the registry price',
+              '\t// otherwise. Either way it was produced on this server, never sent by a browser.',
+              '\t$charge    = ( null === $amount ) ? (float) $pass[\'usd\'] : round( (float) $amount, 2 );',
+              '\t$cents     = (int) round( $charge * 100 );',
+            ],
+          },
+        },
+        {
+          title: 'Every payment settled exactly once',
+          body: [
+            'A payment provider normally reports a payment by calling the site, but those calls can arrive ' +
+            'late or not at all. So the plugin also asks Stripe and Minisend every five minutes about any ' +
+            'payment still waiting. Both routes end in the same function, which ignores a payment that is ' +
+            'already settled, so a buyer gets one ticket email whichever route confirms the payment first.',
+          ],
+          code: {
+            file: 'abf-payments/includes/ledger.php',
+            lines: [
+              'function abf_pay_settle( $session_id, $status, $payload = null, $amounts = null, $event = \'\' ) {',
+              '\t$row = abf_pay_ledger_get( $session_id );',
+              '\tif ( ! $row ) {',
+              "\t\treturn '';",
+              '\t}',
+              '',
+              '\t// Already resolved. A late webhook after a poll (or the reverse) is normal',
+              '\t// and must be a no-op, not a second fulfilment.',
+              '\tif ( abf_pay_is_terminal( $row->status ) ) {',
+              "\t\treturn '';",
+              '\t}',
+            ],
+          },
+        },
+        {
+          title: 'Telling buyers when a card is declined',
+          body: [
+            'Many banks send a debit alert for a declined card and reverse it a minute later, so a buyer can ' +
+            'think they were charged when they were not. The plugin records every decline. The checkout ' +
+            'page tells the buyer that no money was taken, the team is alerted straight away, and if the ' +
+            'buyer has still not paid thirty minutes later they get an email to help them finish.',
+          ],
+          code: {
+            file: 'abf-payments/includes/declines.php',
+            lines: [
+              ' * This file records the decline against the ledger row (by the reference we put in',
+              ' * the PaymentIntent metadata), then does three things with it:',
+              ' *   1. /pay/ tells a buyer who comes back from Stripe that no money was taken;',
+              ' *   2. the team is told at once, so an ambassador can reach out first;',
+              ' *   3. if the reference is still unpaid 30 minutes later, the buyer is emailed —',
+            ],
+          },
+        },
+      ],
+
+      suitesTitle: 'Keeping payments safe',
+      suitesIntro: 'The plugin has no automated test suite. These are the safeguards built into it instead.',
+      suites: [
+        { icon: 'layers', title: 'Staging first', text: 'Every page and plugin change is built and checked on a staging copy of the site before it reaches the live site.' },
+        { icon: 'shield', title: 'Signed notifications', text: 'A payment notification is accepted only when its signature checks out, and each one is acted on once.' },
+        { icon: 'clock', title: 'Five-minute checks', text: 'Payments nobody has heard about are checked with the provider every five minutes, and abandoned ones are marked every hour.' },
+        { icon: 'file', title: 'Secrets kept out of the code', text: 'Payment keys live in the server’s configuration, never in the plugin, so nothing secret is deployed with it.' },
+      ],
+
+      quality: [
+        { value: '22', label: 'PHP files, each with one job in the checkout' },
+        { value: '5 min', label: 'between checks for payments still waiting' },
+        { value: '3', label: 'languages from the same page templates: English, French and Swahili' },
+      ],
+
+      splitTitle: 'My contribution',
+      splitIntro: 'I was responsible for the design and the build of the website, and for the payments plugin behind its checkout.',
+      split: {
+        bothMine: true,
+        mineLabel: 'What I designed',
+        partnerLabel: 'What I built',
+        mine: ['The page structure and responsive layouts in Figma', 'The separate sponsor and ticket journeys', 'The tickets page, the four-field form and checkout', 'The colour and type styles in Figma'],
+        partner: ['The WordPress and Elementor site, in three languages', 'The staging copy and the checks before each release', 'The ABF Payments plugin in PHP, with Stripe and Minisend', 'The feed of sales into ABF Admin'],
+      },
+    },
+
+    outcomeLabel: 'The result',
+    outcome:
+      'I was retained for the 2026 edition after the first launch. The festival has secured more ' +
+      'than $160,000 in sponsorship, with the website used throughout its partner outreach. ' +
+      'For 2026 the site also takes payment itself, in the currency and payment method each attendee uses, ' +
+      'and publishes 80 speakers and 59 agenda sessions from the same content structure.',
+  },
+
   // DRAFT until screens exist. There is no demo mode in the app and no iOS
   // build on disk; sign-in is Firebase-only. Route to screenshots: build the
   // simulator app from ios/ABF 2026.xcworkspace, point tenant.config.json

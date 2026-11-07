@@ -313,13 +313,13 @@
              Edits between these markers are overwritten. -->
         <div class="work__filter" role="group" aria-label="Filter the work by discipline" data-reveal>
           <button class="work__lens" type="button" data-lens="all" aria-pressed="true">
-            All work <span class="work__count">8</span>
+            All work <span class="work__count">9</span>
           </button>
           <button class="work__lens" type="button" data-lens="design" aria-pressed="false">
-            Product design <span class="work__count">2</span>
+            Product design <span class="work__count">4</span>
           </button>
           <button class="work__lens" type="button" data-lens="development" aria-pressed="false">
-            Development <span class="work__count">2</span>
+            Development <span class="work__count">4</span>
           </button>
           <button class="work__lens" type="button" data-lens="web" aria-pressed="false">
             Websites <span class="work__count">6</span>
@@ -360,18 +360,36 @@
               </span>
             </a>
           </li>
-          <li class="work__item" data-lenses="all web">
-            <a class="work__card" href="/africa-blockchain-festival"
+          <li class="work__item" data-lenses="all design development">
+            <a class="work__card" href="/abf-admin" data-product
+               data-cursor-tag="View project" data-cursor-color="#dc49e2">
+              <span class="work__media">
+                <picture>
+                  <source type="image/webp" srcset="/img/work/abf-admin@800.webp 800w, /img/work/abf-admin.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
+                  <img src="/img/work/abf-admin.jpg" alt="ABF Admin’s overview on a laptop at an event venue" width="1400" height="875" loading="lazy" decoding="async">
+                </picture>
+              </span>
+              <span class="work__meta">
+                <span class="work__name">ABF Admin</span>
+                <span class="work__tag" data-tag-for="design">Dashboard design · Front-end engineering</span>
+                <span class="work__tag" data-tag-for="development">Next.js · TypeScript · Supabase</span>
+              </span>
+            </a>
+          </li>
+          <li class="work__item" data-lenses="all design development web">
+            <a class="work__card" href="/africa-blockchain-festival" data-product
                data-cursor-tag="View project" data-cursor-color="#0895fa">
               <span class="work__media">
                 <picture>
                   <source type="image/webp" srcset="/img/work/abf@800.webp 800w, /img/work/abf.webp 1400w" sizes="(max-width: 900px) 100vw, 44vw">
-                  <img src="/img/work/abf.jpg" alt="The Africa Blockchain Festival 2025 website on a desktop monitor" width="1400" height="777" loading="lazy" decoding="async">
+                  <img src="/img/work/abf.jpg" alt="The Africa Blockchain Festival 2026 website on a desktop monitor" width="1400" height="777" loading="lazy" decoding="async">
                 </picture>
               </span>
               <span class="work__meta">
                 <span class="work__name">Africa Blockchain Festival</span>
-                <span class="work__tag">Figma · WordPress · Next.js</span>
+                <span class="work__tag" data-tag-for="design">Web design · Product design</span>
+                <span class="work__tag" data-tag-for="development">WordPress · PHP · Stripe</span>
+                <span class="work__tag" data-tag-for="web">Figma · WordPress · PHP</span>
               </span>
             </a>
           </li>
