@@ -68,7 +68,9 @@ export function initWorkLenses() {
   const items = qsa('.work__item', section)
   const note = qs('[data-lens-note]', section)
 
-  const apply = (lens, { push = false } = {}) => {
+  // `animate` only on a real lens change: on load the build crew owns the
+  // cards, and a second tween on them left some stuck 24px low, closing the gap.
+  const apply = (lens, { push = false, animate = false } = {}) => {
     if (!NOTES.hasOwnProperty(lens)) lens = 'all'
     section.dataset.lens = lens
 
@@ -86,14 +88,14 @@ export function initWorkLenses() {
     lens === 'all' ? url.searchParams.delete('work') : url.searchParams.set('work', lens)
     history[push ? 'pushState' : 'replaceState'](null, '', url)
 
-    if (!prefersReducedMotion()) {
+    if (animate && !prefersReducedMotion()) {
       gsap.fromTo(items.filter((i) => !i.hidden), { opacity: 0, y: 24 },
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: 'expo.out', clearProps: 'transform' })
     }
     ScrollTrigger.refresh()
   }
 
-  for (const b of buttons) b.addEventListener('click', () => apply(b.dataset.lens, { push: true }))
-  addEventListener('popstate', () => apply(new URL(location.href).searchParams.get('work') ?? 'all'))
+  for (const b of buttons) b.addEventListener('click', () => apply(b.dataset.lens, { push: true, animate: true }))
+  addEventListener('popstate', () => apply(new URL(location.href).searchParams.get('work') ?? 'all', { animate: true }))
   apply(new URL(location.href).searchParams.get('work') ?? 'all')
 }

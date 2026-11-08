@@ -82,6 +82,32 @@ const SCENES = [
   { name: 'abfweb-phone-tickets', photo: 'abfweb-street', layers: [{ key: 'green', shot: 'abfweb-phone-02-tickets', statusBar: {}, smooth: true }] },
   { name: 'abfweb-phone-checkout', photo: 'abfweb-cafe-phone', layers: [{ key: 'green', shot: 'abfweb-phone-04-pay-checkout', statusBar: {}, smooth: true }] },
   { name: 'abfweb-phone-guide', photo: 'abfweb-airport', layers: [{ key: 'green', shot: 'abfweb-phone-11-nairobi-travel-guide', statusBar: {}, smooth: true }] },
+  // BMONI: the global gateway, the Nigeria site and the Mexico site.
+  { name: 'bmoni-hero', photo: 'bmoni-hero2', layers: [{ key: 'green', shot: 'bmoni-desk-01-gateway', smooth: true }] },
+  { name: 'bmoni-gateway', photo: 'bmoni-monitor', layers: [{ key: 'green', shot: 'bmoni-desk-01-gateway', ratio: 16 / 9, smooth: true }] },
+  { name: 'bmoni-products', photo: 'bmoni-terrace', layers: [{ key: 'green', shot: 'bmoni-desk-03-ng-products', smooth: true }] },
+  { name: 'bmoni-use-cases', photo: 'bmoni-student', layers: [{ key: 'green', shot: 'bmoni-desk-04-ng-use-cases', smooth: true }] },
+  { name: 'bmoni-security', photo: 'bmoni-kitchen', layers: [{ key: 'green', shot: 'bmoni-desk-05-ng-security', smooth: true }] },
+  { name: 'bmoni-mx-home', photo: 'bmoni-mxoffice', layers: [{ key: 'green', shot: 'bmoni-desk-09-mx-home', smooth: true }] },
+  { name: 'bmoni-mx-products', photo: 'bmoni-mxshop', layers: [{ key: 'green', shot: 'bmoni-desk-11-mx-products', smooth: true }] },
+  // ETHSafari: the route from Nairobi to Kilifi.
+  { name: 'eth-hero', photo: 'eth-hero2', layers: [{ key: 'green', shot: 'eth-desk-01-home', smooth: true }] },
+  { name: 'eth-speakers', photo: 'eth-backstage', layers: [{ key: 'green', shot: 'eth-desk-02-speakers', smooth: true }] },
+  { name: 'eth-schedule', photo: 'eth-train', layers: [{ key: 'green', shot: 'eth-desk-03-schedule', smooth: true }] },
+  { name: 'eth-vendors', photo: 'eth-stall', layers: [{ key: 'green', shot: 'eth-desk-05-vendors', smooth: true }] },
+  { name: 'eth-startup', photo: 'eth-booth', layers: [{ key: 'green', shot: 'eth-desk-07-startup-booth', ratio: 16 / 9, smooth: true }] },
+  { name: 'eth-volunteers', photo: 'eth-regdesk', layers: [{ key: 'green', shot: 'eth-desk-06-volunteers', smooth: true }] },
+  { name: 'eth-contact', photo: 'eth-cowork', layers: [{ key: 'green', shot: 'eth-desk-04-contact', smooth: true }] },
+  // Offline Webflow sites: screens are frames from the build videos.
+  { name: 'icp-hero', photo: 'icp-lecture', layers: [{ key: 'green', shot: 'icp-desk-01', smooth: true }] },
+  { name: 'icp-milestones', photo: 'icp-hack', layers: [{ key: 'green', shot: 'icp-desk-02', smooth: true }] },
+  { name: 'icp-join', photo: 'icp-library', layers: [{ key: 'green', shot: 'icp-desk-03', smooth: true }] },
+  { name: 'smartdev-hero', photo: 'smartdev-studio', layers: [{ key: 'green', shot: 'smartdev-desk-01', smooth: true }] },
+  { name: 'smartdev-services', photo: 'smartdev-meeting', layers: [{ key: 'green', shot: 'smartdev-desk-02', smooth: true }] },
+  { name: 'smartdev-industries', photo: 'smartdev-standing', layers: [{ key: 'green', shot: 'smartdev-desk-03', smooth: true }] },
+  { name: 'dynasty-hero', photo: 'dynasty-office', layers: [{ key: 'green', shot: 'dynasty-desk-01', smooth: true }] },
+  { name: 'dynasty-services', photo: 'dynasty-cafe', layers: [{ key: 'green', shot: 'dynasty-desk-02', smooth: true }] },
+  { name: 'dynasty-portfolio', photo: 'dynasty-rooftop', layers: [{ key: 'green', shot: 'dynasty-desk-03', smooth: true }] },
 ]
 
 const only = process.argv[2]

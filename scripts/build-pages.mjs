@@ -437,6 +437,10 @@ ${p.scenes?.pair ? `
       </div>` : rest.length ? `
       <div class="case__pair">${rest.map((b, i) => media(b, `${p.name} — section ${i + 2}`, true)).join('')}
       </div>` : ''}
+${p.scenes?.hero && p.video ? `
+      <div class="case__showcase">
+${videoMock(p.video, p.liveLabel, `${p.slug}-poster`, `${p.name} — a walkthrough of the finished build`)}
+      </div>` : ''}
 ${p.scenes?.phones ? `
       <div class="case__trio">${p.scenes.phones.map((x) => sceneFig(p, { ...x, phone: true })).join('')}
       </div>` : phones.length ? `
@@ -764,13 +768,13 @@ function renderDesign(p) {
             <p class="ia__label">${icon('monitor')} ${esc(d.ia.consoleLabel ?? 'Organiser dashboard')}</p>
             <ol class="ia__list">${d.ia.console.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>
           </div>
-          <div class="ia__visual">
+          <div class="ia__visual${d.ia.rail ? '' : ' ia__visual--single'}">
             ${(() => {
               const [rw, rh] = d.ia.railSize ?? [472, 1800]
               const [tw, th] = d.ia.tabbarSize ?? [1170, 324]
               const railCap = d.ia.railCaption ?? "The dashboard's navigation rail"
               const tabCap = d.ia.tabbarCaption ?? "The attendee app's tab bar"
-              return `${zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="${esc(railCap)}" width="${rw}" height="${rh}" loading="lazy" class="ia__rail"${d.ia.railWhole ? ` style="aspect-ratio:${rw} / ${rh}"` : ''}>`, { src: `/img/components/${d.ia.rail}.webp`, w: rw, h: rh, caption: railCap })}
+              return `${d.ia.rail ? zoomable(`<img src="/img/components/${d.ia.rail}.webp" alt="${esc(railCap)}" width="${rw}" height="${rh}" loading="lazy" class="ia__rail"${d.ia.railWhole ? ` style="aspect-ratio:${rw} / ${rh}"` : ''}>`, { src: `/img/components/${d.ia.rail}.webp`, w: rw, h: rh, caption: railCap }) : ''}
             ${d.ia.tabbar ? zoomable(`<img src="/img/components/${d.ia.tabbar}.webp" alt="${esc(tabCap)}" width="${tw}" height="${th}" loading="lazy" class="ia__tabbar">`, { src: `/img/components/${d.ia.tabbar}.webp`, w: tw, h: th, caption: tabCap }) : ''}`
             })()}
           </div>

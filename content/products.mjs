@@ -1758,6 +1758,620 @@ export const PRODUCTS = [
       'and publishes 80 speakers and 59 agenda sessions from the same content structure.',
   },
 
+  {
+    // BMONI: three sites, all Sammy's (corrected 2026-11-07): bmoni.com is the
+    // one-screen global gateway, bmoni.ng the Nigeria site, bmoni.mx the Mexico
+    // site (Spanish at /, English at /mx/). Screens captured from the live sites.
+    slug: 'bmoni',
+    kind: 'product',
+    website: true,
+    seoTitle: 'BMONI: fintech website design and WordPress build for Nigeria and Mexico | Sammy Fash',
+    seoDescription: 'Design and WordPress development of BMONI’s three websites: a global gateway at bmoni.com, a consumer site for Nigeria and a bilingual business site for Mexico, on one design system.',
+    name: 'BMONI',
+    title: 'BMONI: like your bank, but smarter',
+    colour: '#e879f9',
+    live: 'https://bmoni.com/',
+    liveLabel: 'bmoni.com',
+    year: '2025–2026',
+    client: 'BMONI · BKEY Inc.',
+    timeline: { span: 'Nigeria first, then Mexico and the global gateway', label: '2025–2026' },
+    location: 'Nigeria · Mexico · remote',
+    role: 'Web design · Product design · WordPress development',
+    team: 'I designed all three websites in Figma and built them in WordPress and Elementor: bmoni.com, bmoni.ng and bmoni.mx.',
+    services: [
+      { label: 'Web design', icon: 'pen' },
+      { label: 'Product design', icon: 'design' },
+      { label: 'WordPress development', icon: 'code' },
+      { label: 'Multi-market sites', icon: 'layers' },
+    ],
+    stack: ['Figma', 'WordPress', 'Elementor'],
+    card: 'bmoni',
+    cardAlt: 'bmoni.com, the global gateway, on a laptop',
+    cardTag: {
+      design: 'Web design · Product design',
+      development: 'WordPress · Elementor',
+      web: 'Figma · WordPress',
+    },
+    cardSize: [1400, 939],
+
+    intro:
+      'BMONI lets people and businesses hold, swap, spend and send money in several currencies from one ' +
+      'app, through licensed financial partners. I designed and built its three websites: bmoni.com, the ' +
+      'global front door, a site for customers in Nigeria, and a bilingual site for businesses in Mexico.',
+
+    impact: [
+      { icon: 'chart', value: '$1B+', unit: 'processed', text: 'on the BMONI platform since the website launched, as reported by BMONI.' },
+      { icon: 'users', value: '~100K', unit: 'visits a day', text: 'to BMONI’s websites, as reported by BMONI, from people deciding whether to trust it with their money.' },
+      { icon: 'layers', value: '3', unit: 'websites', text: 'on one design system: the global gateway, Nigeria in English and Mexico in Spanish and English.' },
+    ],
+
+    hero: {
+      laptop: 'bmoni-hero',
+      alt: 'bmoni.com, the global gateway, on a laptop in an apartment at dusk',
+      caption: 'bmoni.com, the global gateway',
+    },
+
+    design: {
+      lede:
+        'BMONI launched in Nigeria for individuals, freelancers and families, then in Mexico for businesses ' +
+        'that run payroll and pay suppliers abroad. The two markets have different customers, a different ' +
+        'language and a different offer, but both had to feel like the same trustworthy company. BMONI is ' +
+        'also not a bank, so before anyone downloads the app the website has to explain plainly who holds ' +
+        'their money and how it is protected. I designed one system that could carry all of that, then ' +
+        'used it to build a full site for each market and a single screen at bmoni.com that sends every ' +
+        'visitor to the right one.',
+
+      research: {
+        title: 'What shaped the sites',
+        intro: 'Four problems decided how the three sites are split and what each page has to say.',
+        items: [
+          { icon: 'users', title: 'Two markets with very different customers', text: 'In Nigeria, BMONI serves people: freelancers paid in dollars, families supporting relatives abroad, travellers. In Mexico it serves businesses running payroll, paying suppliers and issuing tax invoices. One page could not speak to both, so each market has its own site, its own offer and its own call to action.' },
+          { icon: 'shield', title: 'Trust comes before the download', text: 'People are being asked to keep their money in an app that is not a bank. Every site says so in plain words, names the licensed partners behind the service, explains the facial recognition used for every login and payment, and gives security a page of its own.' },
+          { icon: 'link', title: 'Visitors don’t know which BMONI they need', text: 'Someone arriving from an ad or a search may not know that BMONI runs a separate service in each country. bmoni.com is one screen with a map of where BMONI is live and where it is coming next, and a button for each market.' },
+          { icon: 'message', title: 'Mexican businesses read in Spanish', text: 'A finance manager in Mexico expects to read about payroll, SPEI transfers and CFDI invoices in Spanish. bmoni.mx opens in Spanish with English one click away, and search engines are told which language and country each page is for.' },
+        ],
+      },
+
+      personasTitle: 'Who it’s for',
+      personasIntro:
+        'BMONI is for people and businesses whose money crosses borders. They all want the same thing, ' +
+        'moving money quickly and cheaply without worrying about it, but each arrives with a different job to do.',
+      personas: [
+        { icon: 'code', name: 'Freelancers and remote workers', context: 'Paid by clients abroad and want to keep their earnings in dollars.', jobs: ['Open NGN and USD virtual accounts', 'Swap currencies in seconds', 'Spend online with a virtual card'] },
+        { icon: 'users', name: 'Families and students abroad', context: 'Support someone in another country, or study away from home.', jobs: ['Send money to bank accounts abroad', 'Manage money in six currencies', 'Know the money is protected'] },
+        { icon: 'store', name: 'Businesses in Mexico', context: 'Run payroll and pay suppliers in more than one currency.', jobs: ['Hold MXN, USD and EUR in one place', 'Pay payroll, suppliers and SAT obligations', 'Book a demo with the BMONI team'] },
+        { icon: 'card', name: 'Travellers', context: 'Want to spend abroad without carrying cash or paying high fees.', jobs: ['Use a virtual or physical Mastercard', 'Pay at over 100 million merchants', 'Top up a USD wallet by bank transfer or stablecoin'] },
+      ],
+
+      principlesTitle: 'The principles behind every decision',
+      principlesIntro: 'I set these at the start, and they settled most decisions across all three sites.',
+      principles: [
+        { title: 'One brand, many markets', text: 'Every market uses the same colours, type, buttons and sections. A new market changes its words, photos and offer, not the design, so BMONI looks like one company wherever you meet it.' },
+        { title: 'Show the real product', text: 'The pages use real app screens and the real cards instead of abstract illustrations, so visitors can see exactly what they would be using before they download it.' },
+        { title: 'Say who holds the money', text: 'Every site states that BMONI is a financial technology company, not a bank, and names the licensed partners that provide the banking, in the security page, the FAQ and the footer.' },
+        { title: 'One clear action per market', text: 'In Nigeria every page ends with Download Now. In Mexico, where the customer is a business, every page ends with a request for a demo.' },
+        { title: 'Show the people BMONI serves', text: 'The photography shows the customers in each market, young Nigerians in Lagos and business owners in Mexico, so visitors can picture themselves using it.' },
+      ],
+
+      ia: {
+        title: 'How the sites are organised',
+        intro:
+          'bmoni.com is a single screen that sends visitors to their market. Each market site then has its ' +
+          'own menu, built from the same sections: what BMONI offers, who it is for, how it keeps money safe ' +
+          'and who is behind it.',
+        consoleLabel: 'bmoni.ng, Nigeria',
+        console: ['Products: wallets, cards, conversion and transfers', 'Use Cases: salaries, freelancers, families, travel', 'Security', 'News', 'About Us', 'Help Desk'],
+        attendeeLabel: 'bmoni.mx, Mexico',
+        attendeeIcon: 'store',
+        attendee: ['Soluciones: treasury, payroll, invoicing', 'Casos de uso: payroll, SMEs, importers, freelancers', 'Seguridad', 'Sobre nosotros', 'Español or English, one click apart'],
+        tabbar: 'bmoni-gateway-desk',
+        tabbarSize: [1440, 900],
+        tabbarCaption: 'bmoni.com: where BMONI is live and coming next',
+      },
+
+      screensTitle: 'Key pages across the three sites',
+      screensIntro: 'The pages that explain BMONI, earn a visitor’s trust and ask them to act, in each market.',
+      screens: [
+        {
+          title: 'One front door for every market',
+          body: [
+            'bmoni.com is a single screen. It says what BMONI is, shows a map of where it is live and where ' +
+            'it is coming next, and gives each market its own button. When BMONI launches somewhere new, the ' +
+            'map gains a live pin and the page gains a button.',
+          ],
+          mockup: 'bmoni-gateway',
+          caption: 'bmoni.com, the global gateway',
+        },
+        {
+          title: 'Products explained in everyday terms',
+          body: [
+            'The Nigeria products page takes the app one feature at a time: wallets in six currencies, virtual ' +
+            'and physical cards, currency conversion in seconds and transfers abroad. Each feature is described ' +
+            'by what it lets you do, next to a real screen from the app.',
+          ],
+          mockup: 'bmoni-products',
+          caption: 'Products on bmoni.ng',
+        },
+        {
+          title: 'A page for each kind of customer',
+          body: [
+            'Use Cases speaks to each customer directly: salaries paid into dollar wallets, freelancers with ' +
+            'clients in London, families supporting someone abroad, travellers spending at over 100 million ' +
+            'merchants. Visitors find their own situation instead of a generic feature list.',
+          ],
+          mockup: 'bmoni-use-cases',
+          caption: 'Use cases on bmoni.ng',
+        },
+        {
+          title: 'Security as a page of its own',
+          body: [
+            'Because BMONI is not a bank, security gets its own page. It explains the facial recognition ' +
+            'behind every login and payment, the 22 patents behind it, and the licensed partners that hold ' +
+            'and move the money.',
+          ],
+          mockup: 'bmoni-security',
+          caption: 'Security on bmoni.ng',
+        },
+        {
+          title: 'Mexico: a treasury platform, in Spanish',
+          body: [
+            'The Mexico homepage speaks to businesses. It opens with the BMONI Business dashboard and the card, ' +
+            'describes treasury in MXN, USD and EUR, payroll and supplier payments, and asks for a demo instead ' +
+            'of a download.',
+          ],
+          mockup: 'bmoni-mx-home',
+          caption: 'The bmoni.mx homepage',
+        },
+        {
+          title: 'Solutions for Mexican companies',
+          body: [
+            'Soluciones covers what a finance team needs day to day: wallets with their own account details, ' +
+            'SPEI transfers, CFDI invoices that comply with the SAT, payroll and business cards, all from one ' +
+            'dashboard.',
+          ],
+          mockup: 'bmoni-mx-products',
+          caption: 'Soluciones on bmoni.mx',
+        },
+      ],
+
+
+      system: {
+        title: 'The design system',
+        body:
+          'BMONI’s sites are dark and warm: deep plum backgrounds, a bright magenta for every button, and ' +
+          'orchid for the one word in each headline that matters most. I set these up as global colours and ' +
+          'type in Elementor, so all three sites draw from the same values.',
+        swatches: [
+          { name: 'Deep Plum', value: '#270a26', note: 'page background' },
+          { name: 'Magenta', value: '#b001b0', note: 'buttons' },
+          { name: 'Orchid', value: '#c94cd7', note: 'the accent word in headlines' },
+          { name: 'Pink Mist', value: '#eaaee8', note: 'labels and highlights' },
+          { name: 'White', value: '#ffffff', note: 'text on dark' },
+          { name: 'Blush', value: '#f7e6f7', note: 'light sections' },
+        ],
+        type: {
+          family: 'Poppins + Raleway',
+          note: 'Poppins sets headlines, buttons and body text. Raleway sets small labels and the FAQ.',
+        },
+        componentsLabel: 'Components from the live sites',
+        components: [
+          { img: 'bmoni-audience', label: 'Who it’s for, as a carousel', w: 1260, h: 600, wide: true },
+          { img: 'bmoni-checklist', label: 'What you get, as a checklist', w: 550, h: 590, wide: true },
+          { img: 'bmoni-safety', label: 'Security in three cards', w: 1060, h: 725, wide: true },
+          { img: 'bmoni-steps', label: 'Three steps to start', w: 1240, h: 720, wide: true },
+        ],
+        rulesLabel: 'Standards every page meets',
+        rules: [
+          'Magenta is kept for actions, so the next step is always easy to find',
+          'One accent word per headline, never more',
+          'Every claim about money names who provides the service',
+          'Every page is designed for a phone first',
+        ],
+      },
+    },
+
+    development: {
+      lede:
+        'All three sites run on WordPress with Elementor Pro, on the Hello Elementor theme. They share one ' +
+        'set of global colours, type and sections, and each market is its own WordPress site on its own ' +
+        'domain, so Nigeria and Mexico can change their offer, language and news without touching each other.',
+
+      flowTitle: 'How a visitor reaches the right BMONI',
+      flowIntro: 'The path from a first visit to signing up. The solid boxes are the sites I built; the dashed boxes are where BMONI’s app and sales team take over.',
+      flowKey: { me: 'Sites I built', other: 'The app and the sales team' },
+      flow: [
+        { label: 'bmoni.com', sub: 'the map, and a button per market', owner: 'me' },
+        { label: 'bmoni.ng or bmoni.mx', sub: 'the right country and language', owner: 'me' },
+        { label: 'Products and use cases', sub: 'what BMONI does for you', owner: 'me' },
+        { label: 'Security and FAQ', sub: 'who holds the money', owner: 'me' },
+        { label: 'Download or book a demo', sub: 'one action per market', owner: 'me' },
+        { label: 'The app or the sales team', sub: 'sign-up and onboarding', owner: 'partner' },
+      ],
+
+      treeTitle: 'Three sites, one system',
+      treeIntro: 'Each domain is its own WordPress site, built from the same parts so they stay consistent.',
+      tree: {
+        root: 'bmoni.com · bmoni.ng · bmoni.mx',
+        items: [
+          { name: 'Global colours and type', note: 'the same Elementor values on every site' },
+          { name: 'Header and footer templates', note: 'the market switch, menu and legal note' },
+          { name: 'Section library', note: 'hero, feature list, who it’s for, three steps, FAQ' },
+          { name: 'bmoni.com', note: 'one screen: the map and a button per market' },
+          { name: 'bmoni.ng', note: 'Products, Use Cases, Security, News, About, Help Desk' },
+          { name: 'bmoni.mx', note: 'Spanish at the root, English under /mx/' },
+        ],
+        note: 'WordPress, Elementor Pro and the Hello Elementor theme on all three.',
+      },
+
+      sections: [
+        {
+          title: 'Telling search engines which site is which',
+          body: [
+            'Three domains and two languages could easily compete with each other in search results. Every ' +
+            'page declares its alternatives, so Google sends Nigerians to bmoni.ng, Spanish speakers in Mexico ' +
+            'to bmoni.mx, English speakers in Mexico to its English pages, and everyone else to bmoni.com.',
+          ],
+          code: {
+            file: 'bmoni.com · <head>',
+            lines: [
+              '<link rel="alternate" hreflang="en-ng" href="https://bmoni.ng/" />',
+              '<link rel="alternate" hreflang="es-mx" href="https://bmoni.mx/" />',
+              '<link rel="alternate" hreflang="en-mx" href="https://bmoni.mx/mx/" />',
+              '<link rel="alternate" hreflang="en" href="https://bmoni.com/" />',
+              '<link rel="alternate" hreflang="x-default" href="https://bmoni.com/" />',
+            ],
+          },
+        },
+        {
+          title: 'One set of global styles',
+          body: [
+            'Colours and type are Elementor global values, not settings on each widget. Every heading, button ' +
+            'and section reads from them, so a change to the brand is made once and reaches every page on every site.',
+          ],
+          code: {
+            file: 'bmoni.ng · Elementor kit',
+            lines: [
+              '--e-global-color-primary: #270A26;',
+              '--e-global-color-secondary: #C94CD7;',
+              '--e-global-color-text: #FFFFFF;',
+              '--e-global-color-accent: #EAAEE8;',
+              '--e-global-typography-primary-font-family: "Poppins";',
+              '--e-global-typography-secondary-font-family: "Raleway";',
+            ],
+          },
+        },
+        {
+          title: 'Spanish first, English one click away',
+          body: [
+            'In Mexico the Spanish site lives at the root of bmoni.mx and the English version under /mx/, with ' +
+            'a switch in the header. Both use the same templates, so a new section is designed once and ' +
+            'translated, not rebuilt.',
+          ],
+        },
+      ],
+
+      splitTitle: 'My contribution',
+      splitIntro: 'I was responsible for the design and the build of all three BMONI websites.',
+      split: {
+        bothMine: true,
+        mineLabel: 'What I designed',
+        partnerLabel: 'What I built',
+        mine: ['The design system: colours, type and sections', 'bmoni.com, the global gateway with its market map', 'The Nigeria site for individuals and freelancers', 'The Mexico site for businesses, in Spanish and English', 'Layouts for phone and desktop'],
+        partner: ['Three WordPress and Elementor sites on three domains', 'Global colours and type shared across the sites', 'Header and footer templates with the market switch', 'The language and country tags for search engines', 'The demo request and contact forms'],
+      },
+    },
+
+    outcomeLabel: 'The result',
+    outcome:
+      'BMONI reports more than $1 billion processed on its platform since the website launched, and ' +
+      'roughly 100,000 visits a day to its websites. Mexico launched on the same system, in Spanish and ' +
+      'English, without a separate redesign, and bmoni.com is ready to send visitors to the USA, Europe and ' +
+      'Southeast Asia as each market goes live.',
+  },
+
+  {
+    // ETHSafari: all design and build Sammy's (confirmed 2026-11-08). Screens
+    // captured from the live ethsafari.xyz with the Safari AI chat bubble hidden.
+    // Facts from ~/ETH Safari/docs (design system, native Elementor builds,
+    // Aug 2026 application pages, postponement updates).
+    slug: 'ethsafari',
+    kind: 'product',
+    website: true,
+    seoTitle: 'ETHSafari: event website design, design system and Elementor build | Sammy Fash',
+    seoDescription: 'Design system, website design and native Elementor build for ETHSafari, a nine-day Ethereum event that travels from Nairobi to Kilifi.',
+    name: 'ETHSafari',
+    title: 'ETHSafari: the watering hole for web3',
+    colour: '#22c55e',
+    live: 'https://ethsafari.xyz/',
+    liveLabel: 'ethsafari.xyz',
+    year: '2026',
+    client: 'ETHSafari',
+    timeline: { span: 'The fifth-anniversary edition', label: '2026' },
+    location: 'Nairobi → Kilifi, Kenya · remote',
+    role: 'Web design · Art direction · WordPress development',
+    team: 'I set the art direction, designed the site and its design system in Figma, and built every page natively in WordPress and Elementor.',
+    services: [
+      { label: 'Web design', icon: 'pen' },
+      { label: 'Art direction', icon: 'design' },
+      { label: 'Design system', icon: 'layers' },
+      { label: 'WordPress development', icon: 'code' },
+    ],
+    stack: ['Figma', 'WordPress', 'Elementor'],
+    card: 'ethsafari',
+    cardAlt: 'The ETHSafari website on a desktop monitor',
+    cardTag: {
+      design: 'Web design · Art direction',
+      development: 'WordPress · Elementor',
+      web: 'Figma · WordPress',
+    },
+    cardSize: [1400, 819],
+
+    intro:
+      'ETHSafari is a nine-day Ethereum event that travels from Nairobi to the Kenyan coast at Kilifi, ' +
+      'with a train ride, the Blocktrain, in between. For its fifth-anniversary edition I set a new art ' +
+      'direction, built a design system in Figma and rebuilt the website natively in WordPress and Elementor.',
+
+    impact: [
+      { icon: 'users', value: '3,000+', unit: 'attendees', text: 'at ETHSafari’s most recent edition, as reported by the organisers: the builders and founders this site has to win over.' },
+      { icon: 'megaphone', value: '150+', unit: 'speakers', text: 'across nine days from Nairobi to the coast, presented on a speakers page the team can update themselves.' },
+      { icon: 'calendar', value: '5', unit: 'editions', text: 'of ETHSafari since 2022, told on one site, with every past programme kept online for new attendees and sponsors.' },
+    ],
+
+    hero: {
+      laptop: 'eth-hero',
+      alt: 'The ETHSafari homepage on a laptop at a beach lodge in Kilifi',
+      caption: 'The homepage, at a beach lodge in Kilifi',
+    },
+
+    design: {
+      lede:
+        'Most crypto conferences look the same: dark backgrounds, neon gradients and glowing 3D shapes. ' +
+        'ETHSafari is different. It moves across Kenya for nine days, from a bootcamp in Nairobi, onto a ' +
+        'train, to a festival on the coast, and it has a sense of humour about itself. The website had to ' +
+        'feel like that journey, sell sponsorship and applications for an edition whose dates were still ' +
+        'changing, and stay easy for a small team to update in the weeks before opening day.',
+
+      research: {
+        title: 'What shaped the site',
+        intro: 'Four problems decided the look of the site and how it is put together.',
+        items: [
+          { icon: 'eye', title: 'Crypto events all look alike', text: 'Dark pages with neon gradients are the default for web3 events, so a visitor can’t tell one from another. I tried that direction first and set it aside. ETHSafari now has a bright, flat look of its own: cream paper, heavy ink outlines, hard shadows and one strong magenta.' },
+          { icon: 'link', title: 'The journey is the product', text: 'People aren’t buying a seat in a hall. They are signing up for nine days that move from Nairobi to Kilifi by train. So the route leads the homepage, with each stop, its coordinates and what happens there, before the programme and the ways to take part.' },
+          { icon: 'clock', title: 'Plans change close to the event', text: 'Speakers, sessions and even dates move right up to opening day. When the 2026 edition was postponed, every date on the site changed to TBA and every ticket button became a link to support the event, in eighteen small edits, without rebuilding a page.' },
+          { icon: 'users', title: 'More ways to take part than a ticket', text: 'Vendors, volunteers and startups all want a place on the journey. Each now has its own page with a short application form, so the team receives applications in one inbox instead of scattered messages.' },
+        ],
+      },
+
+      personasTitle: 'Who it’s for',
+      personasIntro:
+        'ETHSafari brings together everyone building Ethereum in Africa. They all want to be part of the ' +
+        'journey, but each comes to the site with a different question.',
+      personas: [
+        { icon: 'code', name: 'Builders and founders', context: 'Want to learn, ship and meet the people who can help them grow.', jobs: ['See the route and what happens at each stop', 'Find the hackathon and workshops', 'Follow the schedule on Sola Day'] },
+        { icon: 'megaphone', name: 'Speakers', context: 'Want a stage in front of Africa’s Ethereum community.', jobs: ['See who has spoken before', 'Understand the session formats', 'Apply to speak'] },
+        { icon: 'chart', name: 'Sponsors and partners', context: 'Decide whether to put their name on the journey.', jobs: ['See five years of past partners', 'Understand the audience', 'Support the event on Artizen'] },
+        { icon: 'store', name: 'Vendors, volunteers and startups', context: 'Want a role on the journey beyond a ticket.', jobs: ['Find the right application page', 'Apply in a few minutes', 'Know what happens next'] },
+      ],
+
+      principlesTitle: 'The principles behind every decision',
+      principlesIntro: 'I set these at the start, and they settled most decisions on the site.',
+      principles: [
+        { title: 'Bright and flat, never neon', text: 'Cream paper, ink outlines and hard shadows with no blur. No gradients, no glass and no 3D, so ETHSafari never looks like another crypto conference.' },
+        { title: 'The route leads', text: 'Nairobi, the Blocktrain and Kilifi structure the homepage, the schedule and the social posts, so the journey is the first thing people understand.' },
+        { title: 'Say it with a wink', text: 'The site keeps the event’s own humour, in lines like “Gas: low · Vibes: high” and “Karibu, everyone rides the Blocktrain”, so it sounds like ETHSafari and not a template.' },
+        { title: 'One action per page', text: 'Each page asks for one thing: support the event, apply to speak, or start an application. The button always says exactly what happens next.' },
+        { title: 'The team edits content, not code', text: 'Every page is built from Elementor’s own widgets and the site’s global styles, so the team can change any word, photo or link without a developer.' },
+      ],
+
+      ia: {
+        title: 'How the site is organised',
+        intro:
+          'A short main menu covers what most visitors come for: the event, its speakers, the schedule and ' +
+          'a way to get in touch. The three application pages sit in their own footer column, and the ' +
+          'support button stays in the top corner of every page.',
+        consoleLabel: 'Main menu',
+        console: ['Home: the route, the five years and ways to join', 'Speakers: past voices and the call for speakers', 'Schedule: the plan, and Sola Day for live updates', 'Contact'],
+        attendeeLabel: 'Taking part',
+        attendeeIcon: 'store',
+        attendee: ['Support us on Artizen, in the header of every page', 'Vendors: sell on the Safari floor', 'Volunteers: run the Safari from the inside', 'Startup booth: put your startup in front of the herd'],
+        tabbar: 'eth-home-desk',
+        tabbarSize: [1440, 900],
+        tabbarCaption: 'The homepage on desktop, with the main menu and the support button',
+      },
+
+      screensTitle: 'Key pages on the site',
+      screensIntro: 'The pages that tell ETHSafari’s story and ask people to take part, in the order most visitors meet them.',
+      screens: [
+        {
+          title: 'Speakers: five years of voices',
+          body: [
+            'The speakers page celebrates everyone who has taken the stage over five editions, from founders ' +
+            'to community leaders, and closes with the 2026 call for speakers and a short form to apply.',
+          ],
+          mockup: 'eth-speakers',
+          caption: 'Speakers: five years of voices',
+        },
+        {
+          title: 'A schedule that can change',
+          body: [
+            'The schedule explains the shape of the week, talks, workshops, hackathons, the Blocktrain and the ' +
+            'coastal festival, while the full programme is published in phases. For live updates during the ' +
+            'event it sends attendees to Sola Day, where they can RSVP and follow sessions, and keeps past ' +
+            'schedules one click away.',
+          ],
+          mockup: 'eth-schedule',
+          caption: 'The schedule, with Sola Day for live updates',
+        },
+        {
+          title: 'A page for vendors',
+          body: [
+            'Vendors get a page that speaks their language: nine days, five stops and thousands of builders, ' +
+            'founders and travellers to sell to. The application form asks only what the team needs to say yes.',
+          ],
+          mockup: 'eth-vendors',
+          caption: 'Applying as a vendor',
+        },
+        {
+          title: 'Startup booths in front of the herd',
+          body: [
+            'The startup booth page sells the exhibition floor as the place where investors, customers and ' +
+            'talent meet, and walks a founder through the application step by step.',
+          ],
+          mockup: 'eth-startup',
+          caption: 'Applying for a startup booth',
+        },
+        {
+          title: 'Volunteers who keep it running',
+          body: [
+            'Volunteers are the reason the Blocktrain leaves on time. Their page lists the teams they can join, ' +
+            'from logistics and the stage to hospitality and media, before the application form.',
+          ],
+          mockup: 'eth-volunteers',
+          caption: 'Applying to volunteer',
+        },
+        {
+          title: 'Getting in touch with the team',
+          body: [
+            'Questions, partnerships, side events and press all start on one contact page, with a promise that ' +
+            'the team will reply as soon as possible.',
+          ],
+          mockup: 'eth-contact',
+          caption: 'The contact page',
+        },
+      ],
+
+
+      system: {
+        title: 'The design system',
+        body:
+          'ETHSafari’s look is flat neo-brutalist: cream paper, near-black ink outlines, hard offset shadows ' +
+          'with no blur, and magenta as the one loud colour, with plum for dark sections. In Figma I built it as ' +
+          '18 base colours, 26 named colour roles, 19 text styles and three hard-shadow styles, then set up the ' +
+          'same colours and type as global styles in Elementor.',
+        swatches: [
+          { name: 'Paper', value: '#fbf7f2', note: 'page background' },
+          { name: 'Ink', value: '#0d0a12', note: 'outlines and hard shadows' },
+          { name: 'Magenta', value: '#f330e2', note: 'the brand colour and buttons' },
+          { name: 'Plum', value: '#2b0a28', note: 'dark sections and headings' },
+          { name: 'Amber', value: '#ffb247', note: 'highlights' },
+          { name: 'Pink tint', value: '#fce3f7', note: 'pale surfaces' },
+        ],
+        type: {
+          family: 'Poppins + Archivo + IBM Plex Mono',
+          note: 'Poppins Black sets the headlines, Archivo sets body text, and IBM Plex Mono sets the small technical labels and coordinates.',
+        },
+        componentsLabel: 'Components from the live site',
+        components: [
+          { img: 'eth-route', label: 'The route, stop by stop', w: 1240, h: 525, wide: true },
+          { img: 'eth-involved', label: 'Three ways to take part', w: 1370, h: 665, wide: true },
+          { img: 'eth-years', label: 'Five years as a timeline', w: 1340, h: 1020, wide: true },
+          { img: 'eth-offerings', label: 'What’s inside, in a dark section', w: 1340, h: 894, wide: true },
+        ],
+        rulesLabel: 'Standards every page meets',
+        rules: [
+          'Every shadow is hard, with no blur',
+          'Magenta is kept for actions and one word per headline',
+          'Every page is built from Elementor’s own widgets, with no HTML widgets',
+          'Every page is designed for a phone as well as a laptop',
+        ],
+      },
+    },
+
+    development: {
+      lede:
+        'The site runs on WordPress with Elementor Pro. Every page is built on a staging copy first, then ' +
+        'pushed to the live site through a review-and-approve step, so nothing reaches visitors unchecked. ' +
+        'Each page is made from Elementor’s own widgets and bound to the site’s global colours and type, ' +
+        'with a small amount of scoped CSS only for the effects Elementor has no setting for.',
+
+      flowTitle: 'How a change reaches the live site',
+      flowIntro: 'The path every page and every edit takes. The solid boxes are the steps I own; the dashed box is the organisers’ approval.',
+      flowKey: { me: 'Steps I own', other: 'The organisers' },
+      flow: [
+        { label: 'Design in Figma', sub: 'from the design system', owner: 'me' },
+        { label: 'Build on staging', sub: 'native Elementor widgets', owner: 'me' },
+        { label: 'Check every page', sub: 'widget counts, styles, phone sizes', owner: 'me' },
+        { label: 'Push for review', sub: 'changes wait for approval', owner: 'me' },
+        { label: 'Organisers approve', sub: 'in the live site’s admin', owner: 'partner' },
+        { label: 'Live on ethsafari.xyz', sub: 'checked again after release', owner: 'me' },
+      ],
+
+      treeTitle: 'Built from Elementor’s own parts',
+      treeIntro: 'Every page shares the same header, footer and global styles, so a change in one place reaches the whole site.',
+      tree: {
+        root: 'ethsafari.xyz',
+        items: [
+          { name: 'Global colours and type', note: 'every heading, button and section reads from them' },
+          { name: 'Header template', note: 'the ticker, the menu and the support button' },
+          { name: 'Footer template', note: 'the menus, including the Apply column' },
+          { name: 'Home', note: 'the route, five years, ways to join' },
+          { name: 'Speakers · Schedule · Contact', note: 'the main menu pages' },
+          { name: 'Vendors · Volunteers · Startup booth', note: 'application pages with Elementor forms' },
+        ],
+        note: 'Real WordPress menus throughout, so the team edits navigation in one place.',
+      },
+
+      sections: [
+        {
+          title: 'Native widgets, not pasted HTML',
+          body: [
+            'A design this distinctive is easy to rebuild as one big block of HTML, but then nobody can edit it ' +
+            'in Elementor. Every page is made from real headings, text, buttons, images and menus instead. When ' +
+            'it was first built, the homepage alone was 93 containers and 109 headings, with no HTML widgets at all.',
+          ],
+        },
+        {
+          title: 'Brand values the whole site reads',
+          body: [
+            'The page maps Elementor’s global colours and fonts to short names once, and every section uses ' +
+            'those names. Changing the magenta in the site settings changes it everywhere.',
+          ],
+          code: {
+            file: 'Homepage · scoped CSS',
+            lines: [
+              '--mag: var(--e-global-color-primary);',
+              '--ink: var(--e-global-color-ethnd3010);',
+              '--fd:  var(--e-global-typography-primary-font-family);',
+            ],
+          },
+        },
+        {
+          title: 'Postponing without a rebuild',
+          body: [
+            'When the 2026 edition was postponed, every date had to become TBA and every ticket button had to ' +
+            'point to Artizen instead. I made eighteen small edits to the existing widgets, changing only their ' +
+            'words and links, so every page kept its styles and stayed fully editable.',
+          ],
+        },
+        {
+          title: 'Getting blocked scripts running again',
+          body: [
+            'The chat assistant worked on staging but not on the live site. The cause was a security rule in ' +
+            'the live server’s configuration that blocked every outside script, which had also silently stopped ' +
+            'the site’s analytics. Listing the trusted sources brought back the chat, Google Tag Manager and ' +
+            'site statistics, with no errors in the console.',
+          ],
+        },
+      ],
+
+      splitTitle: 'My contribution',
+      splitIntro: 'I was responsible for the art direction, the design and the build of the website.',
+      split: {
+        bothMine: true,
+        mineLabel: 'What I designed',
+        partnerLabel: 'What I built',
+        mine: ['The art direction: bright, flat and neo-brutalist', 'The design system in Figma', 'The homepage, speakers, schedule and contact pages', 'The vendor, volunteer and startup booth pages', 'Layouts for phone and desktop'],
+        partner: ['Every page natively in WordPress and Elementor', 'Global colours, type, header and footer templates', 'The application forms, sent to the team’s inbox', 'The staging copy and the review step before release', 'The postponement updates and the live-site fixes'],
+      },
+    },
+
+    outcomeLabel: 'The result',
+    outcome:
+      'ETHSafari has a look nobody would mistake for another crypto conference, and a site its team can run ' +
+      'themselves. When plans changed, the site changed with them without a rebuild, and vendors, volunteers and ' +
+      'startups now apply through pages of their own instead of scattered messages.',
+  },
+
   // DRAFT until screens exist. There is no demo mode in the app and no iOS
   // build on disk; sign-in is Firebase-only. Route to screenshots: build the
   // simulator app from ios/ABF 2026.xcworkspace, point tenant.config.json

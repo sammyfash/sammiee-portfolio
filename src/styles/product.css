@@ -645,3 +645,6 @@
 @media (max-width: 560px) {
   .phones:has(> :last-child:nth-child(3)) { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* A website case shows the desktop page only: no phone rail beside it. */
+.ia__visual--single, .ia__visual.ia__visual--single { grid-template-columns: minmax(0, 1fr); align-items: center; }

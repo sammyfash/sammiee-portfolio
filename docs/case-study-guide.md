@@ -280,3 +280,54 @@ Rules that came out of it:
 - **Findings copy: plain is not the same as clear** (his correction: "very plain and not
   interesting, and difficult to understand"). Each finding names the problem in people's
   terms, gives a concrete example, and ends with what the site does about it.
+
+## 10. BMONI (2026-11-07)
+
+- **All three domains are Sammy's** (his correction): bmoni.com is the one-screen global
+  gateway, bmoni.ng the Nigeria site and bmoni.mx the Mexico site (Spanish at `/`, English
+  under `/mx/`). An old code comment said bmoni.com had been redesigned by someone else; it
+  was wrong and is gone. BMONI now uses the full product layout with the Websites lens.
+- **Screens come from the live sites**, captured at 1440×900 @2x and 390×844 @3x
+  (`assets-src/screens/bmoni-*`). Components are cropped from the live pages by section.
+- **No custom code, so the Development half quotes what the sites ship:** the hreflang block
+  from bmoni.com's head and the Elementor kit's global values. There is no tests section and
+  no invented code.
+- **Describe what ships:** the brand file names Rethink Sans, but the live sites use Poppins
+  and Raleway, so the page says Poppins and Raleway.
+
+## 11. ETHSafari (2026-11-08)
+
+- **All the design is Sammy's** (his answer), including the 2026 homepage, schedule and
+  speakers pages that the build docs call "client-supplied redesign" files. Credit the art
+  direction, design system, design and native Elementor build to him.
+- **Sources:** `~/ETH Safari/docs` (design system tokens, native build counts, the August 2026
+  application pages, the postponement edits) and the ETH Safari project memory (the live-site
+  CSP fix). Screens are captured from the live ethsafari.xyz.
+- **Hide the site's chat bubble before capturing** (`[data-safari-ai]`, a third-party widget):
+  it sits on every screen otherwise. Draimo is a community partner, not Sammy's product.
+- **Postponed edition:** dates are TBA and ticket buttons point to Artizen, so the page never
+  promises dates or ticket sales.
+
+## 12. Offline Webflow sites (2026-11-08)
+
+- **ICP Hub Kenya, SmartDev Studios and Dynasty Labs keep the shorter website layout**, by
+  Sammy's choice, but now carry generated scenes like the rest.
+- **Screens come from the build videos:** each video shows the site in a rounded window on a
+  coloured background. Crop the window from a clear frame (detect its edges, then inset past the
+  rounded corners) into `assets-src/screens/<site>-desk-0N.png`. Use one fixed box when frames
+  disagree (Dynasty Labs).
+- **Keep the walkthrough video:** when a website case has `scenes.hero` and a `video`, the video
+  now plays below the scenes as proof of the real build.
+- **Numbers on offline sites are the client's own record, labelled as such** ("as reported by
+  the hub"), never presented as Sammy's results. Dynasty Labs has no real figures, so its two
+  metrics describe the page (six services, three portfolio case studies).
+
+## 13. Before going live (2026-11-08)
+
+- **Websites get no phone views** (his correction: "its only important if its an app"): no phone
+  in the hero, no phone section, no phone image in the site map. The site map can now show the
+  desktop page alone (`ia.rail` is optional). ABF's website page still has its phones from the
+  earlier approval.
+- **BMONI's hero and card show bmoni.com**, the global gateway, on a laptop, per his request.
+- **Work grid gap:** the lens filter's fade-in ran on page load and fought the build crew, leaving
+  some cards 24px low so rows touched. It now animates only on a real lens change.

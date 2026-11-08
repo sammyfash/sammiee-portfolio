@@ -31,62 +31,7 @@ import { PRODUCTS } from './products.mjs'
 const WEBSITES = [
   // Africa Blockchain Festival moved to content/products.mjs (kind: 'product',
   // website: true) in Nov 2026, so it reads like the other recent case studies.
-  {
-    slug: 'bmoni',
-    seoTitle: 'Fintech website design & WordPress build | Sammy Fash',
-    seoDescription: 'Product design and WordPress development for BMONI, a cross-border neobank serving Nigeria and Mexico.',
-    name: 'BMONI',
-    title: 'BMONI — like your bank, but smarter',
-    colour: '#e879f9',
-    live: 'https://bmoni.com/',
-    liveLabel: 'bmoni.com',
-    // The site has been redesigned since this build, so the button would send
-    // people to someone else's work. Not `live: null` — that would print the
-    // "no longer online" note, and bmoni.com is very much online.
-    hideLive: true,
-    year: '2025',
-    client: 'BMONI',
-    location: 'Nigeria · Mexico',
-    services: ['Product Design', 'Web Design', 'WordPress Development'],
-    stack: ['Figma', 'WordPress'],
-    card: 'bmoni',
-    kind: 'website',
-    cardAlt: 'The BMONI fintech website on a laptop',
-    cardTag: 'Figma · WordPress',
-    cardSize: [1400, 939],
-    shots: { desktop: 4, mobile: 0 },
-    metrics: [
-      { value: '$1B+', label: 'processed by the BMONI platform after the website launched' },
-      { value: '~100K', label: 'daily visits reported for the website' },
-      { value: '2 markets', label: 'Nigeria and Mexico, from one set of templates' },
-    ],
-    intro:
-      'BMONI is a cross-border neobank serving customers in Nigeria and Mexico. I designed and ' +
-      'built the marketing website in 2025. The platform later reported more than $1 billion in ' +
-      'processed transactions, and the website receives roughly 100,000 visits a day.',
-    approach: [
-      'The site needed to feel modern without making money management look casual. I used real ' +
-      'product screens throughout the page, so visitors could see the accounts, transfers and ' +
-      'currency features instead of relying on illustrations or broad claims.',
-
-      'The page is organised around four reasons to switch: fees, availability, currencies and ' +
-      'cross-border access. A market switch appears near the top because the product and offer ' +
-      'differ between Nigeria and Mexico.',
-
-      'I built each section as a reusable WordPress block. When BMONI added a second market, ' +
-      'the team could assemble the page from the same system instead of starting another ' +
-      'website from scratch.',
-    ],
-    outcome:
-      'The block system supported the launch of a second market without a separate redesign. It ' +
-      'also gives BMONI a consistent way to publish new product and campaign pages as the ' +
-      'service grows.',
-    highlights: [
-      { label: 'Product on the page', text: 'Real interface screens explain how BMONI works.' },
-      { label: 'Two markets', text: 'Nigeria and Mexico use one flexible set of page templates.' },
-      { label: 'Reusable blocks', text: 'New pages can be assembled from existing WordPress sections.' },
-    ],
-  },
+  // BMONI moved to content/products.mjs (Nov 2026): full product layout, all three sites.
 
   {
     slug: 'icp-hub-kenya',
@@ -110,86 +55,45 @@ const WEBSITES = [
     video: 'icp-hub-kenya',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
-      { value: '3 audiences', label: 'developers, students and partners, each with a route in' },
-      { value: 'Webflow', label: 'designed and built, then handed over for the team to run' },
+      { value: '1,200+', label: 'developers trained by the hub, the record the site was built to show' },
+      { value: '$100K+', label: 'in grants secured for builders, as reported by the hub' },
+      { value: '50+', label: 'partner universities across Kenya, as reported by the hub' },
     ],
-    intro:
-      'ICP Hub Kenya supports the Internet Computer developer community in East Africa. I ' +
-      'designed the website for developers, students and potential partners, then built it in ' +
-      'Webflow so the local team could manage events, programmes and community updates.',
+    intro: 
+      'ICP Hub Kenya trains developers, funds startups and runs events for the Internet Computer ' +
+      'community in East Africa. I was part of the hub’s team, and I designed its website and built it ' +
+      'in Webflow so the team could publish events, programmes and news without waiting for a developer.',
+    scenes: {
+      hero: { mockup: 'icp-hero', caption: 'The homepage, in a Nairobi lecture room' },
+      pair: [
+        { mockup: 'icp-milestones', caption: 'The hub’s record, at a hackathon' },
+        { mockup: 'icp-join', caption: 'Why join the hub, in a Nairobi library' },
+      ],
+    },
     approach: [
-      'I mapped the three main audiences before designing the page. Developers could find grants ' +
-      'and technical resources; students could find events and learning programmes; partners ' +
-      'could see the hub’s work and ways to get involved.',
+      'The hub speaks to three very different people. A developer wants training and grants, a student ' +
+      'wants events and a way in, and a university or sponsor wants proof that the hub delivers. The ' +
+      'homepage gives each of them a route in its first screen, then shows the proof: developers trained, ' +
+      'grants secured, partner universities and startups incubated.',
 
-      'The visual direction combines the Internet Computer brand with photography from the local ' +
-      'community. The result feels connected to the wider ecosystem without losing its Nairobi ' +
-      'identity.',
+      'The look takes the Internet Computer’s purple and gradient and makes it local, with the hub’s own ' +
+      'astronaut mascot, photos of the Nairobi community and a Kenyan flag ticker running across the hero.',
 
-      'I created Webflow CMS collections for events, programmes and news, then handed the site ' +
-      'over to the team. They could keep publishing without waiting for a developer.',
+      'Everything the team publishes often, events, programmes, projects and news, lives in Webflow CMS ' +
+      'collections. When I handed the site over, the team could add a new event or programme themselves.',
     ],
-    outcome:
-      'The site supported outreach to developers, universities, sponsors and ecosystem partners ' +
-      'during my time with the hub. The original domain has since lapsed, so the case study ' +
-      'includes a recorded walkthrough of the finished build.',
+    outcome: 
+      'The site carried the hub’s outreach to developers, universities, sponsors and ecosystem partners ' +
+      'during my time with the team. The original domain has since lapsed, so the case study includes a ' +
+      'recorded walkthrough of the finished build.',
     highlights: [
-      { label: 'Clear audience routes', text: 'Developers, students and partners can find the information meant for them.' },
-      { label: 'Grants are visible', text: 'Funding opportunities are available from the main journey instead of being buried in navigation.' },
-      { label: 'Team managed', text: 'Webflow CMS lets the hub publish events and programme updates independently.' },
+      { label: 'A route for every visitor', text: 'Developers, students and partners each find what they came for from the first screen.' },
+      { label: 'Proof, not promises', text: 'The hub’s record of developers trained, grants and startups sits high on the homepage.' },
+      { label: 'Run by the team', text: 'Events, programmes, projects and news are published from Webflow CMS without a developer.' },
     ],
   },
 
-  {
-    slug: 'ethsafari',
-    seoTitle: 'Conference website design & WordPress build | Sammy Fash',
-    seoDescription: 'Art direction, website design and WordPress development for ETHSafari, a nine-day Ethereum event travelling from Nairobi to Kilifi.',
-    name: 'ETHSafari',
-    title: 'ETHSafari — the watering hole for web3',
-    colour: '#22c55e',
-    live: 'https://ethsafari.xyz/',
-    liveLabel: 'ethsafari.xyz',
-    year: '2026',
-    client: 'ETHSafari',
-    location: 'Nairobi → Kilifi, Kenya',
-    services: ['Web Design', 'Art Direction', 'WordPress Development'],
-    stack: ['Figma', 'WordPress'],
-    card: 'ethsafari',
-    kind: 'website',
-    cardAlt: 'The ETHSafari website on a desktop monitor',
-    cardTag: 'Figma · WordPress',
-    cardSize: [1400, 819],
-    shots: { desktop: 4, mobile: 5 },
-    metrics: [
-      { value: '3,000+', label: 'attendees at the most recent edition, reported by the organisers' },
-      { value: '150+', label: 'speakers across nine days, Nairobi to the coast' },
-      { value: '5 years', label: 'of past editions kept live in the schedule archive' },
-    ],
-    intro:
-      'ETHSafari is a nine-day Ethereum event that moves from Nairobi to the Kenyan coast. The ' +
-      'latest edition brought together more than 3,000 attendees, 150 speakers and 80 ' +
-      'companies. I designed the event website and built it in WordPress.',
-    approach: [
-      'I moved away from the dark, neon look common to crypto conferences. The site uses a light ' +
-      'background, large type, route coordinates and the event’s own humour. It feels like ' +
-      'ETHSafari rather than a reusable conference theme.',
-
-      'The journey from Nairobi to Kilifi shapes the page. Visitors see the dates and route ' +
-      'first, then the programme, tickets and previous editions. The archive covers five years, ' +
-      'which gives new attendees useful context before they book.',
-
-      'Speakers, schedules, side events and vendor applications are managed in WordPress. The ' +
-      'organisers can update information quickly during the final weeks before the event.',
-    ],
-    outcome:
-      'The site gives ETHSafari a recognisable voice while handling tickets, applications and a ' +
-      'programme that changes frequently before opening day.',
-    highlights: [
-      { label: 'The route leads', text: 'Nairobi to Kilifi provides the structure for the page and the event programme.' },
-      { label: 'Five years of editions', text: 'Previous programmes remain available for new attendees and partners.' },
-      { label: 'Built for updates', text: 'The team manages speakers, schedules, side events and applications in WordPress.' },
-    ],
-  },
+  // ETHSafari moved to content/products.mjs (Nov 2026): full product layout.
 
   {
     slug: 'smartdev-studios',
@@ -213,31 +117,41 @@ const WEBSITES = [
     video: 'smartdev-studios',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
-      { value: '4 services', label: 'smart contracts, DeFi, NFT platforms and audits, described for a non-technical buyer' },
-      { value: 'Webflow', label: 'designed and built, responsive across three breakpoints' },
+      { value: '100+', label: 'projects and hackathons in the studio’s record, presented on the site' },
+      { value: '500+', label: 'blockchain partners, as reported by the studio' },
+      { value: '8', label: 'services, each explained by the problem it solves for a business' },
     ],
-    intro:
-      'SmartDev Studios builds blockchain products, including smart contracts, DeFi ' +
-      'applications, NFT platforms and audits. I designed and built a Webflow site that ' +
-      'explains those services to founders who may not have a technical background.',
+    intro: 
+      'SmartDev Studios builds blockchain products for businesses: smart contracts, DeFi apps, games, ' +
+      'tokenisation and audits. Most of its buyers are founders who aren’t engineers, so I designed and ' +
+      'built a Webflow site that explains what the studio does in words a founder can act on.',
+    scenes: {
+      hero: { mockup: 'smartdev-hero', caption: 'The homepage, in a dev studio at night' },
+      pair: [
+        { mockup: 'smartdev-services', caption: 'Eight services, in a founders’ meeting' },
+        { mockup: 'smartdev-industries', caption: 'Industries, one tab at a time' },
+      ],
+    },
     approach: [
-      'The opening section says what the studio builds and who it works with. Each service then ' +
-      'explains the kind of problem it solves, helping a founder compare the offer without first ' +
-      'learning the technical vocabulary.',
+      'A founder comparing blockchain studios usually meets a wall of jargon. The opening says plainly what ' +
+      'SmartDev does, who it works with and why it can be trusted, with the studio’s years of experience, ' +
+      'projects and certified developers right beside it.',
 
-      'I used a simple dark interface, clear type and restrained motion. Desktop, tablet and ' +
-      'mobile layouts were designed together so the hierarchy remained clear on smaller screens.',
+      'Each of the eight services, from smart contracts to Web3 data, is described by what it does for a ' +
+      'business. An Industries section then shows the same technology at work in finance, healthcare, ' +
+      'logistics, manufacturing and insurance, one tab at a time.',
 
-      'The site was built in Webflow, allowing the team to edit service descriptions as its ' +
-      'offer changed.',
+      'Past projects, the studio’s own products and its developers each have a section, so a founder can ' +
+      'see real work and real people before getting in touch. I built it all in Webflow, responsive across ' +
+      'desktop, tablet and phone, so the team could change its offer as it grew.',
     ],
-    outcome:
-      'SmartDev used the site in outreach and for inbound enquiries. The original domain has ' +
-      'since lapsed, so the case study includes a recorded walkthrough of the completed build.',
+    outcome: 
+      'SmartDev used the site for outreach and inbound enquiries from founders. The original domain has ' +
+      'since lapsed, so the case study includes a recorded walkthrough of the finished build.',
     highlights: [
-      { label: 'Clear opening', text: 'Visitors can quickly see what the studio builds and who it works with.' },
-      { label: 'Plain service descriptions', text: 'Technical services are explained in language a founder can use.' },
-      { label: 'Responsive by design', text: 'Desktop, tablet and mobile layouts were planned together.' },
+      { label: 'Plain words for founders', text: 'Every service says what it does for a business, not how the technology works.' },
+      { label: 'Industries, one tab at a time', text: 'Visitors see blockchain applied to their own sector without reading the rest.' },
+      { label: 'Real work and real people', text: 'Past projects, products and the developer team sit on the same page as the offer.' },
     ],
   },
 
@@ -263,33 +177,39 @@ const WEBSITES = [
     video: 'dynasty-labs',
     shots: { desktop: 0, mobile: 0 },
     metrics: [
-      { value: 'One page', label: 'covering community, partnerships, liquidity support and investor access' },
-      { value: 'Webflow', label: 'designed and built as a single scroll narrative' },
+      { value: '6', label: 'services in one scroll, from market entry to media partnerships' },
+      { value: '3', label: 'portfolio case studies, including ICP Hub Hong Kong and OpenChat' },
     ],
-    intro:
-      'Dynasty Labs is a Hong Kong growth firm for Web3 companies. I designed and built a ' +
-      'one-page Webflow site covering community, partnerships, liquidity support and investor ' +
-      'access.',
+    intro: 
+      'Dynasty Labs is a Hong Kong firm that helps Web3 companies grow in Asia, through partnerships, ' +
+      'community, fundraising and liquidity. I designed and built its one-page website in Webflow, written ' +
+      'for founders and investors who need to understand the firm in a single scroll.',
+    scenes: {
+      hero: { mockup: 'dynasty-hero', caption: 'The homepage, above Victoria Harbour' },
+      pair: [
+        { mockup: 'dynasty-services', caption: 'Six services, in a Sheung Wan café' },
+        { mockup: 'dynasty-portfolio', caption: 'The portfolio, at a rooftop event' },
+      ],
+    },
     approach: [
-      'The page opens with the firm’s offer, then gives each of its four services a clear ' +
-      'section. I removed content that repeated the same promise so a founder could understand ' +
-      'the business in one pass.',
+      'Founders and investors give a firm like this a few seconds. The page opens with what Dynasty Labs ' +
+      'does, accelerating the growth of Web3 projects from Hong Kong, then three cards for the ways it ' +
+      'helps: partnerships, go-to-market and community growth.',
 
-      'The layout is designed for scrolling, with each section leading naturally to the enquiry ' +
-      'form. The visual style stays dark and restrained, leaving the offer and client ' +
-      'conversations to do the work.',
+      'Six services follow as a simple grid, each with one line on what it means for a project. The ' +
+      'portfolio then shows real work, such as running ICP Hub Hong Kong and supporting OpenChat, with the ' +
+      'activities behind each one.',
 
-      'I built the site in Webflow so the team could update its positioning and service copy ' +
-      'without changing the design.',
+      'Every section leads to the same next step, a discovery call, the firm’s deck or its partner network. ' +
+      'I built it in Webflow so the team could update its positioning and portfolio without changing the design.',
     ],
-    outcome:
-      'The finished page became the firm’s main website for founder and investor conversations. ' +
-      'The original domain has since lapsed, so the case study includes a recorded walkthrough ' +
-      'of the completed build.',
+    outcome: 
+      'The page became Dynasty Labs’ main website for founder and investor conversations. The original ' +
+      'domain has since lapsed, so the case study includes a recorded walkthrough of the finished build.',
     highlights: [
-      { label: 'One clear offer', text: 'The four services support a single explanation of what Dynasty Labs does.' },
-      { label: 'Easy to scan', text: 'The page still makes sense when read quickly on a phone.' },
-      { label: 'Simple to update', text: 'The team can change service and positioning copy in Webflow.' },
+      { label: 'Understood in one scroll', text: 'What the firm does, how it helps and its proof all fit on one page.' },
+      { label: 'Real portfolio work', text: 'Case studies show the activities behind each partnership, not just logos.' },
+      { label: 'One next step', text: 'Every section leads to a call, the deck or the partner network.' },
     ],
   },
 ]
